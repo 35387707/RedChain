@@ -1,0 +1,79 @@
+/*
+ * head fixed
+ */
+.up-top {
+    padding-top: 0.40em;
+}
+.up-bot {
+    padding-bottom: 0.40em;
+}
+.bc-headbg {
+    background-color: #00abeb;
+}
+.own-data {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+
+/*
+ * 下部分
+ */
+.res-width {
+    width: 1.88em;
+    height: 1.88em;
+}
+.umar-at3 {
+    margin-top: 1.36em;
+}
+.uinn-a8 {
+    padding: 0.7em 1.0em 0.6em 1.0em;
+}
+/*浮动层*/
+.fixed {
+    position: fixed;
+    z-index: 10000;
+}
+.umar-mar1 {
+    margin-right: 0.625em;
+}
+.mine-data {
+    font-size: 0.88em;
+    color: white;
+    padding-right: 0.5em;
+}
+.usr-cont {
+    width: 100%;
+}
+.username-cont {
+    margin-top: 0.88em;
+    text-align: center;
+}
+.res-avator {
+    background-image: url(../img/head.jpg);
+}
+.head-img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.knock-img {
+    height: 5.0em;
+    width: 5.0em;
+}
+.uc-a2 {
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em
+}
+.ub-a2 {
+    border: 1px solid #fff;
+}

@@ -1,0 +1,305 @@
+@font-face {
+    font-family: 'SIMLI';
+    src: url('../css/fonts/SIMLI.TTF');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #363636;
+}
+/*
+ * body
+ */
+body {
+    width: 100%;
+    height: 100%;
+    background: #EAEAEA;
+}
+#page_0 {
+    width: 100%;
+    height: 100%;
+    background: #EAEAEA;
+}
+/*header*/
+#header {
+    z-index: 80;
+}
+#header {
+    width: 100%;
+    background: #FF5265;
+}
+#header .fa-microphone {
+    font-size: 1.7em;
+    margin: 0 -1em;
+}
+#header .uinput {
+    width: 70%;
+    padding: 0 0 0 1.5em !important;
+    height: 2.2em;
+    border: 1px solid #D43C33;
+    border-radius: 0.4em;
+    margin-top: 0.5em;
+    margin-right: 1em;
+    background-color: #fff;
+}
+#header .uinput input {
+    height: 2.5em;
+    font-size: 0.9em;
+}
+#header .uinput .sc-text {
+    color: #C7C7C7;
+    font-size: 1.2em;
+    line-height: 0.7em;
+}
+
+/*footer*/
+#footer {
+    font-size: 0.7em;
+    background-size: cover;
+    /*color: #EAEAEA;*/
+    background: #FFFFFF;
+    height: 4.5em;
+    width: 100%;
+    font-weight: bold;
+    bottom: 0;
+}
+.foot-colr {
+    color: #393939;
+}
+#footer .ub-ver {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 100% !important;
+}
+#footer .ub-ver img {
+    margin: 0.5em 0 -0.2em;
+    width: 2.2em;
+    height: 2.2em;
+}
+#footer .ub-ver2 {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 100% !important;
+}
+#footer .ub-ver2 img {
+    margin: 0.5em 0 -0.2em;
+    width: 2.2em;
+    height: 2.2em;
+}
+
+#footer .ub-ver3 {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 49.5% !important;
+}
+#footer .ub-ver3 img {
+    margin: 0.5em 0 -0.2em;
+    width: 2.2em;
+    height: 2.2em;
+}
+
+#footer .ub-ver4 {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 20.0% !important;
+}
+#footer .ub-ver4 img {
+    margin: 0.5em 0 -0.2em;
+    width: 2.2em;
+    height: 2.2em;
+}
+
+#footer .ub-ver4 .nav-fa {
+    width: 100%;
+    height: 2.8em;
+    line-height: 2.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+#footer .ub-ver4 .dis-txt {
+    width: 100%;
+    height: 1.7em;
+    line-height: 1.7em;
+    padding-bottom: 0.36em;
+    position: absolute;
+    bottom: 0;
+}
+#footer .ub-ver4 .nav-middle {
+    z-index: 999;
+    position: absolute;
+    margin: -2.0em 10% 0 10%;
+    width: 80%;
+    height: 4.8em;
+    line-height: 4.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+#footer .ub-ver4 .nav-middle2 {
+    z-index: 10000;
+    position: absolute;
+    margin: -2.0em 10% 0 10%;
+    width: 80%;
+    height: 4.8em;
+    line-height: 4.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: pink;
+}
+.nav-fa a {
+    font-size: 2.0em;
+}
+.tab-colr {
+    color: #9A9A9A;
+}
+.rnd-md {
+    background-color: white;
+    min-height: 4.8em;
+    min-width: 4.8em;
+    line-height: 4.8em;
+    --webkit-border-radius: 4.8em;
+    border-radius: 4.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.rnd-sub {
+    background-color: #FF5265;
+    min-height: 4.0em;
+    min-width: 4.0em;
+    line-height: 4.0em;
+    --webkit-border-radius: 4.0em;
+    border-radius: 4.0em;
+}
+.fa-spec {
+    /*margin: -0.625em 0.625em 0.5625em 0;*/
+
+    font-size: 66%;
+    color: #FFFFFF;
+}
+.foot-bdr {
+    border-top: 0.05em solid #9A9A9A;
+}
+#footer .ub-ver5 {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 100% !important;
+}
+#footer .ub-ver5 img {
+    margin: 0.5em 0 -0.2em;
+    width: 4.0em;
+    height: 4.0em;
+}
+
+/*footer*/
+#footer3 {
+    font-size: 0.7em;
+    background-size: cover;
+    /*color: #fff;*/
+    color: #7B7B7B;
+    height: 4.5em;
+    width: 49.5%;
+    font-weight: bold;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    position: fixed;
+    bottom: 0;
+}
+#footer3 .ub-ver {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 100% !important;
+}
+#footer3 .ub-ver .foot-icon {
+    margin: 0.5em 0 0.3em 0;
+    font-size: 1.6em;
+}
+#footer3 .ub-ver2 {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 100% !important;
+}
+#footer3 .ub-ver2 img {
+    margin: 0.5em 0 -0.2em;
+    width: 2.2em;
+    height: 2.2em;
+}
+
+.focus2 {
+    background-color: #D43C33;
+    color: #fff;
+}
+#footer .line-sty {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 50% !important;
+}
+#footer .line-sty .line-sub {
+    width: 100% !important;
+    line-height: 4.5em;
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+#footer .line-sty .fa-icon {
+    font-size: 2.36em;
+}
+#footer .line-sty .fa-sz {
+    font-size: 2.00em;
+}
+#footer .line-sty .fa-words {
+    margin-left: 0.36em;
+    font-size: 1.08em;
+}

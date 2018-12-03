@@ -1,0 +1,17 @@
+﻿@model List<RelexBarDLL.ContactUs>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@Model[i].Company</td>
+        <td>@Model[i].Name</td>
+        <td>@Model[i].Phone</td>
+        <td title="@Model[i].Descr">@(RelexBarBLL.Common.StringTruncat(Model[i].Descr,30))</td>
+        <td>@Model[i].Note</td>
+        @*<td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")"  />
+        </td>*@
+        <td>@Model[i].CreateTime</td>
+        @*<td><span class="btn-link" onclick="EditUser('@Model[i].ID')">编辑</span></td>*@
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@model RelexBarDLL.Users
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>修改昵称</title>
+   @Html.Action("CommonHead", "Static")
+    <script src="/js/js-string.js"></script>
+    <script>
+        $(function () {
+            $(".bigBtn").on("click", function () {
+                var name = $("#name").val();
+                if (!js.lang.String.checkString(name))
+                {
+                    return;
+                }
+                if (name == "") {
+                    alert("昵称不能为空！");
+                    return;
+                }
+                var reg = /[^\d|^A-z|^\u4E00-\u9FFF]/;
+                if (reg.test(name)) {
+                    return alert("只能使用汉字、字母和数字");
+                }
+               
+                $.post("/Account/DoCName", "Name=" + name, function (data) {
+                    if (data.code == "1") {
+                        self.location = document.referrer;
+                    } else {
+                        alert(data.msg);
+                    }
+                }, "json");
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>修改昵称</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="remark-block">
+                <font class="remark-title">昵称</font>
+                <input class="remark-iptTxt" id="name" value="@Model.Name" type="text" placeholder="请在此处输入昵称" />
+            </div>
+            <input class="bigBtn bg-b remark-btn-mt" type="button" value="完成" />
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

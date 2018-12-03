@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../mine/css/upgrade-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div id="content">
+
+                <div class="c-wh">
+                    <div class="font-user">
+                        <p>
+                            用户个人特权
+                        <p>
+                    </div>
+
+                    <div class="ub uinn-a12 ub-ae">
+                        <div class="ub ub-ver ub-f1 ub-pc">
+                            <div class="tx-c ub-f1 upgr-sty">
+                                <div class="upgr-img upgr-cash" id="upgr_fubao" ontouchstart="appcan.touch('btn-act')"></div>
+                            </div>
+                            <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                                抢现金红包
+                            </div>
+                        </div>
+                        <div class="ub ub-ver ub-f1 ub-pc b-gra-per">
+                            <div class="tx-c ub-f1 upgr-sty">
+                                <div class="upgr-img upgr-daijinjuan" id="upgr_fubao" ontouchstart="appcan.touch('btn-act')"></div>
+                            </div>
+                            <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                                领商家代金券
+                            </div>
+                        </div>
+                        <div class="ub ub-ver ub-f1 ub-pc b-gra-per">
+                            <div class="tx-c ub-f1 upgr-sty">
+                                <div class="upgr-img upgr-zuanshi" id="upgr_fubao" ontouchstart="appcan.touch('btn-act')"></div>
+                            </div>
+                            <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                                攒算力得晓砖
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 信息验证  -->
+                <div class="ubt ubb bc-border c-wh cont-bg judg-marg-top">
+                    <ul class="ubb bc-border ub t-bla ub-ac lis">
+                        <li class="ub-f1 ut-s font-xinxi">
+                            信息验证
+                        </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            <div class="ub ub-ac" >
+                                <div class="ulev-app1 judg-txt-marg">
+                                    手机号
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="uinput ub ub-f1">
+                                        <input placeholder="请输入手机号......" type="number" class="ub-f1">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            <div class="ub ub-ac" >
+                                <div class="ulev-app1 judg-txt-marg">
+                                    验证码
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="uinput ub ub-f1">
+                                        <input placeholder="请输入手机验证码......" type="number" class="ub-f1">
+                                    </div>
+                                </div>
+                                <div class="ulev-app1 judg-send-code" ontouchstart="appcan.touch('btn-act')">
+                                    发送验证码
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            <div class="ub ub-ac" >
+                                <div class="ulev-app1 judg-txt-marg">
+                                    选择地区
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="uinput ub ub-f1">
+                                        <input placeholder="默认为当前定位地区" type="search" class="ub-f1">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s ulev-app2">
+                    <div class="ub ub-ac" >
+                    <div class="ulev-app1 judg-txt-marg">
+                    我的分享人
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="uinput ub ub-f1">
+                    <input placeholder="请写入分享人号码(非必填)" type="search" class="ub-f1">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s ulev-app2">
+                    <div class="ub ub-ac" >
+                    <div class="ulev-app1 judg-txt-marg">
+                    分享人对应微信号
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="uinput ub ub-f1">
+                    <input placeholder="无推荐人" type="search" class="ub-f1">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s ulev-app2">
+                    <div class="ub ub-ac" >
+                    <div class="ulev-app1 judg-txt-marg">
+                    姓名
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="uinput ub ub-f1">
+                    <input placeholder="请写入分享人号码(非必填)" type="search" class="ub-f1">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul> -->
+                    <ul class="ub ub-ac lis">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            <div class="ub ub-ac" >
+                                <div class="ulev-app1 judg-txt-marg">
+                                    身份证
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="uinput ub ub-f1">
+                                        <input placeholder="无推荐人" type="search" class="ub-f1">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 信息验证-end  -->
+
+                <div class="lgn-wd btn-marg-top">
+                    <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn uc-a1 log-in" ontouchstart="appcan.touch('btn-act')" id="submit">
+                        <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                        升级
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script>
+            appcan.ready(function(){
+               
+               appcan.window.enableBounce();
+                
+            });
+        </script>
+    </body>
+</html>

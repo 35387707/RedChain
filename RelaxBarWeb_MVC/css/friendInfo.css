@@ -1,0 +1,206 @@
+.friInfo-block{
+    position:relative;
+    height:8.203125rem;
+    margin:2.16796875rem auto 1.5234375rem auto;
+    padding-left:7.734375rem;
+    border-top:0.05rem solid #cdcccc;
+    border-bottom:0.05rem solid #cdcccc;
+    background-color:#fff;
+}
+.friInfo-img{
+    position:absolute;
+    left:1.46484375rem;
+    width:5rem;
+    height:5rem;
+    border-radius:0.4rem;
+}
+.fri-name{
+    position:relative;
+    display:inline-block;
+    margin-top:1.7578125rem;
+    font-size:1.6rem;
+}
+.gender-icon{
+    position:absolute;
+    top:55%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    right:-1.3rem;
+    display:block;
+    width:1.1rem;
+    height:1.3rem;
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+.women-icon{
+    background:url(../img/common/women.png);
+}
+.men-icon{
+    background:url(../img/common/men.png);
+}
+.fri-telephone{
+    margin-top:0.9375rem;
+    color:#999;
+    font-size:1rem;
+}
+.fri-mt-1{
+    margin-top:5rem;
+}
+.fri-mt-2{
+    margin-top:1.5rem;
+}
+
+/*通讯录*/
+.addressbook-search{
+	position:fixed;
+	z-index:100;
+	top:6.50390625rem;
+	width:100%;
+    height:5.625rem;
+    background-color:#f0eff5;
+}
+.addressbook-search>.txt{
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+       -moz-transform:translate(-50%,-50%);
+        -ms-transform:translate(-50%,-50%);
+         -o-transform:translate(-50%,-50%);
+            transform:translate(-50%,-50%);
+    width:34.5703125rem;
+    height:3.3984375rem;
+    border:0.05rem solid #dad9de;
+    border-radius:0.4rem;
+}
+.addressbook-search>.txt::-webkit-input-placeholder{
+    text-align:center;
+}
+.contactlist{
+    padding-left:1.5234375rem;
+    padding-right:1.5234375rem;
+    background-color:#fff;
+    border-top:0.05rem solid #c1bfc4;
+    border-bottom:0.05rem solid #c1bfc4;
+}
+.contact-item{
+    position:relative;
+    height:6.5625rem;
+    padding-left:6.4453125rem;
+    line-height:6.5625rem;
+    font-size:1.8rem;
+    border-bottom:0.05rem solid #999;
+}
+.contact-item:first-child{
+    border-bottom:0.05rem solid #999 !important;
+}
+.contact-item:last-child{
+    border-bottom:none;
+}
+.contact-img{
+    position:absolute;
+    left:0;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:transtranslateYlateY(-50%);
+            transform:translateY(-50%);
+    width:5.0390625rem;
+    height:5.0390625rem;
+    border-radius:0.8rem;
+    overflow:hidden;
+}
+.contact-mt-1{
+    margin-top:2rem;
+}
+
+/*新的朋友*/
+.newfriendList{
+    background-color:#fff;
+}
+.newfriendItem{
+    position:relative;
+    height:6.85546875rem;
+    padding-left:8.0859375rem;
+    border-bottom:0.05rem solid #cdcccc;
+    overflow:hidden;
+}
+.nf-img{
+    position:absolute;
+    left:1.5234375rem;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    width:5.0390625rem;
+    height:5.0390625rem;
+}
+.nf-name{
+    margin-top:1.7578125rem;
+    font-size:1.5rem;
+}
+.nf-greet{
+    color:#8e8d8d;
+    font-size:1.171875rem;
+}
+.nf-addbtn,.nf-disable-btn{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    right:1.5234375rem;
+    width:4.6875rem;
+    height:2.63671875rem;
+    border-radius:0.6rem;
+}
+.nf-addbtn{
+    background-color:#000;
+    color:#fff;
+}
+.nf-disable-btn{
+    color:#c1bfc4;
+}
+.no-newfriend-block{
+    height:10rem;
+    padding-top:2rem;
+    text-align:center;
+    background-color:#f0eff5;
+    color:#6e6c6f;
+}
+
+.nf-search-wrap{
+    position:relative;
+    height:5rem;
+    margin-top:2rem;
+    background-color:#fff;
+}
+.nf-search-txt{
+    display:block;
+    width:90%;
+    height:85%;
+    margin:0 auto;
+    border-bottom:0.05rem solid #cdcccc;
+    text-indent:10%;
+}
+.nf-search-txt::-webkit-input-placeholder{
+    font-size:1.2rem;
+}
+.nf-search-icon{
+    position:absolute;
+    left:8%;
+    top:27%;
+    display:block;
+    width:1.46484375rem;
+    height:1.46484375rem;
+    background:url(../img/header/searchbtn.png) no-repeat;
+    background-size:100%;
+}

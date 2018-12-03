@@ -1,0 +1,42 @@
+﻿@{ 
+    RelexBarBLL.AdminUserBLL adBll = new RelexBarBLL.AdminUserBLL();
+    RelexBarBLL.RoleBLL rbll = new RelexBarBLL.RoleBLL();
+    RelexBarBLL.PermissionBLL pbll = new RelexBarBLL.PermissionBLL();
+}
+@model List<RelexBarDLL.AdminPermission>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+
+        <td class="col-md-1">@adBll.GetAdminByID(Model[i].AID).Name</td>
+        <td class="col-md-1">@rbll.GetRoleByID(Model[i].RoleID).Name</td>
+
+        <td class="col-md-5">
+            @*@pbll.AdminPermissionTeam(Model[i].PermissionID)*@
+            <div class="cell">
+
+                @{
+                    string permission = pbll.AdminPermissionTeam(Model[i].PermissionID);
+                    string[] ps = permission.Split(',');
+                    if (permission != null && permission != "")
+                    {
+                        foreach (string e in ps)
+                        {
+                            <span class="p_tag">@e</span>
+                        }
+                    }
+
+                }
+            </div>
+        </td>
+
+        <td class="col-md-1">
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CAdminPermissionStatus('@Model[i].ID',this)" />
+        </td>
+        <td class="col-md-1">
+            <span class="btn-link" onclick="EditAdminPermission('@Model[i].ID')"><i class="glyphicon glyphicon-edit"></i>编辑</span>
+
+        </td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

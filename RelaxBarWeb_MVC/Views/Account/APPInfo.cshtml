@@ -1,0 +1,189 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.Users
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/phone.css" />
+    <style>
+        #sexChange {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(55, 55, 55,.5);
+            z-index: 9999;
+        }
+
+            #sexChange .sexcontent {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                margin: 0rem auto;
+                vertical-align: central;
+                margin-top: 24rem;
+                width: 26rem;
+                height: 10rem;
+                background-color: white;
+                border-radius: 1rem;
+            }
+
+                #sexChange .sexcontent div {
+                    margin: 0;
+                }
+
+                #sexChange .sexcontent .sextitle {
+                    height: 40%;
+                    line-height: 233%;
+                    margin-left: 10%;
+                    font-size: 1.8rem;
+                }
+
+                #sexChange .sexcontent .sexitem {
+                    height: 60%;
+                }
+
+                    #sexChange .sexcontent .sexitem div {
+                        height: 50%;
+                        line-height: 233%;
+                        margin-left: 10%;
+                        margin-right: 10%;
+                        padding: 0 5%;
+                    }
+
+                        #sexChange .sexcontent .sexitem div .sexsel {
+                            float: right;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            margin-top: 0.8rem;
+                        }
+
+                        #sexChange .sexcontent .sexitem div:nth-child(2n+1) {
+                            border-bottom: 1px solid black;
+                        }
+    </style>
+    <script>
+        function HeadImgUpload(inputid) {
+            var file = document.getElementById(inputid);
+            var data = new FormData();
+            if (file.files[0].size/1024/1024 > 10) {
+                alert("图片不能大于10M");
+                return;
+            }
+            data.append("file", file.files[0], file.files[0].name);
+            $.ajax({
+                url: "/File/UserHeadUpload",
+                type: "POST",
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function (respdata) {
+                    if (respdata.code == '1') {
+                        //var reader = new FileReader();
+                        //reader.onload = function (evt) {
+                        //    $("#headimage").attr("src", evt.target.result);
+                        //}
+                        //reader.readAsDataURL(file.files[0]);
+                        $("#headimage").attr("src",respdata.msg);
+                    } else {
+                        alert(respdata.msg);
+                    }
+                },
+                error: function (data) {
+                    alert("错误");
+                }
+            });
+
+        }
+        $(function () {
+            $(".sexitem div").on("click", function () {
+                var v = $(this).attr("data-v");
+                $(".sexsel").removeAttr("checked");
+                if (v == "0") {
+                    $("#sex1").prop("checked", true);
+                } else {
+                    $("#sex2").prop("checked",true);
+                }
+                $.post("/Account/ChangeSex", "sex=" + v, function (data) {
+                    if (data.code == "1") {
+                        if (v == "0") {
+                            $("#sex").text("男");
+                        } else {
+                            $("#sex").text("女");
+                        }
+                        $("#sexChange").slideUp(200);
+                    } else {
+                        alert(data.msg);
+                    }
+                }, "json");
+               // $('#sexChange').toggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="Header">
+            <span>个人信息</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="personal-block">
+                <div class="person-head">
+                    <span style="margin-left:1.5rem">头像</span>
+                    <input type="file" style="display:none" name="head" id="head" onchange="HeadImgUpload('head')" />
+                    <a class="person-headimg halfTop of-hide" onclick="$('#head').click()"><img id="headimage" src="@Model.HeadImg1" alt="" /></a>
+                </div>
+                <ul class="enter-itemlist me-mb-1">
+                    <li class="enter-item" onclick="location.href = '/Account/CName'">
+                        <span>昵称</span>
+                        <i class="gt bgSR halfTop"></i>
+                        <font class="item-info halfTop">@Model.Name</font>
+                    </li>
+                    <li class="enter-item" onclick="$('#sexChange').toggle()">
+                        <span>性别</span>
+                        <i class="gt bgSR halfTop"></i>
+                        <font class="item-info halfTop" id="sex">@((Model.Sex==null||Model.Sex==0)?"男":"女")</font>
+                    </li>
+                    <li class="enter-item" @*onclick="location.href = '/Account/ChangePhone'"*@>
+                        <span>账号</span>
+                        <i class="gt bgSR halfTop"></i>
+                        <font class="item-info halfTop">@Model.Phone</font>
+                    </li>
+                    <li class="enter-item" onclick="location.href = '/Bank/BankList'">
+                        <span>银行卡</span>
+                        <i class="gt bgSR halfTop"></i>
+                        <font class="item-info halfTop"></font>
+                    </li>
+                    <li class="enter-item" onclick="location.href = '/Account/MyQRCode/@Model.ID'">
+                            <span>我的二维码</span>
+                            <i class="gt bgSR halfTop"></i>
+                            <font class="item-info halfTop"></font>
+                    </li>
+                    <li class="enter-item" onclick="location.href = '/Account/ShareCode/@Model.ID'">
+                        <span>分享二维码</span>
+                        <i class="gt bgSR halfTop"></i>
+                        <font class="item-info halfTop"></font>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @Html.Action("Footer", "Account", new { id = 4 })
+    </div><!--wrap-->
+    <div id="sexChange" style="display:none">
+        <div class="sexcontent">
+            <div class="sextitle">性别</div>
+            <div class="sexitem">
+                <div data-v="0">男<input type="radio" name="sex" id="sex1" class="sexsel" @((Model.Sex==null||Model.Sex==0)?"checked":"") /></div>
+                <div data-v="1">女<input type="radio" name="sex" id="sex2" class="sexsel" @((Model.Sex!=null||Model.Sex==1)?"checked":"") /></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

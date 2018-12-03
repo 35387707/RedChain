@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../mine/css/edit-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb bc-border" style="position: fixed; z-index: 10000;">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">个人资料</h1>
+                    <div class="nav-btn" id="nav_right">
+                        <div class="fa fa-1g ub-img1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border"></div>
+
+                <div class="ubt ubb bc-border c-wh uinn-a7 cont-bg">
+                    <ul class="ubb bc-border ub t-bla ub-ac lis head-img" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            头像
+                        </li>
+                        <li class="t-gra-ver" id="HeadImg">
+                            <!-- <div class="edit-data-img edit-data-userimg uc-a2 ub-a2"></div> -->
+                        </li>
+                    </ul>
+                    <ul class="ubb bc-border ub ub-ac lis true-name" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            昵称
+                        </li>
+                        <li class="t-gra-ver ulev-4" id="TrueName"></li>
+                    </ul>
+                    <ul class="ubb bc-border ub ub-ac lis sex" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            性别
+                        </li>
+                        <li class="t-gra-ver ulev-4" id="Sex"></li>
+                    </ul>
+                    <ul class="ubb bc-border ub ub-ac lis descrition" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            个人签名
+                        </li>
+                        <li class="t-gra-ver ulev-4 overflow" id="Descrition"></li>
+                    </ul>
+                </div>
+
+                <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border"></div>
+
+                <div class="ubt ubb bc-border c-wh uinn-a7 cont-bg">
+                    <ul class="ubb bc-border ub t-bla ub-ac lis address" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            收货地址
+                        </li>
+                        <li>
+                            <div class="ub-img li-right-arrow"></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border"></div>
+
+                <div class="ubt ubb bc-border c-wh uinn-a7 cont-bg" id="qrcode">
+                    <ul class="ubb bc-border ub t-bla ub-ac lis code" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 ut-s ulev-app2">
+                            邀请码
+                        </li>
+                        <li>
+                            <div class="ub-img li-right-arrow"></div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../index/js/mine.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                var titHeight = $('#header').height();
+                $('#content').css('padding-top', titHeight);
+
+                setUserInfo(localStorage.getItem("uid"), JSON.parse(localStorage.getItem("UserInfo")), 'personal_data');
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+
+                appcan.window.subscribe('chgNick', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $('#TrueName').text(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('updtHeadImg', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var imgArr = JSON.parse(msg);
+                        doImgUpload(imgArr, 0, imgArr.length, 'personal_data');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('chgNote', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $('#Descrition').text(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('chgAddr', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $('#Address').text(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('chgSex', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        if (msg == 0 || msg == '0') {
+                            $('#Sex').text('女');
+                        } else if (msg == 1 || msg == '1') {
+                            $('#Sex').text('男');
+                        }
+
+                    }
+
+                });
+
+            });
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('.head-img').click(function() {
+
+                var fromPage = 'personal_data';
+
+                uexWindow.actionSheet({
+                    title : "头像",
+                    cancel : "取消",
+                    buttons : "拍照,从手机相册选中"
+                }, function(index) {
+
+                    if (index == 0) {
+
+                        openCamera(fromPage);
+
+                    } else if (index == 1) {
+
+                        //openPicker(fromPage);
+                        toImgPicker(1, fromPage);
+
+                    }
+
+                });
+
+            });
+
+            $('.true-name').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'personal_nick',
+                        data : '../mine/personal_nick.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "personal_nick",
+                        data : "../mine/personal_nick.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.sex').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'personal_sex',
+                        data : '../mine/personal_sex.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "personal_sex",
+                        data : "../mine/personal_sex.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.descrition').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'personal_note',
+                        data : '../mine/personal_note.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "personal_note",
+                        data : "../mine/personal_note.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.address').click(function() {
+
+                /*
+                 var localPack = localStorage.getItem('localPack');
+                 if (localPack == '1' || localPack == 1) {
+
+                 appcan.window.open({
+                 name : 'personal_addr',
+                 data : '../mine/personal_addr.html',
+                 aniId : 10,
+                 });
+
+                 } else {
+
+                 uexWindow.open({
+                 name : "personal_addr",
+                 data : "../mine/personal_addr.html",
+                 animID : 10,
+                 flag : 1024
+                 });
+
+                 }*/
+                localStorage.setItem('addrEnter', 'personal_data');
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'addr_mgt',
+                        data : '../addr/addr_mgt.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "addr_mgt",
+                        data : "../addr/addr_mgt.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('#qrcode').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'invite_qrcode',
+                        data : '../mine/invite_qrcode.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "invite_qrcode",
+                        data : "../mine/invite_qrcode.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>群聊</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/group.css" />
+    <script>
+        function GetLocalFriend() {
+            var templist = localStorage.getItem("friendList");
+            if (templist == null) {
+                return;
+            }
+            console.log("加载本地数据");
+            var list = JSON.parse(templist);
+            var flist = [];
+            var gcount = 0;
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].Type == 2) {
+                    gcount++;
+                    flist.push("<li class='groupItem'><img onclick='gheadClick(\"" + list[i].ID + "\",\"" + list[i].Gtype + "\")' class='groupImg' src='/img/chat/group.jpg' alt='' /><div onclick=\"groupClick('" + list[i].ID + "','" + list[i].Gtype + "')\"><span>" + list[i].Remark + "</span><div></li>");
+                }
+            }
+            $("#gcount").text(gcount);
+            $("#groupList").html(flist.join(""));
+        }
+        function gheadClick(id,Gtype) {
+            if (Gtype == 2) {
+                return location.href = "/Chat/SLGroupInfo/" + id;
+            } else {
+                return location.href = "/Chat/GroupInfo/" + id;
+            }
+        }
+        function groupClick(id, Gtype) {
+            if (Gtype == 2) {
+                return location.href = "/Chat/SLChatGroup/" + id;
+            } else {
+                return location.href = "/Chat/ChatGroup/" + id;
+            }
+            
+        }
+        $(function () {
+            GetLocalFriend();
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+    <div class="Header">
+        <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+        <font class="header-l-font halfTop">返回</font>
+        <span>群聊</span>
+    </div>
+    <div class="same-pt-wrap1 groupList-block">
+        <p class="groupList-title">群聊</p>
+        <ul class="groupList" id="groupList">
+        </ul>
+        <div class="groupList-remind"><span id="gcount"></span>个群聊</div>
+    </div>
+    </div><!--wrap-->
+</body>
+</html>

@@ -1,0 +1,808 @@
+﻿<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" rel="stylesheet">
+<link href="~/css/toastr.css" rel="stylesheet" />
+<link href="~/css/bootstrap-table.css" rel="stylesheet" />
+<script language="javascript" type="text/javascript" src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+
+<script src="~/Scripts/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<style>
+    .bankShow {
+    }
+
+    .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+        .editItem > div > div {
+            text-align: right;
+        }
+         .bg-img{position: fixed;background-color: rgba(90, 90, 90,.2);z-index:9999;}
+    .tra-img{
+        text-align:center;position:relative;
+            /*-webkit-transform:translateY(-50%);
+            -moz-transform:translateY(-50%);
+            -o-transform:translateY(-50%);
+            -ms-transform:translateY(-50%);
+            transform:translateY(-50%);*/
+        }
+    .zoom-in{
+            cursor: -moz-zoom-in;
+            cursor: -webkit-zoom-in;            
+            cursor: zoom-in;
+            cursor: url(../../img/zoomin.cur);
+        }
+        .zoom-out{
+            cursor: -moz-zoom-out;
+            cursor: -webkit-zoom-out;
+            cursor: zoom-out;
+            cursor: url(../../img/zoomout.cur);
+        }
+        .tra-img{
+                width: 50%;
+                 margin: 50px auto;
+                 /*margin-top: 50%;*/
+        }
+        .tra-img img{
+            width:100%;
+        }
+        .bg-img{
+            width:100%;
+            height:100%;
+            bottom:0;
+            left:0;
+            overflow:auto;
+        }
+
+         .close-upimg{
+            position: absolute;
+            top: 4px;
+            right: 5px;
+            display: none; 
+            z-index:10;
+        }
+        .up-span{
+            display: none;
+            width: 100%;
+            height: 100%;
+            /*visibility: hidden;*/
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 9;
+            background: rgba(0,0,0,.5);
+            border:2px solid #f92b2b;
+        }
+
+        .lv1{
+        border: 1px solid #ebeef5;
+    background-color: #fff;
+    color: #303133;
+    transition: .3s;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 40px;
+    position: relative;
+    font-size: 14px;
+    margin-top:10px;
+}
+.controls{
+        padding: 18px 20px;
+    border-bottom: 1px solid #ebeef5;
+    box-sizing: border-box;
+}
+.remove_lv1{
+     float: right;
+    padding: 3px 0px;
+    color: #409eff;
+    background: 0 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: inline-block;
+    line-height: 1;
+    cursor: pointer;
+    border:1px solid #ffffff;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0;
+    transition: .1s;
+    font-size: 14px;
+    border-radius: 4px;
+ }
+ .guige{
+     display: inline-block;
+    line-height: 1;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #ffffff;
+    outline: 0;
+    color: #409eff;
+    background: 0 0;
+    padding-left: 0;
+    padding-right: 0;
+ }
+ .specname{
+     
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    padding: 0 15px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    width: 100%;
+    width: 130px!important;
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+ }
+</style>
+
+<script>
+
+    function bigImg(x) {
+        $(x).find(".up-span").css({ "display": "block" });
+
+        $(x).find(".close-upimg").css({ "display": "block" });
+
+    }
+    function normalImg(x) {
+        $(x).find(".up-span").css({ "display": "none" });
+
+        $(x).find(".close-upimg").css({ "display": "none" });
+    }
+
+    //删除图片块
+    function delImgbox(e) {
+        var imgs = $("input[name='imglist']");
+        $(e).parent(".up-section").remove();
+        // if (imgs.length < 8) {
+        $("#uploadimage").show();
+        //   }
+
+    }
+</script>
+
+<script>
+    //$(document).on("click", "table tr td img.zoom-in", function () {
+    //    var img_content = $(this).attr("src");
+    //    $(".zoom-out").attr("src", img_content);
+    //    $(".bg-img").show();
+    //    $('body').css('overflow', 'hidden');
+    //});
+
+    function bigshow(e)
+    {
+        var img_content = $(e).attr("src");
+        $(".zoom-out").attr("src", img_content);
+        $(".bg-img").show();
+        $('body').css('overflow', 'hidden');
+    }
+    function onhide() {
+        $('.bg-img').hide();
+        $('body').css('overflow', 'auto');
+        $(".zoom-out").attr("src", "");
+    };
+</script>
+<script>
+    var hasFooter = false;
+    var ProuductManager = {};
+    ProuductManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage:parseInt((sum-1)/10+1),
+               // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetProductList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+        GetProductList(index);
+    };
+    //获取商品列表
+    function GetProductList(index) {
+        waiting();
+        $.get("ProuductList", "index=" + index + "&key=" + ProuductManager.searchKey + "&categoryid=" + ProuductManager.categoryid + "&status=" + ProuductManager.status, function (data) {
+            ProuductManager.index = index;
+            $("#Adsbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function PSearch() {
+        ProuductManager.searchKey = $("#key").val();
+        ProuductManager.status = $("#status").val();
+        ProuductManager.categoryid = $("#categoryid").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetProductList(1);
+    }
+    function bankShow(UID) {
+        waiting();
+        $.post("GetBankList", "UID=" + UID, function (data) {
+            if (data.code == "1") {
+                var temp = [];
+                var list=JSON.parse(data.msg);
+                for (var i = 0; i < list.length; i++) {
+                    temp.push("<tr><td>"+list[i].BankAccount+"</td><td>" + list[i].BankName + "</td><td>" + list[i].BankZhiHang + "</td><td>" + list[i].BankUser + "</td></td>");
+                }
+                $("#bankListData").html(temp.join(""));
+                $("#bankShow").show();
+                $('body').css('overflow', 'hidden');
+                waitingHide();
+            }
+        }, "json");
+
+    }
+    //更改广告状态
+    function CProductStatus(PID, e) {
+        waiting();
+        var status = 1;
+        if (e.value == "上架")
+        { status = 0; }
+        $.post("CProductStatus", "PID=" + PID + "&status=" + status, function (data) {
+            if (data.code == "1") {
+                if (status == 1) {
+                    e.value = "上架";
+                } else {
+                    e.value = "下架";
+                }
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+        }, "json")
+    }
+    function EditProduct(id) {
+        waiting();
+        $.get("/Admin/EditProduct/" + id, function (data) {
+            $("#editAdsBody").html(data);
+
+            $("#editProduct").show();
+            $('body').css('overflow', 'hidden');
+            waitingHide();
+        }, "html")
+    }
+    //修改主图片
+    function HeadImgUpload(file) {
+        var data = new FormData();
+        data.append("file", file.files[0], file.files[0].name);
+        $.ajax({
+            url: "/File/FileUpload",
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (respdata) {
+                if (respdata.code == '1') {
+                    //var reader = new FileReader();
+                    //reader.onload = function (evt) {
+                    //    $("#headimage").attr("src", evt.target.result);
+                    //}
+                    //reader.readAsDataURL(file.files[0]);
+                    $("#Img").val(respdata.msg);
+                    $("#headimage").attr("src", respdata.msg);
+                } else {
+                    alert(respdata.msg);
+                }
+            },
+            error: function (data) {
+                alert("错误");
+            }
+        });
+
+    }
+
+    //修改商品详情图
+    function ImgDetailUpload(file) {
+        var imgContainer = $("#uploadimg").parents(".allPic");
+        var imgs = $("input[name='ImgList']");
+        console.log(imgs.length);
+        if (imgs.length > 8) {
+            alert("上传图片数目不可以超过9个，请重新选择");
+        }
+        var data = new FormData();
+        data.append("file", file.files[0], file.files[0].name);
+        $.ajax({
+            url: "/File/FileUpload",
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (respdata) {
+                if (respdata.code == '1') {
+
+                    imgContainer.prepend("<div onmouseover=bigImg(this) onmouseout=normalImg(this) class='col-md-3 up-section' style='padding:0;position: relative;margin:5px'><span class='up-span'></span><input id='ImgList' name='ImgList' type='hidden' value=" + respdata.msg + "><img class='close-upimg' src='/img/a7.png' onclick='delImgbox(this)' ><img class='addimg' src=" + respdata.msg + " style='width: 100px;height:100px'/></div>");
+                    if (imgs.length > 7)  //上传图片数目超过9个隐藏上传
+                    {
+                        $("#uploadimage").hide();
+                    }
+                    //$("#Img").val(respdata.msg);
+                    //$("#headimage").attr("src", respdata.msg);
+                } else {
+                    alert(respdata.msg);
+                }
+            },
+            error: function (data) {
+                alert("错误");
+            }
+        });
+
+    }
+
+    //function saveProduct() {
+    //    $.post("/Admin/DoEditProduct", $("#editUserForm").serialize(), function (data) {
+    //        alert(data.msg);
+    //        if (data.code == "1") {
+    //            GetProductList(ProuductManager.index);
+    //        }
+    //    }, "json");
+    //}
+
+    function saveProduct() {
+
+        var json = "";
+        var params = [];
+        var lv1Arr = $('input[name="lv1"]');
+        for (var i = 0; i < lv1Arr.length; i++) {
+            var param = [];
+            var lv2Arr = $(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]');
+            for (var j = 0; j < lv2Arr.length; j++) {
+                param.push($(lv2Arr[j]).val());
+            }
+            params.push({ "key": $(lv1Arr[i]).val(), "value": param });
+            json = JSON.stringify(params);
+        }
+
+        var name = '';
+        var rowsArr = new Array();
+        var idxArr = new Array();
+        var numsArr = new Array();
+
+        for (var i = 0; i < lv1Arr.length; i++) {
+            numsArr.push($(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]').length);
+            idxArr[i] = 0;
+        }
+
+        var len = 1;
+
+        for (var i = 0; i < numsArr.length; i++) {
+            len = len * numsArr[i];
+
+            var tmpnum = 1;
+            for (var j = numsArr.length - 1; j > i; j--) {
+                tmpnum = tmpnum * numsArr[j];
+            }
+            rowsArr.push(tmpnum);
+        }
+
+        for (var i = 0; i < len; i++) {
+            for (var j = 0; j < lv1Arr.length; j++) {
+                var n = parseInt(i / rowsArr[j]);
+                if (j == 0) {
+                } else if (j == lv1Arr.length - 1) {
+                    n = idxArr[j];
+                    if (idxArr[j] + 1 >= numsArr[j]) {
+                        idxArr[j] = 0;
+                    } else {
+                        idxArr[j]++;
+                    }
+                } else {
+                    var m = parseInt(i / rowsArr[j]);
+                    n = m % numsArr[j];
+                }
+                var text = $(lv1Arr[j]).parents('.lv1').find('input[name="lv2"]').eq(n).val();
+
+                if (j != lv1Arr.length - 1) {
+                    name += text + '_';
+
+                } else {
+                    name += text + ',';
+
+                }
+            }
+        }
+        var lll = '';
+        name = (name.substring(name.length - 1) == ',') ? name.substring(0, name.length - 1) : name;//去掉字符串尾部','号;
+        var names = name.split(",");
+
+        var spec = new Array();
+        var price = '';
+        var original_price = '';
+        var stock = '';
+        var footprice = '';
+        for (var i = 0; i < names.length; i++) {
+            var spu = [];
+            price = $('input[name="' + names[i] + '[price]"]').val();
+            original_price = $('input[name="' + names[i] + '[original_price]"]').val();
+            stock = $('input[name="' + names[i] + '[stock]"]').val();
+            footprice = $('input[name="' + names[i] + '[footprice]"]').val();
+            spec.push({ "SpecificationAttr": names[i], "Price": price, "CostPrice": original_price, "Stock": stock, "Integral": footprice });
+        }
+
+        var jsons = JSON.stringify(spec);
+
+
+        var ID = $("#ID").val();
+        var Name = $("#Name").val();
+        var Title = $("#Title").val();
+        var CategoryID = $("#CategoryID").val();
+        var Img = $("#Img").val();
+
+        // var Descrition = $("#Descrition").val();
+        var Descrition = $("textarea[name='Descrition']").val();
+        var RealPrice = $("#RealPrice").val();
+        var PriceType = $("#PriceType").val();
+        var Type = $("#Type").val();
+        var Price = $("#Price").val();
+        var FootQuanPrice = $("#FootQuanPrice").val();
+
+        var Stock = $("#Stock").val();
+        var OrderID = $("#OrderID").val();
+        var EndTime = $("#EndTime").val();
+        var BeginTime = $("#BeginTime").val();
+        var CompleteCount = $("#CompleteCount").val();
+        var GoodCount = $("#GoodCount").val();
+        var ViewCount = $("#ViewCount").val();
+        var CPoints = $("#CPoints").val();
+
+        var imglist = '';
+        var imgs = $("input[name='ImgList']");
+        for (i = 0; i < imgs.length; i++) {
+
+            imglist += imgs[i].value + ';';
+        }
+        imglist = (imglist.substring(imglist.length - 1) == ';') ? imglist.substring(0, imglist.length - 1) : imglist;//去掉字符串尾部';'号;
+
+        //console.log(imglist);
+        //return
+
+       // $("#editUserForm").serialize()
+        $.post("/Admin/DoEditProduct", "ID=" + ID + "&Name=" + Name + "&Title=" + Title + "&CategoryID=" + CategoryID + "&Img=" + Img + "&Descrition=" + Descrition + "&RealPrice=" + RealPrice + "&PriceType=" + PriceType + "&Type=" + Type + "&FootQuanPrice=" + FootQuanPrice + "&Price=" + Price + "&Stock=" + Stock + "&OrderID=" + OrderID + "&EndTime=" + EndTime + "&BeginTime=" + BeginTime + "&CompleteCount=" + CompleteCount + "&GoodCount=" + GoodCount + "&ViewCount=" + ViewCount + "&CPoints=" + CPoints + "&ImgList=" + imglist + "&Specification=" + json + "&specList=" + jsons, function (data) {
+         
+            if (data.code == "1") {
+                alert(data.msg);
+                GetProductList(ProuductManager.index);
+            }else
+            {
+                alert(data.msg);
+            }
+        }, "json");
+    }
+
+    
+    //获取商品类型
+    function getCategory() {
+        $.post("GetCategoryList", "", function (date) {
+            if (date.code == "1") {
+                var temp = [];
+                var list = JSON.parse(date.msg);
+                
+                for (var i = 0; i < list.length; i++) {
+                    temp.push("<option value=" + list[i].ID + ">" + list[i].Name + "</option>");
+                }
+                var t= '<option value="">请选择</option>';
+                $("#categoryid").html(t+temp.join(""));
+            }
+        },"json")
+    }
+
+    $(function () {
+
+        getCategory();
+    });
+
+
+    $("#export-excel").click(function (e) {
+
+        alert("确定导出数据吗");
+        window.location.href = "/Excel/ProductsExcel?key=" + ProuductManager.searchKey + "&categoryid=" + ProuductManager.categoryid + "&status=" + ProuductManager.status;
+    });
+
+
+    function btndelete(id)
+    {
+        $('#ProID').val(id);
+    }
+
+    function delsure() {
+        var PID = $("#ProID").val();
+       // var id = $(this).data('id');
+      //  console.log(PID);
+        //alert("删除成功")
+        //$('#exampleModal').modal('hide')
+        //toastr.success('提交数据成功');
+        $.post("/Admin/DeleteProduct", "PID=" + PID, function (data) {
+            if (data.code == "1") {
+                $('#ProID').val("");
+                $('#exampleModal').modal('hide');
+                toastr.success(data.msg);
+                GetProductList(ProuductManager.index);
+            }
+            else {
+                $('#ProID').val("");
+                $('#exampleModal').modal('hide');
+                toastr.error(data.msg);
+                GetProductList(ProuductManager.index);
+            }
+        }, "json");
+    }
+
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a href="#">商品管理</a></li>
+</ol>
+<div class="col-md-12 form-inline">
+
+    <div class="col-md-2">
+         <input type="text" class="form-control" id="key" placeholder="商品名称/商品编号">
+        @*<span class="input-group-addon" onclick="PSearch()">查询</span>*@
+    </div>
+    <div class="col-md-2">
+        商品类型：
+        <select class="form-control" id="categoryid" name="categoryid"></select>
+    </div>
+    <div class="col-md-2">
+        商品状态：
+        <select class="form-control" id="status" name="status">
+            <option value="">请选择</option>
+            <option value="1">上架</option>
+            <option value="0">下架</option>
+        </select>
+    </div>
+    <input type="button" class="btn btn-primary" value="搜 索" onclick="PSearch()" style="" />
+    <input type="button" class="btn btn-primary" value="添加商品" onclick="EditProduct('')" style="margin-left:20px" />
+    <div class="" style="float:right">
+        <a href="javascript:;" target='_blank' id="export-excel" style="float:right" class="btn btn-primary">导出数据</a>
+    </div>
+</div>
+   
+<div class="col-md-12" id="userlist" style="padding:0">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>商品号</th>
+                <th>名称</th>
+                @*<th>标题</th>*@
+                <th>类型</th>
+                <th>图片</th>
+                <th>单价</th>
+                <th>库存</th>
+                <th>销量</th>
+                <th>访问量</th>
+                @*<th>点赞数</th>
+                <th>评分</th>*@
+                <th>创建时间</th>
+                <th>状态</th>
+                <th>排序</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="Adsbody">
+            @Html.Action("ProuductList")
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination"></ul>
+    </nav>
+</div>
+<div class="showBack col-md-12" id="editProduct">
+    <div class="editUserBody col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">修改商品<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="$('#editProduct').hide(); $('body').css('overflow', 'auto');" /></div>
+            <div class="panel-body" style="overflow:auto;">
+                <form id="editUserForm">
+                    <div id="editAdsBody"></div>
+                </form>
+            </div>
+            <div class="panel-footer" style="overflow:hidden">
+                <input type="button" value="保存" class="btn btn-primary" style="float:right" onclick="saveProduct()" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class='bg-img' style="display:none" onclick="onhide()">
+    <div class='tra-img'>
+        <img src='' class='zoom-out'>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="hidden" name="bookId" id="ProID" value="" />
+                        <label for="message-text" class="control-label">此操作将永久删除该商品, 是否继续?</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                <button type="button" class="btn btn-primary" onclick="delsure()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(function(){
+        //参数设置，若用默认值可以省略以下面代
+        toastr.options = {
+            "closeButton": false, //是否显示关闭按钮
+            "debug": false, //是否使用debug模式
+            "newestOnTop": false,
+            "progressBar": false,
+            "preventDuplicates": false, 
+            "positionClass": "toast-top-center",//弹出窗的位置
+            "showDuration": "500",//显示的动画时间
+            "hideDuration": "500",//消失的动画时间
+            "timeOut": "5000", //展现时间
+            "extendedTimeOut": "500",//加长展示时间
+            "showEasing": "swing",//显示时的动画缓冲方式
+            "hideEasing": "linear",//消失时的动画缓冲方式
+            "showMethod": "fadeIn",//显示时的动画方式
+            "hideMethod": "fadeOut" //消失时的动画方式
+        };
+    })
+    
+</script>
+<script>
+
+    function Search() {
+        var lv1Arr = $('input[name="lv1"]');
+        if (!lv1Arr || lv1Arr.length == 0) {
+            $('#lv_table_con').hide();
+            $('#lv_table').html('');
+            return;
+        }
+        //for (var i = 0; i < lv1Arr.length; i++) {
+        //    var lv2Arr = $(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]');
+        //    if (!lv2Arr || lv2Arr.length == 0) {
+        //        alert('请先删除无参数的规格项！');
+        //        return;
+        //    }
+        //}
+
+        var tableHTML = '';
+        tableHTML += '<table class="table table-bordered">';
+        tableHTML += '    <thead>';
+        tableHTML += '        <tr>';
+        for (var i = 0; i < lv1Arr.length; i++) {
+            tableHTML += '<th width="50">' + $(lv1Arr[i]).val() + '</th>';
+        }
+        tableHTML += '            <th width="20">现价</th>';
+        tableHTML += '            <th width="20">原价</th>';
+        tableHTML += '            <th width="20">库存</th>';
+        tableHTML += '            <th width="20">积分</th>';
+        tableHTML += '        </tr>';
+        tableHTML += '    </thead>';
+        tableHTML += '    <tbody>';
+
+        var numsArr = new Array();
+        var idxArr = new Array();
+        for (var i = 0; i < lv1Arr.length; i++) {
+            numsArr.push($(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]').length);
+            idxArr[i] = 0;
+        }
+
+        var len = 1;
+        var rowsArr = new Array();
+        for (var i = 0; i < numsArr.length; i++) {
+            len = len * numsArr[i];
+
+            var tmpnum = 1;
+            for (var j = numsArr.length - 1; j > i; j--) {
+                tmpnum = tmpnum * numsArr[j];
+            }
+            rowsArr.push(tmpnum);
+        }
+
+        for (var i = 0; i < len; i++) {
+            tableHTML += '        <tr data-row="' + (i + 1) + '">';
+
+            var name = '';
+            for (var j = 0; j < lv1Arr.length; j++) {
+                var n = parseInt(i / rowsArr[j]);
+                if (j == 0) {
+                } else if (j == lv1Arr.length - 1) {
+                    n = idxArr[j];
+                    if (idxArr[j] + 1 >= numsArr[j]) {
+                        idxArr[j] = 0;
+                    } else {
+                        idxArr[j]++;
+                    }
+                } else {
+                    var m = parseInt(i / rowsArr[j]);
+                    n = m % numsArr[j];
+                }
+
+                var text = $(lv1Arr[j]).parents('.lv1').find('input[name="lv2"]').eq(n).val();
+                if (j != lv1Arr.length - 1) {
+                    name += text + '_';
+                } else {
+                    name += text;
+                }
+
+                if (i % rowsArr[j] == 0) {
+                    tableHTML += '<td width="50" rowspan="' + rowsArr[j] + '" data-rc="' + (i + 1) + '_' + (j + 1) + '">' + text + '</td>';
+                }
+            }
+
+            tableHTML += '<td width="20"><input type="text" name="' + name + '[price]" value="0" /></td>';
+            tableHTML += '<td width="20"><input type="text" name="' + name + '[original_price]" value="0" /></td>';
+            tableHTML += '<td width="20"><input type="text" name="' + name + '[stock]" value="0" /></td>';
+            tableHTML += '<td width="20"><input type="text" name="' + name + '[footprice]" value="0" /></td>';
+            tableHTML += '</tr>';
+        }
+        tableHTML += '</tbody>';
+        tableHTML += '</table>';
+
+        $('#lv_table_con').show();
+        $('#lv_table').html(tableHTML);
+        // console.log(text);
+    };
+
+
+    function addlv2(e) {
+
+        if ($('input[name="lv1"]').val().length == 0) {
+            alert("请添加规格名称");
+            return false;
+        }
+        var lv2HTML = '<div style="margin-top: 5px;float:left" class="lv3">' +
+            '<input type="text" name="lv2" placeholder="规格值" class="specname" onkeyup="Search()">' +
+            '<i class="glyphicon glyphicon-remove-sign remove_lv2" style="color:red" ></i>' +
+        '</div>';
+
+        var last = $('.controls.lv2s .lv3:last');
+        // console.log(last.length);
+        if (!last || last.length == 0) {
+
+            $(e).parents('.lv1').find('.lv2s').append(lv2HTML);
+        } else {
+            if ($('.controls.lv2s .lv3:last').find($('input[name="lv2"]')).val().length == 0) {
+                alert("请添加规格值");
+                return false;
+            }
+            $(e).parents('.lv1').find('.lv2s').append(lv2HTML);
+        }
+
+    }
+</script>

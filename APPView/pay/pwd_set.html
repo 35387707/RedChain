@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pay/css/pwd_set.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb bc-border z-index">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white" id="hdr_titl">设置支付密码</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="nav-txt">
+                            完成
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="num-wrap z-index">
+
+                <div class="num-height"></div>
+                <div class="num-height"></div>
+
+                <div class="goods-box">
+                    <div class="goods-title">
+                        请设置福BAO多支付密码，用于支付验证
+                    </div>
+                </div>
+                <ul class="num-disp-box" data-pay="">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+
+            </div>
+
+            <!--浮动层-->
+            <div class="num-cont">
+                <div class="num-input-box">
+                    <div class="num-display">
+                        <img src="../pay/img/jftc_14.jpg" height="10">
+                    </div>
+                    <ul class="num-key">
+                        <li>
+                            <a href="javascript:void(0);" class="num-sgl">1</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-border num-sgl">2</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-sgl">3</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-sgl">4</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-border num-sgl">5</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-sgl">6</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-sgl">7</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-border num-sgl">8</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-sgl">9</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-empty">清空</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-border num-sgl">0</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="num-del">删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="num-bg"></div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../lib/jquery-1.8.3/jquery.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/pay.js"></script>
+        <script src="../pay/js/pwd_set.js"></script>
+        <script src="../js/com/pwd.js"></script>
+        <script>
+            //var HasPayPwd = localStorage.getItem("HasPayPwd");
+            appcan.ready(function() {
+
+                var HasPayPwd = localStorage.getItem("HasPayPwd");
+                if (HasPayPwd == '' || HasPayPwd == null || HasPayPwd == undefined) {
+
+                } else {
+                    if (HasPayPwd == '已设置') {
+                        $('#hdr_titl').text('修改支付密码');
+                    } else if (HasPayPwd == '未设置') {
+                        $('#hdr_titl').text('设置支付密码');
+                    }
+                }
+
+                setSwipeCloseEnable(1);
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+
+                }
+            });
+        </script>
+    </body>
+</html>
+

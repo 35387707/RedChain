@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pop/css/pop.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <div class="pack-cont">
+
+                <div class="rtn-cont">
+                    <div class="logo-cont">
+                        <img ontouchstart="appcan.touch('btn-act')" src="../pop/img/logo_yuanxing@2x.png" ontouchstart="appcan.touch('btn-act')" />
+                    </div>
+                    <div ontouchstart="appcan.touch('btn-act')" class="mask-cont">
+                        福BAO多
+                    </div>
+                    <div ontouchstart="appcan.touch('btn-act')" class="txt-cont">
+                       恭喜 找回密码成功!
+                    </div>
+                    <div class="btn-cont">
+
+                        <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn uc-a1 log-in close" ontouchstart="appcan.touch('btn-act')">
+                            <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                            返回
+                        </div>
+
+                    </div>
+
+                    <!-- <img src="../pop/img/logo_yuanxing@2x.png" /> -->
+
+                </div>
+
+                <div class="midl-cont close" >
+                    <div class="disp-wht"></div>
+                </div>
+
+                <div class="clos-cont close">
+                    <div class="clos-icon" ontouchstart="appcan.touch('btn-act')">
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script>
+            appcan.ready(function() {
+                
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        //uexWidgetOne.exit(1);
+                        localStorage.setItem("openPop", 0);
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+            });
+            $('.empty-view').click(function() {
+
+                localStorage.setItem("openPop", 0);
+                appcan.window.close(-1);
+
+            });
+
+            $('.close').click(function() {
+
+                localStorage.setItem("openPop", 0);
+                appcan.window.close(-1);
+
+            });
+            
+        </script>
+    </body>
+</html>
+

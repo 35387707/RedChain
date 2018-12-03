@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>充值</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/redpocket.css" />
+    <link rel="stylesheet" href="/css/bank.css" />
+    <script>
+        function Recharge() {
+            var price=$("#price").val();
+            $.post("/Account/RechargeSuccess", "price=" + price, function (data) {
+                if (data.code == "1") {
+                    alert("充值成功");
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <a class="header-l-font halfTop" onclick="window.history.back()">返回</a>
+            <span>充值</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="recharge-block">
+                <div class="money-ipt-wrap of-hide pocket-mb-1">
+                    <font class="money-font halfTop">金额</font>
+                    <input id="price" class="money-iptTxt" type="text" placeholder="0.00" />
+                    <font class="money-unit halfTop">元</font>
+                </div>
+                <p class="recharge-remind">余额充值将实时充值到账户余额，无法返回及退款</p>
+            </div>
+            <input class="bigBtn bg-b transparent" type="button" value="确认充值" onclick="Recharge()" />
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../mine/css/personal.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div class="uh bc-head ubb bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">个人说明</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="nav-txt">
+                            确定
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ub ub-ver">
+                <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border titl-colr"></div>
+                <div class="ub-f1 ub ub-ver ins-sty">
+                    <div class="uinput ub ub-f1">
+                        <textarea id="Descrition" type="text" class="ub-f1 outline"></textarea>
+                    </div>
+                    <div class="txt-cnt">
+                        <span class="flt-spn" id="txt_cnt" ontouchstart="appcan.touch('btn-act')"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../index/js/mine.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+                
+                setUserInfo(localStorage.getItem("uid"), JSON.parse(localStorage.getItem("UserInfo")), 'Descrition');
+                
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+            });
+            
+            $("#Descrition").bind('input propertychange', function() {
+                var text = $(this).val();
+                var counter = text.length;
+                $("#txt_cnt").text(counter);
+            });
+
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+            
+            $('#nav_right').click(function() {
+
+                var Descrition = trim($('#Descrition').val());
+                if (Descrition == '') {
+                    
+                    openToast('个性签名不能为空', 3000, 5, 0);
+                    
+                } else {
+                    
+                    updateUserInfo('personal_note');
+                    
+                }
+
+            });
+
+        </script>
+    </body>
+</html>

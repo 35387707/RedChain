@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../clct/css/collection.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="content" class="ub ub-ver cont-padd">
+
+                <!-- <div class="ub uc-a1 ub-ver collc-sty">
+
+                <ul class="ub t-bla ub-ac collc-padd c-wh">
+                <li class="collc-left-wd ub ub-ac ub-pc">
+                <div class="ub-img collc-user-img collc-width"></div>
+                </li>
+                <li class="ub-f1 ut-s collc-right-wd">
+                <a class="collc-user">路边的小花</a><span class="collc-float-right"><a class="collc-whole">查看全部</a></span>
+                </li>
+                <li>
+                <div class="ub-img li-right-arrow"></div>
+                </li>
+                </ul>
+
+                <div class="ub c-wh">
+                <div class="ub-img collc-img collc-wh umar-a"></div>
+                <div class="ub-f1 collc-cont">
+                <div class="collc-txt">
+                <div class="txt-sty txt-overflow">
+                这条连衣裙的小心机和风暴都在后面哦! 黑色真是一个很性感很神秘的颜色呢~就是这样的美腻特别还俏皮可爱的哟, 美腻特别还~
+                </div>
+                </div>
+                <div class="ub collc-actn">
+
+                <div class="ub ub-ac" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub ub-img1 item-width read-gray"></div>
+                <div class="item-txt ufm1">
+                36
+                </div>
+                </div>
+
+                <div class="ub ub-ac item-marg" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub ub-img1 item-width msg-gray"></div>
+                <div class="item-txt ufm1">
+                88
+                </div>
+                </div>
+
+                <div class="ub ub-ac item-marg" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub ub-img1 item-width good-gray"></div>
+                <div class="item-txt ufm1">
+                20
+                </div>
+                </div>
+
+                <div class="ub ub-ac collc-div collc-clk" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub ub-img collc-more-width collc-more-icon"></div>
+                </div>
+
+                </div>
+                </div>
+                </div>
+                </div>  -->
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../biz/js/first.js"></script>
+        <script src="../clct/js/advert.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                appcan.frame.setBounce({
+                    bounceType : [0, 1],
+                    startPullCall : function(type) {
+
+                    },
+                    downEndCall : function(type) {
+
+                    },
+                    upEndCall : function(type) {
+
+                        if (type == 0) {
+
+                            setTimeout(function(type) {
+
+                                getCollectionList(localStorage.getItem("uid"), 1, 3, 'refresh_advert');
+
+                            }, 1000);
+
+                        } else if (type == 1) {
+
+                            setTimeout(function(type) {
+
+                                judgCurPage(localStorage.getItem("uid"), 20, 3, 'advert');
+
+                            }, 1000);
+
+                        }
+
+                    },
+                    color : '#FFFFFF'
+
+                });
+
+                appcan.window.subscribe('getClctList', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        if (msg == 1 || msg == '1') {
+
+                            //获取广告收藏的数据
+                            var index = $('#content').children("div:last-child").index();
+
+                            if (index == -1) {
+                                getCollectionList(localStorage.getItem("uid"), 1, 3, 'advert');
+                            }
+
+                        }
+
+                    }
+
+                });
+
+                appcan.window.subscribe('removeAdvert', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $("div[data-cid='" + msg + "']").remove();
+
+                    }
+
+                });
+
+            });
+
+        </script>
+    </body>
+</html>

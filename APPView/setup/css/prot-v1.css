@@ -1,0 +1,22 @@
+.prot-bg {
+}
+.prot-hdr {
+    height: auto;
+    padding: 1.25em 0 0.5em 0;
+    font-size: 1.20em;
+    color: #373737;
+}
+.prot-sub {
+    height: auto;
+    padding: 0 0.80em;
+    margin: 1.0em 0 0.36em;
+    font-size: 1.1em;
+    color: #373737;
+}
+.prot-cont {
+    height: auto;
+    padding: 0 0.88em;
+    margin: 0.36em 0;
+    font-size: 1.0em;
+    color: #5F5F5F;
+}

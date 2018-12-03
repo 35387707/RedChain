@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+    RelexBarBLL.InfomationsBLL InType = new RelexBarBLL.InfomationsBLL();
+    List<RelexBarDLL.InfomationType> typelist = InType.GetInfomationTypes();
+
+}
+@model RelexBarDLL.Infomations
+<div class="col-md-10 col-md-offset-2 form-group editItem">
+    @*<div class="form-inline">
+        <div class="col-md-3">标题：</div>@Html.TextBoxFor(m => m.title, new { @class = "form-control" })
+    </div>*@
+    <div class="form-inline">
+        <div class="col-md-3">标题：</div>
+        <textarea class="form-control" name="title" id="title" style="width: 70%;height: 154px;">@Model.title</textarea>
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">
+            福音类型：
+        </div>
+        <select class="form-control" data-val="true" data-val-number="字段 Type 必须是一个数字。" id="Type" name="Type">
+            @for (int i = 0; i < typelist.Count; i++)
+            {
+                if ((int)@typelist[i].ITID == Model.Type)
+                {
+                    <option value='@typelist[i].ITID' selected="selected"> @typelist[i].Name</option>
+                }
+                <option value='@typelist[i].ITID'> @typelist[i].Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="">
+        <div class="col-md-3">图片：</div>@*@Html.HiddenFor(m => m.imglist)*@@Html.HiddenFor(m => m.IID)
+        <div class="col-md-9 allPic" style="padding:0">
+            @if (!string.IsNullOrEmpty(Model.imglist))
+            {
+                string[] bbb = Model.imglist.Split(';');
+                for (int i = 0; i < bbb.Length; i++)
+                {
+                    <div class="col-md-3 up-section" style="padding:0;margin:5px" onmouseover=bigImg(this) onmouseout=normalImg(this)>
+                        <input id='imglist' name='imglist' type='hidden' value="@bbb[i]"><span class="up-span"></span><img class="close-upimg" src="/img/a7.png" onclick="delImgbox(this)"><img class='addimg' src="@bbb[i]" style='width: 100px;height:100px' />
+                    </div>
+                }
+                if (bbb.Length > 8)
+                {
+                    <div class="col-md-3" style="padding:0;margin:5px">
+                        <input type="file" id="upload" style="display:none" onchange="HeadImgUpload(this)" />
+                        <img id="headimage" onclick="$('#upload').click()" src="/img/cp_img_tj.png" style='width: 100px;display:none' />
+                        <br />
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-3" style="padding:0;margin:5px">
+                        <input type="file" id="upload" style="display:none" onchange="HeadImgUpload(this)" />
+                        <img id="headimage" onclick="$('#upload').click()" src="/img/cp_img_tj.png" style='width: 100px;' />
+                        <br />
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-md-3" style="padding:0;margin:5px">
+                    <input type="file" id="upload" style="display:none" onchange="HeadImgUpload(this)" />
+                    <img id="headimage" onclick="$('#upload').click()" src="@(string.IsNullOrEmpty(Model.imglist)?"/img/cp_img_tj.png":Model.imglist)" style='width: 100px;' />
+                    <br />
+                </div>
+            }
+            @*<div class="col-md-3 up-section" style="padding:0;margin:5px">
+            <input id='imglist' name='imglist' type='hidden' value=""><span class="up-span" onmouseover="bigImg(this)" onmouseout="normalImg(this)"></span><img class="close-upimg" src="/img/a7.png" onmouseover="bigImg(this)" onmouseout="normalImg(this)" onclick="delImgbox(this)" ><img class='addimg' src="/img/cp_img_tj.png" style='width: 100px;' />
+             </div>*@
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">跳转链接：</div>
+        @Html.TextBoxFor(m => m.LinkTo, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">点赞数：</div>@Html.TextBoxFor(m => m.GoodCount, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">访问量：</div>@Html.TextBoxFor(m => m.ViewCount, new { @class = "form-control" })
+    </div>
+   
+    @if (Model != null && Model.BeginTime != null)
+            {
+        <div class="form-inline">
+            <div class="col-md-3">开始时间：</div>@Html.TextBox("BeginTime", Model.BeginTime.Value.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+        </div>
+    }
+    else
+    {
+        <div class="form-inline">
+            <div class="col-md-3">开始时间：</div>@Html.TextBox("BeginTime", Model.BeginTime, new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+        </div>
+    }
+    @if (Model != null && Model.EndTime != null)
+            {
+        <div class="form-inline">
+            <div class="col-md-3">结束时间：</div>@Html.TextBox("EndTime", Model.EndTime.Value.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+        </div>
+    }
+    else
+    {
+        <div class="form-inline">
+            <div class="col-md-3">结束时间：</div>@Html.TextBox("EndTime", Model.EndTime, new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+        </div>
+    }
+    @if (Model != null && Model.CreateTime != null)
+    {
+        <div class="form-inline">
+            <div class="col-md-3">创建时间：</div>@Html.TextBox("CreateTime", Model.CreateTime.Value.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", @readonly = "true" })
+        </div>
+    }
+
+
+</div>

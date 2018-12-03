@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/ui-box.css">
+    <link rel="stylesheet" href="../css/ui-base.css">
+    <link rel="stylesheet" href="../css/ui-color.css">
+    <link rel="stylesheet" href="../css/appcan.icon.css">
+    <link rel="stylesheet" href="../css/appcan.control.css">
+    <link rel="stylesheet" href="../mine/css/nick-v1.css">
+</head>
+<body class="bc-bg" ontouchstart>
+
+    <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+        <div class="uh bc-head ubb bc-border">
+            <div class="ub">
+                <div class="nav-one" id="nav_left" ontouchstart onclick="javascript:history.back(-1);">
+                    <div class="ub-img1 nav-back"></div>
+                </div>
+                <div class="nav-two">
+                </div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">设置性别</h1>
+                <div class="nav-btn" id="nav_right" ontouchstart>
+                    <div class="nav-txt">
+                        确定
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ub ub-ver">
+            <div class="ub-f1 ub ub-ver ins-sty">
+                <div class="uinput ub ub-f1">
+                    <input placeholder="" type="search" class="ub-f1 outline" id="Sex" value="">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--<script src="../js/appcan.js"></script>
+    <script src="../js/appcan.control.js"></script>-->
+    <script src="../js/com/debug.js"></script>
+    <script src="../js/com/date.js"></script>
+    <script src="../js/com/popup.js"></script>
+    <script src="../js/com/system.js"></script>
+    <script src="../js/com/image.js"></script>
+    <!--<script src="../js/com/number.js"></script>-->
+    <script src="../js/com/json.js"></script>
+    <script src="../index/js/mine.js"></script>
+    <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+   
+    <script src="../js/token.js"></script>
+    <script>
+
+        $().ready(function () {
+
+            var token = GetQueryString("token");
+            var TrueName = '';
+            var sex='';
+            var Descrition='';
+            var Address='';
+            if (token != null && token != "") {
+
+                var html = "";
+                $.post("http://www.fbddd.com/Account/GetUserInfo", "token=" + token,
+                    function (data) {
+
+                        if (data.code == 1) {
+                            if (data.Info.TrueName == '' || data.Info.TrueName == null || data.Info.TrueName == undefined) {
+                                TrueName = data.Info.Phone;
+                            } else {
+                                TrueName = data.Info.TrueName;
+                            }
+                            
+                           
+                            if (data.Info.Sex == 0) {
+
+                                Sex = '女';
+
+                            } else if (data.Info.Sex == 1) {
+
+                                Sex = '男';
+
+                            }
+                            $('#Sex').val(Sex);
+                            sex = data.Info.Sex;
+                            if (data.Info.Descrition == '' || data.Info.Descrition == null || data.Info.Descrition == undefined) {
+                                Descrition = '这家伙很懒, 暂时还没有签名...';
+                            } else {
+                                Descrition = data.Info.Descrition;
+                            }
+                          //  Descrition=data.Info.Descrition;
+                            Address=data.Info.Address;
+
+                        }
+                    }, "json");
+            }
+
+            $('#nav_right').click(function () {
+
+                var Sex = $('#Sex').val().trim();
+
+          
+              if (Sex == '男') {
+                    sex = 1;
+              } else if (Sex == '女') {
+                    sex = 0;
+                }
+              if (Sex == '') {
+                    alert('性别不能为空');
+                } else {
+
+                    updateUserInfo();
+
+                }
+
+            });
+
+
+            function updateUserInfo() {
+                //console.log(Address);
+                //return;
+                $.post("http://www.fbddd.com/Account/UpdateUserinfo", "TrueName=" + TrueName + "&Descrition=" + Descrition + "&Sex=" + sex + "&Address=" + Address + "&token=" + token, function (data) {
+                    if (data.length != 0) {
+                        if (data.code == 1 || data.code == '1') {
+
+                            alert('更改性别成功');
+                        }
+                        else {
+                            alert(data.msg);
+                        }
+                    }
+                    else {
+                        alert("更改性别失败");
+                    }
+
+                }, "json");
+
+            }
+        });
+
+
+    </script>
+</body>
+</html>

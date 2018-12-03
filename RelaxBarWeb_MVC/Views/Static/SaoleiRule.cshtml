@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>扫雷游戏规则</title>
+   @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/saolei.css" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>扫雷游戏规则</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="rule-block">
+                <div class="rule-box">
+                    <p class="rule-title">发包赔率</p>
+                    <p>5包  *2倍    7包 *1.5倍，游戏过程自动结算，每次发包会生成单独结算账单</p>
+                    <p>创建房间默认添加“免死”账户，“免死账户”开包无需赔付，开包所获得的金额为平台服务费</p>
+                    <p>创建房间主人，可获得“免死”账户所开包的金额（平台服务费）50%作为拉人奖励，并为玩家说明规则并解决玩家所提出的问题</p>
+                </div>
+                <div class="rule-box">
+                    <p class="rule-title">扫雷玩家开包大奖</p>
+                    <p>1.11 / 2.22 / 3.33 / 4.44 / 5.55 / 6.66 / 7.77 / 8.88 / 9.99 （豹子）平台一律奖励 6.88元</p>
+                    <p>1.23 / 2.34 / 3.45 / 4.56 / 5.67 / 6.78 / 7.89（顺子）平台一律奖励 6.88元</p>
+                    <p>11.11 / 22.22 / 33.33 / 44.44 / 55.55 / 66.66 / 77.77 / 88.88  平台一律奖励前两位数字乘 5倍</p>
+                    <p>12.34 / 23.45 / 34.56 / 45.67 / 56.78 / 67.89  平台一律奖励前两位数字乘 5倍</p>
+                    <p>99.99 平台奖励 999元</p>
+                </div>
+                <div class="rule-box">
+                    <p class="rule-title">扫雷玩家开包大奖</p>
+                    <p>1包中3雷  平台奖励 8.88元 </p>
+                    <p>1包中4雷  平台奖励 38.88元 </p>
+                    <p>1包中5雷  平台奖励 68.88元</p>
+                </div>
+            </div>
+        </div>
+        @Html.Action("Footer", "Account", new { id = 3 })
+    </div><!--wrap-->
+</body>
+</html>

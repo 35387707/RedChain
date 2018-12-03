@@ -1,0 +1,641 @@
+/*
+ main popup style
+ */
+.reveal-modal-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    /*background: #000
+     background: rgba(0,0,0,0.5);*/
+    background: #2E8B57;
+    background: rgba(46,139,87,0.3);
+    z-index: 1000;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+.reveal-modal {
+    /*width: 94%;
+     margin-left: 3%;
+     margin-right: 3%;
+     margin-top: 15%;
+     margin-bottom: 7%;
+     height: 80%;
+     visibility: hidden;
+     position: absolute;
+     z-index: 1001;*/
+}
+
+.reveal-modal .clos-mde {
+    font-size: 1.820em;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    color: #aaa;
+    background-color: red;
+    text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+    font-weight: bold;
+    cursor: pointer;
+}
+.reveal-modal .close-reveal-modal span {
+    position: absolute;
+    color: #2AC897;
+    bottom: 0;
+    right: 0.12;
+}
+
+/*
+ login sel tab & cont
+ */
+#login_mde {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 40%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+.login-main {
+    background-color: #FFFFFF;
+    border-radius: 1.0em;
+}
+.usr-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/usr_icon.png');
+    background-size: cover;
+}
+.pwd-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/pwd_icon.png');
+    background-size: cover;
+}
+.cancel-btn {
+    margin-top: 0.25em;
+    width: 100%;
+    text-align: center;
+}
+.cancel-btn img {
+    width: 3.0em;
+    height: 3.0em;
+}
+
+/*
+ proj sel tab & cont
+ */
+/*
+ * 当页面可见宽度大于1400px小于1537px时 ipad mini2 ipad mini4
+ */
+@media all and (min-width: 1290px) and (max-width: 1537px) {
+
+    #proj_sel {
+        width: 72%;
+        margin-left: 14%;
+        margin-right: 14%;
+        margin-top: 15%;
+        margin-bottom: 7%;
+        height: 80%;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1001;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1100px小于1281px时 iphone 6s
+ */
+@media all and (min-width: 1100px) and (max-width: 1281px) {
+
+    #proj_sel {
+        width: 94%;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 15%;
+        margin-bottom: 7%;
+        height: 80%;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1001;
+    }
+
+}
+/*
+ * 当页面可见宽度大于900px小于1081px时 1080p iphone6s
+ */
+@media all and (min-width: 753px) and (max-width: 1081px) {
+
+    #proj_sel {
+        width: 94%;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 15%;
+        margin-bottom: 7%;
+        height: 80%;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1001;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 650px) and (max-width: 751px) {
+
+    #proj_sel {
+        width: 94%;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 15%;
+        margin-bottom: 7%;
+        height: 80%;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1001;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 500px) and (max-width: 641px) {
+
+    #proj_sel {
+        width: 94%;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 15%;
+        margin-bottom: 7%;
+        height: 80%;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1001;
+    }
+
+}
+
+#tab_area {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#cont_area {
+    padding: 0 0.45em 0.8em;
+    border-radius: 0 0 1.0em 1.0em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+
+/*
+ network stat sel
+ */
+#stat_mde {
+    background-color: #FFFFFF;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 75%;
+    border-radius: 0.5em 0.5em;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#stat_tab {
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#stat_tab .nav-tabs .ub-ver {
+    color: #2AC897;
+    font-weight: bold;
+}
+#stat_cont {
+    text-align: center;
+    padding: 2em 0;
+}
+.spec-mde {
+    display: none;
+}
+/*
+ acep sel tab & cont
+ */
+#acep_mde {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 15%;
+    margin-bottom: 7%;
+    height: 80%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#acep_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#acep_tab .nav-tabs .ub-ver {
+    color: #2AC897;
+    font-weight: bold;
+}
+#acep_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+#acep_foot {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 3.36em;
+    line-height: 3.36em;
+    width: 100%;
+}
+
+.acep-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.acep-add .sub-add {
+    margin-top: 17%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.2em;
+    height: 2.2em;
+}
+.acep-img {
+    background-size: cover;
+    background-image: url('img/accepter2.png');
+    width: 1.0em;
+    height: 1.0em;
+    margin-left: 50%;
+}
+.acep-stat {
+    color: #2AC897;
+}
+
+.lst-icon {
+    background-size: cover;
+    background-image: url('img/lst_icon.png');
+    width: 0.86em;
+    height: 0.86em;
+    /*margin: 0 0.18em 0 0.36em;*/
+    margin: 0.10em 0.18em 0.29em 0.36em;
+}
+
+.proj-icon {
+    background-size: cover;
+    background-image: url('img/cur_proj.png');
+    width: 0.86em;
+    height: 0.86em;
+    /*margin: 0 0.18em 0 0.36em;*/
+    margin: 0.16em 0.18em 0.17em 0.36em;
+}
+.round-icon {
+    background-size: cover;
+    background-image: url('img/cur_turn.png');
+    width: 0.86em;
+    height: 0.86em;
+    /*margin: 0 0.18em 0 0.36em;*/
+    margin: 0.12em 0.18em 0.27em 0.36em;
+}
+
+.chk-icon {
+    background-size: cover;
+    background-image: url('img/accepter1.png');
+    width: 0.86em;
+    height: 0.86em;
+    /*margin: 0 0.18em 0 0.36em;*/
+    margin: 0.16em 0.18em 0.17em 0.36em;
+}
+
+.acep-icon {
+    background-size: cover;
+    background-image: url('img/accepter2.png');
+    width: 0.86em;
+    height: 0.86em;
+    margin: 0.19em 0.18em 0 0.36em;
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+/*
+ * 当前状态
+ */
+.fa-globe:before {
+    content: "\f0ac"
+}
+/*
+ * 当前验收工程
+ */
+.fa-tag:before {
+    content: "\f02b"
+}
+/*
+ * 当前轮次
+ */
+.fa-retweet:before {
+    content: "\f079"
+}
+/*
+ * 当前验收人
+ */
+.fa-user:before {
+    content: "\f007"
+}
+/*
+ * 协同验收人
+ */
+.fa-group:before, .fa-users:before {
+    content: "\f0c0"
+}
+
+.icon-color {
+    color: #2AC897;
+    width: 1.10em;
+    height: auto;
+    margin: 0 0.18em 0 0.75em;
+    text-align: center;
+}
+
+/*
+ turn sel tab & cont
+ */
+#turn_mde {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 15%;
+    margin-bottom: 7%;
+    height: 80%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#turn_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#turn_tab .turn-msg {
+    color: #FF3030;
+    font-weight: bold;
+}
+#turn_tab .nav-tabs .ub-ver {
+    color: #2AC897;
+    font-weight: bold;
+}
+.turn-foot-sty {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 3.36em;
+    line-height: 3.36em;
+    width: 100%;
+}
+.turn-foot-h {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 0.78em;
+    line-height: 0.78em;
+    width: 100%;
+}
+.turn-srch {
+    margin-top: 0.36em;
+    margin-left: 0.36em;
+}
+.turn-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.turn-add .sub-add {
+    margin-top: 17%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.2em;
+    height: 2.2em;
+}
+#turn_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+.turn-img {
+    background-size: cover;
+    background-image: url('img/turn_sub.png');
+    width: 1.0em;
+    height: 1.0em;
+    margin-left: 60%;
+}
+.turn-stat {
+    color: #2AC897;
+}
+
+/*
+ part sel tab & cont
+ */
+#part_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#part_tab .nav-tabs {
+    border-bottom: 0.05em solid #ececec;
+    height: 2.0em;
+    font-weight: normal;
+    padding-top: 0.2em;
+    padding-left: 0.45em;
+    padding-right: 0.51em;
+    line-height: 2.0em;
+    font-size: 0.94em;
+}
+#part_tab .nav-tabs .ub-ver {
+    border-radius: 0.5em 0.5em 0 0;
+    text-align: left;
+    width: 100% !important;
+    color: #2AC897;
+    font-weight: bold;
+}
+#part_foot {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 3.20em;
+    line-height: 3.20em;
+    width: 100%;
+}
+.part-srch {
+    margin-top: 0.36em;
+    margin-left: 0.36em;
+}
+.part-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.part-add .sub-add {
+    margin-top: 15%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.00em;
+    height: 2.00em;
+}
+#part_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+.part-img {
+    background-size: cover;
+    background-image: url('img/part_icon.png');
+    width: 1.0em;
+    height: 1.0em;
+    margin-left: 50%;
+}
+
+/*
+ resp sel tab & cont
+ */
+
+#resp_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#resp_tab .nav-tabs {
+    border-bottom: 0.05em solid #ececec;
+    height: 2.0em;
+    font-weight: normal;
+    padding-top: 0.2em;
+    padding-left: 0.45em;
+    padding-right: 0.51em;
+    line-height: 2.0em;
+    font-size: 0.94em;
+}
+#resp_tab .nav-tabs .ub-ver {
+    border-radius: 0.5em 0.5em 0 0;
+    text-align: left;
+    width: 100% !important;
+    color: #2AC897;
+    font-weight: bold;
+}
+#resp_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+#resp_foot {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 3.20em;
+    line-height: 3.20em;
+    width: 100%;
+}
+
+.resp-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.resp-add .sub-add {
+    margin-top: 15%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.00em;
+    height: 2.00em;
+}
+.resp-img {
+    background-size: cover;
+    background-image: url('img/bld_icon.png');
+    width: 1.0em;
+    height: 1.0em;
+    margin-left: 50%;
+}
+
+/*
+ common style
+ */
+.part-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/part_icon.png');
+    background-size: cover;
+}
+.bld-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/bld_icon.png');
+    background-size: cover;
+}
+.edit-icon {
+    width: 1.1em;
+    height: 1.1em;
+    background-image: url('img/edit_128.png');
+    background-size: cover;
+}
+.in-bg {
+    /*background-color: #F6F6F6;*/
+    background-color: rgb(224, 238, 238);
+}
+.sub-back {
+    /*background-color: #F6F6F6;*/
+    background-color: white;
+}
+.in-rds {
+    border-radius: 0.5em;
+}
+.edit-li {
+    background-color: white;
+    padding-left: 0.9375em;
+    color: #363636;
+}
+.li3 {
+    font-size: 1.14em;
+}
+
+.li5 {
+    background-color: white;
+    width: 80%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 0.15em;
+    margin-bottom: 0.15em;
+}
+.pop-li {
+    background-color: white;
+    width: 97%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-bottom: 0.15em;
+}

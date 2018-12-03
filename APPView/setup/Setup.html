@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/ui-box.css">
+    <link rel="stylesheet" href="../css/ui-base.css">
+    <link rel="stylesheet" href="../css/ui-color.css">
+    <link rel="stylesheet" href="../css/appcan.icon.css">
+    <link rel="stylesheet" href="../css/appcan.control.css">
+    <link rel="stylesheet" href="css/feed-v1.css">
+    <link rel="stylesheet" href="../hb/css/editor-v1.css">
+</head>
+
+<body class="bc-bg" ontouchstart>
+
+    <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+        <div id="header" class="uh bc-head ubb bc-border">
+            <div class="ub">
+                <div class="nav-one" id="nav_left" onclick="javascript:history.back(-1);">
+                   <div class="ub-img1 nav-back"></div>
+                </div>
+                <div class="nav-two">
+                </div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">设置</h1>
+                <div class="nav-btn" id="nav_right">
+                    <div class="fa fa-1g ub-img1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content" class="ub ub-ver">
+
+            <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border"></div>
+
+            <div class="c-wh uinn-a7 cont-bg">
+                <ul class="ubb bc-border ub t-bla ub-ac lis" id="account_security"  ontouchstart>
+                    <li class="ub-f1 ut-s ulev-app2">
+                      账号与安全
+                    </li>
+                </ul>
+                <ul class="ubb bc-border ub ub-ac lis" id="help_center"  ontouchstart>
+                    <li class="ub-f1 ut-s ulev-app2">
+                        帮助中心
+                    </li>
+                </ul>
+                <ul class="ubb bc-border ub ub-ac lis" id="feedback"  ontouchstart>
+                    <li class="ub-f1 ut-s ulev-app2">
+                        意见反馈
+                    </li>
+                </ul>
+            </div>
+
+            <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border"></div>
+
+            <div class="c-wh uinn-a7 cont-bg">
+                <ul class="ubb bc-border ub ub-ac lis protocol"  ontouchstart>
+                    <li class="ub-f1 ut-s ulev-app2">
+                        注册协议
+                    </li>
+                </ul>
+                <ul class="ubb bc-border ub t-bla ub-ac lis" id="clean">
+                    <li class="ub-f1 ut-s ulev-app2">
+                        清理缓存
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border"></div>
+
+            <div class="c-wh uinn-a7 cont-bg">
+             
+                <ul class="ubb bc-border ub ub-ac lis" id="about"  ontouchstart>
+                    <li class="ub-f1 ut-s ulev-app2">
+                        关于
+                    </li>
+                </ul>
+            </div>
+            <div style="height: 1.0em;"></div>
+
+            <div class="uinn-btn">
+                <div class="btn2 ub ub-ac bc-text-head ub-pc uc-a1 bc-btn" id="sign_out" >
+                    退出登陆
+                </div>
+            </div>
+            <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border"></div>
+        </div>
+    </div>
+    <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+    
+    <script src="../js/token.js"></script>
+    <script>
+
+
+        $().ready(function () {
+            var fileUrl = 'http://www.fbddd.com';
+            var token = GetQueryString("token");
+
+
+            $('#account_security').click(function () {
+                window.location.href = 'Accountsecurity.html?token=' + token;
+            })
+            $('#feedback').click(function () {
+                window.location.href = 'Feedback2.html?token=' + token;
+            })
+            $('#help_center').click(function () {
+                window.location.href = 'help.html?token=' + token;
+            })
+            $('.protocol').click(function () {
+                window.location.href = 'Protocol2.html?token=' + token;
+            });
+            $('#about').click(function () {
+                window.location.href = 'about.html?token=' + token;
+            })
+        });
+
+    </script>
+   
+</body>
+</html>

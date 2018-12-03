@@ -1,0 +1,115 @@
+/*
+ main swiper
+ */
+.main-cont {
+    width: 100%;
+    height: 100%;
+    border-top: 0;
+}
+.main-cont .main-wrap .main-slide {
+    width: 100%;
+    background: none;
+    color: black;
+}
+.main-cont .main-menu {
+    display: none;
+}
+
+/*
+ left menu swiper
+ */
+#left_cont {
+    width: 100%;
+    height: 100%;
+}
+#left_menu {
+    width: 50%;
+    background-size: cover;
+    background-image: url('img/bg.png');
+    color: #fff;
+}
+.menu-icon {
+    background-size: cover;
+    background-image: url('img/mark.png');
+    margin: 6.0em auto 3.5em auto;
+    width: 7.0em;
+    height: 7.0em;
+    position: relative;
+}
+.turn-icon {
+    background-size: cover;
+    background-image: url('img/turn_edit.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.net-icon {
+    background-size: cover;
+    background-image: url('img/network.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.add-icon {
+    background-size: cover;
+    background-image: url('img/add_acep.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.chg-icon {
+    background-size: cover;
+    background-image: url('img/chg_pwd.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.exit-icon {
+    background-size: cover;
+    background-image: url('img/safe_exit.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.sync-icon {
+    background-size: cover;
+    background-image: url('img/synchronize.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.about-icon {
+    background-size: cover;
+    background-image: url('img/about.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+
+/*
+ nav swiper
+ */
+.nav-cont {
+    height: 100%;
+}
+.nav-sub {
+    text-align: center;
+    width: auto;
+}
+
+/*
+ common style
+ */
+.menu-li {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 0.30em;
+}
+
+/*
+ *
+ */
+.swiper2 {
+    height: 100%;
+    width: 100%;
+}
+.swiper2 .swiper-slide {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+}

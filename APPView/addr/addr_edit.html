@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../addr/css/edit-v1.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div class="uh bc-head ubb bc-border" id="header" style="position: fixed; z-index: 10000;">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">编辑地址</h1>
+                    <div class="nav-btn">
+                        <div class="fa fa-1g ub-img1 cmpl">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb bc-border list-input-padd c-wh ub-ac">
+                        <div class="uinput ub ub-f1">
+                            <input id="recname" placeholder="姓名" type="search" class="ub-f1 outline">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb bc-border list-input-padd c-wh ub-ac">
+                        <div class="uinput ub ub-f1">
+                            <input id="phone" placeholder="手机号码" type="search" class="ub-f1 outline">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb bc-border list-input-padd c-wh ub-ac">
+                        <div class="uinput ub ub-f1">
+                            <input id="areacode" data-addrid="" data-areid="" data-areacode="" placeholder="所在地区" readonly="" type="text" class="ub-f1 outline">
+                        </div>
+
+                    </div>
+                </div>
+                <!-- <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub ubb bc-border list-input-padd c-wh ub-ac">
+                <div class="uinput ub ub-f1">
+                <input placeholder="详细地址" type="search" class="ub-f1 outline">
+                </div>
+
+                </div>
+                </div> -->
+
+                <div class="ub ub-ver">
+                    <div class="ub-f1 ub ub-ver ins-sty">
+                        <div class="ub ub-f1">
+                            <textarea id="address" type="text" class="ub-f1 outline" placeholder="详细地址" id="title"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="ub ub-ver ub-fv list-marg-top" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb bc-border c-wh ub-ac biz-type switch-height">
+                        <div class="swtch-left ub-f1">
+                            设为默认地址
+                        </div>
+                        <div class="swtch-right">
+                            <div class="switch switch-mini" data-checked="false">
+                                <div class="switch-btn sc-bg-active"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb ubt bc-border list-marg-top list-cont-padd c-wh ub-ac del-addr">
+                        <div class="del-addr-color ulev0 ub-f1">
+                            删除收货地址
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="footer" class="sure-btn">
+                <div class="list-wd">
+                    <div class="bot-btn ub ub-ac bc-text-head ub-pc bc-btn bot-rds" id="save" ontouchstart="appcan.touch('btn-act')">
+                        <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                        保存
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../pop/js/place.js"></script>
+        <script src="../pop/js/province.js"></script>
+        <script src="../addr/js/updt.js"></script>
+        <script src="../addr/js/mgt.js"></script>
+        <script src="../addr/js/del.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                var titHeight = $('#header').height();
+                var footHeight = $('#footer').height();
+                $('#content').css('padding-top', titHeight);
+                $('#content').css('padding-bottom', footHeight);
+
+                setSwipeCloseEnable(1);
+
+                setAddrInfo(JSON.parse(localStorage.getItem("addrJson")));
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        var place = localStorage.getItem("place");
+                        if (place == '1' || place == 1) {
+
+                            appcan.window.closePopover('place');
+                            localStorage.setItem("place", 0);
+
+                        } else {
+
+                            appcan.window.close(-1);
+
+                        }
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+
+                }
+
+                appcan.window.subscribe('areacode', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var areacode = JSON.parse(msg);
+
+                        //$('#Content').val('');
+                        $("#areacode").val(areacode[0].value + ' ' + areacode[1].value + ' ' + areacode[2].value);
+                        $("#areacode").data('areacode', areacode[0].id + ',' + areacode[1].id + ',' + areacode[2].id);
+                        $("#areacode").data('areid', areacode[0].id);
+
+                    }
+
+                });
+
+            });
+
+            appcan.switchBtn(".switch", function(obj, value) {
+            });
+
+            $('#areacode').click(function() {
+
+                localStorage.setItem("place", 1);
+                var bodyWidth = localStorage.getItem("bodyWidth");
+                var bodyHeight = localStorage.getItem("bodyHeight");
+
+                appcan.window.openPopover({
+                    name : 'place',
+                    dataType : 0,
+                    url : "../pop/place.html",
+                    top : 0,
+                    left : 0,
+                    width : bodyWidth,
+                    height : bodyHeight,
+                });
+
+            });
+
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+        </script>
+    </body>
+</html>

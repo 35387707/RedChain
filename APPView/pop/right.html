@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pop/css/right.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="right-cont">
+
+                <div class="sub-menu menu-1" ontouchstart="appcan.touch('btn-act')">
+                    <div class="sub-img">
+                        <div class="sub-calc">
+                            <img id="hbhelp" src="../index/img/index_hongbao_wenti@2x.png" />
+                        </div>
+                    </div>
+                    <div class="sub-txt">
+                        帮助
+                    </div>
+                </div>
+                <div class="sub-menu menu-2" ontouchstart="appcan.touch('btn-act')">
+                    <div class="sub-img">
+                        <div class="sub-calc">
+                            <img id="hbrank" src="../index/img/index_hongbao_paiming@2x.png" />
+                        </div>
+                    </div>
+                    <div class="sub-txt">
+                        排行
+                    </div>
+                </div>
+                <div class="sub-menu menu-3" ontouchstart="appcan.touch('btn-act')">
+                    <div class="sub-img">
+                        <div class="sub-calc">
+                            <img id="hbtask" src="../index/img/index_hongbao_yifa@2x.png" />
+                        </div>
+                    </div>
+                    <div class="sub-txt">
+                        任务
+                    </div>
+                </div>
+                <div class="sub-menu menu-4" ontouchstart="appcan.touch('btn-act')">
+                    <div class="sub-img">
+                        <div class="sub-calc">
+                            <img id="biz" src="../index/img/index_hongbao_chengshishangyequan@2x.png" />
+                        </div>
+                    </div>
+                    <div class="sub-txt">
+                        福音
+                    </div>
+                </div>
+
+                <div class="sub-menu menu-5" ontouchstart="appcan.touch('btn-act')">
+                    <div class="sub-img">
+                        <div class="sub-calc">
+                            <img id="refresh" src="../index/img/index_hongbao_shuaxin@2x.png" />
+                        </div>
+                    </div>
+                    <div class="sub-txt">
+                        刷新
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../pop/js/right.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(0);
+
+            });
+            $('.empty-view').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('#hbrank').click(function() {
+
+                localStorage.setItem("hbrank", 1);
+                var bodyWidth = localStorage.getItem("bodyWidth");
+                var bodyHeight = localStorage.getItem("bodyHeight");
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.openPopover({
+                        name : 'hbrank',
+                        dataType : 0,
+                        url : "../hb/hbrank.html",
+                        top : 0,
+                        left : 0,
+                        width : bodyWidth,
+                        height : bodyHeight,
+                    });
+
+                } else {
+
+                    uexWindow.openPopover({
+                        name : 'hbrank',
+                        dataType : 0,
+                        url : "../hb/hbrank.html",
+                        x : 0,
+                        y : 0,
+                        w : bodyWidth,
+                        h : bodyHeight,
+                        flag : 1024,
+                    });
+
+                }
+
+            });
+
+            $('#hbhelp').click(function() {
+
+                /*
+                 var localPack = localStorage.getItem('localPack');
+                 if (localPack == '1' || localPack == 1) {
+
+                 appcan.window.open({
+                 name : 'hbhelp',
+                 data : '../hb/hbhelp.html',
+                 aniId : 10,
+                 });
+
+                 } else {
+
+                 uexWindow.open({
+                 name : "hbhelp",
+                 data : "../hb/hbhelp.html",
+                 animID : 10,
+                 flag : 1024
+                 });
+
+                 }*/
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'help_center',
+                        data : '../setup/help_center.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "help_center",
+                        data : "../setup/help_center.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+                //openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+            });
+
+            $('#hbtask').click(function() {
+
+                localStorage.setItem("fromPage", 'right');
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'hbtask',
+                        data : '../hb/hbtask.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "hbtask",
+                        data : "../hb/hbtask.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+                //openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+            });
+
+            $('#biz').click(function() {
+
+                /*
+                 var localPack = localStorage.getItem('localPack');
+                 if (localPack == '1' || localPack == 1) {
+
+                 appcan.window.open({
+                 name : 'biz',
+                 data : '../biz/biz.html',
+                 aniId : 10,
+                 });
+
+                 } else {
+
+                 uexWindow.open({
+                 name : "biz",
+                 data : "../biz/biz.html",
+                 animID : 10,
+                 flag : 1024
+                 });
+
+                 }*/
+                getInfomationTypes();
+
+            });
+
+            $('#refresh').click(function() {
+
+                appcan.window.publish('getRedPacket', 0);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+        </script>
+    </body>
+</html>
+

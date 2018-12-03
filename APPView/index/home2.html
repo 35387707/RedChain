@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../index/css/home-v1.css">
+        <style>
+            .blue {
+                /*color: #FD614A;*/
+                color: #F95747;
+            }
+        </style>
+    </head>
+    <body class="" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="content" class="ub-f1 tx-l"></div>
+
+            <div id="footer" class="ub">
+
+                <div data-tab_i="0" class="footer-tab sub-clk">
+                    <div class="tab-top"></div>
+                    <div class="tab-icon">
+                        <!-- <a data-tab_s="0" class="fa fa-home clk-f active"></a> -->
+                        <!-- <img src="../index/img/index_footer_home@2x.png" /> -->
+                        <div data-icon_i="0" class="footer-icon ub-img1 home-unclick home-click"></div>
+                    </div>
+                    <div class="clk-f tab-txt active" data-tab_s="0">
+                        首页
+                    </div>
+                    <div class="ub ub-ac ub-pc home-pos">
+                        <div data-tab_items="首页" class="ub ub-ac ub-pc home-items no-dis"></div>
+                    </div>
+                </div>
+
+                <div data-tab_i="1" class="footer-tab sub-clk">
+                    <div class="tab-top"></div>
+                    <div class="tab-icon">
+                        <!-- <a data-tab_s="1" class="fa fa-comment clk-f tab-colr"></a> -->
+                        <!-- <img src="../index/img/index_footer_msg@2x.png" /> -->
+                        <div data-icon_i="1" class="footer-icon ub-img1 msg-unclick"></div>
+                    </div>
+                    <div class="clk-f tab-colr tab-txt" data-tab_s="1">
+                        消息
+                    </div>
+                    <div class="ub ub-ac ub-pc home-pos">
+                        <div data-tab_items="消息" class="home-items no-dis"></div>
+                    </div>
+                </div>
+
+                <div class="footer-tab">
+                    <div class="red-paper plus-tab">
+                        <div class="rnd-md2" id="send" ontouchstart="appcan.touch('btn-act')">
+                            <!-- <div class="rnd-sub2"></div> -->
+                            <img src="../index/img/index_send_fahongbao@2x.png"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-tab_i="2" class="footer-tab sub-clk">
+                    <div class="tab-top"></div>
+                    <div class="tab-icon">
+                        <!-- <a data-tab_s="2" class="fa fa-shopping-bag clk-f tab-colr"></a> -->
+                        <!-- <img src="../index/img/index_footer_shop@2x.png" /> -->
+                        <div data-icon_i="2" class="footer-icon ub-img1 shop-unclick"></div>
+                    </div>
+                    <div class="clk-f tab-colr tab-txt" data-tab_s="2">
+                        商城
+                    </div>
+                    <div class="ub ub-ac ub-pc home-pos">
+                        <div data-tab_items="商城" class="ub ub-ac ub-pc home-items no-dis">
+                            11
+                        </div>
+                    </div>
+                </div>
+
+                <div data-tab_i="3" class="footer-tab sub-clk">
+                    <div class="tab-top"></div>
+                    <div class="tab-icon">
+                        <!-- <a data-tab_s="3" class="fa fa-user-circle-o clk-f tab-colr"></a> -->
+                        <!-- <img src="../index/img/index_footer_mine@2x.png" /> -->
+                        <div data-icon_i="3" class="footer-icon ub-img1 mine-unclick"></div>
+                    </div>
+                    <div class="clk-f tab-colr tab-txt" data-tab_s="3">
+                        我的
+                    </div>
+                    <div class="ub ub-ac ub-pc home-pos">
+                        <div data-tab_items="我的" class="ub ub-ac ub-pc home-items no-dis"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../index/js/count.js"></script>
+        <script src="../index/js/bg.js"></script>
+        <script>
+            var titHeight = 0;
+            appcan.ready(function() {
+
+                localStorage.setItem("initRedPacket", 1);
+
+                localStorage.setItem("curWindow", 'home');
+                localStorage.setItem("homeIndex", '');
+
+                setSwipeCloseEnable(0);
+
+                appcan.frame.open({
+                    id : "content",
+                    url : [{
+                        "inPageName" : "map",
+                        "inUrl" : "map.html",
+                    }, {
+                        "inPageName" : "msg",
+                        "inUrl" : "msg.html",
+                    }, {
+                        "inPageName" : "shop",
+                        "inUrl" : "shop.html",
+                    }, {
+                        "inPageName" : "mine",
+                        "inUrl" : "mine.html",
+                    }],
+                    top : 0,
+                    left : 0,
+                    index : 0,
+                    change : function(err, res) {
+                        //tabview.moveTo(res.multiPopSelectedIndex);
+                    }
+                });
+
+                window.onorientationchange = window.onresize = function() {
+                    appcan.frame.resize("content", 0, titHeight);
+                }
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        //uexWidgetOne.exit(1);
+                        var hbrank = localStorage.getItem("hbrank");
+                        var hbknock = localStorage.getItem("hbknock");
+                        var loading = localStorage.getItem("loading");
+                        var succ = localStorage.getItem("succ");
+                        if (succ == '1' || succ == 1) {
+
+                            appcan.window.closePopover('succ');
+                            localStorage.setItem("succ", 0);
+
+                        } else if (loading == '0' || loading == 0) {
+
+                            debug('数据正在加载啊, 亲');
+
+                        } else if (hbrank == '1' || hbrank == 1) {
+
+                            appcan.window.closePopover('hbrank');
+                            localStorage.setItem("hbrank", 0);
+
+                        } else if (hbknock == '1' || hbknock == 1) {
+
+                            appcan.window.closePopover('hbknock');
+                            localStorage.setItem("hbknock", 0);
+
+                        } else {
+
+                            //openToast("即将后台运行...", 2000, 5, 1);
+                            uexWidget.moveToBack();
+
+                        }
+
+                    } else {
+
+                        alert('点击了其他键');
+
+                    }
+
+                }
+
+                appcan.window.subscribe('reLoginActn', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        reLoginActn();
+
+                    }
+
+                });
+
+                appcan.window.subscribe('doGetRedPacket', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $("div[data-tab_i='0']").click();
+
+                    }
+
+                });
+                
+                appcan.window.subscribe('homeEnter', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $("div[data-tab_i='0']").click();
+
+                    }
+
+                });
+
+                appcan.window.subscribe('orderHome', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $("div[data-tab_i='3']").click();
+
+                    }
+
+                });
+
+                appcan.window.subscribe('msgStart', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        debug('转折点啊')
+
+                        appcan.window.publish('msgInit', 1);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('closLoadingView', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        debug('正式关闭遮罩层');
+
+                        //uexLoadingView.close();
+
+                    }
+
+                });
+
+                appcan.window.subscribe('refreshMsgNum', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var indx = '消息';
+                        var temp = parseInt($("div[data-tab_items='" + indx + "']").text().replace(/\s*/g, ""));
+                        var rslt = temp - parseInt(msg);
+                        if (rslt <= 0 || rslt == undefined || rslt == NaN) {
+                            $("div[data-tab_items='" + indx + "']").text('');
+                            $("div[data-tab_items='" + indx + "']").addClass('no-dis');
+                        } else {
+                            $("div[data-tab_items='" + indx + "']").text(rslt);
+                        }
+
+                    }
+
+                });
+
+                appcan.window.subscribe('homeInit', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var indx = '消息';
+                        if (msg == 0 || msg == '0') {
+
+                            $("div[data-tab_items='" + indx + "']").addClass('no-dis');
+                            $("div[data-tab_items='" + indx + "']").text('');
+
+                        } else {
+                            $("div[data-tab_items='" + indx + "']").removeClass('no-dis');
+                            $("div[data-tab_items='" + indx + "']").text(msg);
+                        }
+
+                        //uexLoadingView.close();
+
+                        appcan.window.publish('chatInit', 'login');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('homeItem', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var indx = '消息';
+                        if (msg == 0 || msg == '0') {
+
+                            $("div[data-tab_items='" + indx + "']").addClass('no-dis');
+                            $("div[data-tab_items='" + indx + "']").text('');
+
+                        } else {
+
+                            $("div[data-tab_items='" + indx + "']").removeClass('no-dis');
+                            $("div[data-tab_items='" + indx + "']").text(msg);
+
+                        }
+
+                    }
+
+                });
+
+            });
+
+            $(".sub-clk").click(function() {
+
+                localStorage.setItem("curWindow", 'home');
+
+                var indx = $(this).data('tab_i');
+                
+                debug(indx);
+
+                appcan.window.publish('hideMap', indx);
+
+                $("#footer .active").removeClass('active');
+                $('.clk-f').addClass('tab-colr');
+                $("div[data-tab_s='" + indx + "']").removeClass('tab-colr');
+                $("a[data-tab_s='" + indx + "']").removeClass('tab-colr');
+                $("div[data-tab_s='" + indx + "']").addClass('active');
+                $("a[data-tab_s='" + indx + "']").addClass('active');
+
+                appcan.window.selectMultiPopover("content", indx);
+
+                localStorage.setItem("homeIndex", indx);
+
+                if (indx == 0) {
+                    
+                    $('.home-unclick').addClass('home-click');
+                    $('.msg-unclick').removeClass('msg-click');
+                    $('.shop-unclick').removeClass('shop-click');
+                    $('.mine-unclick').removeClass('mine-click');
+
+                    var bodyWidth = parseInt(localStorage.getItem("cResolutionRatioWidth"));
+                    var bodyHeight = parseInt(localStorage.getItem("cResolutionRatioHeight"));
+
+                    /*
+                     var headerWidth = bodyWidth * 4.0 / 10;
+                     var headerLeft = (bodyWidth - headerWidth) / 2;
+                     appcan.window.openPopover({
+                     name : "header",
+                     dataType : 0,
+                     url : "../pop/header.html",
+                     top : 24,
+                     left : headerLeft,
+                     width : headerWidth,
+                     height : 130,
+                     });*/
+
+                    var rightTop = 0;
+                    //bodyHeight / 2
+                    if (bodyHeight > 1280) {
+                        rightTop = bodyHeight / 2;
+                    } else {
+                        rightTop = bodyHeight / 4;
+                    }
+                    var rightLeft = bodyWidth - 120;
+                    appcan.window.openPopover({
+                        name : "right",
+                        dataType : 0,
+                        url : "../pop/right.html",
+                        top : rightTop,
+                        left : rightLeft,
+                        width : 120,
+                        height : 600,
+                    });
+
+                    //当点击首页tab的时候去获取红包列表
+                    //appcan.window.publish('getRedPacket', 0);
+                    appcan.window.publish('closeAddrMap', 1);
+                    var initRedPacket = localStorage.getItem("initRedPacket");
+                    if (initRedPacket == 0 || initRedPacket == '0') {
+                        appcan.window.publish('initRedPacket', 'login');
+                    } else if (initRedPacket == 2 || initRedPacket == '2') {
+                        appcan.window.publish('reOpenMap', 'reOpen');
+                    } else if (initRedPacket == 3 || initRedPacket == '3') {
+                        appcan.window.publish('reOpenMap', 'both');
+                    }
+
+                } else {
+
+                    appcan.window.publish('getMainList', indx);
+
+                    appcan.window.closePopover("right");
+                    appcan.window.closePopover("header");
+                    
+                    if (indx == 1) {
+
+                        $('.home-unclick').removeClass('home-click');
+                        $('.msg-unclick').addClass('msg-click');
+                        $('.shop-unclick').removeClass('shop-click');
+                        $('.mine-unclick').removeClass('mine-click');
+
+                    } else if (indx == 2) {
+
+                        $('.home-unclick').removeClass('home-click');
+                        $('.msg-unclick').removeClass('msg-click');
+                        $('.shop-unclick').addClass('shop-click');
+                        $('.mine-unclick').removeClass('mine-click');
+
+                    } else if (indx == 3) {
+
+                        $('.home-unclick').removeClass('home-click');
+                        $('.msg-unclick').removeClass('msg-click');
+                        $('.shop-unclick').removeClass('shop-click');
+                        $('.mine-unclick').addClass('mine-click');
+
+                    }
+
+                }
+
+            });
+
+            $('#send').click(function() {
+                
+                var homeEnter = $("#footer .active").data('tab_s');
+                debug(homeEnter);
+                localStorage.setItem('homeEnter', homeEnter);
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'send',
+                        data : '../index/send.html',
+                        aniId : 5,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "send",
+                        data : "../index/send.html",
+                        animID : 5,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+        </script>
+    </body>
+</html>

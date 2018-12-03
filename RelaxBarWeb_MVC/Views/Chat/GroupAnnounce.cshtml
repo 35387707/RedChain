@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.ChatGroup
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>群公告</title>
+    @Html.Action("CommonHead", "Static")
+    <script>
+        function save() {
+            $.post("/Chat/DoGroupAnnounce", "id=@Model.GID&Notice="+$("#Notice").val(), function (data) {
+                if (data.code == "1") {
+                    location.href = "/Chat/GroupInfo/@Model.GID";
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back();"></i>
+            <font class="header-item-font halfTop">群公告</font>
+            <a class="finish halfTop" href="javascript:save();">完成</a>
+        </div>
+        <div class="same-pt-wrap1">
+            @Html.TextAreaFor(m => m.Notice, new { @class = "announce-area borderbox of-hide", placeholder = "群公告填写" })
+        </div>
+        </div><!--wrap-->
+</body>
+</html>

@@ -1,0 +1,453 @@
+#page_0 {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.empty-view {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.pack-cont {
+    z-index: 999;
+    width: 80%;
+    margin: 10% 10% 0;
+    height: auto;
+    position: absolute;
+}
+.rtn-cont {
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+.midl-cont {
+    width: 100%;
+    height: 1.0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.disp-wht {
+    background-color: white;
+    width: 3px;
+    height: 100%;
+}
+.clos-cont {
+    width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.clos-cont .clos-icon {
+    background-color: white;
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0.1em;
+    background-size: cover;
+    background-image: url('../img/close_yuanxing@2x.png');
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em;
+}
+.logo-cont {
+    width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.logo-cont img {
+    width: 100%;
+    height: 100%;
+}
+.mask-cont {
+    margin-top: 0.5em;
+    width: 100%;
+    text-align: center;
+    color: #FFE9BB;
+    font-size: 1.4em;
+}
+.txt-cont {
+    width: 100%;
+    text-align: center;
+    color: #606060;
+    margin: 0.8em 0 1.5em;
+    font-size: 1.8em;
+}
+.btn-cont {
+    width: 80%;
+    margin: 0 10% 20%;
+}
+.btn-cont .btn2 {
+    background-color: #FF5265;
+}
+
+/*
+ * money
+ *
+ */
+.money-sty {
+    margin: 0.3em 0 0.1em;
+}
+.cash-num {
+    color: #333333;
+    font-size: 2.0em;
+}
+.cash-unit {
+    margin-left: 0.3em;
+    color: #333333;
+}
+.stat-sty {
+    margin-left: 0.5em;
+    background-color: white;
+    color: #F65461;
+    padding: 0.3em;
+    --webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    border: 1px solid #FC5857;
+}
+.stat-sty span {
+    margin-left: 0.2em;
+}
+
+/*最近访客文本*/
+.uinn-at4 {
+    padding: 2.69em 0.5em 0em !important;
+}
+.uinn-4a {
+    padding-top: 2.69em !important;
+}
+.uinn-a4 {
+    padding: 2.69em .5em 0 !important;
+}
+.t-gra-infor {
+    color: #626262;
+}
+
+.uinn-infor1 {
+    padding: 0.375em 0.83em;
+}
+.uw-infor {
+    width: 4em;
+}
+.uwh-infor {
+    width: 2em;
+    height: 2em;
+}
+.umar-r-infor {
+    margin-right: 1em;
+}
+
+.lin-hei1 {
+    line-height: 1.3em;
+}
+.c-gra-infor {
+    background-color: #c0c0c0;
+}
+.goods-infor1 {
+    background-image: url('../img/monkey_d_luffy.jpg');
+}
+.mar-ar1 {
+    margin-right: 0.45em;
+}
+.uinn-a6 {
+    padding: 1em 0.65em 0 0.65em;
+}
+.umar-ar4 {
+    margin-right: 0.3125em;
+}
+.uinn-a9 {
+    padding: 0.75em 0.625em;
+}
+.ulev-app1 {
+    font-size: 0.875em;
+}
+.uinn-a1 {
+    padding: 0.625em;
+}
+.t-red1 {
+    color: #de1010;
+}
+.c-wh {
+    background-color: #FFF;
+}
+.t-gre1 {
+    color: rgb(47, 255, 89);
+}
+
+/*
+ * hb
+ */
+.uinn-mito1 {
+    padding: 0.625em 0 0.3125em 0;
+}
+.uinn-mito2 {
+    padding: 0.3125em 0;
+}
+.uh-mito1 {
+    height: 9.0625em;
+    width: 95%;
+}
+.mito-icon1 {
+    background-image: url('../img/mito-icon1.png');
+}
+.mito-icon2 {
+    background-image: url('../img/mito-icon2.png');
+}
+.umar-r-mito {
+    margin-right: 1.125em;
+}
+.uwh-icon1 {
+    width: 0.75em;
+    height: 0.75em;
+}
+.uamr-ar5 {
+    margin-right: 0.25em;
+}
+.t-gra9 {
+    color: #9c9c9c;
+}
+.ulev-app2 {
+    font-size: 0.9375em;
+}
+.umar-at1 {
+    margin-top: 0.625em;
+}
+.uinn-a7 {
+    padding: 0 0.625em;
+}
+.form-marg {
+    margin-top: 0.625em;
+}
+.form-padd {
+    margin: 0.35em 0;
+    padding: 0 0.625em;
+}
+.header-txt-color {
+    color: #FED579;
+}
+.red-from {
+    color: #ACACAC;
+}
+.already-save {
+    color: #688EBB;
+}
+
+.img-marg-top {
+    margin-top: 0.46875em;
+}
+.disp-img-width {
+    height: 8.88em;
+}
+.actn-padd {
+    padding: 0.7em 0;
+}
+.actn-color {
+    color: #999999;
+}
+.comt-padd {
+    padding: 0.95em 1.0em 0 1.0em;
+}
+.border-padd-bottom {
+    padding-bottom: 0.95em;
+}
+.comt-icon-width {
+    height: 2.5em;
+    width: 2.5em;
+    -webkit-border-radius: 1.25em;
+    border-radius: 1.25em;
+}
+.comt-user-icon {
+    background-image: url('../img/monkey_d_luffy.jpg');
+}
+.user-hdr {
+    color: #333333;
+    font-size: 0.875em;
+}
+.larid-hdr {
+    color: #707070;
+    font-size: 1.08em;
+}
+.left-txt-color {
+    color: #707070;
+    font-size: 1.0em !important;
+}
+.larid-sty {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.larid-left {
+    height: 2.5em;
+}
+.larid-right-spec {
+    height: 2.5em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: left;
+    -ms-flex-align: left;
+    -webkit-align-items: left;
+    align-items: left;
+}
+.larid-right-normal {
+    height: 2.5em;
+    line-height: 2.5em;
+    font-size: 0.875em;
+}
+.larid-price {
+}
+.larid-txt {
+    color: #999999;
+    font-size: 0.72em;
+}
+.larid-num {
+    color: #707070;
+    font-size: 0.72em;
+}
+.user-comt {
+    color: #333333;
+}
+.user-time {
+    color: #999999;
+    margin-top: 0.15em;
+    font-size: 0.838em;
+}
+.user-time-marg-top {
+}
+.user-comt-marg-top {
+    margin-top: 0.2em;
+}
+.user-list {
+    color: #333333;
+}
+.list-cash {
+    color: #333333;
+    font-size: 0.96em;
+}
+.already-received {
+    color: #999999;
+}
+
+.list-marg-top {
+    margin-top: 1.0em;
+}
+.list-view li {
+    margin-left: 0.5em;
+}
+.list-cont-padd {
+    padding: 0.5em 1.0em;
+}
+
+.list-link {
+    width: 100%;
+}
+.list-link .list-marg-top {
+    width: 100%;
+}
+.list-link-left {
+    width: 48%;
+    position: absolute;
+    padding: 1.0em 0.625em;
+    background-color: white;
+}
+.list-link-middle {
+    width: 4%;
+    left: 48%;
+    background-color: #F2F2F2;
+}
+.list-link-right {
+    width: 48%;
+    margin-left: 52%;
+    padding: 1.0em 0.625em;
+    background-color: white;
+}
+.list-btn-padd {
+    padding: 0.8em 0.625em;
+    background-color: #FF5265;
+}
+
+.larid-bc-border {
+    border-bottom: 1px solid;
+    border-bottom-color: #E0E0E0;
+}
+
+.laird-bottom-left {
+    background-color: #FB5B48;
+    color: white;
+    padding: 0.625em 0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.laird-bottom-right {
+    background-color: white;
+    color: #FB5B48;
+    padding: 0.625em 0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}

@@ -1,0 +1,29 @@
+﻿@{
+    var ubll = new RelexBarBLL.UsersBLL();
+    var itbll = new RelexBarBLL.InfomationsBLL();
+}
+@model List<RelexBarBLL.Models.InfomationsModel>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@*<img src="@Model[i].HeadImg" style="width:30px;height:30px;border-radius:50%" />*@@(Model[i].UID != Guid.Empty ? Model[i].Phone+"【"+Model[i].CardNumber+"】" : "系统")</td>
+        @*<td>@ubll.GetUserById(Model[i].UID).Phone</td>*@
+        <td title="@Model[i].title">@(RelexBarBLL.Common.StringTruncat(Model[i].title, 40))</td>
+        @*<td>@Model[i].title</td>*@
+        <td>@itbll.GetInfomationTypeById(Model[i].Type).Name</td>
+        <td>@Model[i].ViewCount</td>
+        <td>@Model[i].GoodCount</td>
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CAdStatus('@Model[i].IID',this)" />
+        </td>
+        <td>@Model[i].BeginTime</td>
+        <td>@Model[i].EndTime</td>
+        <td>
+            <span class="btn-link" onclick="EditInfomation('@Model[i].IID')"><i class="glyphicon glyphicon-edit"></i>编辑</span><br /><br />
+            <span class="btn-link" onclick="InfomationsShow('@Model[i].IID')"><i class="glyphicon glyphicon-zoom-in"></i>查看详情</span>
+        </td>
+        <td style="vertical-align: middle;"><span class="btn-link" onclick="GetManager('InfomationsCommentManager/@Model[i].IID')"><i class="glyphicon glyphicon-zoom-in"></i>查看评论</span></td>
+
+        </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

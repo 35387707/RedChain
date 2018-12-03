@@ -1,0 +1,792 @@
+﻿@charset "utf-8";
+/*
+    game chat : initial style
+    start date :2017/08/14,Mon
+ * */
+
+/*initialize*/
+html,body,div,p,ul,li,form{
+    margin:0;
+    padding:0;
+}
+body{
+    font-size:1.3rem;
+    -webkit-tap-highlight-color:rgba(0,0,0,0.02);/*cancel the blue highlight shadow*/
+}
+a{
+    color:#000;
+    font-size:1.3rem;
+    text-decoration:none;
+}
+li{
+    list-style:none;
+}
+img{
+    display:block;
+    width:100%;
+}
+input{
+	padding:0;
+	font-size:1.3rem;
+	color:#000;
+    border:none;
+    outline:0 none;
+    box-sizing:border-box;
+}
+input::-webkit-input-placeholder{
+    font-size:1.3rem;
+    color:#ccc;
+}
+textarea{
+    display:block;
+    font-size:1.3rem;
+    resize:none;
+    border:none;
+    outline:0 none;
+}
+textarea::-webkit-input-placeholder{
+    font-size:1.3rem;
+    color:#999;
+}
+
+
+/*common module*/
+.wrap{
+	position:relative;
+    width:100%;
+    max-width:37.5rem;
+}
+.gray-wrap{
+    background-color:#f0eff5;
+}
+.of-hide{
+    overflow:hidden;
+}
+.of-auto{
+    overflow-y:auto;
+}
+.vh100{
+    height:100vh;
+}
+.min-h100{
+    min-height:100vh;
+}
+.same-pt-wrap1{
+    padding-top:6.50390625rem;
+}
+.same-pt-wrap2{
+    padding-top:12.12890625rem;
+}
+.same-pb-wrap{
+    padding-bottom:5.80078125rem;
+}
+.same-ofauto-wrap{
+    width:110%;
+    height:100vh;
+    padding-right:10%;
+    overflow-y:auto;
+    box-sizing:border-box;
+}
+.borderbox{
+    box-sizing:border-box;
+}
+
+.fl{
+    float:left;
+}
+.fr{
+    float:right;
+}
+.clearf:after{
+	display:block;
+	clear:both;
+	content:"";
+	visibility:hidden;
+	height:0;
+}
+.clearf{
+	zoom:1;
+}
+
+.halfTop{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+}
+
+/*共用的头部*/
+.Header{
+    position:fixed;
+    top:0;
+    z-index:9999;
+    width:100%;
+    height:6.50390625rem;
+    line-height:6.50390625rem;
+    text-align:center;
+    background-color:#030000;
+    color:#fff;
+    font-size:1.7rem;
+}
+.backto{/*头部左边返回键*/
+    left:1rem;
+    display:block;
+    width:0.8rem;
+    height:1rem;
+    background-image:url(../img/header/backto.png);
+}
+.cross{/*十字架*/
+    right:2.16796875rem;
+    display:block;
+    width:1.2890625rem;
+    height:1.2890625rem;
+    background-image:url(../img/header/morebtn.png);
+    background-size:100%;
+}
+.header-r-font{/*头部右边字体（取消、关闭）*/
+    right:1.5234375rem;
+    color:#b4b3b3;
+}
+.header-l-font{/*头部左边字体*/
+    left:2.85rem;
+    color:#fff;
+}
+.header-person{/*头部右边人像（聊天界面）*/
+    right:1.5234375rem;
+    width:1.58203125rem;
+    height:1.69921875rem;
+    background:url(../img/header/usericon.png) no-repeat;
+    background-size:100%;
+}
+.finish{/*完成按钮*/
+    right:1.46484375rem;
+    font-size:1.6rem;
+    color:#b60005;
+}
+.bgSR{
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+
+.Header-search-wrap{
+    left:1.5234375rem;
+}
+.Header-search{
+    position:relative;
+    width:29.8828125rem;
+    height:2.8125rem;
+    border:0.05rem solid #fff;
+    border-radius:0.4rem;
+    overflow:hidden;
+}
+.Header-search>.txt{
+    display:block;
+    width:100%;
+    height:100%;
+    background-color:transparent;
+    text-indent:1rem;
+    color:#fff;
+}
+.Header-search>.txt::-webkit-input-placeholder{
+    text-indent:1rem;
+    color:#8a8989;
+}
+.Header-search>.icon{
+    left:0;
+    display:block;
+    width:1.46484375rem;
+    height:1.46484375rem;
+    background:url(../img/header/searchbtn.png) no-repeat;
+    background-size:100%;
+}
+
+/*头部更多*/
+.header-extra-wrap{
+    position:absolute;
+    right:1.11328125rem;
+    top:7.3828125rem;
+    z-index:999;
+    display:none;
+}
+.extras-block{
+    position:relative;
+}
+.extra-sanjiao{
+    position:absolute;
+    bottom:98.5%;
+    right:1.34765625rem;
+    border-style:solid;
+    border-width:0.52734375rem;
+    border-top-color:transparent;
+    border-left-color:transparent;
+    border-right-color:transparent;
+    border-bottom-color:#000;
+}
+.extra-list{
+    width:11.1328125rem;
+    height:9.66796875rem;
+    padding:0.703125rem 0.99609375rem;
+    background-color:#000;
+    border:0.05rem solid #838383;
+    box-sizing:border-box;
+}
+.extra-item{
+    position:relative;
+    padding-left:2.28515625rem;
+    height:2.63671875rem;
+    line-height:2.63671875rem;
+    font-size:0.99609375rem;
+    color:#dadada;
+    text-align:left;
+    border-bottom:0.1171875rem solid #666;
+}
+.extra-item:last-child{
+    border-bottom:none;
+}
+.extra-item .icon{
+    position:absolute;
+    top:50%;
+    left:0;
+    display:block;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    background-repeat:no-repeat;
+    background-size:100% !important;
+}
+.extra-item .chatIcon{
+    width:1.875rem;
+    height:1.640625rem;
+    background-image:url(../img/header/addchat.png);
+}
+.extra-item .friIcon{
+    width:1.875rem;
+    height:2.05078125rem;
+    background-image:url(../img/header/addfriend.png);
+}
+.extra-item .roomIcon{
+    width:1.93359375rem;
+    height:1.93359375rem;
+    background-image:url(../img/header/addroom.png);
+}
+
+/*共用的大按钮*/
+.bigBtn{
+    display:block;
+    width:29.53125rem;
+    height:4.21875rem;
+    margin-left:auto;
+    margin-right:auto;
+    -webkit-border-radius:0.8rem;
+       -moz-border-radius:0.8rem;
+        -ms-border-radius:0.8rem;
+         -o-border-radius:0.8rem;
+            border-radius:0.8rem;
+    border:0.05rem solid #b5b5b6;
+    font-size:1.46484375rem;
+}
+.bg-w{
+    background-color:#fff;
+    border:0.05rem solid #000;
+}
+.bg-r{
+    background-color:#b60005;
+    color:#fff;
+}
+.bg-b{
+    background-color:#000;
+    color:#fff;
+}
+.transparent{
+    opacity:.3;
+}
+/*共用的enter选项*/
+.enter-itemlist{
+    padding:0 1.5234375rem;
+    border-top:0.05rem solid #cdcccc;
+    border-bottom:0.05rem solid #cdcccc;
+    background-color:#fff;
+}
+.enter-item{
+    position:relative;
+    height:4.3359375rem;
+    line-height:4.3359375rem;
+    line-height:4rem;
+    font-size:1.46484375rem;
+    border-bottom:0.05rem solid #cdcccc;
+}
+.enter-item:last-child{
+    border-bottom:none;
+}
+.item-info{
+    right:2.7rem;
+    display:block;
+    width:13rem;
+    color:#a3a3a3;
+    text-align:right;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.enter-item .gt{
+    right:0;
+}
+
+/*共用的进入箭头*/
+.gt{
+    display:block;
+    width:0.9375rem;
+    height:1.11328125rem;
+    background:url(../img/common/entericon.png) no-repeat;
+    background-size:100%;
+}
+
+/*共用的黑色mask*/
+.blackmask{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:10000;
+    display:none;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.65);
+}
+.mask-main-wrap{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+.alert-block{
+    position:absolute;
+    top:30%;
+    left:50%;
+    -webkit-transform:translateX(-50%);
+       -moz-transform:translateX(-50%);
+        -ms-transform:translateX(-50%);
+         -o-transform:translateX(-50%);
+            transform:translateX(-50%);
+    display:none;
+    width:25.4296875rem;
+    padding:2.9296875rem 2.40234375rem;        
+    background-color:#fff;
+    border-radius:0.4rem;
+    box-sizing:border-box;
+}
+.alert-remind{
+    font-size:1.40625rem;
+    letter-spacing:0.1rem;
+}
+.alert-title{
+    margin-bottom:2.4609375rem;
+    font-size:1.640625rem;
+}
+.alert-confirm{
+    margin-top:2.6953125rem;
+    text-align:right;
+    font-size:1.46484375rem;
+}
+.color-r{
+    color:#b60005;
+}
+.color-g{
+    color:green;
+}
+.ab-mr{
+    margin-right:1rem;
+}
+
+/*聊天共用的列表*/
+.chatblock{
+    background-color:#fff;
+}
+.chat-item{
+    position:relative;
+    height:6.38671875rem;
+    padding-left:6.2109375rem;
+    border-bottom:0.05rem solid #cdcccc;
+    overflow:hidden;
+}
+.chatrecord{
+    padding:1rem 1.7578125rem;
+    background-color:#fff;
+}
+.chat-headimg{
+    left:0;
+    width:5.0390625rem;
+    height:5.0390625rem;
+    border-radius:0.4rem;
+}
+.chat-title{
+    padding-top:1.171875rem;
+    padding-bottom:0.87890625rem;
+    color:#8e8d8d;
+    border-bottom:0.05rem solid #cdcccc;
+}
+.chat-name{
+    margin-top:1.2890625rem;
+    font-size:1.58203125rem;
+}
+.chat-lastmsg{
+    margin-top:1.0546875rem;
+    font-size:1.171875rem;
+    color:#999;
+}
+.chat-time{
+    position:absolute;
+    top:1.69921875rem;
+    right:1rem;
+    font-size:1.1rem;
+    color:#8e8d8d;
+}
+.chat-mt-1{
+    margin-top:1.23046875rem;
+}
+.divide{
+    width:100%;
+    height:1.23046875rem;
+    background-color:#f0eff5;
+}
+
+/*共用的底部菜单*/
+.Footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:5.80078125rem;
+    border-top:0.05rem solid #dfdfe0;
+    background-color:#f8f8f9;
+}
+.footerlist{
+    height:100%;
+}
+.footer-item{
+    float:left;
+    width:25%;
+    height:100%;
+    text-align:center;
+}
+.footer-item .auto{
+    width:4.1015625rem;
+    margin:0 auto;
+}
+.footer-item .icon-wrap{
+    width:4.1015625rem;
+    height:2.7rem;
+}
+.footer-item .icon{
+    display:block;
+    margin:0.87890625rem auto 0 auto;
+    background-repeat:no-repeat;
+    background-size:100%;
+}
+.footer-item .font{
+    font-size:1.11328125rem;
+    color:#8a8989;
+}
+.footerlist .active .font{
+    color:#000;
+}
+
+.chat-icon,.chat-icon-active{
+    width:2.34375rem;
+    height:2.34375rem;
+}
+.chat-icon{
+    background-image:url(../img/footer/chatpage.png);
+}
+.chat-icon-active{
+    background-image:url(../img/footer/chatpageactive.png);
+}
+
+.address-icon,.address-icon-active{
+    width:3.22265625rem;
+    height:2.4609375rem;
+}
+.address-icon{
+    background-image:url(../img/footer/addressbook.png);
+}
+.address-icon-active{
+    background-image:url(../img/footer/addressbookactive.png);
+}
+.discover-icon,.discover-icon-acitve{
+    width:2.6953125rem;
+    height:2.6953125rem;
+}
+.discover-icon{
+    background-image:url(../img/footer/discover.png);
+}
+.discover-icon-acitve{
+    background-image:url(../img/footer/discoveractive.png);
+}
+.mine-icon,.mine-icon-active{
+    width:2.578125rem;
+    height:2.578125rem;
+}
+.mine-icon{
+    background-image:url(../img/footer/mine.png);
+}
+.mine-icon-active{
+    background-image:url(../img/footer/mineactive.png);
+}
+
+/*开关*/
+.switch{
+    right:0;
+    width:4.74609375rem;
+    height:2.4609375rem;
+    border-radius:4.74609375rem;
+    border:0.05rem solid #cdcdcd;
+    box-sizing:border-box;
+    overflow:hidden;
+    transition:0.5s;
+}
+.move{
+    display:block;
+    width:2.2265625rem;
+    height:2.2265625rem;
+    margin:0.1171875rem 0;
+    border-radius:50%;
+    background-color:#fff;
+    box-shadow:0 0 0.05rem 0.05rem #e0dede;
+    transition:0.2s;
+}
+.move-on{
+    margin-left:2.34375rem;
+}
+.move-off{
+    margin-left:0.1171875rem;
+}
+.switch-on{
+    background-color:#000;
+}
+.switch-off{
+    background-color:#fff;
+}
+
+/*备注、名片*/
+.remark-block{
+    padding-top:2rem;
+}
+.remark-title{
+	display:block;
+    color:#999;
+    padding-left:2rem;
+    padding-bottom:0.8rem;
+}
+.remark-iptTxt{
+    display:block;
+    width:100%;
+    height:5rem;
+    text-indent:2rem;
+    border-top:0.05rem solid #cdcccc;
+    border-bottom:0.05rem solid #cdcccc;
+}
+.remark-btn-mt{
+    margin-top:3rem;
+}
+.remark-btn-mt1{
+    margin-top:5.859375rem;
+}
+.announce-area{
+    width:100%;
+    min-height:17.39453125rem;
+    margin-top:1.7578125rem;
+    padding:1.46484375rem;
+    border-top:0.05rem solid #cdcccc;
+    border-bottom:0.05rem solid #cdcccc;
+    -webkit-text-size-adjust:none;
+    overflow-y:visible;
+}
+
+/*底部输入框*/
+.chatfoot-block{
+    position:fixed;
+    bottom:0;
+    z-index:999;
+    width:100%;
+    /*height:16.40625rem;*/
+    background-color:#f6f6f8;
+    transition:.3s;
+    padding-bottom:2rem;
+}
+.cfb-down{
+    margin-bottom:-13.77734375rem;
+}
+.cfb-up{
+    margin-bottom:0;
+}
+.cfb-mid{
+    width:100%;
+    height:2rem;
+}
+
+.cfb-top{
+    position:relative;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    border-top:0.05rem solid #dddddf;
+    border-bottom:0.05rem solid #dddddf;
+}
+.cfb-txt-wrap{
+    width:27.48046875rem;
+    min-height:2.5rem;
+    margin-left:1.58203125rem;
+    border:0.06rem solid #c9caca;
+    border-radius:0.4rem;
+    overflow:hidden;
+}
+.cfb-txt{
+    display:block;
+    width:110%;
+    height:2.5rem;
+    max-height:7rem;
+    /*padding-top:0.5rem;*/
+    padding-right:10%;
+    /*padding-bottom:0.5rem;*/
+    padding-left:1rem;
+    -webkit-box-sizing:border-box;
+       -moz-box-sizing:border-box;
+            box-sizing:border-box;
+    -webkit-text-size-adjust:none;
+    font-size:1.5rem;
+}
+.cfb-emoji{
+    right:4.8046875rem;
+    display:block;
+    width:2.51953125rem;
+    height:2.4609375rem;
+    background:url(../img/chatfoot/emoji.png) no-repeat;
+    background-size:100%;
+}
+.cfb-more{
+    right:1.5234375rem;
+    display:block;
+    width:2.4609375rem;
+    height:2.51953125rem;
+    background:url(../img/chatfoot/moreicon.png) no-repeat;
+    background-size:100%;
+}
+.cfb-sendbtn{/*发送btn*/
+    position:absolute;
+    right:1rem;
+    display:none;
+    padding:0.3rem;
+    border:0.105rem solid #b1b1b2;
+    color:#b1b1b2;
+    font-size:1.2rem;
+    background-color:#fff;
+    border-radius:0.3rem;
+}
+.cfb-bot{
+    position:relative;
+    height:11.71875rem;
+    box-sizing:border-box;
+}
+.cfb-item-wrap{
+    width:32.640625rem;
+    margin:0 auto;
+    padding-top:2.16796875rem;
+}
+.cfb-item{
+    position:relative;
+    display:inline-block;
+    width:5.0390625rem;
+    height:5.0390625rem;
+    margin:0 1.34765625rem;
+    border:0.05rem solid #ceced0;
+    border-radius:0.6rem;
+    background-color:#fff;
+}
+.cfb-icon{
+    position:absolute;
+    left:50%;
+    top:50%;
+    -webkit-transform:translate(-50%,-50%);
+       -moz-transform:translate(-50%,-50%);
+        -ms-transform:translate(-50%,-50%);
+         -o-transform:translate(-50%,-50%);
+            transform:translate(-50%,-50%);
+    display:block;
+    background-repeat:no-repeat !important;
+    background-size:100% !important;
+}
+.cfb-photo{
+    width:2.4609375rem;
+    height:2.16796875rem;
+    background-image:url(../img/chatfoot/photos.png);
+}
+.cfb-pocket{
+    width:1.81640625rem;
+    height:2.2265625rem;
+    background-image:url(../img/chatfoot/repocketremind.png);
+}
+.cfb-transfer{
+    width:2.34375rem;
+    height:1.46484375rem;
+    background-image:url(../img/chatfoot/transfer.png);
+}
+.cfb-card{
+    width:2.05078125rem;
+    height:2.28515625rem;
+    background-image:url(../img/chatfoot/usericon.png);
+}
+.cfb-font{
+    position:absolute;
+    top:5.7421875rem;
+    left:50%;
+    -webkit-transform:translateX(-50%);
+       -moz-transform:translateX(-50%);
+        -ms-transform:translateX(-50%);
+         -o-transform:translateX(-50%);
+            transform:translateX(-50%);
+    display:block;
+    width:100%;
+    font-size:1.0546875rem;
+    color:#9d9d9e;
+    text-align:center;
+}
+.cfb-emoji-wrap{
+    width:100% !important;
+    margin-left:auto;
+    margin-right:auto;
+}
+/*表情滑屏*/
+.swipe{overflow:hidden;/*visibility:hidden;*/position:relative;display:none;}
+.swipe-wrap{overflow:hidden;position:relative;width:100% !important;}
+.swipe-wrap>li{float:left;width:100% !important;height:11.71875rem;position:relative;}
+.point{
+    position:absolute;
+    left:50%;
+    -webkit-transform:translateX(-50%);
+       -moz-transform:translateX(-50%);
+        -ms-transform:translateX(-50%);
+         -o-transform:translateX(-50%);
+            transform:translateX(-50%);
+    bottom:1rem;
+}
+.point>li{
+    float:left;
+    width:0.5rem;
+    height:0.5rem;
+    margin-right:0.5rem;
+    background-color:#ccc;
+    border-radius:50%;
+}
+.point>.active{
+    background-color:#999;
+}
+.emoji{
+    float:left;
+    display:block;
+    width:2.5rem;
+    height:2.5rem;
+    margin:0.5rem 1.09375rem;
+    background-repeat:no-repeat;
+    background-size:100%;
+}

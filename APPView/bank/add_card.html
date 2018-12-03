@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../bank/css/withdraw.css">
+        <link rel="stylesheet" href="../bank/css/wallet-v1.css">
+        <link rel="stylesheet" href="../bank/css/upgrade-v1.css">
+        <link rel="stylesheet" href="../bank/css/editor-v1.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh bc-text-head">
+                <div class="ub">
+                    <div class="nav-btn" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <h1 class="wallet-header-padd ub-f1 ulev-3 font-normal ut-s tx-l">添加银行卡</h1>
+                    <div class="nav-mine" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        帮助
+                    </div>
+                </div>
+            </div>
+
+            <div class="num-wrap z-index">
+
+                <div style="height: 1.0em;"></div>
+
+                <div class="ubt ubb bc-border c-wh cont-bg">
+
+                    <ul class="ubb bc-border ub t-bla ub-ac card-ul">
+                        <li class="ub-f1 ut-s font-tixian">
+                            &nbsp;请绑定持卡人本人的银行卡
+                        </li>
+                    </ul>
+                    
+                    <ul class="ubb bc-border ub ub-ac add-lis">
+                        <li class="ub-f1 ut-s">
+                            <div class="ub ub-ac" >
+                                <div class="left-txt-color ulev0 judg-txt-marg">
+                                    &nbsp;银行名称
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="upgr-input ub ub-f1">
+                                        <input id="bankName" type="search" class="ub-f1 outline">
+                                    </div>
+                                </div>
+                                <!-- <div class="right-card" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="ub-img right-zhuyi"></div>
+                                </div> -->
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <ul class="ubb bc-border ub ub-ac add-lis">
+                        <li class="ub-f1 ut-s">
+                            <div class="ub ub-ac" >
+                                <div class="left-txt-color ulev0 judg-txt-marg">
+                                    &nbsp;支行名称
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="upgr-input ub ub-f1">
+                                        <input id="bankZhiHang" type="search" class="ub-f1 outline">
+                                    </div>
+                                </div>
+                                <!-- <div class="right-card" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="ub-img right-zhuyi"></div>
+                                </div> -->
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <ul class="ubb bc-border ub ub-ac add-lis">
+                        <li class="ub-f1 ut-s">
+                            <div class="ub ub-ac" >
+                                <div class="left-txt-color ulev0 judg-txt-marg">
+                                    &nbsp;开户姓名
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="upgr-input ub ub-f1">
+                                        <input id="bankUser" type="search" class="ub-f1 outline">
+                                    </div>
+                                </div>
+                                <div class="right-card" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="ub-img right-zhuyi"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="ubb bc-border ub ub-ac add-lis">
+                        <li class="ub-f1 ut-s">
+                            <div class="ub ub-ac" >
+                                <div class="left-txt-color ulev0 judg-txt-marg">
+                                    &nbsp;银行卡号
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="upgr-input ub ub-f1">
+                                        <input id="bankAccount" type="search" class="ub-f1 outline">
+                                    </div>
+                                </div>
+                                <!-- <div class="right-card" ontouchstart="appcan.touch('btn-act')">
+                                    <div id="openCreditCardRec" class="ub-img right-xiangji"></div>
+                                </div> -->
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div style="height: 0.5em;"></div>
+
+                <div class="add-wd">
+                    <div class="ub ub-ac ub-pc uc-a1 tx-bg with-bg" ontouchstart="appcan.touch('btn-act')" id="add_card">
+                        <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                        确认添加
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../lib/jquery-1.8.3/jquery.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../bank/js/add_card.js"></script>
+        <script>
+            //var HasPayPwd = localStorage.getItem("HasPayPwd");
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+
+                }
+                
+            });
+            
+            $('#nav_left').click(function() {
+                appcan.window.close(-1);
+            });
+
+        </script>
+    </body>
+</html>
+

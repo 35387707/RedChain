@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/ui-box.css">
+    <link rel="stylesheet" href="../css/ui-base.css">
+    <link rel="stylesheet" href="../css/ui-color.css">
+    <link rel="stylesheet" href="../css/appcan.icon.css">
+    <link rel="stylesheet" href="../css/appcan.control.css">
+    <link rel="stylesheet" href="../login/css/log-v1.css">
+    <link rel="stylesheet" href="../pay/css/pay.css">
+    <link rel="stylesheet" href="../pay/css/pwd.css">
+    <link rel="stylesheet" href="../pay/css/pwd_set.css">
+</head>
+
+<body class="ub um-vp ub-ver" ontouchstart>
+    <div id="page_0" style="width: 100%; height: 100%; background-color: #EAEAEA;">
+
+        <div class="uh bc-head ubb bc-border">
+            <div class="ub">
+                <div class="nav-one" id="nav_left">
+                    <div class="ub-img1 nav-back"></div>
+                </div>
+                <div class="nav-two"></div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">转账</h1>
+                <div class="nav-btn" id="nav_right">
+                    <div class="fa fa-1g ub-img1 reg-sty"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主框-start   -->
+        <div style="height: 1.2em;"></div>
+
+        <!-- 输入框 -->
+        <div class="ubb bc-border b-gra umar-a uc-a1 c-wh phone-wd">
+            <div class="ub ub-ac in-bg">
+                <div class="pwd-umhw umar-for">
+                    金额
+                </div>
+                <div class="ub-f1 uinn8">
+                    <input placeholder="转账金额" id="money" type="number" class="pwd-input uc-a1 onlyNumAlpha outline">
+                </div>
+                <!-- <div class="b-d9 uc-a1 ub-pc chk-bg">
+                <div class="ub ub-ac ub-pc tx-c font-color1" style="font-size: 0.88em; color: #FBB9C0; margin-right: 0.68em;">
+                获取验证码
+                </div>
+                <div class="resyzmicon resyzmwg ub-img uc-a1"></div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div> -->
+
+        <div class="ubb bc-border b-gra umar-a uc-a1 c-wh msg-wd">
+            <div class="ub ub-ac in-bg">
+                <div ontouchstart class="pwd-umhw umar-for">
+                    邀请码
+                </div>
+                <div class="ub-f1 uinn8">
+                    <input placeholder="接收人邀请码" id="recnum" type="search" class="pwd-input uc-a1 onlyNumAlpha outline">
+                </div>
+
+            </div>
+        </div>
+
+        <div style="height: 1.8em;"></div>
+
+        <div class="uinn-btn next-wd">
+            <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn uc-a1" id="carry">
+                <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                确认转账
+            </div>
+        </div>
+
+      
+    </div>
+
+    <div id="page_0" class="up ub ub-ver  page_1" tabindex="0" style="display:none!important" >
+
+        <div class="empty-view"></div>
+
+        <!-- 支付窗口 -->
+        <div class="pay-mode">
+            <div class="pay-padd">
+
+                <!-- 关闭 -->
+                <div class="pay-clos">
+                    <div class="ub-img pay-clos-wd pay-clos-img close" ></div>
+                </div>
+
+                <!-- 内容框-->
+                <div class="pay-cont">
+                    <div class="pay-title" ontouchstart>
+                        支付
+                    </div>
+                    <div class="pay-num" ontouchstart id="pay_price">
+                        0
+                    </div>
+
+                    <!-- <div data-title="福利积分" class="ubt bc-border pay-hongyun pay-sub" ontouchstart="appcan.touch('btn-act')">
+                    <ul class="ub t-bla ub-ac pay-ul-padd">
+                    <li class="pay-li-sty ub ub-ac ub-pc">
+                    <div data-round="福利积分" class="ub-img pay-icon pay-gray"></div>
+                    <div class="ub-img pay-img hongyun-img"></div>
+                    </li>
+                    <li class="ub-f1 ut-s pay-change">
+                    福利积分<span class="pay-float-right"><a id="FootQuan">0</a></span>
+                    </li>
+                    </ul>
+                    </div>
+
+                    <div data-title="福音积分" class="ubt bc-border pay-hongyun pay-sub" ontouchstart="appcan.touch('btn-act')">
+                    <ul class="ub t-bla ub-ac pay-ul-padd">
+                    <li class="pay-li-sty ub ub-ac ub-pc">
+                    <div data-round="福音积分" class="ub-img pay-icon pay-gray"></div>
+                    <div class="ub-img pay-img hongyun-img"></div>
+                    </li>
+                    <li class="ub-f1 ut-s pay-change">
+                    福音积分<span class="pay-float-right"><a id="Score">0</a></span>
+                    </li>
+                    </ul>
+                    </div> -->
+
+                    <div data-title="福BAO多" class="ubt bc-border pay-hongyun pay-sub" ontouchstart>
+                        <ul class="ub t-bla ub-ac pay-ul-padd">
+                            <li class="pay-li-sty ub ub-ac ub-pc">
+                                <div data-round="福BAO多" class="ub-img pay-icon pay-gray"></div>
+                                <div class="ub-img pay-img hongyun-img"></div>
+                            </li>
+                            <li class="ub-f1 ut-s pay-change">
+                                福BAO多零钱<span class="pay-float-right"><a id="Balance">0</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div data-title="微信" class="ubt bc-border pay-weixin pay-sub" ontouchstart>
+                        <ul class="ub t-bla ub-ac pay-ul-padd">
+                            <li class="pay-li-sty ub ub-ac ub-pc">
+                                <div data-round="微信" class="ub-img pay-icon pay-gray"></div>
+                                <div class="ub-img pay-img weixin-img"></div>
+                            </li>
+                            <li class="ub-f1 ut-s pay-change">
+                                微信支付<span class="pay-float-right"><a>一元以上可以使用</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div data-title="支付宝" class="ubt bc-border pay-zhifubao pay-sub" ontouchstart>
+                        <ul class="ub t-bla ub-ac pay-ul-padd">
+                            <li class="pay-li-sty ub ub-ac ub-pc">
+                                <div data-round="支付宝" class="ub-img pay-icon pay-gray pay-green"></div>
+                                <div class="ub-img pay-img zhifubao-img"></div>
+                            </li>
+                            <li class="ub-f1 ut-s pay-change">
+                                支付宝支付<span class="pay-float-right"><a>一元以上可以使用</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div id="pay" class="pay-btn" ontouchstart>
+                    确认支付
+                </div>
+
+                <!-- 内容框-end -->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="num-cont page_2"  style="display:none!important">
+
+        <div class="num-input-box">
+
+            <div class="uh ubb bc-border">
+                <div class="ub">
+                    <div class="nav-btn close-pay" id="nav_left" ontouchstart>
+                        <div class="ub-img1 reg-back"></div>
+                    </div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-back">请输入支付密码</h1>
+                    <div class="nav-btn">
+                        <div class="fa fa-1g ub-img1 reg-sty"></div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="num-height"></ul>
+
+            <ul class="num-disp-box">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <ul class="num-fgt-pwd">
+                <span class="forget" ontouchstart>忘记密码?</span>
+            </ul>
+
+            <ul class="num-height"></ul>
+            <ul class="num-height"></ul>
+
+            <ul class="num-key">
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-sgl">1</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-border num-sgl">2</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-sgl">3</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-sgl">4</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-border num-sgl">5</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-sgl">6</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-sgl">7</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-border num-sgl">8</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-sgl">9</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-empty">清空</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-border num-sgl">0</a>
+                </li>
+                <li>
+                    <a ontouchstart href="javascript:void(0);" class="num-del">删除</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+   
+
+ 
+    <script src="../lib/jquery-1.8.3/jquery.js"></script>
+    <script src="../pay/js/pwd.js"></script>
+
+    <!--<script src="../js/appcan.js"></script>
+    <script src="../js/appcan.control.js"></script>-->
+
+    <script src="../pop/js/place.js"></script>
+    <script src="../pop/js/province.js"></script>
+    <script src="../addr/js/mgt.js"></script>
+    <!--<script src="../order/js/payDetail.js"></script>-->
+    <!--<script src="../pay/js/pwd.js"></script>-->
+
+    <script src="../js/com/debug.js"></script>
+    <script src="../js/com/date.js"></script>
+    <script src="../js/com/popup.js"></script>
+    <script src="../js/com/system.js"></script>
+    <!--<script src="../js/com/number.js"></script>-->
+    <script src="../js/com/image.js"></script>
+    <script src="../js/com/json.js"></script>
+    <script src="../js/com/pay.js"></script>
+    <!--<script src="../pay/js/carry.js"></script>-->
+    <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+    <script src="../setup/js/token.js"></script>
+    <script src="../js/token.js"></script>
+    <script src="../js/com/number.js"></script>
+    <script src="../js/com/json.js"></script>
+    
+    <script src="../order/js/payDetail.js"></script>
+
+
+    <script>
+
+        $().ready(function () {
+
+            localStorage.setItem("payRoot", 'carry');
+
+            localStorage.setItem("PriceType", 0);
+
+            var cResolutionRatioWidth = localStorage.getItem("cResolutionRatioWidth");
+            var cResolutionRatioHeight = localStorage.getItem("cResolutionRatioHeight");
+            var bodyWidth = localStorage.getItem("bodyWidth");
+            var bodyHeight = localStorage.getItem("bodyHeight");
+            var bdy = {
+                cResolutionRatioWidth: cResolutionRatioWidth,
+                cResolutionRatioHeight: cResolutionRatioHeight,
+                bodyWidth: bodyWidth,
+                bodyHeight: bodyHeight,
+            }
+            setBalances();
+            //getNewRedPacketByUID(token);
+        });
+
+        function setBalances() {
+
+            //localStorage.getItem("uid"), JSON.parse(localStorage.getItem("UserInfo")), 'mine';
+
+            var Balance = ''
+            //福利积分
+            var FootQuan = '';
+            //福音积分
+            var Score = '';
+
+            //var UserInfo = JSON.parse(localStorage.getItem("UserInfo"));
+
+            //Balance = UserInfo.Info.Balance;
+            //FootQuan = UserInfo.Info.FootQuan;
+            //Score = UserInfo.Info.Score;
+
+            $('#Balance').text(Balance);
+            $('#FootQuan').text(FootQuan);
+            $('#Score').text(Score);
+
+            var PriceType = parseInt(localStorage.getItem("PriceType"));
+
+            debug(PriceType);
+
+            var title = '';
+
+            if (PriceType == 0) {
+
+                title = '福BAO多';
+
+            } else if (PriceType == 1) {
+
+                title = '福BAO多';
+
+            } else if (PriceType == 2) {
+
+                title = '福音积分';
+
+            } else if (PriceType == 4) {
+
+                title = '福券';
+
+            }
+
+            $('.pay-icon').removeClass('pay-green');
+            $("div[data-round='" + title + "']").addClass('pay-green');
+
+        }
+
+        $('.pay-sub').click(function () {
+
+            var PriceType = parseInt(localStorage.getItem("PriceType"));
+            if (PriceType == 0 || PriceType == 1) {
+                var title = $(this).data('title');
+                if (title == '福BAO多' || title == '支付宝' || title == '微信') {
+                    $('.pay-icon').removeClass('pay-green');
+                    $("div[data-round='" + title + "']").addClass('pay-green');
+                }
+
+            }
+
+        });
+
+        var carry_stat = true;
+        $('#carry').click(function () {
+
+            if (carry_stat) {
+
+                carry_stat = false;
+                judgCarryReq();
+
+            }
+
+        });
+
+        //判断所有必填条件
+        function judgCarryReq() {
+
+            var req_arr = [];
+            var money = trim($('#money').val());
+            if (money == 0 || money == '0' || money == '' || money == null || money == undefined) {
+                req_arr.push('金额');
+            }
+
+            var recnum = trim($('#recnum').val());
+            if (recnum == '' || recnum == null || recnum == undefined) {
+                req_arr.push('推荐码');
+            }
+
+            if (req_arr.length == 0 || req_arr == '') {
+
+                carry_stat = true;
+
+                judgHasPayPwd();
+
+            } else {
+
+                carry_stat = true;
+                //  openToast('请输入' + req_arr.join('、'), 3000, 5, 0);
+                alert('请输入' + req_arr.join('、'));
+
+            }
+
+        }
+
+
+        function judgHasPayPwd() {
+
+            var token = GetQueryString("token");
+            if (token != null && token != "") {
+
+                var html = "";
+                $.post("http://www.fbddd.com/Account/GetUserInfo", "token=" + token,
+                    function (data) {
+                        if (data.code == 1) {
+                            var HasPayPwd = '';
+                            if (data.Info.HasPayPwd == false || data.Info.HasPayPwd == 'false') {
+
+                                alert('您当前还没有设置支付密码');
+                                localStorage.setItem("HasPayPwd", '未设置');
+                                window.location.href = '../../setup/PayPwd_Set.html';
+                            } else {
+                                var bodyWidth = localStorage.getItem("bodyWidth");
+                                var bodyHeight = localStorage.getItem("bodyHeight");
+                                localStorage.setItem("pay", 1);
+                                //window.location.href = '../pay/pay.html';
+                                $('.page_1').css("cssText", "display:-webkit-box !important");
+                            }
+                        }
+                    }, "json");
+            }
+
+        }
+
+       
+        function close() {
+            $('.page_1').css("cssText", "display:none !important");
+        }
+
+        $(".close").click(function () {
+            $(this).parent().parent().parent().parent().css("cssText", "display:none !important");
+        });
+
+        $('#pay').click(function () {
+
+            $('.page_2').css("cssText", "display:-webkit-box !important");
+            $('.close').css("cssText", "display:none");
+
+        });
+
+        $(".close-pay").click(function () {
+            $(this).parent().parent().parent().parent().css("cssText", "display:none !important");
+            $('.close').show();
+        })
+
+
+        function doTransforOther(pwd) {
+
+            //需要传入的参数
+            var money = $('#money').val().trim();
+            var recnum = $('#recnum').val().trim();
+
+            var token = GetQueryString("token");
+            if (token != null && token != "") {
+
+                var html = "";
+                $.post("http://www.fbddd.com/Account/DoTransforOther", "token=" + token + "&recnum=" + recnum + "&money=" + money + "&pwd=" + pwd,
+                    function (data) {
+                        if (data.length != 0) {
+
+                            if (data.code == 1 || data.code == '1') {
+
+                                localStorage.setItem("succTxt", '恭喜 转账成功！');
+
+                                // appcan.window.publish('carrySucs', 1);
+
+                                alert('转账成功');
+
+                            } else if (data.code == -113 || data.code == '-113') {
+
+                                carry_stat = true;
+
+                            } else {
+
+                                carry_stat = true;
+
+                                alert(data.msg);
+                            }
+                        }
+                        else {
+                            alert("转账失败");
+                        }
+                    }, "json");
+            }
+
+        }   
+
+
+    </script>
+</body>
+
+</html>

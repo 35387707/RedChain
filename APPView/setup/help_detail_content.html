@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../setup/css/prot-v2.css">
+    </head>
+    <body ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver ub-img1 com-size com-bg" tabindex="0">
+
+            <div class="help-cont">
+
+                <div class="prot-sub tx-l" id="title"></div>
+                <div class="prot-cont tx-l" id="content"></div>
+                <div style="height: 1.0em;"></div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../setup/js/help_list.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                // appcan.window.enableBounce();
+
+                setHelpCont(localStorage.getItem("uid"), 'help_detail');
+
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+﻿@model List<RelexBarDLL.Users>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@Model[i].AreaCode</td>
+        <td>@Model[i].Phone</td>
+        <td><img src="@Model[i].HeadImg1" style="width:30px" /></td>
+        <td>@Model[i].TrueName</td>
+        <td>@((Model[i].Sex == null || Model[i].Sex == 0) ? "男" : "女")</td>
+        <td>@(Model[i].UserType == (int)RelexBarBLL.Common.enUserType.User ? "福星" : (Model[i].UserType == (int)RelexBarBLL.Common.enUserType.Shop ? "福将" : "福相"))</td>
+       
+        <td>@Model[i].TrueName</td>
+        <td>@Model[i].CredID</td>
+        <td><img src="@Model[i].CredImg1" style="width:50px" class="zoom-in" /></td>
+        <td><img src="@Model[i].CredImg2" style="width:50px" class="zoom-in" /></td>
+
+        <td>
+            @(Model[i].RealCheck == (int)RelexBarBLL.Common.enRealCheckStatus.未验证 ? "未验证" :
+            (Model[i].RealCheck == (int)RelexBarBLL.Common.enRealCheckStatus.审核中 ? "审核中" : (Model[i].RealCheck == (int)RelexBarBLL.Common.enRealCheckStatus.已验证 ? "已通过" : "不通过")))
+        </td>
+
+        <td>@Model[i].CreateTime</td>
+        <td>@Model[i].LastLoginTime</td>
+        <td>
+            @if (Model[i].RealCheck == (int)RelexBarBLL.Common.enRealCheckStatus.审核中)
+            {
+                <input type="button" class="btn btn-primary" onclick="txSuccess('@Model[i].ID')" value="通过" />
+                <input type="button" class="btn btn-danger" onclick="txFaild('@Model[i].ID')" value="拒绝" />
+            }
+        </td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../vip/css/upgrade-v1.css">
+        <link rel="stylesheet" href="../hb/css/editor-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb bc-border" style="position: fixed; z-index: 10000;">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">升级会员</h1>
+                    <div class="nav-btn" id="nav-right">
+                        <div class="fa fa-1g ub-img1 cmpl">
+                            <!-- 个人资料 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content">
+
+                <!-- <div class="c-wh">
+                <div class="font-user"></div>
+
+                <div class="ub uinn-a12 ub-ae">
+                <div class="ub ub-ver ub-f1 ub-pc">
+                <div class="tx-c ub-f1 upgr-sty">
+                <div class="upgr-img upgr-cash" ontouchstart="appcan.touch('btn-act')"></div>
+                </div>
+                <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                收现金福包
+                </div>
+                </div>
+                <div class="ub ub-ver ub-f1 ub-pc b-gra-per">
+                <div class="tx-c ub-f1 upgr-sty">
+                <div class="upgr-img upgr-daijinjuan" ontouchstart="appcan.touch('btn-act')"></div>
+                </div>
+                <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                领商家福利券
+                </div>
+                </div>
+                <div class="ub ub-ver ub-f1 ub-pc b-gra-per">
+                <div class="tx-c ub-f1 upgr-sty">
+                <div class="upgr-img upgr-zuanshi" ontouchstart="appcan.touch('btn-act')"></div>
+                </div>
+                <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                攒福包得福报
+                </div>
+                </div>
+                </div>
+                </div> -->
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb ubt bc-border list-marg-top list-cont-padd c-wh ub-ac upgr-type">
+                        <div class="left-txt-color ulev0 ub-f1">
+                            会员类型
+                        </div>
+                        <div class="t-gra-85 ulev-1 tx-r" data-nt="" id="nt">
+
+                        </div>
+                        <li>
+                            <div class="ub-img li-right-arrow"></div>
+                        </li>
+                    </div>
+                </div>
+
+                <!-- 信息验证  -->
+                <div class="ubt ubb bc-border c-wh cont-bg judg-marg-top">
+                    <!-- <ul class="ubb bc-border ub t-bla ub-ac lis">
+                    <li class="ub-f1 ut-s font-xinxi">
+                    信息验证
+                    </li>
+                    </ul> -->
+                    <ul class="ub ub-ac lis">
+                        <li class="ub-f1 ut-s">
+                            <div class="ub ub-ac" >
+                                <div class="left-txt-color ulev0 judg-txt-marg">
+                                    手机号
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="upgr-input ub ub-f1">
+                                        <input id="phone" placeholder="" readonly="" type="number" class="ub-f1 outline">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                        <li class="ub-f1 ut-s">
+                            <div class="ub ub-ac" >
+                                <div class="left-txt-color ulev0 judg-txt-marg">
+                                    验证码
+                                </div>
+                                <div class="ub ub-ac judg-input-width ub-f1">
+                                    <div class="upgr-input ub ub-f1">
+                                        <input id="judg_code" placeholder="请输入手机验证码" type="number" class="ub-f1 outline">
+                                    </div>
+                                </div>
+                                <div id="send_code" class="judg-send-code" ontouchstart="appcan.touch('btn-act')">
+                                    发送验证码
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s ulev-app2">
+                    <div class="ub ub-ac" >
+                    <div class="ulev-app1 judg-txt-marg">
+                    选择地区
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="upgr-input ub ub-f1">
+                    <input placeholder="默认为当前定位地区" type="search" class="ub-f1">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul> -->
+                    <!-- <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s ulev-app2">
+                    <div class="ub ub-ac" >
+                    <div class="ulev-app1 judg-txt-marg">
+                    我的分享人
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="upgr-input ub ub-f1">
+                    <input placeholder="请写入分享人号码(非必填)" type="search" class="ub-f1">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s ulev-app2">
+                    <div class="ub ub-ac" >
+                    <div class="ulev-app1 judg-txt-marg">
+                    分享人对应微信号
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="upgr-input ub ub-f1">
+                    <input placeholder="无推荐人" type="search" class="ub-f1">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul>
+                    <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s ulev-app2">
+                    <div class="ub ub-ac" >
+                    <div class="ulev-app1 judg-txt-marg">
+                    姓名
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="upgr-input ub ub-f1">
+                    <input placeholder="请写入分享人号码(非必填)" type="search" class="ub-f1">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul> -->
+                    <!-- <ul class="ub ub-ac lis">
+                    <li class="ub-f1 ut-s">
+                    <div class="ub ub-ac" >
+                    <div class="left-txt-color ulev0 judg-txt-marg">
+                    身份证
+                    </div>
+                    <div class="ub ub-ac judg-input-width ub-f1">
+                    <div class="upgr-input ub ub-f1">
+                    <input id="credid" placeholder="请输入身份证号码" type="search" class="ub-f1 outline">
+                    </div>
+                    </div>
+                    </div>
+                    </li>
+                    </ul> -->
+                </div>
+
+                <div style="height: 1.0em;"></div>
+
+                <div class="ub ub-ver">
+                    <div class="ub-f1 ub ub-ver ins-sty">
+                        <div class="ub ub-f1">
+                            <textarea type="text" class="ub-f1 outline" placeholder="你要发布的广告内容" id="title"></textarea>
+                        </div>
+                        <div class="ub ub-ac">
+                            <div class="ulev-1 ub-f1">
+                                <div class="ub ub-ac">
+                                    <div class="photo-album" data-albm_i="1">
+
+                                        <div class="cam-par">
+                                            <img data-cam_i="1" ontouchstart="appcan.touch('btn-act')" class="camera" src="../hb/img/hb_send_camera@2x.png" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- 信息验证-end  -->
+
+                <div style="height: 1.0em;"></div>
+
+                <ul class="ub t-bla ub-ac check-padd c-wh">
+                    <li class="lis-icon-s ub ub-ac ub-pc chk-sub" ontouchstart="appcan.touch('btn-act')">
+                        <div class="check-sty chk-sub" ontouchstart="appcan.touch('btn-act')">
+                            <div class="check-div chk-sub" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub-img check-img checked" data-ctype="1" ontouchstart="appcan.touch('btn-act')" data-check_enter="福利兑换券" data-check_icon="福利兑换券"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="lis-text ub ub-ac ub-pc chk-sub" ontouchstart="appcan.touch('btn-act')">
+                        会员权益
+                    </li>
+                </ul>
+
+                <ul class="ub t-bla ub-ac earn-padd c-wh">
+                    <li class="earn-text ub ub-ac ub-pc" ontouchstart="appcan.touch('btn-act')">
+                        1.平台全年赠送13140次福包广告宣传
+                    </li>
+                </ul>
+                <ul class="ub t-bla ub-ac earn-padd c-wh">
+                    <li class="earn-text ub ub-ac ub-pc" ontouchstart="appcan.touch('btn-act')">
+                        2.系统赠送3600元福音积分
+                    </li>
+                </ul>
+                <ul class="ub t-bla ub-ac earn-padd c-wh">
+                    <li class="earn-text ub ub-ac ub-pc" ontouchstart="appcan.touch('btn-act')">
+                        3.拥有每天收20个0.1----5000元的随机福包权利
+                    </li>
+                </ul>
+                <ul class="ub t-bla ub-ac earn-padd c-wh">
+                    <li class="earn-text ub ub-ac ub-pc" ontouchstart="appcan.touch('btn-act')">
+                        4.3600位粉丝的互动权利
+                    </li>
+                </ul>
+                <ul class="ub t-bla ub-ac earn-padd c-wh">
+                    <li class="earn-text ub ub-ac ub-pc" ontouchstart="appcan.touch('btn-act')">
+                        5.推荐福将广告主可获得两级600元奖励
+                    </li>
+                </ul>
+
+                <div style="background-color: white; height: 0.75em;"></div>
+
+                <div style="height: 1.0em;"></div>
+
+            </div>
+
+            <div id="footer" class="ub bottom-style sure-btn">
+                <div class="ub ub-ver ub-f1 ub-pc vip-bottom-left" ontouchstart="appcan.touch('btn-act')">
+                    <span class="vip-titl">升级费: </span>￥<span id="vip_cash">0</span>
+                </div>
+                <div class="ub ub-ver ub-f1 ub-pc vip-bottom-right" id="upgrape" ontouchstart="appcan.touch('btn-act')">
+                    升级
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/code.js"></script>
+        <script src="../js/com/pay.js"></script>
+        <script src="../vip/js/upgrape.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                localStorage.setItem("PriceType", 0);
+
+                localStorage.setItem("redmoney", 0);
+
+                localStorage.setItem("payRoot", 'vip_upgr');
+
+                var titHeight = $('#header').height();
+                var footHeight = $('#footer').height();
+                $('#content').css('padding-top', titHeight);
+                $('#content').css('padding-bottom', footHeight);
+
+                setAcctInfo();
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        var pay_pwd = localStorage.getItem("pay_pwd");
+                        var pay = localStorage.getItem("pay");
+                        var succ = localStorage.getItem("succ");
+                        if (pay_pwd == '1' || pay_pwd == 1) {
+
+                            appcan.window.closePopover('pay_pwd');
+                            localStorage.setItem("pay_pwd", 0);
+
+                        } else if (pay == '1' || pay == 1) {
+
+                            appcan.window.closePopover('pay');
+                            localStorage.setItem("pay", 0);
+
+                        } else if (succ == '1' || succ == 1) {
+
+                            appcan.window.closePopover('succ');
+                            localStorage.setItem("succ", 0);
+
+                        } else {
+
+                            appcan.window.close(-1);
+
+                        }
+
+                    } else {
+
+                        alert('点击了其他键');
+
+                    }
+
+                }
+
+                appcan.window.subscribe('pwdSucs', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var bodyWidth = localStorage.getItem("bodyWidth");
+                        var bodyHeight = localStorage.getItem("bodyHeight");
+                        appcan.window.openPopover({
+                            name : 'succ',
+                            dataType : 0,
+                            url : "../pop/succ.html",
+                            top : 0,
+                            left : 0,
+                            width : bodyWidth,
+                            height : bodyHeight,
+                        });
+
+                    }
+
+                });
+
+                appcan.window.subscribe('vipUpgr', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        //$('#redmoney').html(msg);
+                        debug(msg);
+                        beginVipImgUpld(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('chg_img', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var timeout = 0;
+
+                        var imgArr = JSON.parse(msg);
+                        //debug(localStorage.getItem("imgArr"));
+
+                        $(imgArr).each(function(i, v) {
+
+                            //var imgCont = '<div data-par_s="' + v.imgIndx + '" class="cam-par"><img ontouchstart="appcan.touch(&#39;btn-act&#39;)" data-img_s="' + v.imgIndx + '" data-pic_p="' + v.imgPath + '" class="disp-pic" src="' + v.imgPath + '" /></div>';
+                            var imgCont = '<div data-par_s="' + v.imgIndx + '" class="cam-par"><div ontouchstart="appcan.touch(&#39;btn-act&#39;)" data-img_s="' + v.imgIndx + '" data-pic_p="' + v.imgPath + '" class="ub-img1 disp-pic" style="background-image:url(' + v.imgPath + ');"></div></div>';
+                            //var cont = '<div class="cam-par"><img class="disp-pic" src="' + imgPath + '" /></div>';
+                            $('.photo-album').append(imgCont);
+
+                        });
+
+                        $('.disp-pic').unbind();
+                        $('.disp-pic').click(function() {
+
+                            //alert($('.photo-album').children("div:last-child").index());
+                            var picIndx = $(this).data('pic_p');
+
+                            //查看所有相关的图片
+                            var picArr = [];
+                            $('.disp-pic').each(function(j, s) {
+
+                                //debug($(this).data('pic_p'));
+                                //debug($(this).data('img_s'));
+
+                                if ($(this).data('pic_p')) {
+                                    var picSgl = {
+                                        src : $(this).data('pic_p'),
+                                        desc : $(this).data('img_s'),
+                                    };
+                                    picArr.push(picSgl);
+                                }
+
+                            });
+
+                            localStorage.setItem("imgSgl", picIndx);
+                            localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                            //debug(picArr);
+                            //var tempPath = $(this)[0].src;
+                            setTimeout(function() {
+
+                                //dispCurImg(picIndx ,picArr);
+                                openBrowser();
+
+                            }, 300);
+
+                        });
+
+                        $('.disp-pic').on('touchstart', function(e) {
+
+                            e.stopPropagation();
+                            var img_s = $(this).data('img_s');
+
+                            var picIndx = $(this).data('pic_p');
+
+                            timeout = setTimeout(function() {
+
+                                //alert('pare: ' + $("div[data-par_s='" + img_s + "']").html());
+
+                                uexWindow.actionSheet({
+                                    title : "选项",
+                                    cancel : "取消",
+                                    buttons : "查看图片,删除图片"
+                                }, function(index) {
+
+                                    if (index == 0) {
+
+                                        var picArr = [];
+                                        $('.disp-pic').each(function(j, s) {
+
+                                            //debug($(this).data('pic_p'));
+                                            //debug($(this).data('img_s'));
+
+                                            if ($(this).data('pic_p')) {
+                                                var picSgl = {
+                                                    src : $(this).data('pic_p'),
+                                                    desc : $(this).data('img_s'),
+                                                };
+                                                picArr.push(picSgl);
+                                            }
+
+                                        });
+
+                                        localStorage.setItem("imgSgl", picIndx);
+                                        localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                                        setTimeout(function() {
+
+                                            //dispCurImg(picIndx, picArr);
+                                            openBrowser();
+
+                                        }, 300);
+
+                                    } else if (index == 1) {
+
+                                        $("div[data-par_s='" + img_s + "']").remove();
+
+                                    }
+                                });
+
+                            }, 750);
+
+                        });
+
+                        $('.disp-pic').on('touchend', function(e) {
+                            e.stopPropagation();
+                            clearTimeout(timeout);
+                        });
+
+                    }
+
+                });
+
+            });
+
+            $('.upgr-type').click(function() {
+
+                var UserType = localStorage.getItem("UserType");
+
+                if (UserType == 0 || UserType == '0' || UserType == '') {
+
+                    uexWindow.actionSheet({
+                        title : "会员类型",
+                        cancel : "取消",
+                        buttons : "福相(代理),福将(商家)"
+                    }, function(index) {
+
+                        if (index == 0) {
+
+                            $('#nt').text('福相(代理)');
+                            $('#nt').data('nt', '2');
+                            localStorage.setItem("redmoney", 9900);
+
+                        } else if (index == 1) {
+
+                            $('#nt').text('福将(商家)');
+                            $('#nt').data('nt', '1');
+                            localStorage.setItem("redmoney", 3600);
+
+                        }
+
+                    });
+
+                } else if (UserType == 1 || UserType == '1') {
+
+                    uexWindow.actionSheet({
+                        title : "会员类型",
+                        cancel : "取消",
+                        buttons : "福相(代理)"
+                    }, function(index) {
+
+                        if (index == 0) {
+
+                            $('#nt').text('福相(代理)');
+                            $('#nt').data('nt', '2');
+                            localStorage.setItem("redmoney", 9900);
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+            $('.camera').click(function() {
+
+                var fromPage = 'vip_upgr';
+                openEditorActn(fromPage);
+
+            });
+
+            $('#nav_left').click(function() {
+                appcan.window.close(-1);
+            });
+
+        </script>
+    </body>
+</html>

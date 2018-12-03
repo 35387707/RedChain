@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<RelexBarBLL.Models.SLGameRecordModel>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>结算账单</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/jiesuan.css" />
+</head>
+<body>
+    <div class="wrap vh100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>结算账单</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="divide"></div>
+            <ul class="jiesuanlist borderbox">
+                @foreach (var item in Model)
+                {
+                    <li class="jiesuan-item">
+                        <img class="js-img halfTop" src="@item.HeadImg" alt="" />
+                        <p class="js-name">@item.Nick</p>
+                        <p class="js-time">@item.CreateTime</p>
+                        <font class="js-price">@item.Price 元</font>
+                        <font class="js-price" style="top:61%">@(item.Price < 0 ? "收款人：" + item.SName : "")</font>
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

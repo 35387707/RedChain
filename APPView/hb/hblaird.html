@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../msg/css/chat.css">
+        <link rel="stylesheet" href="../msg/css/common.css">
+        <link rel="stylesheet" href="../hb/css/larid-v1.css">
+        <link rel="stylesheet" href="../hb/css/larid-v2.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+            .more {
+                margin-left: 10%;
+                width: 70%;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+            #content {
+                overflow-y: scroll;
+                overflow-x: hidden;
+            }
+        </style>
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver bc-bg" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb larid-bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two">
+                    </div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">领主</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="fa fa-1g ub-img1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content">
+            </div>
+
+            <div id="footer" class="ub bottom-style">
+                <div class="ub ub-ver ub-f1 ub-pc laird-bottom-left bc-btn" ontouchstart="appcan.touch('btn-act')">
+                        其他领地
+                </div>
+                <div class="ub ub-ver ub-f1 ub-pc laird-bottom-right" ontouchstart="appcan.touch('btn-act')">
+                        成为领主
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script>
+            appcan.ready(function() {
+                
+                setSwipeCloseEnable(1);
+                
+                var titHeight = $('#header').offset().height;
+                var footHeight = $('#footer').offset().height;
+                
+                var bodyHeight = $('body').height();
+                var contHeight = bodyHeight - titHeight - footHeight;
+                $('#content').css('height', contHeight);
+                
+                appcan.frame.open("content", "hblaird_content.html", 0, titHeight);
+                window.onorientationchange = window.onresize = function() {
+                    appcan.frame.resize("content", 0, titHeight);
+                };
+                
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+            });
+
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+        </script>
+    </body>
+</html>

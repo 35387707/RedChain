@@ -1,0 +1,86 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+#page_0 {
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    position: relative;
+}
+.uinn-a12 {
+    padding: 1.0em 0;
+}
+.c-wh {
+}
+.tmp-cont {
+}
+.send-btn {
+    width: 100%;
+    padding-bottom: 2.3em;
+    /*
+     position: absolute;
+     bottom: 0;*/
+
+}
+.send-sty {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.send-txt {
+    color: #282828;
+    font-size: 1.0em !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.send-img {
+    width: 4.8em;
+    height: 4.8em;
+}
+.send-fubao {
+    background-size: cover;
+    background-image: url('../img/index_send_fubao@2x.png');
+}
+.send-choujiang {
+    background-size: cover;
+    background-image: url('../img/index_send_choujiang@2x.png');
+}
+.close-img {
+    width: 2.4em;
+    height: 2.4em;
+    line-height: 2.4em;
+}
+.close-btn {
+    background-size: cover;
+    background-image: url('../img/index_send_guanbi@2x.png');
+}
+.btn-mgr {
+    margin-top: 0.5em;
+}
+.send-fst {
+    opacity: 0;
+}
+.send-snd {
+    opacity: 0;
+    padding: 1.0em 0 0;
+}

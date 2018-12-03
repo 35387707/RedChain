@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="css/qrcode.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body class="ub-img1 bg-size bg-img" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <!--header结束--><!--content开始-->
+            <div class="pack-cont">
+
+                <div class="inv-bg close"></div>
+
+                <div class="invite-first close">
+                    &nbsp;
+                </div>
+                <div class="invite-second">
+                    <div class="txt-left close"></div>
+                    <div class="txt-right close"></div>
+                    <div class="txt-top close"></div>
+                    <div class="txt-bot close"></div>
+                    <div ontouchstart="appcan.touch('btn-act')" class="fubaoduo">
+                        福BAO多
+                    </div>
+                </div>
+                <div class="invite-third">
+
+                    <div class="inv-left close"></div>
+                    <div class="inv-right close"></div>
+
+                    <div class="ub-img invite-card card-img">
+                        <div class="card-top">
+
+                            <div class="ub ub-ver top-style">
+                                <div ontouchstart="appcan.touch('btn-act')" class="top-you">
+                                    您的邀请码
+                                </div>
+                                <div ontouchstart="appcan.touch('btn-act')" class="top-code" id="CardNumber"></div>
+                                <span ontouchstart="appcan.touch('btn-act')" class="top-btn screen" id="copy">复制</span>
+                            </div>
+
+                        </div>
+                        <div class="card-bottom">
+                            <div class="bot-qr">
+                                <div class="qrcode ub-img qrcode-img">
+                                    <div class="qrcode-bg">
+                                        <div class="qrcode-top"></div>
+                                        <div class="qrcode-bot">
+                                            <div class="ub-img qrcode-cont disp-pic" id="qrcode"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bot-txt">
+                                <div class="ub ub-ver bot-style">
+                                    <div ontouchstart="appcan.touch('btn-act')" class="bot-app">
+                                        扫码下载APP
+                                    </div>
+                                    <div ontouchstart="appcan.touch('btn-act')" class="bot-more">
+                                        福包多 福报更多
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="invite-fourth">
+
+                    <div class="four-left close"></div>
+                    <div class="four-right close"></div>
+                    <div class="four-top close"></div>
+                    <div class="four-bot close"></div>
+
+                    <div class="ub ub-ac bc-text-head ub-pc bc-btn uc-a1 log-in four-btn screen" ontouchstart="appcan.touch('btn-act')"  id="save">
+                        <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                        保存
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--<script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/qrcode.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                setQRCode();
+
+            });
+
+            $('.empty-view').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('#copy').click(function() {
+
+                uexClipboard.copy(trim($('#CardNumber').text()));
+                appcan.window.openToast('复制成功', 1500, 5, 0);
+
+            });
+
+            $('#save').click(function() {
+
+                openToast("保存中, 请稍后...", 10000, 5, 1);
+                setTimeout(function() {
+
+                    closeToast();
+                    $('.screen').addClass('no-dis');
+                    setTimeout(function() {
+
+                        uexDevice.screenCapture(1, function(error, data) {
+                            if (!error) {
+                                $('.screen').removeClass('no-dis');
+                                openToast("保存图片成功", 3000, 5, 0);
+                                //debug(data.savePath);
+                            } else {
+                                $('.screen').removeClass('no-dis');
+                                openToast("保存图片失败", 3000, 5, 0);
+                            }
+                        });
+
+                    }, 300);
+
+                }, 1500);
+
+            });
+
+        </script>-->
+
+        <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+        <script>
+            $().ready(function () {
+                var token = GetQueryString("token");
+                if (token != null && token!="")
+                {
+                    $('#qrcode').css("background-image", "url('http://www.fbddd.com/QRCode/GetQRCode?token=" + token + "')");
+                    var html = "";
+                    $.post("http://www.fbddd.com/Account/GetUserInfo", "token=" + token,
+                        function (data) {
+                            if (data.code == 1) {
+                                $('#CardNumber').text(data.Info.CardNumber);
+                            }
+                        }, "json");
+                }
+            });
+            function back()
+            {
+                $('#content').css("cssText", "display:-webkit-box !important");
+                $('#detail').hide();
+            }
+            function GetQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]); return null;
+            }
+        </script>
+    </body>
+</html>

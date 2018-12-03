@@ -1,0 +1,92 @@
+.memberlist{
+    padding-top:1.93359375rem;
+    padding-bottom:1.5rem;
+    border-bottom:0.05rem solid #cdcccc;
+    background-color:#fff;
+}
+.member{
+    float:left;
+    width:5.1rem;
+    margin:0 1.171875rem 1.2890625rem 1.171875rem;
+    text-align:center;
+    color:#595858;
+}
+.member-img,.member-bgImg-wrap{
+	width:5.0390625rem;
+    height:5.0390625rem;
+    margin-bottom:0.52734375rem;
+    border:0.05rem solid #d7d3d2;
+    border-radius:0.9rem;
+    overflow:hidden;
+}
+.member-bgImg-wrap{
+    position:relative;
+}
+.member-addImg,.member-reduceImg{
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+       -moz-transform:translate(-50%,-50%);
+        -ms-transform:translate(-50%,-50%);
+         -o-transform:translate(-50%,-50%);
+            transform:translate(-50%,-50%);
+    display:block;
+    background-size:100% !important;
+}
+.member-addImg{
+	width:2.578125rem;
+	height:2.578125rem;
+    background:url(../img/common/addMember.png) no-repeat;
+}
+.member-reduceImg{
+	width:2.578125rem;
+	height:0.17578125rem;
+    background:url(../img/common/reduceMember.png) no-repeat;
+}
+.group-mt-1{
+    margin-top:2rem;
+}
+.group-mt-2{
+    margin:4rem auto;
+}
+
+/*群聊列表*/
+.groupList-block{
+    
+}
+.groupList-title{
+    padding:1rem;
+    background-color:#f0eff5;
+    color:#8e8d8d;
+}
+.groupList{
+    padding:0 1.5234375rem;
+    background-color:#fff;
+}
+.groupItem{
+    position:relative;
+    height:6.85546875rem;
+    padding-left:6.0390625rem;
+    line-height:6.85546875rem;
+    border-bottom:0.05rem solid #cdcccc;
+}
+.groupImg{
+    position:absolute;
+    left:0;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    width:5.0390625rem;
+    height:5.0390625rem;
+}
+.groupList-remind{
+    padding-top:2rem;
+    text-align:center;
+    color:#6e6c6f;
+}
+.member p{
+    width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}

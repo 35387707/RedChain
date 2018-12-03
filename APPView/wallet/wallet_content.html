@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../wallet/css/middle.css">
+        <link rel="stylesheet" href="../wallet/css/wallet-v1.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver" tabindex="0">
+
+            <!--header结束--><!--content开始-->
+            <div id="content">
+                <div class="ub ub-ver">
+
+                    <div class="usr-cont usr-bg own-data" id="wallet_num">
+                        
+                        <div class="ub ub-f1 uinn-out" id="yue_num">
+                            <div class="ub-f1 ub ub-ver">
+                                <div class="ut-s wallet-header-txt" ontouchstart="appcan.touch('btn-act')">
+                                    余额账户(元)
+                                </div>
+                                <div class="ut-s wallet-header-num">
+                                    <span class="account-balance" id="Balance" ontouchstart="appcan.touch('btn-act')">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ub bill-padd" id="nope_num">
+                            <div class="ub ub-ver ub-f1 ub-pc bill-sub" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub-f1 mine-color bill-num">
+                                    个人贡献
+                                </div>
+                                <div class="bill-txt" id="RedBalance">
+                                    0
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc bill-sub" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub-f1 mine-color bill-num">
+                                    共享福包
+                                </div>
+                                <div class="bill-txt" id="FubaoShare">
+                                    0
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc bill-sub" ontouchstart="appcan.touch('btn-act')">
+                                <div class="bill-num">
+                                    超级福包
+                                </div>
+                                <div class="bill-txt" id="BigFubaoShare">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <ul class="ub t-bla ub-ac tixian-padd c-wh withdraw" ontouchstart="appcan.touch('btn-act')">
+                        <li class="lis-icon-s ub ub-ac ub-pc">
+                            <div class="ub-img wallet-tixian wallet-width"></div>
+                        </li>
+                        <li class="ub-f1 tixian-txt">
+                            提现
+                        </li>
+                        <li>
+                            <div class="ub-img li-right-arrow"></div>
+                        </li>
+                    </ul>
+
+                    <div class="ub-f1 ub ub-ver c-wh wallet-marg">
+                        <div class="wallet-height"></div>
+                        <div class="ub wallet-padd ub-ae">
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub shoudaofubao">
+                                <div class="wallet-sty">
+                                    <div class="wallet-img wallet-yongjin" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="wallet-num" id="RecReds" ontouchstart="appcan.touch('btn-act')">
+                                    0
+                                </div>
+                                <div class="wallet-txt" ontouchstart="appcan.touch('btn-act')">
+                                    收到福包
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub fubaofenrun">
+                                <div class="wallet-sty">
+                                    <div class="wallet-img wallet-jiangjin" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="wallet-num" id="Rewards" ontouchstart="appcan.touch('btn-act')">
+                                    0
+                                </div>
+                                <div class="wallet-txt" ontouchstart="appcan.touch('btn-act')">
+                                    福包分润
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub tuijianliangli">
+                                <div class="wallet-sty">
+                                    <div class="wallet-img wallet-fabuzongjine" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="wallet-num" id="Commission" ontouchstart="appcan.touch('btn-act')">
+                                    0
+                                </div>
+                                <div class="wallet-txt" ontouchstart="appcan.touch('btn-act')">
+                                    推荐奖励
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wallet-height"></div>
+                        <div class="ub wallet-padd ub-ae">
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub fabaozonge">
+                                <div class="wallet-sty">
+                                    <div class="wallet-img wallet-qiangdaozongjine" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="wallet-num" id="SendReds" ontouchstart="appcan.touch('btn-act')">
+                                    0
+                                </div>
+                                <div class="wallet-txt" ontouchstart="appcan.touch('btn-act')">
+                                    发包总额
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub fulijifen">
+                                <div class="wallet-sty">
+                                    <div class="wallet-img wallet-fuyinjifen" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="wallet-num" id="FootQuan" ontouchstart="appcan.touch('btn-act')">
+                                    0
+                                </div>
+                                <div class="wallet-txt" ontouchstart="appcan.touch('btn-act')">
+                                    福利积分
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub fuyinjifen">
+                                <div class="wallet-sty">
+                                    <div class="wallet-img wallet-fulijifen" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="wallet-num" id="Score" ontouchstart="appcan.touch('btn-act')">
+                                    0
+                                </div>
+                                <div class="wallet-txt" ontouchstart="appcan.touch('btn-act')">
+                                    福音积分
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wallet-height"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../wallet/js/wallet.js"></script>
+        <script>
+            appcan.ready(function() {
+                
+                var wallet_num = $('#wallet_num').height();
+                var nope_num = $('#nope_num').height();
+                var yue_num = wallet_num - nope_num;
+                $('#yue_num').height(yue_num);
+
+                appcan.window.enableBounce();
+
+                appcan.window.showBounceView({
+                    type : 0,
+                    color : '#F95747',
+                    flag : 1
+                });
+
+                appcan.window.showBounceView({
+                    type : 1,
+                    color : '#F2F2F2',
+                    flag : 1
+                });
+
+                appcan.frame.setBounce(0, function(type) {
+
+                }, function(type) {
+
+                }, function(type) {
+
+                    setTimeout(function(type) {
+                        appcan.frame.resetBounce(type);
+                        getWalletInfo();
+                    }, 1000);
+
+                }, '#F95747');
+
+                getWalletInfo();
+
+                appcan.window.subscribe('refreshCash', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        getWalletInfo();
+
+                    }
+
+                });
+
+            });
+
+            $('.account-balance').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'account_balance',
+                        data : '../wallet/account_balance.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "account_balance",
+                        data : "../wallet/account_balance.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.withdraw').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'withdraw',
+                        data : '../bank/withdraw.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "withdraw",
+                        data : "../bank/withdraw.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.tuijianliangli').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'commissions',
+                        data : '../wallet/commissions.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "commissions",
+                        data : "../wallet/commissions.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.fubaofenrun').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'bonus_detail',
+                        data : '../wallet/bonus_detail.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "bonus_detail",
+                        data : "../wallet/bonus_detail.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.fabaozonge').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'issue_amount',
+                        data : '../wallet/issue_amount.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "issue_amount",
+                        data : "../wallet/issue_amount.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.shoudaofubao').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'snag_amount',
+                        data : '../wallet/snag_amount.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "snag_amount",
+                        data : "../wallet/snag_amount.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.fulijifen').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'foot_quan',
+                        data : '../wallet/foot_quan.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "foot_quan",
+                        data : "../wallet/foot_quan.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.fuyinjifen').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'fuyin_score',
+                        data : '../wallet/fuyin_score.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "fuyin_score",
+                        data : "../wallet/fuyin_score.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+        </script>
+    </body>
+</html>

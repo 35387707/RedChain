@@ -1,0 +1,251 @@
+.empty-view {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.bg-size {
+    width: 100%;
+    height: 100%;
+}
+.bg-img {
+    background-image: url('../img/index_kaihongbao_bg@2x.jpg');
+}
+.pack-cont {
+    z-index: 10;
+    width: 90%;
+    margin: 0 5%;
+    height: 60%;
+    position: absolute;
+}
+.fubaoduo-cont {
+    width: 100%;
+    height: 70%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.fubaoduo-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.fubaoduo-top {
+    position: absolute;
+    z-index: 11;
+    height: 10%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.fubaoduo-left {
+    position: absolute;
+    z-index: 11;
+    height: 100%;
+    width: 15%;
+    left: 0;
+}
+.fubaoduo-right {
+    position: absolute;
+    z-index: 11;
+    height: 100%;
+    width: 15%;
+    right: 0;
+}
+.fubaoduo-img {
+    background-image: url('../img/hongbao_kai@2x.png');
+}
+.fu-top {
+    width: 100%;
+    height: 30%;
+}
+.fu-bottom {
+    width: 100%;
+    height: 70%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.fu-money {
+    width: 25%;
+    height: 45%;
+}
+.mask-cont {
+    margin-top: -0.5em;
+    width: 100%;
+    height: 1.2em;
+    text-align: center;
+    color: #FEE1AA;
+    font-size: 1.2em;
+}
+.txt-left {
+    position: absolute;
+    z-index: 11;
+    height: 100%;
+    width: 25%;
+    left: 0;
+}
+.txt-right {
+    position: absolute;
+    z-index: 11;
+    height: 100%;
+    width: 25%;
+    right: 0;
+}
+#header {
+    width: 100%;
+    height: 20%;
+    margin: 12.5% 0 2.5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.usr-left {
+    z-index: 11;
+    position: absolute;
+    height: 100%;
+    width: 36%;
+    left: 0;
+}
+.usr-right {
+    z-index: 11;
+    position: absolute;
+    height: 100%;
+    width: 36%;
+    right: 0;
+}
+.usr-bot {
+    z-index: 11;
+    position: absolute;
+    height: 14%;
+    width: 100%;
+    bottom: 0;
+}
+.empty-height {
+    height: 5%;
+    width: 100%;
+}
+.sign-cont {
+    margin-top: -0.5em;
+    width: 100%;
+    height: 27.5%;
+}
+.sign-disp {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.sign-left {
+    position: absolute;
+    z-index: 11;
+    height: 100%;
+    width: 14.5%;
+    left: 0;
+}
+.sign-right {
+    position: absolute;
+    z-index: 11;
+    height: 100%;
+    width: 14.5%;
+    right: 0;
+}
+.sign-wish {
+    width: 70%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.wish-bg {
+    
+    background-image: url('../img/hongbaolianmengguanggao@2x.png');
+}
+.sign-disp img {
+    width: 100%;
+    height: auto;
+}
+.fuwa-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 19;
+}
+.fuwa-cont {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.fuwa-cont img {
+    width: 100%;
+    height: auto;
+}
+.no-dis {
+    display: none;
+}
+.wish-color {
+    font-size: 1.20em;
+    color: #c49425;
+}

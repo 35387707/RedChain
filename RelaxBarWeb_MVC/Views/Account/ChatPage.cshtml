@@ -1,0 +1,301 @@
+﻿
+@{
+    Layout = null;
+    double random = new Random().NextDouble();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>Game Chat</title>
+    <script src="/js/jquery-2.0.0.min.js"></script>
+    <script src="/js/adaptation.js"></script>
+    <link rel="stylesheet" href="/css/commonmodule.css?r=@random" />
+    <link rel="stylesheet" href="/css/chat.css?r=@random" />
+    <style>
+        #search {
+            width: 100%;
+            height: 100%;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color:white;
+            z-index:9999;
+        }
+        .msgcount {
+            width:35px;height:35px;background-image:url("/img/chat/msg.png");display:inline-block;position:absolute;top:0rem;
+    left: 4rem;color:white;text-align:center;    font-size: 30px;
+    line-height: 35px;
+        }
+    </style>
+    <script>
+        var MsgCount=0;
+        function GetFriendList(success) {
+            if (typeof (success) != "function") {
+                alert("参数错误");
+                return;
+            }
+            $.post("/Account/GetChatPageData", null, function (data) {
+                // if (data.code == "1") {
+                    success(data);
+               // }
+            }, "json");
+            
+        }
+        function GetLocalFriend(list) {
+
+            if (list == null) {
+                list = JSON.parse(localStorage.getItem("friendList"));
+            }
+            var flist = [];
+            OrderByIsTop(list);
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].MType == 10) {
+                    continue;
+                }
+                //flist.push("<div id='" + list[i].ID + "' data-top='" + list[i].IsTop + "' class='chat-item'><img onclick='uheadClick(\"" + list[i].ID + "\"," + list[i].Gtype + ")' class='chat-headimg halfTop' src='" + GetHeadImg(list[i]) + "' /><p class='chat-name'  onClick=\"userClick('" + list[i].ID + "'," + list[i].Type + "," + list[i].Gtype + ")\">" + list[i].Remark + "</p>");
+                flist.push("<div id='" + list[i].ID + "' data-top='" + list[i].IsTop + "' class='chat-item' onClick=\"userClick('" + list[i].ID + "'," + list[i].Type + "," + list[i].Gtype + ")\"><img class='chat-headimg halfTop' src='" + GetHeadImg(list[i]) + "' /><p class='chat-name' >" + list[i].Remark + "</p>");
+                flist.push("<p class='chat-lastmsg'>" + getLastContent(list[i].lastContent, list[i].MType) + "</p><font class='chat-time'>" + getLastTime(list[i].lastTime) + "</font>"+getMessageCount(list[i].WDCount)+"</div>");
+            }
+
+            $("#msgCount").text(MsgCount);
+            $("#flist").html(flist.join(""));
+        }
+        function getMessageCount(count) {
+            if (count == 0) {
+                return "";
+            } else {
+                MsgCount += count;
+                return "<span class='msgcount'>" + count + "</span>";   
+            }
+        }
+        function GetHeadImg(row) {
+            switch (row.Gtype) {
+                case 0:
+                    return row.headimg;
+                case 1:
+                    return "/img/chat/group.jpg";
+                case 2:
+                    return "/img/chat/group.jpg";
+                default:
+        
+            }
+        }
+        //通过是否置顶排序
+        function OrderByIsTop(list) {
+            for (var i = 0; i < list.length; i++) {
+                for (var j = i+1; j < list.length; j++) {
+                    //console.log(list[j].IsTop +"----"+ list[i].IsTop);
+                    if (list[j].WDCount > 0) {
+                        if (list[i].IsTop == 0 && list[j].IsTop > 0) {
+                            var temp = list[i];
+                            list[i] = list[j];
+                            list[j] = temp;
+                        }else if (list[i].WDCount == 0&&list[i].IsTop==0) {
+                            var temp = list[i];
+                            list[i] = list[j];
+                            list[j] = temp;
+                        } else if(list[i].WDCount==0){
+                            //if (list[j].IsTop > list[i].IsTop) {
+                                var temp = list[i];
+                                list[i] = list[j];
+                                list[j] = temp;
+                           // }
+                        }
+                        
+                        
+                    }
+                }
+            }
+        }
+            function userClick(id, type,Gtype) {
+                if(type==1)
+                    return location.href = "/Chat/ToOne/" + id;
+                if (Gtype == 1) 
+                    return location.href = "/Chat/ChatGroup/" + id;
+                return location.href = "/Chat/SLChatGroup/" + id;
+            
+
+            }
+            function getLastContent(content, mtype) {
+                //聊天类型，0文字/表情，1图片，6链接，4个人名片，5心跳包，7视频,8语音,2普通红包，9扫雷红包，3转账,10好友申请,9其他等
+                if (mtype != null) {
+                    switch (mtype) {
+                        case 1: return "图片";
+                        case 4: return "名片";
+                        case 7: return "视频";
+                        case 8: return "语音";
+                        case 2: return "红包";
+                        case 9: return "扫雷红包";
+                        case 3: return "转账";
+
+                    }
+                }
+                if (content == null) {
+                    return "";
+                }
+                return content;
+            }
+            function getLastTime(time) {
+                if (time == null) {
+                    return "";
+                }
+                return time;
+            }
+            function uheadClick(id, gtype) {//1为群聊，2为游戏群
+
+                if (gtype == 2) {
+                    location.href = "/Chat/SLGroupInfo/" + id;
+                } else if (gtype == 1) {
+                    location.href = "/Chat/GroupInfo/" + id;
+
+                } else {
+                    location.href = "/Message/ChatInfo/" + id;
+                }
+            }
+            function GetFriendRequestCount() {
+                $.post("/Friend/FriendRequestCount",null,function (data) {
+                    if (data.code == "1") {
+                        if (data.msg > 0) {
+                            // <div class='contact-item' onclick='location.href='/Friend/NewFriend''><img class='contact-img' src='/img/common/newfriends.png' alt=''><p>新的朋友</p></div>
+                            $("#frequest").html("<div class='chat-item' onclick='location.href=\"/Friend/NewFriend\"'><img class='chat-headimg halfTop' src='/img/common/newfriends.png' alt=''>"
+                                + "<p style='font-size: 1.6rem;line-height:6rem'>您有"+data.msg+"个未处理的好友申请</p></div>");
+                        }
+                    }
+                }, "json")
+            }
+            $(function () {
+                GetFriendRequestCount();
+                if (!localStorage) {
+                    alert("浏览器不支持localStorage");
+                    return;
+                }
+                localStorage.removeItem("friendList");
+                GetFriendList(function (friendlist) {
+                    //console.log(friendlist);
+                    localStorage.setItem("friendList", friendlist);
+                    GetLocalFriend(JSON.parse(friendlist));
+                });
+            });
+        
+    </script>
+    <!--search-->
+    <script>
+        function searchShow() {
+           
+            $("#search").show();
+            $("#searchContent").focus();
+        }
+        function searchInput() {
+
+            var text = $("#searchContent").val();
+            setTimeout(function () {
+                var text2 = $("#searchContent").val();
+                if (text == text2) {
+                   // console.log(text);
+                    doSearch(text);
+                }
+            }, 500);
+        }
+        function doSearch(text) {
+            $("#search-group-list").html("");
+            $("#search-user-list").html("");
+            var list = localStorage.getItem("friendList");
+            list = JSON.parse(list);
+       
+            for (var i = 0; i < list.length; i++) {
+                var tname =list[i].Remark;
+                if (tname.indexOf(text)!=-1) {
+                    var item = "<div class='chat-item'><img class='chat-headimg halfTop' onclick='uheadClick(\"" + list[i].ID + "\"," + list[i].Gtype + ")' src='" + GetHeadImg(list[i]) + "' alt='' /><p class='chat-name' onClick=\"userClick('" + list[i].ID + "'," + list[i].Type + "," + list[i].Gtype + ")\">" + list[i].Remark + "</p><p class='chat-lastmsg'>" + getLastContent(list[i].lastContent, list[i].MType) + "</p><font class='chat-time'>" + getLastTime(list[i].lastTime) + "</font></div>";
+                    
+                    if (list[i].Type == 2) {
+                        // group.push(list[i]);
+                        $("#search-group-list").append(item);
+                    } else {
+                        //users.push(list[i]);
+                        $("#search-user-list").append(item);
+                    }
+                }
+                
+            }
+
+
+        };
+    </script>
+</head>
+<body>
+    <div class="wrap vh100 of-hide">
+        <div class="Header">
+            <span>Game Chat(<span id="msgCount">0</span>)</span>
+            <i class="cross halfTop bgSR" onclick="$('#gnlist').toggle()"></i>
+            <div class="header-extra-wrap" id="gnlist" style="display:none">
+                <div class="extras-block">
+                    <i class="extra-sanjiao"></i>
+                    <ul class="extra-list">
+                        <li class="extra-item" onclick="location.href = '/Chat/CreateGroup/1'">
+                            <i class="icon chatIcon"></i>
+                            <span>发起群聊</span>
+                        </li>
+                        <li class="extra-item" onclick="location.href='/Friend/FindFriend'">
+                            <i class="icon friIcon"></i>
+                            <span>添加朋友</span>
+                        </li>
+                        <li class="extra-item" onclick="location.href = '/Chat/CreateGroup/2'">
+                            <i class="icon roomIcon"></i>
+                            <span>创建扫雷房间</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="chat-search-ipt-wrap">
+            <input class="chat-search-ipt" type="text" placeholder="搜索" onfocus="searchShow()" />
+
+            
+        </div>
+        <div class="chatblock-wrap" >
+            <div id="frequest" class="chatblock"></div>
+            <div id="flist" class="chatblock">
+            </div>
+
+        </div>
+            <!--共用的底部菜单-->
+            @Html.Action("footer", "Account", new { id = 1 })
+        </div><!--wrap-->
+    <div id="search">
+        <div class="wrap vh100 of-hide">
+            <div class="Header">
+                <div class="Header-search-wrap halfTop">
+                    <div class="Header-search">
+                        <input class="txt" type="text" id="searchContent" placeholder="搜索" oninput="searchInput()" />
+                        <i class="icon halfTop"></i>
+                    </div>
+                </div>
+                <a class="header-r-font halfTop" href="javascript:void(0);" onclick="$('#search').hide()">取消</a>
+            </div>
+            <div class="same-pt-wrap1 same-ofauto-wrap">
+                <div class="devide"></div>
+                <div class="chatrecord">
+                    <p class="chat-title">群聊</p>
+                    <div id="search-group-list">
+                    </div>
+                    
+                </div>
+                <div class="devide"></div>
+                <div class="chatblock chat-mt-1">
+                    <p class="chat-title">好友</p>
+                    <div id="search-user-list">
+                    </div>
+                    
+                </div>
+            </div>
+        </div><!--wrap-->
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

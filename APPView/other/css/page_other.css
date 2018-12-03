@@ -1,0 +1,350 @@
+.hdr-img {
+    background-image: url('../img/mine_xiugaitarenxinxi@2x.png');
+}
+.up-top {
+    padding-top: 0.40em;
+}
+.up-bot {
+    padding-bottom: 0.40em;
+}
+.bc-headbg {
+    background-color: #00abeb;
+}
+.own-data {
+    height: 100%;
+    width: 100%;
+}
+.header-txt-color {
+    color: #FED579;
+}
+
+/*
+ * public
+ */
+.collc-left-wd {
+    width: 2.2em;
+    min-height: 2.2em;
+    -webkit-border-radius: 2.2em;
+    border-radius: 2.2em
+}
+.umar-at3 {
+    margin-top: 1.05em;
+}
+.collc-padd {
+    /*padding: 0.6em 1.0em 0.5em 0.4em;*/
+    padding: 0.25em 0 0.25em 0;
+}
+.collc-float-right {
+    float: right;
+}
+.collc-float-right a {
+    color: #A2A2A2;
+}
+.c-wh {
+    background-color: white;
+}
+.collc-width {
+    width: 2.2em;
+    height: 2.2em;
+}
+.collc-user-img {
+    background-size: cover;
+    background-image: url('../img/comImg.png');
+}
+.collc-right-wd {
+    padding-left: 0.3em;
+}
+.collc-user {
+    font-size: 0.88em;
+}
+.collc-whole {
+    font-size: 0.83em !important;
+    margin-right: 0.3em;
+    color: #ADADAD;
+}
+.collc-sty {
+    margin-top: 0.75em;
+    padding: 0.1em 0.1em 0.25em 0.1em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    background-color: white;
+}
+
+.collc-cont {
+    margin-top: 0.4em;
+    width: 100%;
+    height: 5.0em;
+}
+.collc-txt {
+    width: 100%;
+    height: 3.5em;
+    margin-bottom: 0.3em;
+}
+.txt-sty {
+    width: 100%;
+    height: 100%;
+    color: #5F5F5F;
+    font-size: 0.90em !important;
+}
+.overflow {
+    padding: 0 2%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    word-break: break-all;
+}
+.txt-overflow {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.collc-actn {
+    width: 100%;
+    height: 1.2em;
+}
+
+/*
+ * collc
+ */
+.collc-img {
+    background-size: cover;
+    background-image: url('../img/nopicinfo.jpg');
+}
+.collc-wh {
+    min-width: 6.0em;
+    min-height: 5.0em;
+}
+.other-day {
+    color: #707070;
+    font-size: 1.6em;
+    margin-right: 0.1em;
+}
+.other-month {
+    color: #7D7D7D;
+    font-size: 0.85em !important;
+}
+.other-sty {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-top: -12.5%;
+}
+.other-num {
+    color: #EB0810;
+    font-size: 1.45em !important;
+}
+.other-txt {
+    color: #A8A8A8;
+    margin-top: 0.12em;
+    font-size: 0.85em !important;
+}
+.other-username {
+    margin-top: 0.5em;
+    font-size: 1.08em !important;
+    color: #707070;
+}
+.other-remark {
+    color: #A8A8A8;
+    margin-top: 0.125em;
+    font-size: 0.80em !important;
+}
+.other-img {
+    width: 4.5em;
+    height: 4.5em;
+    -webkit-border-radius: 4.5em;
+    border-radius: 4.5em;
+    background-color: white;
+    border: 0.30em solid white;
+}
+.other-userimg {
+    background-size: cover;
+    background-image: url('../img/comImg.png');
+}
+.other-padd {
+    padding: 1.2em 0;
+    background-color: white;
+    -webkit-border-radius: 0 0 0.3em 0.3em;
+    border-radius: 0 0 0.3em 0.3em;
+}
+.other-user-bg {
+    background-color: white;
+    -webkit-border-radius: 0.3em 0.3em 0 0;
+    border-radius: 0.3em 0.3em 0 0;
+}
+.other-marg {
+    margin: 1.0em 0 1.0em 0;
+}
+.recent-sty {
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+/*最近访客文本*/
+.uinn-infor1 {
+    padding: 0.375em 0.83em;
+}
+.uw-infor {
+    width: 4em;
+}
+.img-ul {
+    height: 3.0em;
+    padding: 0 0.25em;
+}
+.li-img-style {
+    width: 12.5%;
+    height: 3.0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.li-img-style img {
+    width: 83%;
+    height: auto;
+}
+.li-img-style div {
+    height: 2.2em;
+    width: 2.2em;
+    -webkit-border-radius: 1.1em;
+    border-radius: 1.1em
+}
+.comt-icon-width {
+    height: 2.5em;
+    width: 2.5em;
+}
+.comt-user-icon {
+    background-image: url('../img/monkey_d_luffy.jpg');
+}
+.uwh-infor {
+    background-color: orange;
+    width: 10%;
+    height: 2em;
+}
+.umar-r-infor {
+    margin-right: 1em;
+}
+.goods-infor1 {
+    background-image: url('../img/comImg.png');
+}
+.mar-ar1 {
+    margin-right: 0.625em;
+}
+.umar-ar4 {
+    margin-right: 0.5em;
+}
+.uinn-a9 {
+    padding: 0.75em 0.25em 0.75em 0.5em;
+}
+
+#header {
+    background-size: cover;
+    background-image: url('../img/mine_xiugaitarenxinxi_top@2x.png');
+}
+.usr-bg {
+    background-size: cover;
+    background-image: url('../img/mine_xiugaitarenxinxi_bottom@2x.png');
+}
+.recent-visit {
+    font-size: 0.875em;
+    color: #656565;
+}
+/*
+ * 当页面可见宽度大于1400px小于1537px时 ipad mini2 ipad mini4
+ */
+@media all and (min-width: 1290px) and (max-width: 1537px) {
+
+    .usr-cont {
+        height: 631px;
+        width: 100%;
+    }
+    
+    .cont-padd {
+        padding: 0 0.5em 0.5em;
+        margin: -25% 0 0 0;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1100px小于1281px时 iphone 6s
+ */
+@media all and (min-width: 1100px) and (max-width: 1281px) {
+
+    .usr-cont {
+        height: 526px;
+        width: 100%;
+    }
+    
+    .cont-padd {
+        padding: 0 0.5em 0.5em;
+        margin: -25% 0 0 0;
+    }
+
+}
+/*
+ * 当页面可见宽度大于900px小于1081px时 1080p iphone6s
+ */
+@media all and (min-width: 753px) and (max-width: 1081px) {
+
+    .usr-cont {
+        height: 444px;
+        width: 100%;
+    }
+
+    .cont-padd {
+        padding: 0 0.5em 0.5em;
+        margin: -25% 0 0 0;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ * 0.411
+ */
+@media all and (min-width: 650px) and (max-width: 751px) {
+
+    .usr-cont {
+        height: 308px;
+        width: 100%;
+    }
+    
+    .cont-padd {
+        padding: 0 0.5em 0.5em;
+        margin: -10% 0 0 0;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 500px) and (max-width: 641px) {
+
+    .usr-cont {
+        width: 100%;
+        height: 263px;
+    }
+    
+    .cont-padd {
+        padding: 0 0.5em 0.5em;
+        margin: -10% 0 0 0;
+    }
+
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../login/css/log-v1.css">
+    </head>
+    <body style="height: 100%; width: 100%; background-color: white" >
+        <div id="page_0" style="width: 100%; height: 100%; background-color: white;">
+
+            <div class="uh ubb bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 reg-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="reg-rtn ub-f1 ulev-3 ut-s tx-r reg-sty"><span id="nav_right" ontouchstart="appcan.touch('btn-act')">登陆</span></h1>
+                    <!-- <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="fa fa-1g ub-img1 reg-sty">
+                            登陆
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- 主框-start   -->
+            <div style="height: 1.0em;"></div>
+            <!-- 登陆logo -->
+            <div class="box-logo">
+                <div ontouchstart="appcan.touch('btn-act')" class="logo"></div>
+            </div>
+
+            <div style="height: 0.1em;"></div>
+
+            <!--  -->
+            <div class="titl-logo">
+                <span ontouchstart="appcan.touch('btn-act')" style="color: #FD614A; font-style: normal; font-size: 1.5em;">福BAO多</span>
+            </div>
+            <div class="titl-logo">
+                <span ontouchstart="appcan.touch('btn-act')" style="font-size: 0.8em; font-style: normal; color: #494949;">两元钱把你的广告做到全国</span>
+            </div>
+
+            <div style="height: 1.36em;"></div>
+
+            <!-- 输入框 -->
+            <form method="get" action="">
+
+                <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div>
+                <div class="b-gra umar-a uc-a1 c-wh usr-wd">
+                    <div class="ub ub-ac in-bg">
+                        <div ontouchstart="appcan.touch('btn-act')" class="umhw ub-img umar-lgn-1 usr-icon"></div>
+                        <div class="ub-f1 uinput3 uinn-cell">
+                            <input placeholder="请输入手机号码" id="phone" type="number" class="uc-a1 judg-num outline">
+                        </div>
+                        <!-- <div class="b-d9 uc-a1 ub-pc chk-bg">
+                        <div class="ub ub-ac ub-pc tx-c font-color1" style="font-size: 0.88em; color: #FBB9C0; margin-right: 0.68em;">
+                        获取验证码
+                        </div>
+                        <div class="resyzmicon resyzmwg ub-img uc-a1"></div>
+                        </div> -->
+                        <div class="b-d9 uc-a1 ub-pc chk-bg">
+                            <div class="ub ub-ac ub-pc tx-c font-color1 areacode" style="font-size: 0.88em; color: #6B6B6B; margin-right: 0.68em;" ontouchstart="appcan.touch('btn-act')">
+                                <a id="areacode" data-areacode="86" class="area">中国</a>&nbsp;<a class="fa fa-caret-down area"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div>
+
+                <div class="b-gra umar-a uc-a1 c-wh pwd-wd">
+                    <div class="ub ub-ac in-bg">
+                        <div ontouchstart="appcan.touch('btn-act')" class="umhw ub-img umar-lgn-1 def-icon"></div>
+                        <div class="ub-f1 uinput4 uinn9">
+                            <input placeholder="请输入验证码" id="judg_code" type="number" class="uc-a1 judg-num outline">
+                        </div>
+
+                        <div class="b-d9 uc-a1 ub-pc chk-bg">
+                            <div id="send_code" class="ub ub-ac ub-pc tx-c font-color1" style="font-size: 0.88em; color: #FD614A; margin-right: 0.68em;" ontouchstart="appcan.touch('btn-act')">
+                                获取验证码
+                            </div>
+                            <!-- <div class="resyzmicon resyzmwg ub-img uc-a1"></div> -->
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div>
+
+                <div class="b-gra umar-a uc-a1 c-wh pwd-wd">
+                    <div class="ub ub-ac in-bg">
+                        <div ontouchstart="appcan.touch('btn-act')" class="umhw ub-img umar-lgn-1 pwd-icon"></div>
+                        <div class="ub-f1 uinput4 uinn9">
+                            <input placeholder="请输入密码" id="password" type="password" class="uc-a1 onlyNumAlpha outline">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div>
+
+                <div class="b-gra umar-a uc-a1 c-wh pwd-wd">
+                    <div class="ub ub-ac in-bg">
+                        <div ontouchstart="appcan.touch('btn-act')" class="umhw ub-img umar-lgn-1 tjr-icon"></div>
+                        <div class="ub-f1 uinput4 uinn9">
+                            <input placeholder="推荐码" id="tjr" type="search" class="uc-a1 onlyNumAlpha outline">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div>
+
+                <div class="uinn-btn lgn-wd">
+                    <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn uc-a1 log-in" id="reg" ontouchstart="appcan.touch('btn-act')">
+                        <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                        立即注册
+                    </div>
+                </div>
+
+                <div class="ub ub-ver ub-ac ub-con" style="height: auto; margin-top: 0.3em;">
+                    <div class="ub-f1 tx-c ub ub-ver c-wh ub-fh" style="width: 90%;">
+                        <div style="font-size: 0.66em; color: #999999;">注册表示已同意<span class="protocol" ontouchstart="appcan.touch('btn-act')">《福包多使用协议》</span></div>
+                    </div>
+                </div>
+
+                <!-- <div style="height: 1.98em;"></div>
+
+                <div class="titl-di">
+                <p class="txt-logo">
+                <span style="color: #626262">第三方登陆 </span>
+                </p>
+                </div>
+
+                <div class="ub ub-ver ub-ac ub-con" style="height: auto;">
+                <div class="ub-f1 tx-l ub ub-ver c-wh ub-fh" style="width: 88%;">
+
+                <div class="uinn-log ub ub-ac ub-pc">
+                <div class="res-weibo ub-img umhw2"></div>
+                <div class="res-qq ub-img umhw2 umar-di"></div>
+                <div class="res-wechat ub-img umhw2"></div>
+                </div>
+
+                </div>
+                </div> -->
+
+            </form>
+
+        </div>
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/code.js"></script>
+        <script src="../login/js/reg.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+                
+                localStorage.setItem("area", 0);
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        //uexWidgetOne.exit(1);
+                        var area = localStorage.getItem("area");
+                        if (area == '1' || area == 1) {
+
+                            appcan.window.closePopover('area');
+                            localStorage.setItem("area", 0);
+
+                        } else {
+
+                            appcan.window.close(-1);
+
+                        }
+
+                    } else {
+
+                        alert('点击了其他键');
+
+                    }
+
+                }
+
+                appcan.window.subscribe('area', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var area = JSON.parse(msg);
+                        $('#areacode').text(area.country);
+                        $('#areacode').data('areacode', area.areacode);
+
+                    }
+
+                });
+
+            });
+
+            $('#submit').click(function() {
+
+                appcan.window.open({
+                    name : 'home',
+                    data : '../index/home.html',
+                    aniId : 10,
+                });
+
+            });
+
+            $('.areacode').click(function() {
+
+                localStorage.setItem("area", 1);
+
+                var bodyWidth = localStorage.getItem("bodyWidth");
+                var bodyHeight = localStorage.getItem("bodyHeight");
+                appcan.window.openPopover({
+                    name : 'area',
+                    dataType : 0,
+                    url : "../pop/area.html",
+                    top : 0,
+                    left : 0,
+                    width : bodyWidth,
+                    height : bodyHeight,
+                });
+
+            });
+            
+            $('.protocol').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'protocol',
+                        data : '../setup/protocol.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "protocol",
+                        data : "../setup/protocol.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $("#nav_left").click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $("#nav_right").click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+        </script>
+    </body>
+</html>

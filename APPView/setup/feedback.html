@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../setup/css/sugg-v2.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div class="uh bc-head ubb bc-border" id="header" style="position: fixed; z-index: 10000;">
+                <div class="ub">
+                    <div id="nav_left" class="nav-one" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">意见反馈</h1>
+                    <div id="nav_right" class="nav-btn" ontouchstart="appcan.touch('btn-act')">
+                        <div class="nav-txt">
+                            关闭
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="ub ub-ver">
+                    <div class="ub-f1 ub ub-ver ins-sty">
+                        <div class="ub ub-f1">
+                            <textarea type="text" class="ub-f1 outline" placeholder="请填写10个字以上的问题描述以便我们提供更好的帮助" id="question"></textarea>
+                        </div>
+
+                        <!-- <div class="txt-cnt"><span class="flt-spn" ontouchstart="appcan.touch('btn-act')">108</span></div> -->
+
+                        <!-- <div class="ub ub-ac">
+                        <div class="ulev-1 ub-f1">
+                        <div class="ub ub-ac">
+                        <div class="photo-album" data-albm_i="1">
+
+                        <div class="cam-par">
+                        <img data-cam_i="1" ontouchstart="appcan.touch('btn-act')" class="camera" src="../hb/img/hb_send_camera@2x.png" />
+                        </div>
+
+                        </div>
+                        </div>
+                        </div>
+                        </div> -->
+
+                    </div>
+
+                </div>
+
+                <!-- <div class="ub share-padd ub-ae disp-color">
+                联系方式
+                </div>
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub ubb ubt bc-border list-cont-padd c-wh ub-ac">
+                <div class="uinput ub ub-f1">
+                <input id="linkto" placeholder="选填，方便我们与你联系" type="search" class="ub-f1 outline">
+                </div>
+
+                </div>
+                </div> -->
+
+                <div style="height: 3.0em;"></div>
+
+                <div class="uinn-btn">
+                    <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn uc-a1 log-in" id="submit" ontouchstart="appcan.touch('btn-act')">
+                        <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                        提交
+                    </div>
+                </div>
+
+                <div style="height: 1.0em;"></div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../setup/js/feedback.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                var titHeight = $('#header').height();
+                $('#content').css('padding-top', titHeight);
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+            });
+
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('#nav_right').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+            
+            $('#submit').click(function() {
+
+                judgProblem();
+
+            });
+
+        </script>
+    </body>
+</html>

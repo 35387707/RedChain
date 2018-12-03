@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+        <link rel="stylesheet" href="../wallet/css/msg-v2.css">
+        <link rel="stylesheet" href="../wallet/css/trd-v1.css">
+    </head>
+    <body class="" ontouchstart>
+
+        <div class="up ub ub-ver" tabindex="0">
+            
+            <div class="ub ub-ver" id="content">
+            </div>
+            
+            <!--
+            <div class="ub ub-ver chk-cont" id="forumList" data-bind="collection:$collection">
+                <div mvvm-scope>
+                    <div class="ubb ub bc-border c-wh">
+                        <ul ontouchstart="appcan.touch('btn-act')" class=" ub uinn-a1 c-wh2 ub-f1">
+                            <li class="ub pos_re">
+                                <div class="uh-app3 uw-app3 uc-a-app2 ub-img mar-ar1" data-bind="css:{'background-image':format('url($1)',avatorImg)}"></div>
+                            </li>
+                            <li class="ub-f1 ub">
+                                <div class="ub ub-ver ub-f1 umar-r-infor">
+                                    <div class="t-bla ulev-app1" data-bind="text:avator"></div>
+                                    <div class="ulev-4 ub-f1 umar-t">
+                                        <span class="t-gra-infor2" data-bind="text:time"></span>
+                                    </div>
+                                </div>
+                                <div class="ub-pe ulev-2 spec-middle">
+                                    <div class="spec-color" data-bind="text:content"></div> -->
+                                    <!-- <div class="red-padd">
+                                    <img src="../msg/imgs/comImg.png"/>
+                                    </div> -->
+                               <!-- </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../wallet/js/wallet.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                appcan.frame.setBounce(1, function(type) {
+
+                }, function(type) {
+
+                }, function(type) {
+
+                    setTimeout(function(type) {
+                        
+                        //getBillList(index + 1, 3, 'issue_amount');
+                        judgCurPage(3, 'today_rewards', 20);
+                        
+                    }, 1000);
+
+                });
+
+                getBillList(1, 3, 'issue_amount');
+
+            });
+
+        </script>
+    </body>
+</html>

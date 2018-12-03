@@ -1,0 +1,32 @@
+.prot-bg {
+}
+.prot-hdr {
+    height: auto;
+    padding: 1.25em 0 0.5em 0;
+    font-size: 1.20em;
+    color: #373737;
+}
+.prot-sub {
+    height: auto;
+    padding: 0 0.80em;
+    margin: 1.0em 0 0.36em;
+    font-size: 1.0em !important;
+    color: #373737;
+}
+.prot-cont {
+    height: auto;
+    padding: 0 0.88em;
+    margin: 0.36em 0;
+    font-size: 0.9em !important;
+    color: #5F5F5F;
+}
+
+.help-cont {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    height: 100%;
+}

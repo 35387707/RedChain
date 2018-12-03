@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../lib/swiper-3.4.2/dist/css/swiper.min.css">
+        <link rel="stylesheet" href="../hb/css/rank-v1.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <div class="rank-cont">
+
+                <div class="rank-top">
+                    <div class="rank-img"></div>
+                    <div class="rank-nav">
+                        <div class="ub nav-cont">
+                            <div ontouchstart="appcan.touch('btn-act')" class="ub ub-ver ub-f1 ub-pc nav-left nav-sub active">
+                                <div class="tx-c ub-f1 font-w" >
+                                    福气榜
+                                </div>
+                            </div>
+                            <div ontouchstart="appcan.touch('btn-act')" class="ub ub-ver ub-f1 ub-pc nav-right nav-sub">
+                                <div class="tx-c ub-f1 c-white font-w">
+                                    土豪榜
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rank-list">
+
+                    <!-- <div class="rank-padd c-wh">
+                    <div class="ub ubb bc-border border-padd-bottom">
+                    <div class="ub ub-ver rank-icon-sty">
+                    <div class="mar-ar1">
+                    1
+                    </div>
+                    </div>
+                    <div class="ub ub-ver rank-icon-sty">
+                    <div class="ub-img rank-icon-width rank-user-icon mar-ar1"></div>
+                    </div>
+                    <div class="ub ub-ver ub-f1 mar-ar1">
+                    <div class="ulev-app1 user-hdr">
+                    likegor
+                    </div>
+                    <div class="ut-s user-time">
+                    收到红包 6.288
+                    </div>
+                    </div>
+                    <div class="ub ub-ver ub-ae ub-pe">
+                    <div class="list-cash tx-r">
+                    单次最高
+                    </div>
+                    <div class="ut-s user-time">
+                    6.88
+                    </div>
+                    </div>
+                    </div>
+                    </div> -->
+
+                    <div class="swiper-container rank-mode" id="proj_cont">
+                        <div class="swiper-wrapper rank-wrap">
+                            <div class="swiper-slide rank-slide">
+
+                                <div class="list-cont fuqi-cont">
+                                    <div id="fuqi_list" class="inside-cont"></div>
+
+                                    <!-- <div class="rank-line"></div>
+
+                                    <div class="rank-padd c-wh">
+                                        <div class="ub border-padd-bottom">
+                                            <div class="ub ub-ver rank-icon-sty">
+                                                <div class="ub-img rank-width rank-no1 rank-pos"></div>
+                                            </div>
+                                            <div class="rank-icon-sty">
+                                                <div class="ub-img rank-icon-width rank-user-icon"></div>
+                                            </div>
+                                            <div class="ub ub-ver ub-f1 mar-ar1">
+                                                <div class="user-hdr">
+                                                    likegor
+                                                </div>
+                                                <div class="ut-s user-time">
+                                                    收到红包 6.288
+                                                </div>
+                                            </div>
+                                            <div class="cash-sty">
+                                                <div class="list-cash">
+                                                    单次最高
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="rank-line"></div>
+
+                                    <div class="rank-padd c-wh">
+                                        <div class="ub border-padd-bottom">
+                                            <div class="ub ub-ver rank-icon-sty">
+                                                <div class="ub-img rank-num">4</div>
+                                            </div>
+                                            <div class="rank-icon-sty">
+                                                <div class="ub-img rank-icon-width rank-user-icon"></div>
+                                            </div>
+                                            <div class="ub ub-ver ub-f1 mar-ar1">
+                                                <div class="user-hdr">
+                                                    likegor
+                                                </div>
+                                                <div class="ut-s user-time">
+                                                    收到红包 6.288
+                                                </div>
+                                            </div>
+                                            <div class="cash-sty">
+                                                <div class="list-cash">
+                                                    单次最高
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    
+                                </div>
+
+                                <div class="list-bottom fuqi-bottom">
+
+                                    <div class="list-height fuqi-height"></div>
+
+                                    <div class="fuqi-mine c-wh">
+
+                                        <div class="rank-padd" style="visibility: hidden">
+                                            <div class="ub border-padd-bottom">
+                                                <div class="ub ub-ver rank-icon-sty">
+                                                    <div class="ub-img rank-width rank-no1 rank-pos"></div>
+                                                </div>
+                                                <div class="rank-icon-sty">
+                                                    <div class="ub-img rank-icon-width rank-user-icon"></div>
+                                                </div>
+                                                <div class="ub ub-ver ub-f1 mar-ar1">
+                                                    <div class="user-hdr">
+                                                        likegor
+                                                    </div>
+                                                    <div class="ut-s user-time">
+                                                        收到红包 6.288
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver ub-ae ub-pe">
+                                                    <div class="list-cash tx-r">
+                                                        单次最高
+                                                    </div>
+                                                    <div class="ut-s user-time">
+                                                        6.88
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="swiper-slide rank-slide">
+
+                                <div class="list-cont tuhao-cont">
+                                    
+                                    <div id="tuhao_list" class="inside-cont"></div>
+
+                                    <!-- <div class="rank-line"></div>
+
+                                    <div class="rank-padd c-wh">
+                                    <div class="ub border-padd-bottom">
+                                    <div class="ub ub-ver rank-icon-sty">
+                                    <div class="ub-img rank-width rank-no1 rank-pos"></div>
+                                    </div>
+                                    <div class="rank-icon-sty">
+                                    <div class="ub-img rank-icon-width rank-user-icon"></div>
+                                    </div>
+                                    <div class="ub ub-ver ub-f1 mar-ar1">
+                                    <div class="user-hdr">
+                                    likegor
+                                    </div>
+                                    <div class="ut-s user-time">
+                                    收到红包 6.288
+                                    </div>
+                                    </div>
+                                    <div class="ub ub-ver ub-ae ub-pe">
+                                    <div class="list-cash tx-r">
+                                    单次最高
+                                    </div>
+                                    <div class="ut-s user-time">
+                                    6.88
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div> -->
+
+                                </div>
+
+                                <div class="list-bottom tuhao-bottom">
+
+                                    <div class="list-height tuhao-height"></div>
+
+                                    <div class="tuhao-mine">
+
+                                        <div class="rank-padd" style="visibility: hidden">
+                                            <div class="ub border-padd-bottom">
+                                                <div class="ub ub-ver rank-icon-sty">
+                                                    <div class="ub-img rank-width rank-no1 rank-pos"></div>
+                                                </div>
+                                                <div class="rank-icon-sty">
+                                                    <div class="ub-img rank-icon-width rank-user-icon"></div>
+                                                </div>
+                                                <div class="ub ub-ver ub-f1 mar-ar1">
+                                                    <div class="user-hdr">
+                                                        likegor
+                                                    </div>
+                                                    <div class="ut-s user-time">
+                                                        收到红包 6.288
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver ub-ae ub-pe">
+                                                    <div class="list-cash tx-r">
+                                                        单次最高
+                                                    </div>
+                                                    <div class="ut-s user-time">
+                                                        6.88
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination rank-menu"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="midl-cont close" >
+                    <div class="disp-wht"></div>
+                </div>
+
+                <div class="clos-cont close">
+                    <div ontouchstart="appcan.touch('btn-act')" class="clos-icon">
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../lib/swiper-3.4.2/dist/js/swiper.min.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../hb/js/hbrank.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                var rankHeight = $('.rank-cont').height();
+                var rankTop = $('.rank-top').height();
+                $('.rank-list').height(rankHeight - rankTop);
+
+                var rankSlideH = $('.rank-slide').height();
+                var fuqiBottomH = $('.fuqi-bottom').height();
+                var tuhaoBottomH = $('.tuhao-bottom').height();
+                $('.fuqi-cont').height(rankSlideH - fuqiBottomH);
+                $('.tuhao-cont').height(rankSlideH - tuhaoBottomH);
+
+                getFuqiRank(3, 2);
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        //uexWidgetOne.exit(1);
+                        localStorage.setItem("openPop", 0);
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+            });
+
+            //最大的在最下面
+            var mainSwiper = new Swiper('.rank-mode', {
+                pagination : '.rank-menu',
+                slidesPerView : 1,
+                paginationClickable : false,
+                spaceBetween : 30,
+                onSlideChangeStart : function(e) {
+
+                    $(".nav-cont .active").removeClass('active');
+                    $(".nav-sub").eq(e.activeIndex).addClass('active');
+
+                }
+            });
+
+            $(".nav-sub").click(function() {
+                $(".nav-cont .active").removeClass('active');
+                $(this).addClass('active');
+                mainSwiper.slideTo($(this).index(), 500, false);
+                //alert($('.nav-sub').height());
+            });
+
+            $('.empty-view').click(function() {
+
+                localStorage.setItem("openPop", 0);
+                appcan.window.close(-1);
+
+            });
+
+            $('.close').click(function() {
+
+                localStorage.setItem("openPop", 0);
+                appcan.window.close(-1);
+
+            });
+
+        </script>
+    </body>
+</html>
+

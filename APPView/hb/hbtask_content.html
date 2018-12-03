@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, sub-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../hb/css/task-v1.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver bc-bg" tabindex="0">
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="task-height task-img task-red">
+                    <div class="task-cont">
+                        <div class="task-top">
+                            <div class="top-txt">
+                                今日已领取福包
+                            </div>
+                        </div>
+                        <div class="task-bottom">
+                            <div class="ub ub-ae bot-cont">
+                                <div class="ub ub-ver ub-f1 ub-pc bot-sub1"></div>
+                                <div class="ub ub-ver ub-f1 ub-pc bot-sub2">
+                                    <a class="" id="count" ontouchstart="appcan.touch('btn-act')">0</a>
+                                </div>
+                                <div class="ub ub-ver ub-f1 ub-pc bot-sub3">
+                                    <a ontouchstart="appcan.touch('btn-act')"><span>今日上限&nbsp;</span><span id="maxcount">0</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="ub t-bla ub-ac invit-padd c-wh wechat" ontouchstart="appcan.touch('btn-act')">
+                    <li class="ub-f1 ut-s tx-c invit-txt">
+                        邀请好友，领取奖励！
+                    </li>
+                    <li>
+                        <div class="ub-img right-arrow"></div>
+                    </li>
+                </ul>
+
+                <div class="task-menu" ontouchstart="appcan.touch('btn-act')">
+                    任务清单
+                </div>
+
+                <div class="task-list">
+
+                    <div class="ub ubb list-style">
+                        <div class="ub-f1 sub-padd">
+                            <div class="cont-padd ub">
+                                <div class="sub-title" ontouchstart="appcan.touch('btn-act')">
+                                    分享10个微信好友
+                                </div>
+                            </div>
+                            <div class="sub-note ub" ontouchstart="appcan.touch('btn-act')">
+                                <a class="sub-txt">+5次领取上限</a><a class="sub-time">(当日)</a>
+                            </div>
+                        </div>
+                        <div class="arrow-style wechat" ontouchstart="appcan.touch('btn-act')">
+                            <div class="now-btn">
+                                立即前往
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ub ubb list-style">
+                        <div class="ub-f1 sub-padd">
+                            <div class="cont-padd ub">
+                                <div class="sub-title" ontouchstart="appcan.touch('btn-act')">
+                                    分享20个微信好友
+                                </div>
+                            </div>
+                            <div class="sub-note ub" ontouchstart="appcan.touch('btn-act')">
+                                <a class="sub-txt">+10次领取上限</a><a class="sub-time">(当日)</a>
+                            </div>
+                        </div>
+                        <div class="arrow-style wechat" ontouchstart="appcan.touch('btn-act')">
+                            <div class="now-btn">
+                                立即前往
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../hb/js/hbtask.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                var taskHeight = $('.task-height').height();
+                var topHeight = $('.task-top').height();
+                $('.task-bottom').height(taskHeight - topHeight);
+
+                appcan.window.enableBounce();
+
+                appcan.window.showBounceView({
+                    type : 0,
+                    color : '#FF5D65',
+                    flag : 1
+                });
+
+                appcan.window.showBounceView({
+                    type : 1,
+                    color : '#F2F2F2',
+                    flag : 1
+                });
+                
+                getReciveRedPackCount(localStorage.getItem("uid"), 'hbtask');
+
+            });
+            
+            $('.wechat').click(function(){
+               
+               openToast('微信功能暂时还没有开放', 3000, 5, 0);
+                
+            });
+            
+        </script>
+    </body>
+</html>

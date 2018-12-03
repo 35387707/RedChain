@@ -1,0 +1,105 @@
+.bc-text-yb {
+    color: #D2D2D2;
+}
+.yb-btn {
+    min-height: 2em;
+    min-width: 3em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    box-pack: center;
+}
+.ub-yb {
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+}
+.fa-street-view:before {
+    content: "\f21d";
+}
+.bc-head-yb {
+    background-color: green;
+}
+.bc-footer-yb {
+    background-color: green;
+}
+.fa-yb {
+    font-size: 1.5em
+}
+
+body {
+    background-color: rgba(0,0,0,0);
+}
+#header {
+    height: auto;
+    padding-top: 0.36em;
+    background-color: rgba(0,0,0,0);
+}
+
+/*
+ * middle
+ */
+.res-avator {
+    background-image: url('../img/avator.png');
+}
+.uinn-out {
+    width: auto;
+    margin: 0 auto;
+    padding: 0.10em 0.5em;
+    background-color: white;
+    --webkit-border-radius: 2.4em;
+    border-radius: 2.4em;
+}
+.area-color {
+    color: #636363;
+}
+.user-color {
+    color: #818181;
+    font-size: 0.8em;
+}
+.umwh-m {
+    min-height: 1.875em;
+    min-width: 1.875em;
+}
+.uinn-m {
+    padding: 1em 0.78em 1em 1.25em;
+}
+.uinn-mtxt {
+    padding-left: 1.6em;
+}
+.uinn-avator {
+    padding: 0.3em 0.5em 0.3em 0.4em;
+}
+.umar-avator {
+    margin-top: 0.3em;
+}
+.umar-lname {
+    margin-left: 0.5em;
+}
+.umwh-avator {
+    min-height: 2.3em;
+    min-width: 2.3em;
+}
+.img-mrg-r {
+    margin-right: 0.15em;
+}
+.stat-sty {
+    background-color: pink;
+    --webkit-border-radius: 4.0em;
+    padding: 0.2em 0.36em;
+    border-radius: 4.0em;
+}
+.stat-1 {
+
+}
+
+.uc-a2 {
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em
+}
+.ub-a2 {
+    border: 1px solid #fff;
+}

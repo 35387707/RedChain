@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../hb/css/editor-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="ub ub-ver">
+                    <div class="ub-f1 ub ub-ver ins-sty">
+                        <div class="uba bc-border ub ub-f1">
+                            <textarea type="text" class="ub-f1" placeholder="想要对大家说" id="title"></textarea>
+                        </div>
+                        <div class="ub ub-ac">
+                            <div class="ulev-1 ub-f1">
+                                <div class="ub ub-ac">
+                                    <div class="photo-album" data-albm_i="1" ontouchstart="appcan.touch('btn-act')">
+
+                                        <div class="cam-par">
+                                            <img data-cam_i="1" class="camera" src="../hb/img/hb_send_camera@2x.png" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="ub ub-ver ub-fv list-view">
+                    <div class="ub ubb ubt bc-border list-marg-top sel-cont-padd c-wh ub-ac redmoney">
+                        <div class="left-txt-color ulev0 ub-f1">
+                            总金额
+                        </div>
+                        <div class="select">
+                            <div class="text">
+                                请选择
+                            </div>
+                            <div class="icon"></div>
+                            <select id="redmoney" selectedindex="0">
+                                <option value="0">0</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ub ub-ver ub-fv list-view">
+                    <div class="ub ubb ubt bc-border list-marg-top list-cont-padd c-wh ub-ac arealimit">
+                        <div class="left-txt-color ulev0 ub-f1">
+                            位置范围
+                        </div>
+                        <div class="t-gra-85 ulev-1 tx-r" id="arealimit">
+                            全国
+                        </div>
+                        <li class="fa fa-angle-right ulev2 sc-text"></li>
+                    </div>
+                </div>
+
+                <div class="ub ub-ver ub-fv list-view">
+                    <div class="ub ubb ubt bc-border list-marg-top list-cont-padd c-wh ub-ac">
+                        <div class="left-txt-color ulev0 ub-f1">
+                            谁可以领
+                        </div>
+                        <div class="t-gra-85 ulev-1 tx-r">
+                            不限
+                        </div>
+                        <li class="fa fa-angle-right ulev2 sc-text"></li>
+                    </div>
+                </div>
+
+                <div class="empty-height"></div>
+
+                <!-- <div class="ub ub-ver ub-fv list-link">
+                <div class="ub ubb ubt bc-border list-marg-top ub-ac">
+                <div class="link-txt-color ulev-1 tx-l list-link-left" id="link_title">
+                链接标题
+                </div>
+                <div class="list-link-middle"></div>
+                <div class="link-txt-color ulev-1 tx-l list-link-right" id="link_addr">
+                链接地址
+                </div>
+                </div>
+                </div> -->
+
+                <!-- <div class="ub ub-ver ub-fv list-view">
+                    <div class="ub ubb ubt bc-border list-marg-top list-cont-padd c-wh ub-ac">
+                        <div class="uinput ub ub-f1">
+                            <input id="linktitle" placeholder="链接标题" type="search" class="ub-f1">
+                        </div>
+
+                    </div>
+                </div> -->
+
+                <div class="ub ub-ver ub-fv list-view">
+                    <div class="ub ubb ubt bc-border list-marg-top list-cont-padd c-wh ub-ac">
+                        <div class="uinput ub ub-f1">
+                            <input id="linkto" placeholder="链接地址" type="search" class="ub-f1">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- <div class="ub share-padd ub-ae">
+                <div class="ub ub-ver ub-f1 ub-pc">
+                <div class="ub-ae share-txt ulev-1 tx-l share-left">
+                链接标题
+                </div>
+                </div>
+                <div class="ub ub-ver ub-f1 ub-pc">
+                <div class="ub-ae share-txt ulev-1 tx-l share-right">
+                链接地址
+                </div>
+                </div>
+                </div> -->
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb ubt bc-border list-marg-top list-btn-padd ub-ac" id="send_fubao">
+                        <div class="ulev-3 ub-f1 tx-c bc-white">
+                            确定发布
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../hb/js/hbsendred.js"></script>
+        <script>
+            appcan.ready(function() {
+                
+                //appcan.window.enableBounce();
+
+                localStorage.setItem("redmoney", 0);
+                
+                dispSelData();
+
+                appcan.window.subscribe('chg_img', function(msg) {
+
+                    if (msg != "" && msg != null) {
+
+                        if (localStorage.getItem("imgArr") == null || localStorage.getItem("imgArr") == '') {
+
+                        } else {
+
+                            var timeout = 0;
+
+                            var imgArr = JSON.parse(localStorage.getItem("imgArr"));
+                            debug(localStorage.getItem("imgArr"));
+
+                            $(imgArr).each(function(i, v) {
+
+                                var imgCont = '<div data-par_s="' + v.imgIndx + '" class="cam-par"><img data-img_s="' + v.imgIndx + '" data-pic_p="' + v.imgPath + '" class="disp-pic" src="' + v.imgPath + '" /></div>';
+                                //var cont = '<div class="cam-par"><img class="disp-pic" src="' + imgPath + '" /></div>';
+                                $('.photo-album').append(imgCont);
+
+                            });
+
+                            $('.disp-pic').unbind();
+                            $('.disp-pic').click(function() {
+
+                                alert($('.photo-album').children("div:last-child").index());
+
+                                //查看所有相关的图片
+                                var picArr = [];
+                                $('.disp-pic').each(function(j, s) {
+
+                                    //debug($(this).data('pic_p'));
+                                    //debug($(this).data('img_s'));
+
+                                    if ($(this).data('pic_p')) {
+                                        var picSgl = {
+                                            src : $(this).data('pic_p'),
+                                            desc : $(this).data('img_s'),
+                                        };
+                                        picArr.push(picSgl);
+                                    }
+
+                                });
+
+                                //debug(picArr);
+                                //var tempPath = $(this)[0].src;
+                                setTimeout(function() {
+
+                                    dispCurImg(picArr);
+
+                                }, 300);
+
+                            });
+
+                            $('.disp-pic').on('touchstart', function(e) {
+
+                                e.stopPropagation();
+                                var img_s = $(this).data('img_s');
+
+                                timeout = setTimeout(function() {
+
+                                    //alert('pare: ' + $("div[data-par_s='" + img_s + "']").html());
+
+                                    uexWindow.actionSheet({
+                                        title : "选项",
+                                        cancel : "取消",
+                                        buttons : "查看图片,删除图片"
+                                    }, function(index) {
+
+                                        if (index == 0) {
+
+                                            alert($('.photo-album').html());
+
+                                            var picArr = [];
+                                            $('.disp-pic').each(function(j, s) {
+
+                                                //debug($(this).data('pic_p'));
+                                                //debug($(this).data('img_s'));
+
+                                                if ($(this).data('pic_p')) {
+                                                    var picSgl = {
+                                                        src : $(this).data('pic_p'),
+                                                        desc : $(this).data('img_s'),
+                                                    };
+                                                    picArr.push(picSgl);
+                                                }
+
+                                            });
+
+                                            setTimeout(function() {
+
+                                                dispCurImg(picArr);
+
+                                            }, 300);
+
+                                        } else if (index == 1) {
+
+                                            $("div[data-par_s='" + img_s + "']").remove();
+
+                                        }
+                                    });
+
+                                }, 750);
+
+                            });
+
+                            $('.disp-pic').on('touchend', function(e) {
+                                e.stopPropagation();
+                                clearTimeout(timeout);
+                            });
+
+                        }
+
+                    }
+
+                });
+
+            });
+
+            $('.camera').click(function() {
+
+                var fromPage = 'hbinfo';
+                openActnSht(fromPage);
+
+            });
+
+            $('#send_fubao').click(function() {
+
+                //openToast('正在发送红包', 100000, 5, 1);
+                
+                openToast("红包发送中...", 10000, 5, 1);
+
+                judgReqCont();
+
+                /*
+                localStorage.setItem("pay", 1);
+                
+                                var bodyWidth = localStorage.getItem("bodyWidth");
+                                var bodyHeight = localStorage.getItem("bodyHeight");
+                                appcan.window.openPopover({
+                                    name : 'pay',
+                                    dataType : 0,
+                                    url : "../pop/pay.html",
+                                    top : 0,
+                                    left : 0,
+                                    width : bodyWidth,
+                                    height : bodyHeight,
+                                });
+                */
+                
+            });
+
+            $('.arealimit').click(function() {
+
+                uexWindow.actionSheet({
+                    title : "位置范围",
+                    cancel : "取消",
+                    buttons : "全国,全市,5KM以内"
+                }, function(index) {
+
+                    if (index == 0) {
+
+                        $('#arealimit').html('全国');
+
+                    } else if (index == 1) {
+
+                        $('#arealimit').html('全市');
+
+                    } else if (index == 2) {
+
+                        $('#arealimit').html('5KM以内');
+
+                    }
+
+                });
+
+            });
+
+            appcan.select(".select", function(ele, value) {
+                localStorage.setItem("redmoney", value);
+            });
+
+        </script>
+    </body>
+</html>

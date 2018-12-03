@@ -1,0 +1,114 @@
+.banklist{
+    min-height:4rem;
+    margin:2.63671875rem auto 3.28125rem auto;
+    border-top:0.05rem solid #c1bfc4;
+    border-bottom:0.05rem solid #c1bfc4;
+    background-color:#fff;
+}
+.bankCard{
+    position:relative;
+    padding:1rem 2rem;
+    border-bottom:0.05rem solid #999;
+    background-color:#fff;
+}
+.bankCard:last-child{
+    border:none;
+}
+.bankName{
+    font-size:1.8rem;
+}
+.cardNumber{
+    margin-top:0.9375rem;
+    color:#999;
+}
+.bankCard-manage{
+    padding:1rem 2.5rem;
+}
+.modi-btn,.dele-btn{
+    position:absolute;
+    width:4.453125rem;
+	height:2.16796875rem;
+	background-color:transparent;
+	border-radius:0.4rem;
+	border:0.05rem solid #b2b2b2;
+}
+.modi-btn{
+    right:6rem;
+}
+.dele-btn{
+    right:1rem;
+}
+.cardAdd-block{
+    
+}
+.cardAdd-title{
+    padding:2.6953125rem 1.5rem 1.7578125rem 1.5rem;
+    font-size:1.46484375rem;
+}
+
+.account-info{
+    padding:0 2rem;
+    border-top:0.05rem solid #c1bfc4;
+    border-bottom:0.05rem solid #c1bfc4;
+    background-color:#fff;
+}
+.account-item{
+    position:relative;
+    height:5rem;
+    padding:0.1rem 0;
+    border-bottom:0.05rem solid #cdcccc;
+}
+.account-item:last-child{
+    border-bottom:none;
+}
+.acc-item-head{
+    position:absolute;
+    display:block;
+    width:6rem;
+    height:100%;
+    line-height:5rem;
+}
+.acc-iptTxt{
+    display:block;
+    width:100%;
+    height:100%;
+    text-indent:6rem;
+}
+.acc-select{
+    display:block;
+    width:100%;
+    height:100%;
+    text-indent:6rem;
+    border:none;
+    outline:0 none;
+    font-size:1.4rem;
+    color:#bbb;
+}
+.cardAdd-remind{
+    padding:1rem 2rem;
+}
+
+.recharge-block{
+    padding:2rem 1rem 8rem 1rem;
+}
+.recharge-remind{
+    color:#999;
+}
+.checked-icon{
+    position:absolute;
+    right:1.5234375rem;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    display:block;
+    width:1.81640625rem;
+    height:1.46484375rem;
+    background:url(../img/common/checked.png) no-repeat;
+    background-size:100%;
+}
+.bankCard-manage a{
+	color:#858387;
+}

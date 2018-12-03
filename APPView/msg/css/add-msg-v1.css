@@ -1,0 +1,324 @@
+.msg-cont {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    height: 100%;
+}
+.no-dis {
+    display: none !important
+}
+
+.new-friend {
+    width: 1.8em;
+    margin-top: 0.2em;
+}
+.msg-hdr-pad {
+    padding: 0.72em 20% 0.36em;
+    margin: 0;
+}
+#tab_view {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+#tab_view .tab-txt {
+    height: 100%;
+    width: 50%;
+    -webkit-box-flex: 1;
+}
+.tab-txt {
+    vertical-align: middle;
+}
+.tab-txt .tab-line {
+    height: 0.1em;
+    margin: 0.26em 30% 0 30%;
+    width: 40%;
+}
+.title-style {
+    font-weight: normal;
+}
+.title-active {
+    font-weight: normal;
+}
+.tab-color {
+    background-color: #FC5E49;
+}
+.tab-active {
+    background-color: #fff;
+}
+
+.spec-middle {
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.defn-line {
+    height: 1px;
+    width: 94%;
+    margin: 0 3%;
+    background-color: #EAEAEA;
+}
+.sys-height {
+    height: 0.80em;
+}
+
+.overflow {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    word-break: break-all;
+}
+.sys-img {
+    background-image: url('../img/logo_yuanxing@2x.png');
+}
+.new-img {
+    background-image: url('../img/index_new_friend@2x.png');
+}
+.say-img {
+    background-image: url('../img/index_say_hello@2x.png');
+}
+
+/*
+ * msg的样式
+ */
+.msg-div {
+    background-color: #FFFFFF;
+}
+.msg-ul {
+    padding: 0.625em;
+    background-color: #FFFFFF;
+}
+.sys-style {
+    height: 2.8125em;
+    width: 2.8125em;
+    -webkit-border-radius: 2.8125em;
+    border-radius: 2.8125em;
+    margin-right: 0.625em;
+}
+.pos-style {
+    position: absolute;
+    top: -0.25em;
+    right: 0.5em;
+}
+.msg-style {
+    height: 2.8125em;
+    width: 2.8125em;
+    -webkit-border-radius: 2.8125em;
+    border-radius: 2.8125em;
+    margin-right: 0.625em;
+}
+.pos-num {
+    background-color: #FB5C49;
+    width: 1.5em;
+    height: 1.5em;
+    -webkit-border-radius: 1.5em;
+    border-radius: 1.5em;
+    padding: 0.20em;
+    font-size: 0.60em !important;
+    color: #FFFFFF;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.icon-li {
+    height: 2.8125em;
+}
+.cont-li {
+    height: 2.8125em;
+}
+.cont-style {
+    height: 100%;
+}
+.msg-title {
+    min-height: 1.5125em;
+    color: #373737;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: left;
+    box-pack: left;
+}
+.msg-title span {
+}
+.msg-desc {
+    min-height: 1.3em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: left;
+    box-pack: left;
+}
+.msg-desc span {
+    font-size: 0.75em !important;
+}
+.txt-normal {
+    color: #b4b4b4;
+}
+.txt-spec {
+    color: #FFA0A0;
+}
+.info-style {
+    height: 2.8125em;
+}
+.info-temp {
+    height: 0.10em;
+}
+.info-top {
+    height: 1.025em;
+    line-height: 1.025em;
+    padding-right: 0.15em;
+    color: #9A9A9A;
+    text-align: right;
+}
+.info-top span {
+    font-size: 0.70em !important;
+}
+.info-bot {
+    height: 1.6em;
+    color: #b4b4b4;
+    text-align: right;
+}
+.info-bot img {
+    height: 1.6em;
+    width: 1.6em;
+}
+
+.time-style {
+    height: 2.8125em;
+}
+.time-top {
+    height: 1.49em;
+    line-height: 1.49em;
+    text-align: right;
+}
+.time-top span {
+    font-size: 0.75em !important;
+    color: #9A9A9A;
+}
+.time-bot {
+    height: 1.3em;
+    line-height: 1.3em;
+    text-align: right;
+}
+.time-bot span {
+    font-size: 0.75em !important;
+    color: #707070;
+}
+.time-bot .unread {
+    color: #FB5C49;
+}
+/*
+ * friend的样式
+ */
+.friend-padd {
+    /*padding: 0.625em;*/
+    padding: 0.5em 0.625em;
+    background-color: #FFFFFF;
+}
+.friend-width {
+    width: 2.40em;
+    height: 2.40em;
+    -webkit-border-radius: 2.40em;
+    border-radius: 2.40em;
+    margin-right: 0.625em;
+}
+.friend-marg {
+    margin-right: 0.625em;
+    margin-left: 0.36em;
+}
+.friend-info {
+    color: #373737;
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+/*
+ * new
+ */
+.spec-middle {
+    font-size: 0.84em !important;
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.ignore-btn {
+    -webkit-border-radius: 0.15em;
+    border-radius: 0.15em;
+    background: #999999;
+    color: #FFFFFF;
+    padding: 0.5em 0.75em;
+    margin-right: 0.8em;
+}
+.agree-btn {
+    -webkit-border-radius: 0.15em;
+    border-radius: 0.15em;
+    background: #FF4F64;
+    color: #FFFFFF;
+    padding: 0.5em 0.75em;
+}
+
+.add-btn {
+    -webkit-border-radius: 0.15em;
+    border-radius: 0.15em;
+    background: #FD624A;
+    color: #FFFFFF;
+    padding: 0.5em 0.75em;
+}
+
+.wait-passed {
+    font-size: 0.88em !important;
+    color: #9A9A9A;
+}

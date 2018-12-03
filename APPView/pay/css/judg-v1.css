@@ -1,0 +1,295 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    font-weight: bolder;
+}
+body {
+}
+
+.box-logo {
+    text-align: center;
+    width: 100%;
+    margin: 0.88em auto 0;
+}
+.logo {
+    background-size: cover;
+    background-image: url('../img/logo@2x.png');
+    height: 5.0em;
+    width: 5.0em;
+    margin: 0 auto;
+}
+
+.titl-logo {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto 0;
+}
+
+.titl-di {
+    text-align: center;
+    width: 100%;
+    margin: 0.75em auto 0.20em;
+}
+
+.txt-logo:before {
+    content: "";
+    border-top: 2px solid #BABABA;
+    display: block;
+    position: absolute;
+    width: 13.0%;
+    top: 0.7em;
+    left: 5.0em;
+}
+.txt-logo:after {
+    content: "";
+    border-top: 2px solid #BABABA;
+    display: block;
+    position: absolute;
+    width: 13.0%;
+    top: 0.7em;
+    right: 5.0em;
+}
+.usr-wd {
+    width: 100%;
+    margin: 0 auto;
+}
+.pwd-wd {
+    width: 100%;
+    margin: 0 auto;
+}
+.lgn-wd {
+    width: 88%;
+    margin: 0.1em auto;
+}
+.top-h {
+    height: 0.56em;
+}
+.btm-h {
+    height: 1.08em;
+}
+
+.password {
+    text-align: center;
+    margin: 0 auto;
+}
+.user {
+    text-align: center;
+    margin: 0 auto;
+}
+.help {
+    text-align: center;
+    width: 100%;
+}
+.help_left {
+    margin-left: 12%;
+    float: left;
+}
+.help_right {
+    margin-right: 12%;
+    float: right;
+}
+.txt-sty {
+    color: #525252;
+}
+.umar-lgn-1 {
+    margin-left: 1.08em;
+}
+
+/*
+ user login
+ change password
+ */
+.usr-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('../img/usr@2x.png');
+    background-size: cover;
+}
+.pwd-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('../img/pwd@2x.png');
+    background-size: cover;
+}
+.tjr-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('../img/tuijianma@2x.png');
+    background-size: cover;
+}
+.def-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('../img/encrypt@2x.png');
+    background-size: cover;
+}
+.in-bg {
+    background-color: #FFFFFF;
+}
+
+.in-t {
+    /*border-right: 0.05em solid rgb(0, 171, 236);*/
+    border: 0.01em solid gray;
+}
+.in-bt {
+    /*border-right: 0.05em solid rgb(0, 171, 236);*/
+    border-bottom: 0.01em solid gray;
+}
+.defn-btn {
+    width: 80%;
+}
+.txt-green {
+    color: #13ab6e;
+}
+.submt-btn {
+    background-color: #13ab6e;
+    margin: 0 auto;
+}
+.pwd-spa {
+    width: 100%;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+.pwd-spa a {
+    margin: 0 auto;
+    color: #666;
+    font-size: 0.8em
+}
+.log-in {
+    margin: 0 auto;
+}
+.pwd-forget {
+    width: 100%;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+.pwd-forget p {
+    margin: 0 auto;
+    color: #666;
+    font-size: 0.8em
+}
+
+.res-qq {
+    background-image: url('../img/qq@2x.png');
+}
+.res-wechat {
+    background-image: url('../img/wechat@2x.png');
+}
+.res-weibo {
+    background-image: url('../img/weibo@2x.png');
+}
+.umhw {
+    min-height: 2.0em;
+    min-width: 2.0em;
+}
+.umhw2 {
+    min-height: 3.6em;
+    min-width: 3.6em;
+}
+.uinn-log {
+    padding: 0.5em;
+    margin: 0;
+}
+.umar-di {
+    margin: 0 10%;
+}
+.reg-fgt {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+.reg-sub {
+    height: 100%;
+    width: 50%;
+    font-size: 0.88em !important;
+    -webkit-box-flex: 1;
+}
+.fgt-sty {
+    color: #7F7F7F;
+}
+.uinn-at2{
+    padding-top:0.75em;
+}
+/*
+ * reg
+ */
+.reg-c {
+    vertical-align: middle;;
+}
+.sc-back {
+    color: #6B6B6B;
+}
+.reg-sty {
+    color: #6B6B6B;
+    font-weight: normal;
+}
+/*
+ * forget
+ */
+.forget-umhw {
+    min-height: 2.0em;
+    line-height: 2.0em;
+    color: #4C4C4C;
+    width: 20%;
+}
+.pwd-umhw {
+    min-height: 2.0em;
+    line-height: 2.0em;
+    color: #4C4C4C;
+    width: 25%;
+}
+.umar-for {
+    margin-left: 0.5em;
+}
+.phone-wd {
+    width: 100%;
+    margin: 0 auto;
+}
+.msg-wd {
+    width: 100%;
+    margin: 0 auto;
+}
+.next-wd {
+    width: 95%;
+    margin: 0.1em auto;
+}
+.next-bc {
+    background-color: #999999;
+}
+.for-wd {
+    width: 100%;
+    margin: 0;
+}
+.pwd-input {
+    margin: 0px;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
+    padding: 0 0;
+    min-height: 2.1em;
+    padding: 0.1em 0;
+    background: none;
+    text-decoration: none;
+    font-size: 0.92em;
+    display: block;
+}
+.judg-input input {
+    margin: 0px;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
+    min-height: 2.1em;
+    padding: 0.1em 0em;
+    background: none;
+    text-decoration: none;
+    font-size: 0.92em;
+    display: block;
+}

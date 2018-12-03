@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>问题反馈</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/beizhu.css" />
+    <script>
+        function save() {
+            var content = $("#content").val();
+            if (content == null || content == "") {
+                return alert("内容不能为空！");
+            }
+            $.post("/Account/AddProblem", "content=" + content, function (data) {
+                if (data.code == "1") {
+                    alert("提交成功");
+                    window.history.back();
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>问题反馈</span>
+        </div>
+        <div class="remark-block">
+            <font class="remark-title">群聊名称</font>
+            <textarea class = "announce-area borderbox of-hide" id="content" placeholder = "请在此处输入反馈问题"></textarea>
+        </div>
+
+        <input class="bigBtn bg-b remark-btn-mt1" type="button" value="完成" onclick="save()" />
+    </div><!--wrap-->
+</body>
+</html>

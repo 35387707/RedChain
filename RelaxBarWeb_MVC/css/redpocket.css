@@ -1,0 +1,201 @@
+.pocket-block,.transfer-block-wrap{
+    padding:3rem 1.5234375rem;
+}
+/*发红包*/
+.money-ipt-wrap{
+    position:relative;
+    height:4.27734375rem;
+}
+.pin-icon{
+    left:1.58203125rem;
+    display:block;
+    width:1.15rem;
+    height:1.15rem;
+    background:url(../img/common/pin.png) no-repeat;
+}
+.money-font-1{
+    left:3.28125rem;
+    color:#b8b8b8;
+}
+.money-font-2{
+    left:1.5234375rem;
+    color:#b8b8b8;
+    font-size:1.40625rem;
+}
+.money-unit{
+    right:1rem;
+    color:#b8b8b8;
+    font-size:1.40625rem;
+}
+.money-iptTxt{
+    display:block;
+    width:100%;
+    height:100%;
+    padding-right:2.7rem;
+    text-align:right;
+    font-size:1.40625rem;
+    border:0.05rem solid #d1d0d2;
+    -webkit-border-radius:0.6rem;
+       -moz-border-radius:0.6rem;
+        -ms-border-radius:0.6rem;
+         -o-border-radius:0.6rem;
+            border-radius:0.6rem;
+}
+.money-iptTxt::-webkit-input-placeholder{
+    font-size:1.40625rem;
+}
+.group-memNum-remind{
+    position:absolute;
+    top:4.921875rem;
+    left:1rem;
+    font-size:1.171875rem;
+    color:#99989c;
+}
+.pocket-remark-area{
+    display:block;
+    width:100%;
+    height:7.91015625rem;
+    padding:1.5rem 1rem;
+    border:0.05rem solid #d1d0d2;
+    -webkit-border-radius:0.6rem;
+       -moz-border-radius:0.6rem;
+        -ms-border-radius:0.6rem;
+         -o-border-radius:0.6rem;
+            border-radius:0.6rem;
+}
+.pocket-remark-area::-webkit-input-placeholder{
+    color:#b8b8b8;
+}
+.pocket-mb-1{
+    margin-bottom:1.2890625rem;
+}
+.pocket-mb-2{
+    margin-bottom:3.75rem;
+}
+.pocket-mb-3{
+    margin-bottom:3.92578125rem;
+}
+.big-money-font{
+    font-size:5rem;
+    text-align:center;
+}
+
+/*转账*/
+.transfer-block{
+    min-height:4rem;
+    border:0.05rem solid #d6d6d7;
+    -webkit-border-radius:0.4rem;
+       -moz-border-radius:0.4rem;
+        -ms-border-radius:0.4rem;
+         -o-border-radius:0.4rem;
+            border-radius:0.4rem;
+    overflow:hidden;
+}
+.toWho{
+    padding-top:1rem;
+    padding-bottom:1rem;
+    text-align:center;
+    background-color:#fbfbfb;
+    font-size:1.171875rem;
+    color:#585656;
+}
+.toWho-img{
+    width:4.98046875rem;
+    height:4.98046875rem;
+    margin:0 auto;
+    -webkit-border-radius:0.4rem;
+       -moz-border-radius:0.4rem;
+        -ms-border-radius:0.4rem;
+         -o-border-radius:0.4rem;
+            border-radius:0.4rem;
+}
+.transfer-much{
+    padding:1.9921875rem 2.34375rem;
+    background-color:#fff;
+}
+.transfer-money{
+    padding-bottom:1rem;
+    border-bottom:0.05rem solid #b3b2b2;
+}
+.transfer-title{
+    padding-bottom:1rem;
+}
+.transfer-iptTxt{
+	display:block;
+	width:100%;
+    height:4rem;
+    font-size:4rem;
+}
+.transfer-iptTxt::-webkit-input-placeholder{
+    font-size:4rem;
+    color:#000;
+}
+.statement{
+    display:block;
+    width:100%;
+    height:4rem;
+    margin-top:1.171875rem;
+}
+.pocket-notice{
+    margin-top:15.234375rem;
+    text-align:center;
+    color:#9f9ca0;
+}
+
+/*支付弹出*/
+.mask{
+    position:fixed;
+    z-index:19999;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.6);
+}
+.pay-alert{
+    position:fixed;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+       -moz-transform:translate(-50%,-50%);
+        -ms-transform:translate(-50%,-50%);
+         -o-transform:translate(-50%,-50%);
+            transform:translate(-50%,-50%);
+    display:block;
+    width:75%;
+    min-height:10%;
+    padding:5%;
+    background-color:#fff;
+    border-radius:0.3rem;
+    text-align:center;
+    box-sizing:border-box;
+}
+.pay-alert .title{
+    color:#353535;
+    text-align:center;
+    font-size:1.8rem;
+}
+.pay-alert .txt{
+    width:85%;
+    padding-top:5%;
+    border-bottom:0.05rem solid #45c01a;
+    text-indent:3%;
+    font-size:1.6rem;
+    text-align:center;
+}
+.pay-alert .confirm{
+	width:85%;
+	margin:8% auto 2% auto;
+    text-align:right;
+}
+.pay-alert .confirm .no{
+    margin-right:10%;
+    color:#808080;
+}
+.pay-alert .confirm .yes{
+    color:#1aad19;
+}
+.pay-alert .confirm .no,
+.pay-alert .confirm .yes{
+    font-size:1.6rem;
+}

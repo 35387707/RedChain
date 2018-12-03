@@ -1,0 +1,21 @@
+.loading {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(1,1,1,0.3);
+    z-index: 1000;
+    display: none;
+    top: 0;
+    left: 0;
+}
+.cover {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #2E8B57;
+    background: rgba(46,139,87,0.3);
+    z-index: 1000;
+    display: none;
+    top: 0;
+    left: 0;
+}

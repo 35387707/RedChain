@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pay/css/pay.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <!-- 支付窗口 -->
+            <div class="pay-mode">
+                <div class="pay-padd">
+
+                    <!-- 关闭 -->
+                    <div class="pay-clos">
+                        <div class="ub-img pay-clos-wd pay-clos-img close" ontouchstart="appcan.touch('btn-act')"></div>
+                    </div>
+
+                    <!-- 内容框-->
+                    <div class="pay-cont">
+                        <div class="pay-title" ontouchstart="appcan.touch('btn-act')">
+                            支付
+                        </div>
+                        <div class="pay-num" ontouchstart="appcan.touch('btn-act')" id="pay_price">
+                            0
+                        </div>
+
+                        <!-- <div data-title="福利积分" class="ubt bc-border pay-hongyun pay-sub" ontouchstart="appcan.touch('btn-act')">
+                        <ul class="ub t-bla ub-ac pay-ul-padd">
+                        <li class="pay-li-sty ub ub-ac ub-pc">
+                        <div data-round="福利积分" class="ub-img pay-icon pay-gray"></div>
+                        <div class="ub-img pay-img hongyun-img"></div>
+                        </li>
+                        <li class="ub-f1 ut-s pay-change">
+                        福利积分<span class="pay-float-right"><a id="FootQuan">0</a></span>
+                        </li>
+                        </ul>
+                        </div>
+
+                        <div data-title="福音积分" class="ubt bc-border pay-hongyun pay-sub" ontouchstart="appcan.touch('btn-act')">
+                        <ul class="ub t-bla ub-ac pay-ul-padd">
+                        <li class="pay-li-sty ub ub-ac ub-pc">
+                        <div data-round="福音积分" class="ub-img pay-icon pay-gray"></div>
+                        <div class="ub-img pay-img hongyun-img"></div>
+                        </li>
+                        <li class="ub-f1 ut-s pay-change">
+                        福音积分<span class="pay-float-right"><a id="Score">0</a></span>
+                        </li>
+                        </ul>
+                        </div> -->
+
+                        <div data-title="福BAO多" class="ubt bc-border pay-hongyun pay-sub" ontouchstart="appcan.touch('btn-act')">
+                            <ul class="ub t-bla ub-ac pay-ul-padd">
+                                <li class="pay-li-sty ub ub-ac ub-pc">
+                                    <div data-round="福BAO多" class="ub-img pay-icon pay-gray"></div>
+                                    <div class="ub-img pay-img hongyun-img"></div>
+                                </li>
+                                <li class="ub-f1 ut-s pay-change">
+                                    福BAO多零钱<span class="pay-float-right"><a id="Balance">0</a></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div data-title="微信" class="ubt bc-border pay-weixin pay-sub" ontouchstart="appcan.touch('btn-act')">
+                            <ul class="ub t-bla ub-ac pay-ul-padd">
+                                <li class="pay-li-sty ub ub-ac ub-pc">
+                                    <div data-round="微信" class="ub-img pay-icon pay-gray"></div>
+                                    <div class="ub-img pay-img weixin-img"></div>
+                                </li>
+                                <li class="ub-f1 ut-s pay-change">
+                                    微信支付<span class="pay-float-right"><a>一元以上可以使用</a></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div data-title="支付宝" class="ubt bc-border pay-zhifubao pay-sub" ontouchstart="appcan.touch('btn-act')">
+                            <ul class="ub t-bla ub-ac pay-ul-padd">
+                                <li class="pay-li-sty ub ub-ac ub-pc">
+                                    <div data-round="支付宝" class="ub-img pay-icon pay-gray pay-green"></div>
+                                    <div class="ub-img pay-img zhifubao-img"></div>
+                                </li>
+                                <li class="ub-f1 ut-s pay-change">
+                                    支付宝支付<span class="pay-float-right"><a>一元以上可以使用</a></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div id="pay" class="pay-btn" ontouchstart="appcan.touch('btn-act')">
+                        确认支付
+                    </div>
+
+                    <!-- 内容框-end -->
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../pop/js/place.js"></script>
+        <script src="../pop/js/province.js"></script>
+        <script src="../addr/js/mgt.js"></script>
+        <script src="../order/js/payDetail.js"></script>
+        <script src="../pay/js/pwd.js"></script>
+        <script src="../pay/js/pay.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                var redmoney = localStorage.getItem("redmoney");
+                if (redmoney == '' || redmoney == '' || redmoney == undefined) {
+
+                } else {
+                    $('#pay_price').text(redmoney);
+                }
+
+                setBalance();
+
+                appcan.window.subscribe('fubaoBack', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.closePopover('pay');
+                        localStorage.setItem("pay", 0);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('orderBack', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.closePopover('pay');
+                        localStorage.setItem("pay", 0);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('detailBack', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.closePopover('pay');
+                        localStorage.setItem("pay", 0);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('carryBack', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.closePopover('pay');
+                        localStorage.setItem("pay", 0);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('vipBack', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.closePopover('pay');
+                        localStorage.setItem("pay", 0);
+
+                    }
+
+                });
+
+                var PriceType = parseInt(localStorage.getItem("PriceType"));
+                if (PriceType == 0 || PriceType == 1) {
+                    $("div[data-title='福利积分']").addClass('no-dis');
+                    $("div[data-title='福音积分']").addClass('no-dis');
+                }
+
+            });
+
+            $('.empty-view').click(function() {
+
+                appcan.window.closePopover('pay');
+                localStorage.setItem("pay", 0);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.closePopover('pay');
+                localStorage.setItem("pay", 0);
+
+            });
+
+            $('#pay').click(function() {
+
+                var payTemp = $('.pay-green').data('round');
+                debug(payTemp);
+
+                var Payment = 0;
+
+                if (payTemp == '福BAO多') {
+
+                } else if (payTemp == '支付宝') {
+
+                    Payment = 2;
+
+                } else if (payTemp == '微信') {
+
+                    Payment = 1;
+
+                }
+                
+                localStorage.setItem("Payment", Payment);
+
+                //appcan.window.publish('payment', Payment);
+
+                var bodyWidth = localStorage.getItem("bodyWidth");
+                var bodyHeight = localStorage.getItem("bodyHeight");
+
+                localStorage.setItem("pay_pwd", 1);
+
+                appcan.window.openPopover({
+                    name : 'pay_pwd',
+                    dataType : 0,
+                    url : "../pay/pwd.html",
+                    top : 0,
+                    left : 0,
+                    width : bodyWidth,
+                    height : bodyHeight,
+                });
+
+            });
+
+            $('.pay-sub').click(function() {
+
+                var PriceType = parseInt(localStorage.getItem("PriceType"));
+                if (PriceType == 0 || PriceType == 1) {
+                    var title = $(this).data('title');
+                    if (title == '福BAO多' || title == '支付宝' || title == '微信') {
+                        $('.pay-icon').removeClass('pay-green');
+                        $("div[data-round='" + title + "']").addClass('pay-green');
+                    }
+
+                }
+
+            });
+
+        </script>
+    </body>
+</html>
+

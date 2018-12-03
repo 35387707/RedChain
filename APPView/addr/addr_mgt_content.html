@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../addr/css/addr-v1.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="addr_list" class="ub ub-ver content">
+
+                <!-- <div class="wait-style">
+                <ul class="ub ub-ac wait-padd" ontouchstart="appcan.touch('btn-act')">
+                <li class="ub-f1 wait-txt">
+                新增收货地址
+                </li>
+                <li>
+                <div class="ub-img li-right-arrow"></div>
+                </li>
+                </ul>
+                </div> -->
+
+                <!-- <div class="addr-padd" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub addr-style">
+                <div class="ub-f1 info-padd addr-sub">
+                <div class="nick-padd ub">
+                <div class="user-nick">
+                <span id="UsreName">小黄</span>
+                <span class="user-phone" id="UserPhone">18319653667</span>
+                </div>
+                <div class="def-sty">
+                <span class="def-bor">默认</span>
+                </div>
+                </div>
+                <div class="user-note" id="Address">
+                广东省广州天河区远洋创意园B座12201号 广东省广州天河区远洋创意园B座12201号
+                </div>
+                </div>
+                <div class="addr-icon addr-edit">
+                <div class="ub-img li-right-edit"></div>
+                </div>
+                </div>
+                </div>
+
+                <div class="addr-padd addr-sub" ontouchstart="appcan.touch('btn-act')">
+                <div class="ub addr-style">
+                <div class="ub-f1 info-padd">
+                <div class="nick-padd ub">
+                <div class="user-nick">
+                <span id="UsreName">小黄</span>
+                <span class="user-phone" id="UserPhone">18319653667</span>
+                </div>
+                <div class="def-sty">
+                <span class="def-bor">默认</span>
+                </div>
+                </div>
+                <div class="user-note" id="Address">
+                广东省广州天河区远洋创意园B座12201号 广东省广州天河区远洋创意园B座12201号
+                </div>
+                </div>
+                <div class="addr-icon">
+                <div class="ub-img li-right-edit"></div>
+                </div>
+                </div>
+                </div> -->
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../pop/js/place.js"></script>
+        <script src="../pop/js/province.js"></script>
+        <script src="../addr/js/mgt.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                if (localStorage.getItem("GetUserAddress") == 1 || localStorage.getItem("GetUserAddress") == '1') {
+                    addrSrchBegin(localStorage.getItem("uid"), 'addr_mgt');
+                } else {
+                    getUserAddress(localStorage.getItem("uid"), 'addr_mgt');
+                }
+
+                appcan.window.subscribe('refreshAddr', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+                        
+                        addrSrchBegin(localStorage.getItem("uid"), 'addr_mgt');
+
+                    }
+
+                });
+                
+                appcan.window.subscribe('removeAddress', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+                        
+                        //addrSrchBegin(localStorage.getItem("uid"), 'addr_mgt');
+                        $("div[data-aid='" + msg + "']").remove();
+
+                    }
+
+                });
+
+            });
+            
+            $('.addr-sub').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'addr_edit',
+                        data : '../addr/addr_edit.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "addr_edit",
+                        data : "../addr/addr_edit.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../msg/css/chat.css">
+        <link rel="stylesheet" href="../msg/css/common.css">
+        <link rel="stylesheet" href="../hb/css/detail-v1.css">
+        <link rel="stylesheet" href="../hb/css/detail-v2.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver bc-bg" tabindex="0">
+
+            <div id="content" class="ub-f1 tx-l">
+                <div class="ub ub-ver bc-bg">
+                    <div class="ub-f1 ub ub-ver">
+
+                        <div class="bc-border money-marg">
+
+                            <div class="usr-cont usr-bg"></div>
+                            <div class="head-img" id="HeadImg1" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub-img red-wd icon-cont uc-a2"></div>
+                            </div>
+
+                            <div class="ub uinn-a12 ub-ae">
+                                <div class="ub ub-ver ub-f1 ub-pc">
+                                    <div class="ub-ae tx-c" ontouchstart="appcan.touch('btn-act')">
+                                        <a class="red-from" id="TrueName"></a><!-- <a class="stat-sty">全部 </a> -->
+                                    </div>
+                                    <div class="tx-c ub-f1 money-sty" ontouchstart="appcan.touch('btn-act')">
+                                        <!-- <a class="cash-num" id="GetMoney">0</a><a class="cash-unit">元</a> -->
+                                    </div>
+                                    <!-- <div class="ub-ae ulev-4 ufm1 tx-c already-save" ontouchstart="appcan.touch('btn-act')">
+                                    已存入零钱
+                                    </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="uba bc-border c-wh umar-at3">
+                            <ul ontouchstart="appcan.touch('btn-act')" class="ubb ub bc-border bc-text ub-ac uinn-a9">
+                                <li class="ub-f1 ut-s ulev-app1 get-color">
+                                    已领取<span class="recv-cnt" id="reccount">0</span>份
+                                </li>
+                            </ul>
+                            <ul class="ub bc-text ub-ac img-ul reclist">
+                                <li class="ub-f1 ut-s ub alrdy-recv" id="reclist">
+                                    <!-- <div class="li-img-style">
+                                    <div class="ub-img comt-user-icon"></div>
+                                    </div> -->
+                                </li>
+                                <li class="right-li">
+                                    <div ontouchstart="appcan.touch('btn-act')" class="ub-img right-arrow"></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="empty-height"></div>
+
+                        <div class="ub ub-ver form-padd c-wh">
+                            <div class="ub ub-ver advert-sty">
+                                <div class="ub ub-ver">
+                                    <div ontouchstart="appcan.touch('btn-act')" class="advert-title bc-text" id="title">
+                                        <!-- <a class="title">谭咏麟-讲不出再见</a>
+                                        <a class="content"> 我最不忍看你 背向我转面 要走一刻请不必诸多眷恋 浮沉浪似人潮 哪会没有思念 你我伤心到讲不出再见 </a>
+                                        <a class="link">1994大球场演唱会</a> -->
+                                    </div>
+                                    <div class="img-marg-top img-list" id="imglist">
+
+                                        <!-- <div class="img-width-33 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-33" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div>
+                                        <div class="img-width-33 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-33" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div>
+                                        <div class="img-width-33 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-33" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div> -->
+                                        <!-- <div class="img-width-50 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-50" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div>
+                                        <div class="img-width-50 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-50" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div>
+
+                                        <div class="img-width-50 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-50" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div>
+                                        <div class="img-width-50 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-50" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div> -->
+
+                                        <!-- <div class="img-width-100 disp-pic" data-pic_p="../hb/img/choujiang_chanpinkeng@2x.png">
+                                        <div class="ub-img1 img-sty-100" style="background-image:url('../hb/img/choujiang_chanpinkeng@2x.png');"></div>
+                                        </div> -->
+
+                                    </div>
+                                    <div class="ub ub-ac advert-remark-padd">
+                                        <div class="ub ub-ac ub-f1 advert-remark-marg-right">
+                                            <div class="advert-txt-sty read-cnt" id="ViewCount" ontouchstart="appcan.touch('btn-act')"></div>
+                                            <div class="advert-txt-sty" ontouchstart="appcan.touch('btn-act')">
+                                                阅读&nbsp;-&nbsp;
+                                            </div>
+                                            <div class="advert-txt-sty zan-cnt" id="GoodCount" ontouchstart="appcan.touch('btn-act')"></div>
+                                            <div class="advert-txt-sty" ontouchstart="appcan.touch('btn-act')">
+                                                赞
+                                            </div>
+                                        </div>
+                                        <div class="ub ub-ac">
+                                            <div class="advert-txt-sty advert-time" id="CreateTime" ontouchstart="appcan.touch('btn-act')"></div>
+                                        </div>
+                                    </div>
+                                    <div class="ub advert-actn-padd ub-ae">
+                                        <div class="ub ub-ver ub-f1 ub-pc tab-sub">
+                                            <div data-chg_s="收藏" class="ub ub-ac actn-clk" ontouchstart="appcan.touch('btn-act')">
+                                                <div data-chg_i="收藏" class="ub ub-img little-icon-width collc-icon-gray"></div>
+                                                <div data-chg_t="收藏" class="little-txt">
+                                                    收藏
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sign-border"></div>
+                                        <div class="ub ub-ver ub-f1 ub-pc tab-sub">
+                                            <div data-chg_s="分享" class="ub ub-ac actn-clk" ontouchstart="appcan.touch('btn-act')">
+                                                <div data-chg_i="分享" class="ub ub-img little-icon-width share-icon-gray"></div>
+                                                <div data-chg_t="分享" class="little-txt">
+                                                    分享
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sign-border"></div>
+                                        <div class="ub ub-ver ub-f1 ub-pc tab-sub">
+                                            <div data-chg_s="点赞" class="ub ub-ac actn-clk" ontouchstart="appcan.touch('btn-act')">
+                                                <div data-chg_i="点赞" class="ub ub-img little-icon-width good-icon-gray"></div>
+                                                <div data-chg_t="点赞" class="little-txt">
+                                                    点赞
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="empty-height"></div>
+
+                        <div id="PacketComment">
+
+                            <!-- <div class="comt-padd c-wh" data-userid="" data-username="" data-truename="" data-userphone="">
+                            <div class="ub ubb bc-border border-padd-bottom">
+                            <div class="ub-img comt-icon-width comt-user-icon mar-ar1"></div>
+                            <div class="ub ub-ver ub-f1 mar-ar1">
+                            <div class="user-hdr">
+                            likegor
+                            </div>
+                            <div class="ut-s user-comt user-comt-marg-top">
+                            不错，红包挺大的
+                            </div>
+                            <div class="ut-s user-time user-time-marg-top">
+                            7-3 22:40
+                            </div>
+                            </div>
+                            <div class="ub ub-ver ub-ae ub-pe">
+                            <div class="tx-r umar-t">
+                            <div class="ub ub-ac">
+                            <div class="ub ub-img judg-icon-width msg-icon-gray judg-marg-right"></div>
+                            <div class="ub ub-img judg-icon-width good-icon-gray"></div>
+                            <div class="judg-txt ufm1">
+                            赞
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+                            <div class="comt-padd c-wh" data-userid="" data-username="" data-truename="" data-userphone="">
+                            <div class="ub ubb bc-border border-padd-bottom">
+                            <div class="ub-img comt-icon-width comt-user-icon mar-ar1"></div>
+                            <div class="ub ub-ver ub-f1 mar-ar1">
+                            <div class="user-hdr">
+                            likegor
+                            </div>
+                            <div class="ut-s user-comt user-comt-marg-top">
+                            不错，红包挺大的
+                            </div>
+                            <div class="ut-s user-time user-time-marg-top">
+                            7-3 22:40
+                            </div>
+                            </div>
+                            <div class="ub ub-ver ub-ae ub-pe">
+                            <div class="tx-r umar-t">
+                            <div class="ub ub-ac">
+                            <div class="ub ub-img judg-icon-width msg-icon-gray judg-marg-right"></div>
+                            <div class="ub ub-img judg-icon-width good-icon-gray"></div>
+                            <div class="judg-txt ufm1">
+                            赞
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div> -->
+
+                            <!-- <div class="end-nope-number">
+                            没有更多了
+                            </div> -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../hb/js/hbdetail.js"></script>
+        <script src="../hb/js/hbreceived.js"></script>
+        <script src="../hb/js/hbaction.js"></script>
+        <script src="../hb/js/hbcomment.js"></script>
+        <script src="../clct/js/fubao.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                appcan.frame.setBounce({
+                    bounceType : [0, 1],
+                    startPullCall : function(type) {
+
+                    },
+                    downEndCall : function(type) {
+
+                    },
+                    upEndCall : function(type) {
+
+                        if (type == 0) {
+
+                            setTimeout(function(type) {
+
+                                getPacketDetail('refresh_hbdetail');
+
+                            }, 1000);
+
+                        } else if (type == 1) {
+
+                            setTimeout(function(type) {
+
+                                judgPacketCommentCurPage(localStorage.getItem("uid"), 20, 'loading_comment');
+
+                            }, 1000);
+
+                        }
+
+                    },
+                    color : '#FB5858'
+
+                });
+
+                getPacketDetail('hbdetail');
+
+                appcan.window.subscribe('ajaxPacketComment', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        ajaxPacketComment(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('fubaoShare', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var rid = $('#content').data('rid');
+                        var indx = '分享';
+                        if (msg == rid) {
+                            isrtShareSgl(indx, rid);
+                        }
+
+                    }
+
+                });
+
+            });
+
+        </script>
+    </body>
+</html>

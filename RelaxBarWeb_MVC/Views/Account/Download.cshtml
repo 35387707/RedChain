@@ -1,0 +1,61 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>福BAO多</title>
+    <link rel="stylesheet" href="~/Content/regist/css/common.css">
+    <script src="~/Content/regist/js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="download">
+        <div class="cont">
+            <div class="logo">
+                <img src="~/Content/regist/image/logo.png" alt="logo">
+                <p>福BAO多</p>
+            </div>
+            <div class="line"></div>
+            <p class="tip1">成功接收邀请</p>
+            <p class="tip2">奖励已到账</p>
+            <p class="tip3">下载APP立即提现</p>
+            <a class="download-btn"></a>
+        </div>
+        <div class="tip">
+            <img src="~/Content/regist/image/tip.png" alt="">
+        </div>
+    </div>
+    <script>
+        //判断是否是微信浏览器的函数
+        function isWeiXin() {
+            //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+            var ua = window.navigator.userAgent.toLowerCase();
+            //通过正则表达式匹配ua中是否含有MicroMessenger字符串
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        window.onload = function () {
+            if (!document.getElementById) return false;
+            //定义一个按钮，并获取这个按钮存在变量pingguo中
+            if (isWeiXin()) {
+                // 是微信浏览器，执行操作
+                $('.tip').show();
+            }
+            var u = navigator.userAgent;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            if (isAndroid)
+                $('.download-btn').attr("href", "http://image1.fbddd.com/fbdddv1.0.5.apk");
+            if (isiOS)
+                $('.download-btn').attr("href", "javascript:alert('IOS还未上架，敬请期待！');");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿@{ 
+    RelexBarBLL.CategoryBLL category = new RelexBarBLL.CategoryBLL();
+}
+@model List<RelexBarDLL.Category>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@Model[i].Name</td>
+        <td>@Model[i].Title</td>
+        <td>@Model[i].LV</td>
+        <td>@Model[i].OrderID</td>
+        <td>@category.CategoryTeam(Model[i].Family)</td>
+        @*<td><a href="javascript:void()" onclick="showFamily('@Model[i].Family')">查看上级成员</a></td>*@
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].IsShow==1)?"启用":"禁用")" onclick="CCategoryStatus('@Model[i].ID',this)" />
+        </td>
+
+        
+        <td><span class="btn-link" onclick="EditCategory('@Model[i].ID')"><i class="glyphicon glyphicon-edit"></i>编辑</span></td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

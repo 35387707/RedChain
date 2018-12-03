@@ -1,0 +1,316 @@
+﻿<script language="javascript" type="text/javascript" src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<style>
+    .bankShow {
+    }
+
+    .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+        .editItem > div > div {
+            text-align: right;
+        }
+</style>
+<script>
+    var hasFooter = false;
+    var CategoryManager = {};
+    CategoryManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage:parseInt((sum-1)/10+1),
+               // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetCategoryList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+        GetCategoryList(index);
+    };
+    //获取商品分类列表
+    function GetCategoryList(index) {
+        waiting();
+        $.get("CategoryList", "index=" + index + "&key=" + CategoryManager.searchKey, function (data) {
+            CategoryManager.index = index;
+            $("#Adsbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function PSearch() {
+        CategoryManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetCategoryList(1);
+    }
+   
+    //更改商品分类状态
+    function CCategoryStatus(ID, e) {
+        waiting();
+        var status = 1;
+        if (e.value == "启用")
+        { status = 0; }
+        $.post("CCategoryStatus", "ID=" + ID + "&status=" + status, function (data) {
+            if (data.code == "1") {
+                if (status == 1) {
+                    e.value = "启用";
+                } else {
+                    e.value = "禁用";
+                }
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+        }, "json")
+    }
+    function EditCategory(id) {
+        waiting();
+        $.get("/Admin/EditCategory/" + id, function (data) {
+            $("#editAdsBody").html(data);
+
+            $("#editCategory").show();
+            $('body').css('overflow', 'hidden');
+            waitingHide();
+        }, "html")
+    }
+    //修改图片
+    function HeadImgUpload(file) {
+        var data = new FormData();
+        data.append("file", file.files[0], file.files[0].name);
+        $.ajax({
+            url: "/File/FileUpload",
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (respdata) {
+                if (respdata.code == '1') {
+                  
+                    $("#Img").val(respdata.msg);
+                    $("#headimage").attr("src", respdata.msg);
+                } else {
+                    alert(respdata.msg);
+                }
+            },
+            error: function (data) {
+                alert("错误");
+            }
+        });
+
+    }
+
+    function saveCategory() {
+        $.post("/Admin/DoEditCategory", $("#editUserForm").serialize(), function (data) {
+          
+            if (data.code == "1") {
+                alert(data.msg);
+                GetCategoryList(CategoryManager.index);
+            }
+            else {
+                alert(data.msg);
+            }
+        }, "json");
+    }
+
+    function showFamily(Family) {
+        $.post("GetFamily", "Family=" + Family, function (data) {
+          //  console.log(data);
+            if (data.code == "1") {
+                var temp = [];
+                // var list = JSON.parse(data.msg);
+                var list = data.list;
+             //   console.log(list);
+                var lists = list.split(',');
+              //  console.log(lists);
+                var treeStr = "<ul>"
+                for (var i = 0; i < lists.length; i++) {
+                    // var treeStr = '';
+                    var lv = i + 1;
+                    treeStr = treeStr + "<li><span>" + "第" + lv + "等级：" + lists[i] + "</span></li>"
+                   
+                }
+                treeStr = treeStr + "</ul>";
+                temp.push(treeStr);
+
+            //    console.log(temp);
+                $(".tree").html(temp.join(""));
+                $("#team").show();
+                $('body').css('overflow', 'hidden');
+            }
+        }, "json");
+    }
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a onclick="GetManager('CategoryManager')">商品管理</a></li>
+    <li><a href="#">商品分类</a></li>
+</ol>
+<div class="col-lg-12 form-inline">
+    关键字：
+    <div class="input-group col-lg-4">
+        <input type="text" class="form-control" id="key">
+        <span class="input-group-addon" onclick="PSearch()">查询</span>
+
+    </div>
+    <input type="button" class="btn btn-primary" value="新增" onclick="EditCategory('')" />
+    <div class="col-lg-12" id="userlist">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>标题</th>
+                    <th>等级</th>
+                    <th>排序</th>
+                    <th>成员</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="Adsbody">
+                @Html.Action("CategoryList")
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
+</div>
+
+<div class="showBack col-md-12" id="editCategory">
+    <div class="editUserBody col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">修改商品分类<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="$('#editCategory').hide(); $('body').css('overflow', 'auto');" /></div>
+            <div class="panel-body" style="overflow:auto;max-height:400px">
+                <form id="editUserForm">
+                    <div id="editAdsBody"></div>
+                </form>
+            </div>
+            <div class="panel-footer" style="overflow:hidden">
+                <input type="button" value="保存" class="btn btn-primary" style="float:right" onclick="saveCategory()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="showBack" id="team">
+    <div class="showBackList panel panel-default">
+        <input type="button" class="btn btn-primary" style="float:right;" value="关闭" onclick="$('#team').hide(); $('body').css('overflow', 'auto');" />
+        <div class="form-inline panel-heading">
+            <h4 class="text-center">他的成员</h4>
+        </div>
+        <div class="panel-body">
+            <div class="tree well">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+        $('.tree li.parent_li > span').on('click', function (e) {
+            var children = $(this).parent('li.parent_li').find(' > ul > li');
+            if (children.is(":visible")) {
+                children.hide('fast');
+                $(this).attr('title', 'Expand this branch').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-minus-sign');
+            } else {
+                children.show('fast');
+                $(this).attr('title', 'Collapse this branch').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-plus-sign');
+            }
+            e.stopPropagation();
+        });
+    });
+</script>
+<style>
+    .tree {
+        min-height: 20px;
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #fbfbfb;
+        border: 1px solid #999;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+
+        .tree li {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px 5px 0 5px;
+            position: relative;
+        }
+
+            .tree li::before, .tree li::after {
+                content: '';
+                left: -20px;
+                position: absolute;
+                right: auto;
+            }
+
+            .tree li::before {
+                border-left: 1px solid #999;
+                bottom: 50px;
+                height: 100%;
+                top: 0;
+                width: 1px;
+            }
+
+            .tree li::after {
+                border-top: 1px solid #999;
+                height: 20px;
+                top: 25px;
+                width: 25px;
+            }
+
+            .tree li span {
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border: 1px solid #999;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 3px 8px;
+                text-decoration: none;
+            }
+
+            .tree li.parent_li > span {
+                cursor: pointer;
+            }
+
+        .tree > ul > li::before, .tree > ul > li::after {
+            border: 0;
+        }
+
+        .tree li:last-child::before {
+            height: 30px;
+        }
+
+        .tree li.parent_li > span:hover, .tree li.parent_li > span:hover + ul li span {
+            background: #eee;
+            border: 1px solid #94a0b4;
+            color: #000;
+        }
+</style>

@@ -1,0 +1,202 @@
+.numbersum {
+    width: 1.2em;
+    height: 1.2em;
+    right: 0em;
+    top: 0em;
+}
+.indexnumbersum {
+    width: 1.5em;
+    height: 1.5em;
+    right: 3.5em;
+    top: 0.2em;
+    padding: 0.1em;
+}
+.chatjtxwg {
+    width: 2.8em;
+    height: 2.8em;
+}
+.chatjtxwgsmall {
+    width: 2em;
+    height: 2.5em;
+}
+.jjricon-home {
+    background-image: url('../img/jjricon-home.png') !important;
+    width: 1.25em !important;
+    height: 1.25em !important;
+}
+.kzuidaw {
+    max-width: 76%;
+    line-height: 1.25em;
+    padding: 0.625em 3.5%;
+}
+.kzuidaw1 {
+    max-width: 76%;
+    line-height: 1.25em;
+    padding: 0.85em 1em;
+}
+.proimgwg {
+    width: 4.5em;
+    height: auto;
+}
+.proimgwg1 {
+    width: 31%;
+    height: 3.1640625em;
+}
+.proimgumar {
+    margin: 0 2%;
+}
+.fsbtng {
+    min-height: 1.875em;
+}
+.yuyinicon {
+    /*background-image: url('../img/laba-icon.png') !important;*/
+    background-image: url('../img/play-hui.gif') !important;
+    width: 0.75em;
+    height: 1.055em;
+}
+.yuyinicon-bai {
+    /*background-image: url('../img/laba-icon-bai.png') !important;*/
+    background-image: url('../img/play-lan.gif') !important;
+    width: 1.08em;
+    height: 1.08em;
+}
+.yuyinicon-stop {
+    /*background-image: url('../img/laba-icon.png') !important;*/
+    background-image: url('../img/laba-icon.png') !important;
+    width: 0.75em;
+    height: 1.055em;
+}
+.yuyinicon-bai-stop {
+    /*background-image: url('../img/laba-icon-bai.png') !important;*/
+    background-image: url('../img/laba-icon-bai.png') !important;
+    width: 0.75em;
+    height: 1.055em;
+}
+.xxtsd {
+    width: 0.46875em;
+    height: 0.46875em;
+    -webkit-border-radius: 0.46875em;
+    border-radius: 0.46875em;
+    background: #eb4b48;
+}
+.xiaoxis {
+    width: 1.25em;
+    height: 1.25em;
+    -webkit-border-radius: 1.25em;
+    border-radius: 1.25em;
+    margin: 0.5em 0.626em 0 0;
+    padding: 0.25em;
+}
+.jbimgwg {
+    width: 2.93em;
+    height: 2.93em;
+}
+.uiqrbtn {
+    padding: 1.25em 2em 0.5em 2em;
+    margin: 0;
+}
+.loaddwei {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -2em;
+    margin-top: -2em;
+}
+.border-left {
+    -webkit-border-radius: 0 1.28em 1.28em 1.28em;
+    border-radius: 0 1.28em 1.28em 1.28em;
+}
+.border-right {
+    -webkit-border-radius: 1.28em 1.5em 0 1.28em;
+    border-radius: 1.28em 1.28em 0 1.28em;
+}
+.left-bg {
+    background-color: #FFFFFF;
+}
+.right-bg {
+    background-color: #FE5565;
+}
+.user-icon-width-normal {
+    width: 3.0em;
+    height: 3.0em;
+    -webkit-border-radius: 3.0em;
+    border-radius: 3.0em;
+}
+.user-icon-width-small {
+    width: 2.5em;
+    height: 2.5em;
+}
+.audio-width {
+    max-width: 76%;
+    line-height: 1.25em;
+    padding: 0.625em 3.5%;
+}
+.text-width {
+    max-width: 76%;
+    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    word-break: break-all;
+    line-height: 1.25em;
+    padding: 0.625em 2.5% 0.625em 3.5%;
+}
+.imgText-width {
+    max-width: 76%;
+    line-height: 1.25em;
+    padding: 0.85em 1em;
+}
+.padd-left {
+    padding-left: 0.34em;
+}
+.padd-right {
+    padding-right: 0.32em;
+}
+.marg-left {
+    margin-left: 0.18em;
+}
+.marg-right {
+    margin-right: 0.23em;
+}
+.marg-bottom-normal {
+    margin-bottom: 0.625em;
+}
+.marg-bottom-end {
+    margin-bottom: 3em;
+}
+.send-btn-bg {
+    background-color: #FD614A;
+}
+.fb-wd {
+    width: auto;
+    height: 2.75em;
+}
+.fb-sty {
+    width: auto;
+    padding: 0.625em 4.5% 0.625em 2.0%;
+}
+.wish-wd {
+    width: auto;
+}
+.wish-marg-left {
+    margin-left: 2.5%;
+}
+.fb-left {
+    -webkit-border-radius: 0 1.0em 1.0em 1.0em;
+    border-radius: 0 1.0em 1.0em 1.0em;
+}
+.fb-right {
+    -webkit-border-radius: 1.0em 1.0em 0 1.0em;
+    border-radius: 1.0em 1.0em 0 1.0em;
+}
+.msg-width {
+    width: 76%;
+    height: auto;
+}
+.chat-width {
+    width: auto;
+    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    padding: 0.625em 3.5%;
+    float: right;
+}

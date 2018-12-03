@@ -1,0 +1,194 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.ServiceOrder
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.0.0.min.js"></script>
+    <title>OtherePay</title>
+    <style>
+        .back {
+            position: absolute;margin-top:14px;z-index:9999;
+        }
+        .topdiv{
+            width:100%;
+            height:100%;
+            background-color:red;
+        }
+    </style>
+    <style>
+        div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .keyboard {
+            position: fixed;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            border-top: 1px solid rgb(210,210,210);
+            background-color: rgb(255,255,255);
+        }
+
+        .keylist:after {
+            display: block;
+            content: "";
+            clear: both;
+            visibility: hidden;
+            height: 0;
+        }
+
+        .keylist {
+            zoom: 1;
+        }
+
+            .keylist li {
+                float: left;
+                width: calc(100%/3);
+                text-align: center;
+                padding: 2% 0;
+                list-style: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+                box-sizing: border-box;
+                font-size: 2rem;
+                color: #666;
+            }
+
+                .keylist li.disabled {
+                    background-color: rgb(245,245,245);
+                }
+
+                .keylist li.bl {
+                    border-left: 1px solid rgb(210,210,210);
+                }
+
+                .keylist li.br {
+                    border-right: 1px solid rgb(210,210,210);
+                }
+
+                .keylist li.bb {
+                    border-bottom: 1px solid rgb(210,210,210);
+                }
+
+                .keylist li.bt {
+                    border-top: 1px solid rgb(210,210,210);
+                }
+
+                .keylist li:active {
+                    background-color: rgb(245,245,245);
+                }
+    </style>
+    <script>
+        $(function () {
+            $(".qr").on("click", function () {
+                var rdata = {};
+                rdata.id = "@Model.ID";
+                rdata.pwd = $("#pwd").val();
+                $.post("/Account/DoOtherPay", rdata, function (data) {
+                    if (parseInt(data.code) > 0) {
+                        location.href = "@Model.Return_url";
+                    } else {
+                        alert("支付失败："+data.msg);
+                    }
+                }, "json");
+            });
+        });
+    </script>
+    <script>
+        function keyClick(num) {
+            var pwd = $("#pwd").val();
+            switch (num) {
+                case -1:
+                    if (pwd.length > 0) {
+                        pwd = pwd.substring(0, pwd.length - 2);
+                    }
+                    break;
+                case 0:
+                    pwd += 0;
+                    break;
+                case 1:
+                    pwd += 1;
+                    break;
+                case 2:
+                    pwd += 2;
+                    break;
+                case 3:
+                    pwd += 3;
+                    break;
+                case 4:
+                    pwd += 4;
+                    break;
+                case 5:
+                    pwd += 5;
+                    break;
+                case 6:
+                    pwd += 6;
+                    break;
+                case 7:
+                    pwd += 7;
+                    break;
+                case 8:
+                    pwd += 8;
+                    break;
+                case 9:
+                    pwd += 9;
+                    break;
+                default:
+        
+            }
+            $("#pwd").val(pwd);
+        }
+    </script>
+</head>
+<body>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            
+            <input type="button" value="返回" class="btn btn-default back" onclick="window.history.back()" />
+            <div class="col-md-12">
+                <h3 class="text-center">@Model.Title</h3>
+
+            </div>
+            </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div><h2>支付金额：@Model.Price</h2></div>
+                <div>
+                    @Model.Body
+                </div>
+                <div class="form-group">
+                    @Html.HiddenFor(m=>m.ID)
+                    <input class="form-control"  readonly="readonly" placeholder="请输入密码" id="pwd" type="password" />
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary qr form-control" type="button" value="确认" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="keyboard">
+        <ul class="keylist">
+            <li class="bb" onclick="keyClick(1)">1</li>
+            <li class="bl br bb"  onclick="keyClick(2)">2</li>
+            <li class="bb"  onclick="keyClick(3)">3</li>
+            <li class="bb"  onclick="keyClick(4)">4</li>
+            <li class="bl br bb"  onclick="keyClick(5)">5</li>
+            <li class="bb"  onclick="keyClick(6)">6</li>
+            <li class="bb"  onclick="keyClick(7)">7</li>
+            <li class="bl br bb"  onclick="keyClick(8)">8</li>
+            <li class="bb"  onclick="keyClick(9)">9</li>
+            <li class="disabled">@@</li>
+            <li class="bl br"  onclick="keyClick(0)">0</li>
+            <li class="disabled"  onclick="keyClick(-1)">Del</li>
+        </ul>
+    </div>
+</body>
+</html>

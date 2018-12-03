@@ -1,0 +1,27 @@
+﻿
+@model List<RelexBarBLL.Models.RedPacksListModels>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+       
+        <td>@*<img src="@Model[i].HeadImg" style="width:30px;height:30px;border-radius:50%" />*@@(Model[i].Phone + "【" + Model[i].CardNumber + "】")</td>
+        <td>@((Model[i].UserType == 0) ? "福星" : ((Model[i].UserType == 1) ? "福将" : "福相"))</td>
+        <td title="@Model[i].title">@(RelexBarBLL.Common.StringTruncat(Model[i].title, 30))</td>
+        <td>@Model[i].Money</td>
+        <td>@Model[i].Number</td>
+        <td>@Model[i].CreateTime</td>
+        <td>@Model[i].UpdateTime</td>
+        @*<td><span class="btn-link" onclick="RedPacketListShow('@Model[i].RID')">查看</span></td>
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?" 启用":"禁用")" onclick="CRedPacketStatus('@Model[i].RID',this)" />
+        </td>*@
+        @*<td><span class="btn-link" onclick="bankShow('@Model[i].ID')">查看</span></td>
+            <td>
+                <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CUStatus('@Model[i].ID',this)" />
+            </td>
+            <td>@Model[i].CreateTime</td>*@
+        @*<td><span class="btn-link" onclick="EditRedPacket('@Model[i].RID')">编辑</span></td>*@
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>
+

@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>发现</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/saolei.css" />
+</head>
+<body>
+    <div class="wrap gray-wrap vh100 of-hide">
+        <div class="Header">
+            <span>发现</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="rule-enter" onclick="location.href = '/Static/SaoleiRule'">
+                <img class="rule-img halfTop" src="~/img/common/sl.png" alt="" />
+                <span>扫雷游戏规则</span>
+                <i class="gt halfTop"></i>
+            </div>
+        </div>
+        <!--共用的底部菜单-->
+        @Html.Action("Footer","Account",new { id=3})
+    </div><!--wrap-->
+</body>
+</html>

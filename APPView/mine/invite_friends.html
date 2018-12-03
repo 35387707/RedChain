@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../mine/css/invite_friends.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two">
+                    </div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">邀请好友</h1>
+                    <div class="nav-btn" id="nav_right">
+                        <div class="fa fa-1g ub-img1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="invite-top">
+                    <div class="invite-user">
+                        <div class="usr-cont">
+                            <div class="ub-img res-avator umwh-avator icon-cont"></div>
+                            <div class="ub-f1 ub ub-ver username-cont">
+                                likegor
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invite-qrcode">
+                        <img class="knock" src="../mine/img/invite_friends@2x.png" />
+                    </div>
+                </div>
+                <div class="invite-bottom">
+                    <div class="invite-scan">
+                        <ul class="ub t-bla ub-ac scan-wd">
+                            <li class="ub ub-ac ub-pc">
+                                <div class="ub-img scan-img scan-hongyun"></div>
+                            </li>
+                            <li class="ub-f1 ut-s scan-txt">
+                                扫码领福包
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="invite-every">
+                        <ul class="ub t-bla ub-ac every-wd">
+                            <li class="ub ub-ac ub-pc">
+                                <div class="ub-img every-title">红运</div>
+                            </li>
+                            <li class="ub-f1 ut-s every-txt">
+                                每天领点零花钱
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script>
+            appcan.ready(function() {
+                
+                setSwipeCloseEnable(1);
+
+                var bodyHeight = $('body').height();
+                var titHeight = $('#header').height();
+                var footHeight = $('#footer').height();
+                var contHeight = bodyHeight - titHeight;
+                $('#content').css('height', contHeight);
+
+            });
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+        </script>
+    </body>
+</html>
+

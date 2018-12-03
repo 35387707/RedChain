@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../lib/swiper-3.4.2/dist/css/swiper.min.css">
+        <link rel="stylesheet" href="../team/css/team-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">我的团队</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="fa fa-1g ub-img1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tabview" class="ub ub-ver">
+                <div class="ub ub-ver ub-f1">
+                    <div class="nav-bg">
+
+                        <ul class="ub bc-text ub-ac">
+                            <li class="ub-f1 tx-l nav-pd">
+                                <!-- Swiper -->
+                                <div class="swiper-container nav-cont">
+                                    <div class="swiper-wrapper nav-wrap">
+                                        <div ontouchstart="appcan.touch('btn-act')" class="swiper-slide nav-sub active">
+                                            全部
+                                        </div>
+                                        <div ontouchstart="appcan.touch('btn-act')" class="swiper-slide nav-sub">
+                                            福星
+                                        </div>
+                                        <div ontouchstart="appcan.touch('btn-act')" class="swiper-slide nav-sub">
+                                            福将
+                                        </div>
+                                        <div ontouchstart="appcan.touch('btn-act')" class="swiper-slide nav-sub">
+                                            福相
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content"></div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../lib/swiper-3.4.2/dist/js/swiper.min.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script>
+        
+            //nav
+            var navSwiper = new Swiper('.nav-cont', {
+                watchSlidesProgress : true,
+                watchSlidesVisibility : true,
+                slidesPerView : 'auto',
+                spaceBetween : 0
+            });
+
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                var titHeight = $('#header').offset().height + $('#tabview').offset().height;
+
+                appcan.frame.open({
+                    id : "content",
+                    url : [{
+                        "inPageName" : "quanbu",
+                        "inUrl" : "quanbu.html",
+                    }, {
+                        "inPageName" : "fuxing",
+                        "inUrl" : "fuxing.html",
+                    }, {
+                        "inPageName" : "fujiang",
+                        "inUrl" : "fujiang.html",
+                    }, {
+                        "inPageName" : "fuxiang",
+                        "inUrl" : "fuxiang.html",
+                    }],
+                    top : titHeight,
+                    left : 0,
+                    index : 0,
+                    change : function(err, res) {
+                        appcan.window.publish('getMyRecommendList', res.multiPopSelectedIndex);
+                        $('.nav-cont .nav-wrap .active').removeClass('active');
+                        $(".nav-cont .nav-wrap div").eq(res.multiPopSelectedIndex).addClass('active');
+                        navSwiper.slideTo(res.multiPopSelectedIndex, 1, false);
+                    }
+                });
+
+                window.onorientationchange = window.onresize = function() {
+                    appcan.frame.resize("content", 0, titHeight);
+                }
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        //alert('点击了返回键')
+                        appcan.window.close(-1);
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+
+                }
+            });
+
+            $(".nav-cont .nav-wrap div").click(function() {
+                $(".nav-cont .nav-wrap .active").removeClass('active');
+                $(this).addClass('active');
+                appcan.window.selectMultiPopover("content", $(this).index());
+            });
+
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+        </script>
+    </body>
+</html>

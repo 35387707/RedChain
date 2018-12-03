@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pop/css/header.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="middle-cont" id="hblaird">
+
+                <div class="sub-cont left-cont">
+                    <div id="HeadImg" class="img-cont">
+                        <div class="ub-img icon-style float-right"></div>
+                    </div>
+                </div>
+                <div class="sub-cont right-cont">
+                    <div class="text-cont" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-f1 ub ub-ver">
+                            <div id="district" class="ut-s ub-f1 area-color">
+                                天河区
+                            </div>
+                            <div class="ub user-color">
+                                <span id="TrueName">15737315338</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../pop/js/header.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(0);
+
+                setMapHeader();
+
+            });
+            $('.empty-view').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('#hblaird').click(function() {
+
+                /*
+                var localPack = localStorage.getItem('localPack');
+                                if (localPack == '1' || localPack == 1) {
+                
+                                    appcan.window.open({
+                                        name : 'hblaird',
+                                        data : '../hb/hblaird.html',
+                                        aniId : 10,
+                                    });
+                
+                                } else {
+                
+                                    uexWindow.open({
+                                        name : "hblaird",
+                                        data : "../hb/hblaird.html",
+                                        animID : 10,
+                                        flag : 1024
+                                    });
+                
+                                }*/
+                openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+            });
+
+        </script>
+    </body>
+</html>
+

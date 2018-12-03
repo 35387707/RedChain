@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+@model Guid
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>备注信息</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/js-string.js"></script>
+    <script>
+        function cr() {
+            var name = $("#remark").val();
+            if (!js.lang.String.checkString(name)) {
+                return;
+            }
+            $.post("/Friend/CRemark", "fuid=@Model&" + "remark=" + name, function (data) {
+                if (data.code == "1") {
+                    window.history.back();
+                }
+                alert(data.msg);
+            }, "json")
+        }
+    </script>
+</head>
+<body>
+
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <font class="header-l-font halfTop" onclick="window.history.back()">返回</font>
+            <span>备注信息</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="remark-block">
+                <font class="remark-title">备注名</font>
+                <input class="remark-iptTxt" type="text" id="remark" placeholder="请在此处输入备注" />
+            </div>
+            <input class="bigBtn bg-b remark-btn-mt" type="button" value="完成" onclick="cr()"/>
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

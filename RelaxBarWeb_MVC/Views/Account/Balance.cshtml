@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.Users
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>余额</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/remaining.css" />
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>余额</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="remain-block">
+                <font class="remain-title">账户余额（元）</font>
+                <span class="remain-num">@Model.Balance</span>
+            </div>
+            
+            @*<ul class="enter-itemlist">*@
+                @*<li class="enter-item" onclick="location.href = '/Account/Recharge'">
+                    <span>充值</span> 
+                    <i class="gt bgSR halfTop"></i>
+                </li>*@
+                @*<li class="enter-item" onclick="location.href='/Account/Transforout'">
+                    <span>提现</span>
+                    <i class="gt bgSR halfTop"></i>
+                </li>
+                <li class="enter-item" onclick="location.href = '/Account/TransforoutRecord'">
+                    <span>提现记录</span>
+                    <i class="gt bgSR halfTop"></i>
+                </li>*@
+            @*</ul>*@
+           
+        </div>
+        </div><!--wrap-->
+</body>
+</html>

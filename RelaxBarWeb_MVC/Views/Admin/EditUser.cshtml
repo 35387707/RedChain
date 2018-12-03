@@ -1,0 +1,47 @@
+﻿@model RelexBarDLL.Users
+<div class="col-md-10 col-md-offset-2 form-group editItem">
+    <div class="form-inline">
+        <div class="col-md-3">区号：</div>@Html.TextBoxFor(m => m.AreaCode, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">手机号：</div>@Html.TextBoxFor(m=>m.Phone,new { @class= "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">昵称：</div>
+        @Html.TextBoxFor(m => m.TrueName, new { @class = "form-control" })
+        </div>
+    <div class="">
+        <div class="col-md-3">头像：</div>@Html.HiddenFor(m => m.HeadImg1)@Html.HiddenFor(m=>m.ID)
+        <input type="file" id="upload" style="display:none" onchange="HeadImgUpload(this)"/>
+        <img id="headimage" onclick="$('#upload').click()" src="@(string.IsNullOrEmpty(Model.HeadImg1)?"/img/chat/head.jpg":Model.HeadImg1)" width="86" />
+        <br />
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">性别：</div>@Html.DropDownListFor(m => m.Sex, new List<SelectListItem>() { new SelectListItem() { Text = "男", Value = "1" }, new SelectListItem() { Text = "女", Value = "0" } }, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">类型：</div>@Html.DropDownListFor(m => m.UserType, new List<SelectListItem>() { new SelectListItem() { Text = "福星", Value = "0" }, new SelectListItem() { Text = "福将", Value = "1" }, new SelectListItem() { Text = "福相", Value = "2" } }, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">余额：</div>@Html.TextBoxFor(m => m.Balance, new { @class = "form-control" })
+    </div>
+    @*<div class="form-inline">
+        <div class="col-md-3">筹码：</div>@Html.TextBoxFor(m => m.Chip, new { @class = "form-control" })
+    </div>*@
+    @if (Model == null || Model.ID == Guid.Empty)
+    {
+        <div class="form-inline">
+            <div class="col-md-3">密码：</div>@Html.TextBoxFor(m => m.Psw, new { @class = "form-control" })
+        </div>
+    }
+    @if (Model != null && Model.CreateTime != null)
+    {
+        <div class="form-inline">
+            <div class="col-md-3">注册时间：</div>@Html.TextBox("CreateTime", Model.CreateTime.Value.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", @readonly = "true" })
+        </div>
+    }
+
+    @*<div class="form-inline">
+        <div class="col-md-2">状态：</div>@Html.TextBoxFor(m => m.Status, new { @class = "form-control" })
+    </div>*@
+</div>

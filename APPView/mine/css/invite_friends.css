@@ -1,0 +1,120 @@
+#header {
+    background-color: #323232;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #F2F2F2;
+}
+.invite-top {
+    height: 70%;
+    width: 100%;
+}
+.invite-user {
+    height: 10%;
+    width: 100%;
+    z-index: 10;
+    margin: 12% 0 -12%;
+}
+.invite-qrcode {
+    height: 90%;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.invite-qrcode img {
+    width: 80%;
+    height: auto;
+}
+.invite-bottom {
+    height: 30%;
+    width: 100%;
+    background-color: white;
+}
+.invite-scan {
+    width: 100%;
+    margin-top: 7%;
+    height: 40%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.scan-wd {
+}
+.scan-wd li{
+    width: auto;
+}
+.scan-txt {
+    padding-left: 0.1em;
+    font-size: 3.0em;
+    font-weight: bold;
+}
+.scan-img {
+    width: 3.0em;
+    height: 3.0em;
+    line-height: 3.0em;
+    -webkit-border-radius: 0.5em;
+    border-radius: 0.5em;
+}
+.scan-hongyun {
+    background-size: cover;
+    background-image: url('../img/hongyun_logo@2x.png');
+}
+.invite-every {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.every-wd li{
+    width: auto;
+    font-size: 1.3em;
+    color: red;
+    font-weight: bold;
+}
+.every-txt {
+    padding-left: 0.3em;
+}
+.usr-cont {
+    width: 100%;
+}
+.icon-cont {
+}
+.username-cont {
+    text-align: center;
+}
+.res-avator {
+    background-image: url(../img/comImg.png);
+}
+.umwh-avator {
+    min-height: 4.0em;
+    min-width: 4.0em;
+}

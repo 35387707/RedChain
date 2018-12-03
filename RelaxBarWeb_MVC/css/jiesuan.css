@@ -1,0 +1,30 @@
+.jiesuanlist{
+    padding:0 1.5234375rem;
+    background-color:#fff;
+    border-top:0.05rem solid #c1bfc4;
+}
+.jiesuan-item{
+    position:relative;
+    height:6.85546875rem;
+    padding-left:6.15234375rem;
+    border-bottom:0.05rem solid #999;
+    overflow:hidden;
+}
+.js-img{
+    position:absolute;
+    left:0;
+    width:5.0390625rem;
+    height:5.0390625rem;
+    border-radius:0.4rem;
+}
+.js-price{
+    position:absolute;
+    right:1rem;
+    top:33%;
+}
+.js-name{
+    margin-top:1.7578125rem;
+}
+.js-time{
+    color:#8e8d8d;
+}

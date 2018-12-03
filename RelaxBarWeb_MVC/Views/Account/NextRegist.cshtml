@@ -1,0 +1,546 @@
+﻿
+@{
+    Layout = null;
+}
+@model Guid
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>注册</title>
+    <script src="/js/jquery-2.0.0.min.js"></script>
+    <script src="/js/adaptation.js"></script>
+    <link rel="stylesheet" href="/css/commonmodule.css" />
+    <link rel="stylesheet" href="/css/lr.css" />
+    <script src="~/Scripts/common.js"></script>
+    <style>
+        #arealist {
+            position: absolute;
+            width: 100%;
+            z-index: 99999;
+            top: 0;
+            display: none;
+        }
+    </style>
+    <style>
+        #arealist dl, dt, dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        .areacode1 {
+            padding-bottom: 10%;
+            background-color: #f1f1f1;
+        }
+
+        .ac-item dt,
+        .ac-item dd {
+            padding: 3% 5%;
+            border-bottom: 0.05rem solid #ccc;
+            font-size: 1.5rem;
+            -webkit-text-size-adjust: none;
+        }
+
+        .ac-item dt {
+            background-color: #f1f1f1;
+        }
+
+        .ac-item dd {
+            position: relative;
+            background-color: #fff;
+        }
+
+            .ac-item dd span {
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                transform: translateY(-50%);
+                right: 8%;
+                color: #bbb !important;
+            }
+
+        .ac-rightnav {
+            position: fixed;
+            right: 0;
+            top: 6.50390625rem;
+            width: 5%;
+            background-color: rgba(0,0,0,.3);
+            height: 100%;
+            padding-bottom: 20%;
+            box-sizing: border-box;
+        }
+
+            .ac-rightnav li {
+                position: relative;
+                height: 4%;
+                text-align: center;
+            }
+
+                .ac-rightnav li a {
+                    color: #fff;
+                }
+    </style>
+    <script>
+        function regist() {
+            sync();
+            var phone = $("#email").val();
+            if (phone == null || phone == "" || phone.length == 0) {
+                syncHide();
+                return alert("账号不能为空");
+            }
+            var pwd = $("#pwd").val();
+            //var reg = /^[A-Za-z0-9]+$/;
+            //if (!reg.test(phone)) {
+            //    syncHide();
+            //    return alert("账号只能包含数字和字母");
+            //}
+
+            $.post("/Account/DoNextRegist", $("#regForm").serialize(), function (data) {
+
+                if (data.code == "1") {
+                    location.href = "/Account/RegistSuccess";
+                } else {
+                    alert(data.msg);
+                }
+                syncHide();
+            }, "json");
+        }
+        function getVerifycode(e){
+            var phone = $("#email").val();
+            //if (phone == "") {
+            //    return alert("手机号不能为空");
+            //}
+            //GetSMSCode(e, phone,$("#before").val());
+            GetEmailCode(e, phone);
+        }
+        $(function () {
+
+            // GetImgCode(document.getElementById("checkcode"));
+            $(".areacode").on("click", function () {
+                $("#arealist").show(200);
+            });
+            $(".ac-item dd").on("click", function () {
+                $("#before").val($(this).find("span").text());
+                $("#arealist").hide(200);
+            });
+        });
+    </script>
+
+</head>
+<body>
+    @Html.Action("SyncView", "Static")
+    <div class="wrap vh100 of-hide">
+        @using (Html.BeginForm("DoRegistByEmail", "Account", FormMethod.Post, new { id = "regForm", @class = "lr-block" }))
+        {
+            @*<div class="iptTxt-wrap lr-mb">
+                @Html.Hidden("tjr",Model)
+                <span class="areacode" href="javascript:void(0);">
+                    <input id="before" style="border: none;font-size: 1.3rem;outline-style:none;width: 100%;text-align: center;" readonly value="+86" />
+                  
+                </span>
+                @Html.TextBox("phone", null, new { placeholder = "请输入手机号", @class = "lr-iptTxt" })
+            </div>*@
+            <div class="iptTxt-wrap lr-mb">
+                @Html.Hidden("tjr", Model)
+                @Html.TextBox("email", null, new { placeholder = "请输入邮箱地址", @class = "lr-iptPsw" })
+            </div>
+            <div class="iptTxt-wrap lr-mb">
+                @Html.TextBox("code", null, new { placeholder = "请输入验证码", @class = "lr-iptPsw" })
+                <input type="button" value="获取验证码" onclick="getVerifycode(this)" class="lr-code halfTop" style="width:initial !important" />
+                @*<img id="checkcode"  onclick="GetImgCode(this);" class="lr-code halfTop" />*@
+            </div>
+            <div class="iptTxt-wrap lr-mb">
+                @Html.Password("pwd", "", new { placeholder = "请输入登陆密码", @class = "lr-iptPsw" })
+            </div>
+            <input class="bigBtn bg-r lr-mt-1" type="button" value="注册" onclick="regist()" />
+        }
+        <div class="gc-logo" style="margin-top:7rem"></div>
+
+    </div><!--wrap-->
+
+    <div class="wrap same-pt-wrap1" id="arealist">
+        <div class="Header">
+            <a class="backto halfTop bgSR" href="javascript:void(0);"></a>
+            <font class="header-l-font halfTop" onclick="$('#arealist').hide(200);">返回</font>
+            <span>选择区号</span>
+        </div>
+
+        <!-- area code -->
+        <div class="areacode1">
+            <dl class="ac-item">
+                <dt id="A">A</dt>
+                <dd>阿尔巴尼亚<span>+355</span></dd>
+                <dd>安道尔<span>+376<span></dd>
+                <dd>奥地利<span>+43<span></dd>
+                <dd>澳大利亚<span>+61<span></dd>
+                <dd>阿尔及利亚<span>+213</span></dd>
+                <dd>安哥拉<span>+244</span></dd>
+                <dd>阿根廷<span>+54</span></dd>
+                <dd>安提瓜和巴布达<span>+1268</span></dd>
+                <dd>阿富汗<span>+93</span></dd>
+                <dd>阿塞拜疆<span>+994</span></dd>
+                <dd>亚美尼亚<span>+374</span></dd>
+                <dd>阿拉斯加<span>+1907</span></dd>
+                <dd>安圭拉岛(英)<span>+1264</span></dd>
+                <dd>阿鲁巴岛<span>+297</span></dd>
+                <dd>阿森松(英)<span>+247</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="B">B</dt>
+                <dd>白俄罗斯<span>+375</span></dd>
+                <dd>保加利亚<span>+359</span></dd>
+                <dd>比利时<span>+32</span></dd>
+                <dd>波黑<span>+387</span></dd>
+                <dd>贝宁<span>+229</span></dd>
+                <dd>博茨瓦纳<span>+267</span></dd>
+                <dd>布基纳法索<span>+226</span></dd>
+                <dd>布隆迪<span>+257</span></dd>
+                <dd>巴巴多斯<span>+1246</span></dd>
+                <dd>巴西<span>+55</span></dd>
+                <dd>玻利维亚<span>+591</span></dd>
+                <dd>伯利兹<span>+501</span></dd>
+                <dd>巴林<span>+973</span></dd>
+                <dd>不丹<span>+975</span></dd>
+                <dd>孟加拉国<span>+880</span></dd>
+                <dd>文莱<span>+673</span></dd>
+                <dd>百慕大群岛(英)<span>+1441</span></dd>
+                <dd>波斯尼亚和黑塞哥维那<span>+387</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="C">C</dt>
+                <dd>捷克<span>+420</span></dd>
+                <dd>克罗地亚<span>+383</span></dd>
+                <dd>库克群岛<span>+682</span></dd>
+                <dd>佛得角<span>+238</span></dd>
+                <dd>刚果<span>+242</span></dd>
+                <dd>喀麦隆<span>+237</span></dd>
+                <dd>科摩罗<span>+269</span></dd>
+                <dd>乍得<span>+235</span></dd>
+                <dd>中非<span>+236</span></dd>
+                <dd>巴哈马<span>+1809</span></dd>
+                <dd>哥伦比亚<span>+57</span></dd>
+                <dd>哥斯达黎加<span>+506</span></dd>
+                <dd>古巴<span>+53</span></dd>
+                <dd>加拿大<span>+1</span></dd>
+                <dd>智利<span>+56</span></dd>
+                <dd>塞浦路斯<span>+357</span></dd>
+                <dd>中国<span>+86</span></dd>
+                <dd>加纳利群岛<span>+34</span></dd>
+                <dd>开曼群岛(英)<span>+1345</span></dd>
+                <dd>圣诞岛<span>+619164</span></dd>
+                <dd>科科斯岛<span>+619162</span></dd>
+                <dd>多米尼克国<span>+1809</span></dd>
+                <dd>科克群岛(新)<span>+682</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="D">D</dt>
+                <dd>丹麦<span>+45</span></dd>
+                <dd>吉布提<span>+253</span></dd>
+                <dd>多米尼加<span>+1767</span></dd>
+                <dd>多米尼加联邦<span>+809</span></dd>
+                <dd>迪戈加西亚岛<span>+246</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="E">E</dt>
+                <dd>爱沙尼亚<span>+372</span></dd>
+                <dd>埃及<span>+20</span></dd>
+                <dd>埃塞俄比亚<span>+251</span></dd>
+                <dd>赤道几内亚<span>+240</span></dd>
+                <dd>厄立特里亚<span>+291</span></dd>
+                <dd>厄瓜多尔<span>+59</span></dd>
+                <dd>萨尔瓦多<span>+503</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="F">F</dt>
+                <dd>法国<span>+33</span></dd>
+                <dd>芬兰<span>+358</span></dd>
+                <dd>斐济<span>+679</span></dd>
+                <dd>福克兰群岛<span>+500</span></dd>
+                <dd>法罗群岛(丹)<span>+298</span></dd>
+                <dd>法属圭亚那<span>+594</span></dd>
+                <dd>法属波里尼西亚<span>+689</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="G">G</dt>
+                <dd>德国<span>+49</span></dd>
+                <dd>希腊<span>+30</span></dd>
+                <dd>冈比亚<span>+220</span></dd>
+                <dd>几内亚<span>+224</span></dd>
+                <dd>几内亚比绍<span>+245</span></dd>
+                <dd>加纳<span>+233</span></dd>
+                <dd>加蓬<span>+241</span></dd>
+                <dd>格林纳达<span>+1809</span></dd>
+                <dd>圭亚那<span>+592</span></dd>
+                <dd>危地马拉<span>+995</span></dd>
+                <dd>格鲁吉亚<span>+995</span></dd>
+                <dd>直布罗陀(英)<span>+350</span></dd>
+                <dd>格陵兰岛<span>+299</span></dd>
+                <dd>瓜德罗普岛(法)<span>+590</span></dd>
+                <dd>关岛(美)<span>+671</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="H">H</dt>
+                <dd>匈牙利<span>+36</span></dd>
+                <dd>海地<span>+509</span></dd>
+                <dd>洪都拉斯<span>+504</span></dd>
+                <dd>夏威夷<span>+1808</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="I">I</dt>
+                <dd>爱尔兰<span>+353</span></dd>
+                <dd>冰岛<span>+354</span></dd>
+                <dd>意大利<span>+39</span></dd>
+                <dd>科特迪瓦<span>+225</span></dd>
+                <dd>伊拉克<span>+225</span></dd>
+                <dd>伊朗<span>+98</span></dd>
+                <dd>以色列<span>+972</span></dd>
+                <dd>印度<span>+91</span></dd>
+                <dd>印度尼西亚<span>+62</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="J">J</dt>
+                <dd>牙买加<span>+1876</span></dd>
+                <dd>日本<span>+81</span></dd>
+                <dd>约旦<span>+962</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="K">K</dt>
+                <dd>基里巴斯<span>+686</span></dd>
+                <dd>肯尼亚<span>+254</span></dd>
+                <dd>朝鲜<span>+85</span></dd>
+                <dd>哈萨克斯坦<span>+7</span></dd>
+                <dd>韩国<span>+82</span></dd>
+                <dd>吉尔吉斯斯坦<span>+996</span></dd>
+                <dd>柬埔寨<span>+855</span></dd>
+                <dd>科威特<span>+965</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="L">L</dt>
+                <dd>拉托维亚<span>+371</span></dd>
+                <dd>立陶宛<span>+370</span></dd>
+                <dd>列支敦士登<span>+41</span></dd>
+                <dd>卢森堡<span>+352</span></dd>
+                <dd>莱索托<span>+266</span></dd>
+                <dd>利比里亚<span>+231</span></dd>
+                <dd>利比亚<span>+218</span></dd>
+                <dd>老挝<span>+856</span></dd>
+                <dd>黎巴嫩<span>+961</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="M">M</dt>
+                <dd>马耳他<span>+356</span></dd>
+                <dd>马其顿<span>+389</span></dd>
+                <dd>摩尔多瓦<span>+373</span></dd>
+                <dd>摩纳哥<span>+377</span></dd>
+                <dd>马绍尔群岛<span>+692</span></dd>
+                <dd>密克罗西亚<span>+691</span></dd>
+                <dd>马达加斯加<span>+261</span></dd>
+                <dd>马拉维<span>+265</span></dd>
+                <dd>马里<span>+223</span></dd>
+                <dd>毛里求斯<span>+230</span></dd>
+                <dd>毛里塔尼亚<span>+222</span></dd>
+                <dd>摩洛哥<span>+212</span></dd>
+                <dd>莫桑比克<span>+258</span></dd>
+                <dd>墨西哥<span>+52</span></dd>
+                <dd>澳门<span>+853</span></dd>
+                <dd>马尔代夫<span>+960</span></dd>
+                <dd>马来西亚<span>+60</span></dd>
+                <dd>蒙古<span>+976</span></dd>
+                <dd>缅甸<span>+95</span></dd>
+                <dd>马里亚纳群岛<span>+670</span></dd>
+                <dd>马提尼克(法)<span>+596</span></dd>
+                <dd>马约特岛<span>+269</span></dd>
+                <dd>密克罗尼西亚(美)<span>+691</span></dd>
+                <dd>中途岛(美)<span>+1808</span></dd>
+                <dd>蒙特塞拉群岛(英)<span>+1664</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="N">N</dt>
+                <dd>荷兰<span>+31</span></dd>
+                <dd>挪威<span>+47</span></dd>
+                <dd>瑙鲁<span>+674</span></dd>
+                <dd>新西兰<span>+64</span></dd>
+                <dd>纳米比亚<span>+264</span></dd>
+                <dd>尼日尔<span>+227</span></dd>
+                <dd>尼日利亚<span>+234</span></dd>
+                <dd>尼加拉瓜<span>+505</span></dd>
+                <dd>尼泊尔<span>+977</span></dd>
+                <dd>荷属安的列斯群岛<span>+599</span></dd>
+                <dd>新喀里多尼亚群岛(法)<span>+687</span></dd>
+                <dd>纽埃岛(新)<span>+683</span></dd>
+                <dd>诺福克岛(澳)<span>+6723</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="O">O</dt>
+                <dd>阿曼<span>+968</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="P">P</dt>
+                <dd>波兰<span>+48</span></dd>
+                <dd>葡萄牙<span>+351</span></dd>
+                <dd>巴布亚新几内亚<span>+675</span></dd>
+                <dd>帕劳<span>+680</span></dd>
+                <dd>巴拉圭<span>+595</span></dd>
+                <dd>巴拿马<span>+507</span></dd>
+                <dd>秘鲁<span>+51</span></dd>
+                <dd>巴基斯坦<span>+92</span></dd>
+                <dd>巴勒斯坦<span>+930</span></dd>
+                <dd>菲律宾<span>+63</span></dd>
+                <dd>帕劳(美)<span>+680</span></dd>
+                <dd>波多黎各(美)<span>+1787</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="Q">Q</dt>
+                <dd>卡塔尔<span>+974</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="R">R</dt>
+                <dd>俄罗斯<span>+7</span></dd>
+                <dd>罗马尼亚<span>+40</span></dd>
+                <dd>卢旺达<span>+250</span></dd>
+                <dd>留尼汪岛<span>+262</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="S">S</dt>
+                <dd>塞尔维亚<span>+381</span></dd>
+                <dd>瑞典<span>+46</span></dd>
+                <dd>瑞士<span>+41</span></dd>
+                <dd>圣马力诺<span>+378</span></dd>
+                <dd>斯洛伐克<span>+421</span></dd>
+                <dd>斯洛文尼亚<span>+386</span></dd>
+                <dd>西班牙<span>+34</span></dd>
+                <dd>萨摩亚<span>+685</span></dd>
+                <dd>所罗门群岛<span>+677</span></dd>
+                <dd>南非<span>+27</span></dd>
+                <dd>塞拉利昂<span>+232</span></dd>
+                <dd>塞内加尔<span>+221</span></dd>
+                <dd>塞舌尔<span>+248</span></dd>
+                <dd>圣多美和普林西比<span>+239</span></dd>
+                <dd>斯威士兰<span>+268</span></dd>
+                <dd>苏丹<span>+249</span></dd>
+                <dd>索马里<span>+252</span></dd>
+                <dd>圣基茨和尼维斯<span>+1809</span></dd>
+                <dd>圣卢西亚<span>+1758</span></dd>
+                <dd>圣文森特和格林纳丁斯<span>+1784</span></dd>
+                <dd>苏里南<span>+597</span></dd>
+                <dd>沙特阿拉伯<span>+966</span></dd>
+                <dd>斯里兰卡<span>+94</span></dd>
+                <dd>新加坡<span>+65</span></dd>
+                <dd>叙利亚<span>+963</span></dd>
+                <dd>东萨摩亚(美)<span>+684</span></dd>
+                <dd>西萨摩亚<span>+685</span></dd>
+                <dd>圣马力诺<span>+378</span></dd>
+                <dd>圣皮埃尔岛及密克隆岛<span>+508</span></dd>
+                <dd>圣克里斯托弗和尼维斯<span>+1809</span></dd>
+                <dd>圣赫勒拿<span>+290</span></dd>
+                <dd>圣文森特岛(英)<span>+1784</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="T">T</dt>
+                <dd>汤加<span>+676</span></dd>
+                <dd>图瓦卢<span>+688</span></dd>
+                <dd>多哥<span>+228</span></dd>
+                <dd>刚果民主<span>+243</span></dd>
+                <dd>坦桑尼亚<span>+255</span></dd>
+                <dd>突尼斯<span>+216</span></dd>
+                <dd>特立尼达和多巴哥<span>+1809</span></dd>
+                <dd>阿拉伯联合酋长国<span>+971</span></dd>
+                <dd>东帝汶<span>+670</span></dd>
+                <dd>塔吉克斯坦<span>+992</span></dd>
+                <dd>泰国<span>+66</span></dd>
+                <dd>土耳其<span>+90</span></dd>
+                <dd>土库曼斯坦<span>+993</span></dd>
+                <dd>托克劳群岛(新)<span>+690</span></dd>
+                <dd>特克斯和凯科斯群岛<span>+1809</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="U">U</dt>
+                <dd>乌克兰<span>+380</span></dd>
+                <dd>英国<span>+44</span></dd>
+                <dd>乌干达<span>+256</span></dd>
+                <dd>美国<span>+1</span></dd>
+                <dd>乌拉圭<span>+598</span></dd>
+                <dd>乌兹别克斯坦<span>+998</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="V">V</dt>
+                <dd>梵蒂冈<span>+379</span></dd>
+                <dd>瓦努阿图<span>+678</span></dd>
+                <dd>委内瑞拉<span>+58</span></dd>
+                <dd>越南<span>+84</span></dd>
+                <dd>维尔京群岛(英)<span>+1809</span></dd>
+                <dd>维尔京群岛和圣罗克伊<span>+1809</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="W">W</dt>
+                <dd>西撒哈拉<span>+967</span></dd>
+                <dd>威克岛(美)<span>+1808</span></dd>
+                <dd>瓦里斯和富士那群岛<span>+681</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="Y">Y</dt>
+                <dd>也门<span>+967</span></dd>
+                <dd>南斯拉夫<span>+381</span></dd>
+            </dl>
+            <dl class="ac-item">
+                <dt id="Z">Z</dt>
+                <dd>津巴布韦<span>+263</span></dd>
+                <dd>赞比亚<span>+260</span></dd>
+                <dd>扎伊尔<span>+243</span></dd>
+                <dd>桑给巴尔<span>+259</span></dd>
+            </dl>
+        </div>
+
+        <!-- right side nav -->
+        <ul class="ac-rightnav">
+            <li><a href="javascript:void(0);">A</a></li>
+            <li><a href="javascript:void(0);">B</a></li>
+            <li><a href="javascript:void(0);">C</a></li>
+            <li><a href="javascript:void(0);">D</a></li>
+            <li><a href="javascript:void(0);">E</a></li>
+            <li><a href="javascript:void(0);">F</a></li>
+            <li><a href="javascript:void(0);">G</a></li>
+            <li><a href="javascript:void(0);">H</a></li>
+            <li><a href="javascript:void(0);">I</a></li>
+            <li><a href="javascript:void(0);">J</a></li>
+            <li><a href="javascript:void(0);">K</a></li>
+            <li><a href="javascript:void(0);">L</a></li>
+            <li><a href="javascript:void(0);">M</a></li>
+            <li><a href="javascript:void(0);">N</a></li>
+            <li><a href="javascript:void(0);">O</a></li>
+            <li><a href="javascript:void(0);">p</a></li>
+            <li><a href="javascript:void(0);">Q</a></li>
+            <li><a href="javascript:void(0);">R</a></li>
+            <li><a href="javascript:void(0);">S</a></li>
+            <li><a href="javascript:void(0);">T</a></li>
+            <li><a href="javascript:void(0);">U</a></li>
+            <li><a href="javascript:void(0);">V</a></li>
+            <li><a href="javascript:void(0);">W</a></li>
+            <li><a href="javascript:void(0);">Y</a></li>
+            <li><a href="javascript:void(0);">Z</a></li>
+        </ul>
+    </div>
+    <script>
+	    $(document).ready(function(){
+
+	        $(".ac-rightnav li").on("click",function(){
+	            var i = $(this).index();
+	            var h=0;
+	            $(".ac-item").each(function(index,ele){
+	            	if(index===i){
+	                    return false;
+	                };
+	                h+=$(ele).height();
+	            });
+	            $(document).scrollTop(h);
+	        });
+
+	    });
+    </script>
+
+</body>
+</html>

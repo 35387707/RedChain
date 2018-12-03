@@ -1,0 +1,69 @@
+﻿@{ 
+    Layout = null;
+    RelexBarBLL.CategoryBLL category = new RelexBarBLL.CategoryBLL();
+    List<RelexBarDLL.Category> catelist = category.GetAllList();
+}
+
+@model RelexBarDLL.Category
+<div class="col-md-10 col-md-offset-2 form-group editItem">
+    <div class="form-inline">@Html.HiddenFor(m => m.ID)
+        <div class="col-md-3">名称：</div>@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">标题：</div>@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">关键词：</div>@Html.TextBoxFor(m => m.Keywords, new { @class = "form-control" })
+    </div>
+   @*@if (Model.Title == null)
+   {
+   
+   }
+      @if (Model.Keywords == null)
+      {
+        
+      }*@
+
+    @*<div class="form-inline">
+        <div class="col-md-3">状态：</div>@Html.DropDownListFor(m => m.IsShow, new List<SelectListItem>() { new SelectListItem() { Text = "禁用", Value = "0" }, new SelectListItem() { Text = "可用", Value = "1" } }, new { @class = "form-control" })
+    </div>*@
+    <div class="form-inline">
+        <div class="col-md-3">
+            上一级ID：
+        </div>
+        <select class="form-control" data-val="true" data-val-number="字段 HeadID 必须是一个数字。" id="HeadID" name="HeadID">
+            <option value='0'>请选择</option>
+            @if (Model.LV == null)
+            {
+                for (int i = 0; i < catelist.Count; i++)
+                {
+                   
+                    <option value='@catelist[i].ID'> @catelist[i].Name</option>
+                }
+            }
+            else
+            {
+                for (int i = 0; i < catelist.Count; i++)
+                {
+                    if ((int)@catelist[i].LV <= Model.LV)
+                    {
+                        if ((int)@catelist[i].ID == Model.HeadID)
+                        {
+            <option value='@catelist[i].ID' selected="selected"> @catelist[i].Name</option>
+                        }
+                        else
+                        {
+            <option value='@catelist[i].ID'> @catelist[i].Name</option>
+                        }
+                    }
+                }
+            }
+        </select>
+    </div>
+    @*<div class="form-inline">
+        <div class="col-md-3">头ID：</div>@Html.TextBoxFor(m => m.HeadID, new { @class = "form-control" })
+    </div>*@
+    <div class="form-inline">
+         <div class="col-md-3">排序：</div>@Html.TextBoxFor(m => m.OrderID, new { @class = "form-control" })
+    </div>
+</div>

@@ -1,0 +1,565 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/ui-box.css">
+    <link rel="stylesheet" href="../css/ui-base.css">
+    <link rel="stylesheet" href="../css/ui-color.css">
+    <link rel="stylesheet" href="../css/appcan.icon.css">
+    <link rel="stylesheet" href="../css/appcan.control.css">
+    <link rel="stylesheet" href="../vip/css/upgrade-v1.css">
+    <link rel="stylesheet" href="../hb/css/editor-v1.css">
+</head>
+<body class="bc-bg" ontouchstart>
+
+    <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+        <div id="header" class="uh bc-head ubb bc-border" style="position: fixed; z-index: 10000;">
+            <div class="ub">
+                <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub-img1 nav-back"></div>
+                </div>
+                <div class="nav-two"></div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">广告编辑</h1>
+                <div class="nav-btn" id="nav-right">
+                    <div class="fa fa-1g ub-img1 cmpl">
+                        <!-- 个人资料 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="ub ub-ver ub-fv list-view" ontouchstart>
+                <div class="ub ubb ubt bc-border list-marg-top list-adv-padd c-wh ub-ac upgr-type">
+                    <div class="left-txt-color ulev0 ub-f1">
+                        会员类型
+                    </div>
+                    <div class="t-gra-85 ulev-1 tx-r UserType" data-nt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="ub ub-ver ub-fv list-view">
+                <div class="ub ubb ubt bc-border list-adv-padd c-wh ub-ac">
+                    <div class="left-txt-color ulev0 ub-f1">
+                        福包广告剩余数
+                    </div>
+                    <div class="t-gra-85 ulev-1 tx-r" id="MainTainRedCount" data-fid="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="ub ub-ver">
+                <div class="ub-f1 ub ub-ver ins-sty">
+                    <div class="ub ub-f1">
+                        <textarea type="text" data-sign="0" class="ub-f1 outline" placeholder="你要发布的广告内容" id="title"></textarea>
+                    </div>
+                    <div class="ub ub-ac">
+                        <div class="ulev-1 ub-f1">
+                            <div class="ub ub-ac">
+                                <div class="photo-album" data-albm_i="1">
+
+                                    <div class="cam-par">
+                                        <img data-cam_i="1" ontouchstart class="camera" src="../hb/img/hb_send_camera@2x.png" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- 信息验证-end  -->
+
+            <div style="height: 1.0em;"></div>
+
+        </div>
+
+        <div id="footer" class="sure-btn">
+            <div class="list-wd">
+                <div class="bot-btn ub ub-ac bc-text-head ub-pc bc-btn bot-rds" id="vip_adv">
+                    <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                    发布
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--<script src="../js/appcan.js"></script>
+    <script src="../js/appcan.control.js"></script>-->
+    <script src="../js/com/debug.js"></script>
+    <script src="../js/com/date.js"></script>
+    <script src="../js/com/popup.js"></script>
+    <script src="../js/com/system.js"></script>
+    <script src="../js/com/image.js"></script>
+    <script src="../js/com/json.js"></script>
+    <script src="../js/com/code.js"></script>
+    <script src="../js/com/pay.js"></script>
+    <!--<script src="../vip/js/advert.js"></script>-->
+    <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+    <script src="../js/token.js"></script>
+    <script>
+
+        $().ready(function () {
+
+            localStorage.setItem("PriceType", 0);
+
+            localStorage.setItem("redmoney", 0);
+
+            localStorage.setItem("payRoot", 'vip_adv');
+
+            var titHeight = $('#header').height();
+            var footHeight = $('#footer').height();
+            $('#content').css('padding-top', titHeight);
+            $('#content').css('padding-bottom', footHeight);
+
+            var token = GetQueryString("token");
+            if (token != null && token != "") {
+
+                var html = "";
+                $.post("http://www.fbddd.com/Account/GetUserInfo", "token=" + token,
+                    function (data) {
+
+                        if (data.code == 1) {
+
+                            var Phone = data.Info.Phone;
+
+                            var UserType = '';
+                            var MainTainRedCount = '';
+
+                            UserType = data.Info.UserType;
+                            MainTainRedCount = data.Info.MainTainRedCount;
+
+                            if (UserType == 0) {
+                                //usertype
+                                $('.UserType').text('福星');
+                            } else if (UserType == 1) {
+                                $('.UserType').text('福将(商家)');
+                            } else if (UserType == 2) {
+                                $('.UserType').text('福相(代理)');
+                            }
+
+                            $('.UserType').data('usertype', UserType);
+                            $('#MainTainRedCount').text(MainTainRedCount);
+
+                        }
+                    }, "json");
+            }
+            getNewRedPacketByUID(token);
+        });
+
+        function getNewRedPacketByUID(token) {
+
+            $.post("http://www.fbddd.com/RedPacket/GetNewRedPacketByUID", "token=" + token, function (data) {
+                if (data.length != 0) {
+                    if (data.code == 1 || data.code == '1') {
+                        setVipAdvert(data);
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+                else {
+                    alert("获取最新升级的福包广告失败");
+                }
+
+            }, "json");
+
+        }
+        function setVipAdvert(json) {
+
+            var fileUrl = "http://www.fbddd.com";
+           // console.log(json);
+            var RID = json.list.RID;
+            var title = json.list.title;
+            var imglist = json.list.imglist;
+
+            $('#title').text(title);
+            $('#title').data('rid', json.list.RID);
+
+            var imgArr = new Array();
+            if (imglist.indexOf(';') != -1) {
+                imgArr = imglist.split(";");
+            } else {
+                imgArr = imglist;
+            }
+
+            if (isJSON(imgArr)) {
+
+                $(imgArr).each(function (i, v) {
+
+                    var imgCont = '<div data-par_s="' + i + '" class="cam-par"><div ontouchstart="" data-img_s="' + i + '" data-pic_p="' + fileUrl + v + '" data-pic_n="' + v + '" class="ub-img1 disp-pic" style="background-image:url(' + fileUrl + v + ');"></div></div>';
+                    //var cont = '<div class="cam-par"><img class="disp-pic" src="' + imgPath + '" /></div>';
+                    $('.photo-album').append(imgCont);
+
+                });
+
+            } else {
+
+                var imgCont = '<div data-par_s="' + imglist + '" class="cam-par"><div ontouchstart="" data-img_s="' + imglist + '" data-pic_p="' + fileUrl + imglist + '" data-pic_n="' + imglist + '" class="ub-img1 disp-pic" style="background-image:url(' + fileUrl + imglist + ');"></div></div>';
+                //var cont = '<div class="cam-par"><img class="disp-pic" src="' + imgPath + '" /></div>';
+                $('.photo-album').append(imgCont);
+
+            }
+
+            $('.disp-pic').unbind();
+            $('.disp-pic').click(function () {
+
+                //alert($('.photo-album').children("div:last-child").index());
+                var picIndx = $(this).data('pic_p');
+
+                //查看所有相关的图片
+                var picArr = [];
+                $('.disp-pic').each(function (j, s) {
+
+                    //debug($(this).data('pic_p'));
+                    //debug($(this).data('img_s'));
+
+                    if ($(this).data('pic_p')) {
+                        var picSgl = {
+                            src: $(this).data('pic_p'),
+                            desc: $(this).data('img_s'),
+                        };
+                        picArr.push(picSgl);
+                    }
+
+                });
+
+                localStorage.setItem("imgSgl", picIndx);
+                localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                //debug(picArr);
+                //var tempPath = $(this)[0].src;
+                setTimeout(function () {
+
+                    //dispCurImg(picIndx ,picArr);
+                    openBrowser();
+
+                }, 300);
+
+            });
+
+            $('.disp-pic').on('touchstart', function (e) {
+                e.stopPropagation();
+
+                var img_s = $(this).data('img_s');
+
+                var picIndx = $(this).data('pic_p');
+
+                timeout = setTimeout(function () {
+
+                    //alert('pare: ' + $("div[data-par_s='" + img_s + "']").html());
+
+                    uexWindow.actionSheet({
+                        title: "选项",
+                        cancel: "取消",
+                        buttons: "查看图片,删除图片"
+                    }, function (index) {
+
+                        if (index == 0) {
+
+                            var picArr = [];
+                            $('.disp-pic').each(function (j, s) {
+
+                                //debug($(this).data('pic_p'));
+                                //debug($(this).data('img_s'));
+
+                                if ($(this).data('pic_p')) {
+                                    var picSgl = {
+                                        src: $(this).data('pic_p'),
+                                        desc: $(this).data('img_s'),
+                                    };
+                                    picArr.push(picSgl);
+                                }
+
+                            });
+
+                            localStorage.setItem("imgSgl", picIndx);
+                            localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                            setTimeout(function () {
+
+                                //dispCurImg(picIndx, picArr);
+                                openBrowser();
+
+                            }, 300);
+
+                        } else if (index == 1) {
+
+                            $("div[data-par_s='" + img_s + "']").remove();
+
+                        }
+                    });
+
+                }, 750);
+
+            });
+
+            $('.disp-pic').on('touchend', function (e) {
+                e.stopPropagation();
+                clearTimeout(timeout);
+            });
+
+        }
+
+       
+        function isJSON(str) {
+            if (typeof str == 'object') {
+                try {
+                  //  JSON.parse(str);
+                    return true;
+                } catch (e) {
+                    console.log(e);
+                    return false;
+                }
+            }
+        }
+
+
+        var send_stat = true;
+        $('#vip_adv').click(function () {
+
+            if (send_stat) {
+
+                send_stat = false;
+                //openToast('发布广告中...', 30000, 5, 1);
+
+                judgVipAdvRedReq();
+
+            }
+
+        });
+
+        //判断所有必填条件
+        function judgVipAdvRedReq() {
+
+            var req_arr = [];
+            var title = trim($('#title').val());
+            if (title == '') {
+                req_arr.push('广告内容');
+            }
+
+            if (req_arr.length == 0 || req_arr == '') {
+
+                judgVipAdvImgUpld();
+
+            } else {
+
+                send_stat = true;
+                //openToast('请输入' + req_arr.join('、'), 3000, 5, 0);
+                alert('请输入' + req_arr.join('、'));
+
+            }
+
+        }
+
+
+        function judgVipAdvImgUpld() {
+
+            //uexLoadingView.openCircleLoading();
+
+            var whole = [];
+
+            var imgArr = [];
+            //获取所有的图片路径
+            $('.disp-pic').each(function (i, v) {
+
+                if ($(this).data('pic_p')) {
+
+                    debug($(this).data('pic_p'));
+
+                    var tmp = $(this).data('pic_p');
+
+                    whole.push(tmp);
+
+                    if (tmp.indexOf('http://www.fbddd.com') == -1) {
+
+                        imgArr.push(tmp);
+
+                    }
+
+                }
+
+            });
+
+            //openToast('正在发送福包信息...', 60000, 8, 0);
+
+            //如果当前没有图片上传
+            if (whole.length == 0 || whole == '' || whole == null || whole == undefined) {
+
+                send_stat = true;
+               // openToast('请至少选择一张图片', 3000, 5, 0);
+                alert('请至少选择一张图片');
+
+            } else {
+
+                if (imgArr.length == 0 || imgArr == '' || imgArr == null || imgArr == undefined) {
+
+                    locNetImgActn(imgArr);
+
+                } else {
+                    doVipAdvImgUpld(imgArr, 0, imgArr.length, 'vip_adv');
+                }
+
+            }
+
+        }
+
+        function locNetImgActn(imgArr) {
+
+            var net = [];
+
+            $('.disp-pic').each(function (i, v) {
+
+                if ($(this).data('pic_n')) {
+                    debug($(this).data('pic_n'));
+                    net.push($(this).data('pic_n'));
+                }
+
+            });
+
+            if (net.length == 0 || net == '' || net == null || net == undefined) {
+
+            } else {
+
+                $(net).each(function (i, v) {
+
+                    imgArr.push(v);
+
+                });
+
+            }
+
+            upldVipAdvert(imgArr);
+
+        }
+
+        //img.1.循环上传图片的逻辑
+        function doVipAdvImgUpld(imgArr, i, length, fromPage) {
+
+            var url = localStorage.getItem("upldUrl");
+
+            if (i < length) {
+
+                var uploader = uexUploaderMgr.create({
+                    url: url,
+                    type: 2
+                });
+
+                if (uploader != null) {
+
+                    uexUploaderMgr.uploadFile(uploader, imgArr[i], "imgArr", 2, 1080, function (packageSize, percent, responseString, status) {
+                        switch (status) {
+                            case 0:
+                                //alert("文件大小:" + packageSize + "<br>上传进度:" + percent + "%");
+                                break;
+                            case 1:
+
+                                uexUploaderMgr.closeUploader(uploader);
+
+                                responseString = JSON.parse(responseString);
+                                //debug(responseString);
+                                //debug(responseString.msg);
+                                imgArr[i] = responseString.msg;
+
+                                doVipAdvImgUpld(imgArr, i + 1, length, fromPage);
+
+                                break;
+                            case 2:
+                                //commonAlert('图片上传失败！ ');
+                                alert('图片上传失败');
+                               // uexUploaderMgr.closeUploader(uploader);
+                                send_stat = true;
+                                //uexLoadingView.close();
+                                break;
+                        }
+
+                    });
+
+                } else {
+                    alert('图片上传出错');
+                  //  commonAlert('图片上传出错！ ');
+                    //uexLoadingView.close();
+                    send_stat = true;
+
+                }
+
+            } else {
+
+                locNetImgActn(imgArr);
+
+            }
+
+        }
+
+
+        function upldVipAdvert(imgArr) {
+
+            //debug(imgArr);
+
+            var RID = $('#title').data('rid');
+
+            //支付方式
+            var title = $('#title').val().trim();
+
+            var linkto = '';
+            if (linkto == '' || linkto == null || linkto == undefined) {
+                linkto = '';
+            }
+
+            var img = '';
+            if (imgArr.length == 0 || imgArr == '' || imgArr == null || imgArr == undefined) {
+                //debug('没有图片的红包提交');
+            } else {
+                //debug('有图片的红包提交');
+                img = imgArr.join(';');
+            }
+
+            if (img == '' || img == null || img == undefined) {
+                img = '';
+            }
+            var token = GetQueryString("token");
+            //debug(img);
+            //修改的逻辑
+          
+            $.post("http://www.fbddd.com/RedPacket/UpdateRedPacketByRID", "RID=" + RID + "&title=" + title + "&img=" + img + "&token=" + token, function (data) {
+                if (data.length != 0) {
+                    if (data.code == 1 || data.code == '1') {
+                        alert('编辑广告信息成功');
+                    }
+                    else {
+                        send_stat = true;
+                        alert(data.msg);
+                    }
+                }
+                else {
+                    send_stat = true;
+                    alert("编辑广告失败");
+                }
+
+            }, "json");
+        }
+
+
+
+        $('.camera').click(function () {
+
+            var fromPage = 'vip_upgr';
+            openEditorActn(fromPage);
+
+        });
+
+
+    </script>
+
+
+ 
+</body>
+</html>

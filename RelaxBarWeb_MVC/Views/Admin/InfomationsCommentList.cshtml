@@ -1,0 +1,12 @@
+﻿@model List<RelexBarBLL.Models.InfomationsCommentModel>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        @*<td>@((Model[i].Name == null) ? "系统" : (Model[i].TrueName + "(" + Model[i].Phone + ")"))</td>*@
+        <th>@Model[i].Phone</th>
+        <th>@Model[i].Content</th>
+        <th>@Model[i].UpdateTime</th>
+      
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

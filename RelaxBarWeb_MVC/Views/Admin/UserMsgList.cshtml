@@ -1,0 +1,28 @@
+﻿@model List<RelexBarBLL.Models.UserMsgModel>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@Model[i].UName</td>
+        <td>@Model[i].FName</td>
+        <td>@Model[i].Subject</td>
+        <td>@((Model[i].MessageType == 0) ? "系统消息" : ((Model[i].MessageType == 1) ? "用户消息" : "其他消息"))</td>
+        <td>@Model[i].Content</td>
+        <td><img src="@Model[i].Img" style="width:86px" /></td>
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].IsShow==1)?"启用":"禁用")" onclick="CShow('@Model[i].ID',this)" />
+        </td>
+       
+        <td>@Model[i].CreateTime</td>
+        <td>
+            @((Model[i].Status == 1) ? "未读" : ((Model[i].Status == 2) ? "已读" : "不可用"))
+            @*<input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CStatus('@Model[i].ID',this)" />*@
+        </td>
+        <td>
+            @if (Model[i].Status == 1)
+            {
+                <span class="btn-link"  onclick="CStatus('@Model[i].ID')" style="cursor:pointer" ><i class="glyphicon glyphicon-eye-open"></i>已读</span>
+            }
+        </td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

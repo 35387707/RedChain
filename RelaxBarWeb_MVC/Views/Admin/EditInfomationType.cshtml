@@ -1,0 +1,13 @@
+﻿@model RelexBarDLL.InfomationType
+<div class="col-md-10 col-md-offset-2 form-group editItem">
+    <div class="form-inline">@Html.HiddenFor(m => m.ITID)
+        <div class="col-md-3">名称：</div>@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    
+    <div class="form-inline">
+        <div class="col-md-3">描述：</div>@Html.TextBoxFor(m => m.Desr, new { @class = "form-control" })
+    </div>
+
+</div>
+
+

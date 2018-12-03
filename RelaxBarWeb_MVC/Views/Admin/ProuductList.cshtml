@@ -1,0 +1,35 @@
+﻿
+@model List<RelexBarBLL.Models.ProductListModel>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <th>@Model[i].Number</th>
+        @*<td>@Model[i].Name</td>*@
+        <td title="@Model[i].Name">@(RelexBarBLL.Common.StringTruncat(Model[i].Name, 30))</td>
+        @*<td title="@Model[i].Title">@(RelexBarBLL.Common.StringTruncat(Model[i].Title,40))</td>*@
+        <td>@Model[i].CategoryName</td>
+        <td><img src="@Model[i].Img" style="width:66px" class="zoom-in" onclick="bigshow(this)" /></td>
+        <td>
+            现金 @Model[i].Price
+            <br />+<br />
+            福利积分 @Model[i].FootQuanPrice  
+        </td>
+        <td>@Model[i].Stock</td>
+        <td>@Model[i].CompleteCount</td>
+        <td>@Model[i].ViewCount</td>
+        @*<td>@Model[i].GoodCount</td>
+        <td>@Model[i].CPoints</td>*@
+        <td>@Model[i].CreateTime</td>
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"上架":"下架")" onclick="CProductStatus('@Model[i].ID',this)" />
+        </td>
+        <td>@Model[i].OrderID</td>
+        @*<td><span class="btn-link" onclick="bankShow('@Model[i].ID')">查看</span></td>
+           *@
+        <td>
+            <span class="btn-link" onclick="EditProduct('@Model[i].ID')"><i class="glyphicon glyphicon-edit"></i>编辑</span>
+            <span class="btn-link" data-toggle="modal" data-target="#exampleModal" data-id="@Model[i].ID" onclick="btndelete('@Model[i].ID')" style="color:#d9534f;margin-left:10px" ><i class="glyphicon glyphicon-trash"></i>删除</span>
+        </td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

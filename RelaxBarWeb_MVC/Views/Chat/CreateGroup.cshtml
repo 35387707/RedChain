@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+@model int?
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>群聊名称</title>
+    @Html.Action("CommonHead", "Static")
+    <style>
+        .radio input{
+            width:1.5rem;
+            height:1.5rem;
+            margin-left:7rem;
+            
+        }
+        .radio span {
+            font-size:1.5rem;
+        }
+    </style>
+    <script>
+        function createGroup() {
+            $.post("/Chat/DoCreateGroup", $("#cform").serialize(), function (data) {
+                alert(data.msg);
+                if (data.code == "1") {
+                    location.href = "/Account/ChatPage";
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("action", "controller", FormMethod.Post, new { id = "cform" }))
+        {
+            @Html.Hidden("Gtype", (Model==null?1:Model.Value))
+            <div class="wrap gray-wrap min-h100">
+                <div class="Header">
+                    <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+                    <font class="header-l-font halfTop" onclick="window.history.back()">返回</font>
+                    <span>群聊名称</span>
+                </div>
+                <div class="same-pt-wrap1">
+                    <div class="remark-block">
+                        <font class="remark-title">群聊名称</font>
+                        @Html.TextBox("GName","",new { @Class = "remark-iptTxt", placeholder = "请在此处输入群聊名称" })
+                    </div>
+                    <div class="remark-block radio">
+                        <font class="remark-title">群聊类型</font>
+                        <span><input type="radio" name="type" @((Model==null||Model==1)?"checked":"") onclick="$('#Gtype').val(1)" />聊天群<input name="type" @(Model==2?"checked":"") onclick="$('#Gtype').val(2)" type="radio" />游戏群</span>
+                    </div>
+                    <input class="bigBtn bg-b remark-btn-mt" type="button" value="完成" onclick="createGroup()"/>
+                </div>
+            </div><!--wrap-->
+        }
+    </div>
+</body>
+</html>

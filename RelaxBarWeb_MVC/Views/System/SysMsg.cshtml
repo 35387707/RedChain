@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<RelexBarDLL.ChatMessage>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SysMsg</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        function nextPage() {
+            
+        }
+        function agree(id,mid) {
+            $.post("/Friend/Agree", "id=" + id + "&mid=" + mid, function (data) {
+                if (data.code == "1") {
+                    location.reload();
+                    location.reload();
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div> 
+        <table>
+
+
+            @foreach (var item in Model)
+            {
+                if (item.MType == (int)RelexBarBLL.EnumCommon.MessageType.FriendRequest)
+                {
+                    <tr>
+                        <td>好友申请</td>
+                        <td>@item.Content</td>
+                        <td>
+                            @if (item.HadRead == 0)
+                            {//未读
+                                <span>未处理</span>
+                                <input type="button" value="同意" onclick="agree(1,'@item.MID')" /><input type="button" value="拒绝" onclick="agree(0,'@item.MID')" />
+                            }
+                            else {
+                                <span>已读</span>
+                            }
+                        </td>
+                    </tr>
+                }
+                else {
+                    <tr>
+                        <td></td>
+                        <td>@item.Content</td>
+                        <td></td>
+                    </tr>
+                }
+            }
+        </table>
+        当前第 @ViewData["index"] 页,共 @ViewData["totalPage"] 页
+        @if (Convert.ToInt32(ViewData["totalPage"])>Convert.ToInt32(ViewData["index"])) {
+           
+            @Html.ActionLink("下一页", "SysMsg", new { index = Convert.ToInt32(ViewData["index"])+1, pageSize = 5 })
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿@model List<RelexBarBLL.Models.AdminPayListModel>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@(Model[i].Phone + "【"+@Model[i].CardNumber + "】")</td>
+        <td>@(Model[i].InOut == 1 ? "+" : "-")@Model[i].Val</td>
+        <td>@(Model[i].PayType==(int)RelexBarBLL.Common.enPayType.Coin?"余额":(Model[i].PayType == (int)RelexBarBLL.Common.enPayType.Point? "福音积分" : "福利积分"))</td>
+        <td>@Model[i].Remark</td>
+        <td>@Model[i].CreateTime</td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

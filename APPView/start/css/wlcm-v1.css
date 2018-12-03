@@ -1,0 +1,151 @@
+/*
+ * 当页面可见宽度大于1400px小于1537px时 ipad mini2 ipad mini4
+ */
+@media all and (min-width: 1290px) and (max-width: 1537px) {
+
+    #Page {
+        background-size: cover;
+        background-image: url('../img/mini_start.png');
+        height: 100%;
+        text-align: center;
+    }
+
+    .box-logo {
+        text-align: center;
+        width: 100%;
+        margin: 15% auto;
+    }
+    .logo {
+        background-size: cover;
+        background-image: url('../img/logo.png');
+        height: 4.0em;
+        width: 16.5em;
+        margin: 0 auto;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1100px小于1281px时 iphone 6s
+ */
+@media all and (min-width: 1100px) and (max-width: 1281px) {
+
+    #Page {
+        background-size: cover;
+        background-image: url('../img/start.png');
+        height: 100%;
+        text-align: center;
+    }
+
+    .box-logo {
+        text-align: center;
+        width: 100%;
+        margin: 15% auto;
+    }
+    .logo {
+        background-size: cover;
+        background-image: url('../img/logo.png');
+        height: 3.7em;
+        width: 15em;
+        margin: 0 auto;
+    }
+
+}
+/*
+ * 当页面可见宽度大于900px小于1081px时 1080p iphone6s
+ */
+@media all and (min-width: 753px) and (max-width: 1081px) {
+
+    #Page {
+        background-size: cover;
+        background-image: url('../img/start.png');
+        height: 100%;
+        text-align: center;
+    }
+
+    .box-logo {
+        text-align: center;
+        width: 100%;
+        margin: 15% auto;
+    }
+    .logo {
+        background-size: cover;
+        background-image: url('../img/logo.png');
+        height: 3.7em;
+        width: 15em;
+        margin: 0 auto;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 650px) and (max-width: 751px) {
+
+    #Page {
+        background-size: cover;
+        background-image: url('../img/start.png');
+        height: 100%;
+        text-align: center;
+    }
+
+    .box-logo {
+        text-align: center;
+        width: 100%;
+        margin: 15% auto;
+    }
+    .logo {
+        background-size: cover;
+        background-image: url('../img/logo.png');
+        height: 3.7em;
+        width: 15em;
+        margin: 0 auto;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 500px) and (max-width: 641px) {
+
+    #Page {
+        background-size: cover;
+        background-image: url('../img/start.png');
+        height: 100%;
+        text-align: center;
+    }
+
+    .box-logo {
+        text-align: center;
+        width: 100%;
+        margin: 15% auto;
+    }
+    .logo {
+        background-size: cover;
+        background-image: url('../img/logo.png');
+        height: 3.7em;
+        width: 15em;
+        margin: 0 auto;
+    }
+
+}
+body {
+    
+}
+.wlcm-sz {
+    height: 100%;
+    width: 100%;
+}
+.wlcm-bg {
+    background-image: url('../img/start.png');
+}
+button {
+    font-size: 1em;
+    margin-bottom: 2em;
+    border: 0.2em solid;
+    padding: 10px 20px;
+    border-radius: 2em;
+    background-color: rgba(245,245,245,0);
+    color: #FFFFFF;
+    font-weight: bolder;
+}
+

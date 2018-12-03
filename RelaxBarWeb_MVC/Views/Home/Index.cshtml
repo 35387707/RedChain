@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>福包多</title>
+    <link rel="stylesheet" href="~/homecss/css/style.css?v=1.1">
+</head>
+<body>
+    <div class="index">
+        <img class="logo" src="~/homecss/image/title.png" alt="">
+        <img class="about" src="~/homecss/image/about.png" alt="">
+        <p class="info">深圳福包多传媒有限公司开发的福报多ＡPP是把中华传统福文化和社交广告完美的融合，是一款依据大数据、人工智能分析的社交广告应用。</p>
+        <p class="info">是一个帮助企业和商家以及个人推广品牌、项目商机、和拓展人脉的好工具，是一个全新的以福文化社交广告的创新模式。</p>
+        <p class="info">在这里，每个人都可以用发福包的形式，把你想要宣传的文字、图牌、网站等等，发布到一公里、全区、全市、全国范围显示。</p>
+        <p class="info">福娃会把你的广告用福包的形式送给平台上成千上万的用户，从而大大提升了你的品牌曝光率和点击率、快速裂变到全国。</p>
+        <div class="foot">
+            <p>企业宗旨：只为提升你的品牌价值而努力</p>
+            <p>企业理念：再小的企业和个人也做得起广告</p>
+            <p>企业精神：让你的广告在福包关系链中流动</p>
+        </div>
+    </div>
+    <div class="page page2" id="divdownload">
+        <img src="~/homecss/image/logo.png" alt="">
+        <p class="name">福BAO多</p>
+        <p class="tet">″福包文化″塑造社交广告新平台</p>
+        <a href="http://image1.fbddd.com/fbdddv1.0.7.apk" class="android"></a>
+        <a href="javascript:alert('正在发布上线中，尽情期待');" class="ios"></a>
+        <div class="nimg">
+            <p>两元钱把你的广告做到全国</p>
+            <p>两元钱让你获得更多的人脉</p>
+            <p>福包送的越多 赚的钱就越多</p>
+            <p>分享好友越多 收益越来越多</p>
+        </div>
+    </div>
+    <div class="page page1">
+        <img src="~/homecss/image/text1.png" alt="">
+    </div>
+    <div class="page page3">
+        <div class="img">发福包广告 得人脉 积福报<div></div></div>
+        <div class="cont">你发布广告过程时即为送出福包。让内容发布者以福包的形式展现广告内容、发布者与分享者共享【福包】总量的70%，并可获取二度人脉收益【福包】</div>
+    </div>
+    <div class="page page4">
+        <div class="img">共享平台福包收入分润<div></div></div>
+        <div class="cont">全民积“福”，人人是“福星”；福包透明公开，粉丝【福星】一起共享福包，平台将90%的福包收入即时分发给所有粉丝【福星】，共同分享平台成长</div>
+    </div>
+    <div class="page page5">
+        <div class="img">发福包的好处<div></div></div>
+        <div class="cont">不管你是粉丝【福星】、广告主【福将】、代理商【福相】 发出的广告等于得到三种效果，你发出的福包广告金额等于1:1积分，积分可以兑换『福利商城』商品，或者发布分类『福音广告』，做了广告，得人脉，积了福报，谁发的福包越多，积分就越多</div>
+    </div>
+    <div class="page page6">
+        <div class="img">人脉即钱脉<div></div></div>
+        <div class="cont">专业知识在一个人成功中的作用只占15%，而其余的85%则取决于人际关系。”所以说，无论你从事什么职业，只要学会处理人际关系，掌握并拥有丰厚的人脉资源，你就在成功的路上走了85%的路程，在个人幸福的路上走了99%的路程</div>
+    </div>
+    <div class="page page7">
+        <div class="img">福包生态</div>
+        <div class="apply">商家入驻申请</div>
+    </div>
+    <div class="popup">
+        <div class="popup-box">
+            <div class="head">
+                <div class="close">&times;</div>
+                <div class="title">欢迎随时联系我们</div>
+                <form class="form">
+                    <label><span>*</span>公司名称:</label><input type="text" id="company">
+                    <label><span>*</span>联系人:</label><input type="text" id="name">
+                    <label><span>*</span>手机号:</label><input type="text" id="phone">
+                    <label><span></span>介绍</label><textarea placeholder="简单介绍一下您的公司" id="descr"></textarea>
+                    <p class="tip">*项为必填项</p>
+                    <input class="btn" type="button" value="发送" id="send">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/homecss/js/jquery.min.js"></script>
+<script>
+    $(function(){
+        var winodwHeight = $(window).height();
+        var bottom2 = $(".page2 .nimg").offset().top + $(".page2 .nimg").height()/2 - winodwHeight;
+        var bottom3 = $(".page3 .img").offset().top + $(".page3 .img").height() - winodwHeight;
+        var bottom4 = $(".page4 .img").offset().top + $(".page4 .img").height() - winodwHeight;
+        var bottom5 = $(".page5 .img").offset().top + $(".page5 .img").height() - winodwHeight;
+        var bottom6 = $(".page6 .img").offset().top + $(".page6 .img").height() - winodwHeight;
+        var bottom7 = $(".page7 .img").offset().top + $(".page7 .img").height() - winodwHeight;
+        $(window).scroll(function(){
+            var scroTop = $(window).scrollTop();
+            if(bottom2 < scroTop && bottom3 > scroTop){
+                $(".page2 .nimg").stop().animate({top:"13rem",opacity:1},800)
+                $(".page3 .img").stop().css({top:"1.5rem",opacity:0.5})
+                $(".page3 .img div").stop().css({width:"20%"})
+            }else if(bottom3 < scroTop && bottom4 > scroTop){
+                $(".page3 .img").stop().animate({top:"2.2rem",opacity:1},800)
+                $(".page3 .img div").stop().animate({width:"100%"},800)
+                $(".page4 .img").stop().css({top:"1.5rem",opacity:0.5})
+                $(".page4 .img div").stop().css({width:"20%"})
+            }else if(bottom4 < scroTop && bottom5 > scroTop){
+                $(".page4 .img").stop().animate({top:"2.2rem",opacity:1},800)
+                $(".page4 .img div").stop().animate({width:"100%"},800)
+                $(".page5 .img").stop().css({top:"1.5rem",opacity:0.5})
+                $(".page5 .img div").stop().css({width:"20%"})
+            }else if(bottom5 < scroTop && bottom6 > scroTop){
+                $(".page5 .img").stop().animate({top:"2.2rem",opacity:1},800)
+                $(".page5 .img div").stop().animate({width:"100%"},800)
+                $(".page6 .img").stop().css({top:"1.5rem",opacity:0.5})
+                $(".page6 .img div").stop().css({width:"20%"})
+            }else if(bottom6 < scroTop && bottom7 > scroTop){
+                $(".page6 .img").stop().animate({top:"2.2rem",opacity:1},800)
+                $(".page6 .img div").stop().animate({width:"100%"},800)
+                $(".page7 .img").stop().css({top:"2rem",opacity:0.5})
+            }else if(bottom7 < scroTop){
+                $(".page7 .img").stop().animate({top:"3rem",opacity:1},800)
+            }else{
+                $(".page2 .nimg").stop().css({top:"11rem",opacity:0.5})
+            }
+        })
+        $(".page7 .apply").click(function(){
+            $(".popup").show();
+        })
+        $(".popup .close").click(function(){
+            $(".popup").hide();
+        })
+    })
+</script>
+<script>
+    $(function(){
+        $(".popup .form .btn").click(function(){
+            var firm = $("#company").val().trim();
+            var name = $('#name').val().trim();
+            var phone = $('#phone').val().trim();
+            if(firm && name && phone){
+                $(".popup .form .tip").hide()
+            }else{
+                $(".popup .form .tip").show()
+            }
+        })
+        $("#send").click(function () {
+            var a = $('#company').val();
+            var b = $('#name').val();
+            var c = $('#phone').val();
+            var d = $('#descr').val();
+            if (a == '')
+            {
+                alert('公司不能为空');
+                return false;
+            }
+            if (b == '') {
+                alert('姓名不能为空');
+                return false;
+            }
+            if (c == '') {
+                alert('手机号不能为空');
+                return false;
+            }
+            $.post("/Home/Save", { company: a, name: b, phone: c, descr: d, },
+                    function (data) {
+                        if (data == 1) {
+                            alert("感谢您的支持，稍后我们会有业务人员联系您");
+                        }
+                        else {
+                            alert(data);
+                        }
+                        $('#company').val('');
+                        $('#name').val('');
+                        $('#phone').val('');
+                        $('#descr').val('');
+                        $(".popup .form .tip").show();
+                    }, "json");
+        })
+    })
+</script>
+</html>
+@*<script type="text/javascript">
+
+
+        //平台、设备和操作系统
+        var system ={
+            win : false,
+            mac : false,
+            xll : false
+        };
+        //检测平台
+        var p = navigator.platform;
+        //alert(p);
+
+        /**var sUserAgent = navigator.userAgent.toLowerCase();
+        alert(sUserAgent);*/
+
+        system.win = p.indexOf("Win") == 0;
+        system.mac = p.indexOf("Mac") == 0;
+        system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+        //跳转语句
+        if(system.win||system.mac||system.xll){//转向页面
+            window.location.href="IIndex";
+        }else{
+            window.location.href = "Index";
+        }
+
+    </script>*@
+<script type="text/javascript">
+
+    function browserRedirect() {
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+        if (!(bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) ){
+            window.location.href = "http://www.fbddd.com/Home/IIndex";
+        } else {
+          //  window.location.href="Index";
+        }
+    }
+    browserRedirect();
+
+</script>

@@ -1,0 +1,179 @@
+﻿<script language="javascript" type="text/javascript" src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<style>
+    .bankShow {
+    }
+
+    .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+        .editItem > div > div {
+            text-align: right;
+        }
+</style>
+<script>
+    var hasFooter = false;
+    var CommentManager = {};
+    CommentManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage:parseInt((sum-1)/10+1),
+               // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetCommentList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+        GetCommentList(index);
+    };
+    //获取福音天地评论列表
+    function GetCommentList(index) {
+        waiting();
+        var IID = $("#IID").val();
+      //  console.log(IID);
+        $.get("InfomationsCommentList", "index=" + index + "&key=" + CommentManager.searchKey + "&IID=" + IID, function (data) {
+            CommentManager.index = index;
+            $("#Commentbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function CommentShow(index) {
+            waiting();
+            $.get("InfomationsCommentList", "IID=" + IID + "&index=" + index, function (data) {
+                $("#bankListData").html(data);
+                $("#bankShow").show();
+                $('body').css('overflow', 'hidden');
+                waitingHide();
+            }, "html")
+        }
+    function USearch() {
+        CommentManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetCommentList(1);
+    }
+   
+    //更改广告状态
+    function CAdStatus(UID, e) {
+        waiting();
+        var status = 1;
+        if (e.value == "启用")
+        { status = 0; }
+        $.post("CAdStatus", "UID=" + UID + "&status=" + status, function (data) {
+            if (data.code == "1") {
+                if (status == 1) {
+                    e.value = "启用";
+                } else {
+                    e.value = "禁用";
+                }
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+        }, "json")
+    }
+    function EditUser(id) {
+        waiting();
+        $.get("/Admin/EditAds/" + id, function (data) {
+            $("#editAdsBody").html(data);
+
+            $("#editAds").show();
+            $('body').css('overflow', 'hidden');
+            waitingHide();
+        }, "html")
+    }
+    //修改图片
+    function HeadImgUpload(file) {
+        var data = new FormData();
+        data.append("file", file.files[0], file.files[0].name);
+        $.ajax({
+            url: "/File/FileUpload",
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (respdata) {
+                if (respdata.code == '1') {
+                    //var reader = new FileReader();
+                    //reader.onload = function (evt) {
+                    //    $("#headimage").attr("src", evt.target.result);
+                    //}
+                    //reader.readAsDataURL(file.files[0]);
+                    $("#Img").val(respdata.msg);
+                    $("#headimage").attr("src", respdata.msg);
+                } else {
+                    alert(respdata.msg);
+                }
+            },
+            error: function (data) {
+                alert("错误");
+            }
+        });
+
+    }
+    function saveAds() {
+        $.post("/Admin/DoEditAds", $("#editUserForm").serialize(), function (data) {
+            alert(data.msg);
+            if (data.code == "1") {
+                GetCommentList(CommentManager.index);
+            }
+        }, "json");
+    }
+    $(function () {
+        GetCommentList(1);
+    });
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a onclick="GetManager('InfomationsManager')">福音天地</a></li>
+    <li><a href="#">福音评论</a></li>
+</ol>
+<div class="col-lg-12 form-inline">
+    <a onclick="GetManager('InfomationsManager')"><img src="~/img/goback.jpg" width="50" /></a>
+    @*关键字：*@
+    <div class="input-group col-lg-4">
+        @*<input type="text" class="form-control" id="key">*@
+        <input type="hidden" class="form-control" id="IID" value="@ViewData["IID"]">
+        @*<span class="input-group-addon" onclick="USearch()">查询</span>*@
+    </div>
+    @*<input type="button" class="btn btn-primary" value="新增" onclick="EditUser('')" />*@
+    <div class="col-lg-12" id="userlist">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>评论者</th>
+                    <th>评论</th>
+                    <th>评论时间</th>
+                </tr>
+            </thead>
+            <tbody id="Commentbody">
+                @*@Html.Action("InfomationsCommentList")*@
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
+</div>
+

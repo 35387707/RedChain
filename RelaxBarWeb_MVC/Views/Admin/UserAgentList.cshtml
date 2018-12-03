@@ -1,0 +1,28 @@
+﻿@model List<RelexBarDLL.Users>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@Model[i].AreaCode</td>
+
+        <td><img src="@Model[i].HeadImg1" style="width:30px" /></td>
+
+        <td>@Model[i].Phone</td>
+        @*<td>@Model[i].Email</td>*@
+        <td>@Model[i].TrueName</td>
+        <td>@((Model[i].Sex == null || Model[i].Sex == 0) ? "男" : "女")</td>
+        <td>@Model[i].Balance</td>
+
+        <td>@Model[i].TotalScore</td>
+
+        @*<td>@Model[i].LockPrice</td>*@
+        @*<td>0</td>*@
+        <td><span class="btn-link" onclick="bankShow('@Model[i].ID')">查看</span></td>
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CUStatus('@Model[i].ID',this)" />
+        </td>
+        <td>@Model[i].CreateTime</td>
+        <td>@Model[i].LastLoginTime</td>
+        <td><span class="btn-link" onclick="EditUser('@Model[i].ID')"><i class="glyphicon glyphicon-edit"></i>编辑</span></td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

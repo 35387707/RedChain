@@ -1,0 +1,61 @@
+﻿<script src="~/Content/ueditor/ueditor.config.js"></script>
+<script src="~/Content/ueditor/ueditor.all.min.js"></script>
+
+<link href="~/Content/ueditor/themes/iframe.css" rel="stylesheet" />
+<script src="~/Content/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script type="text/javascript">
+        var editor = new baidu.editor.ui.Editor({
+            UEDITOR_HOME_URL: '/Content/ueditor/',//配置编辑器路径
+            iframeCssUrl: '/Content/ueditor/themes/iframe.css',//样式路径
+            initialContent: '',//初始化编辑器内容
+            autoHeightEnabled: true,//高度自动增长
+            minFrameHeight:600//最小高度
+        });
+        editor.render('Content');
+</script>
+@model RelexBarDLL.UserHelp
+<div class="col-md-10 col-md-offset-2 form-group editItem">
+   
+    <div class="form-inline">
+        <div class="col-md-3">标题：</div>@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+    </div>
+    @*<div class="form-inline">
+        <div class="col-md-3">类型：</div>@Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
+    </div>*@
+    <div class="form-inline">
+        <div class="col-md-3">类型：</div>@Html.DropDownListFor(m => m.Type, new List<SelectListItem>() { new SelectListItem() { Text = "常见问题", Value = "1" }, new SelectListItem() { Text = "产品介绍", Value = "2" } }, new { @class = "form-control" })
+    </div>
+    <div class="">
+        <div class="col-md-3">图片：</div>@Html.HiddenFor(m => m.Img)@Html.HiddenFor(m => m.ID)
+        <input type="file" id="upload" style="display:none" onchange="HeadImgUpload(this)" />
+        <img id="headimage" onclick="$('#upload').click()" src="@(string.IsNullOrEmpty(Model.Img)?"/img/chat/head.jpg":Model.Img)" width="86" />
+        <br />
+    </div>
+
+    @*<div class="form-inline">
+        <div class="col-md-3">描述：</div>
+        <textarea class="form-control" name="Content" id="Content" style="width: 492px;height: 154px;">@Model.Content</textarea>
+    </div>*@
+    <div class="form-inline">
+        <div class="col-md-3">描述：</div>
+        <textarea id="Content" name="Content" style="margin-left:100px;">@Model.Content</textarea>
+    </div>
+    <div class="form-inline">
+      
+    </div>
+    @*@if (Model.CreateTime != null)
+    {
+        <div class="form-inline">
+            <div class="col-md-3">创建时间：</div>@Html.TextBox("BeginTime", Model.CreateTime.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+        </div>
+    }*@
+    @*else
+    {
+        <div class="form-inline">
+            <div class="col-md-3">创建时间：</div>@Html.TextBox("BeginTime", Model.CreateTime, new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+        </div>
+    }*@
+  
+
+</div>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../msg/css/chat.css">
+        <link rel="stylesheet" href="../msg/css/common.css">
+        <style>
+            .chat-bottom {
+                height: 3.2em;
+            }
+            .emoji-style {
+                width: 48px;
+                height: 48px;
+            }
+            .emoji {
+                width: 48px;
+                height: 48px;
+            }
+            .bg-white {
+                background-color: white;
+            }
+            .footer-radius {
+                -webkit-border-radius: 0.2em;
+                border-radius: 0.2em
+            }
+            .bot-fixed {
+                width: 100%;
+                height: auto;
+                position: fixed;
+                left: 0;
+                bottom: 0;
+            }
+        </style>
+    </head>
+    <body class="um-vp" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <!--content开始-->
+            <div id="content" class="ub-f1 tx-l">
+
+            </div>
+            <!--content结束-->
+
+            <div id="footer" class="ub ub-ac shukbg umh4-5 up-left up-right probot bot-fixed">
+                <div class="ub ub-ac ub-pc ub-f1 uinput fsbtng bg-white footer-radius up-04-l up-04-r">
+                    <input placeholder="请输入聊天内容" id="msg" type="search" class="ub ub-f1 ulev-1-1 up-04-l">
+                </div>
+                <div class="ub ub-ac ub-pc footer-radius fontc-8 send-btn-bg up-pa9 up-pafr9 fsbtng umar-l ulev-1-1" ontouchstart="appcan.touch('btn-act')" id="send_msg">
+                    发送
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/emoji.js"></script>
+        <script src="../js/chat/tool.js"></script>
+        <script src="../js/chat/chat.js"></script>
+        <script src="../msg/js/disp.js"></script>
+        <script src="../msg/js/isrt.js"></script>
+        <script src="../msg/js/img.js"></script>
+        <script src="../msg/js/local.js"></script>
+        <script src="../msg/js/del.js"></script>
+        <script>
+            $('#send_msg').click(function() {
+
+                var TrueName = '';
+                var UserInfo = JSON.parse(localStorage.getItem("UserInfo"));
+                if (UserInfo.Info.TrueName == '' || UserInfo.Info.TrueName == null || UserInfo.Info.TrueName == undefined) {
+                    TrueName = UserInfo.Info.Phone;
+                } else {
+                    TrueName = UserInfo.Info.TrueName;
+                }
+
+                var msg = $('#msg').val();
+
+                var content = {
+                    name : TrueName,
+                    content : msg,
+                }
+
+                queryMessages('chat', 1, localStorage.getItem("friend_uid"), '', 0, 0, content, 'chat');
+
+            });
+
+        </script>
+    </body>
+</html>

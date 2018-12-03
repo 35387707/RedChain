@@ -1,0 +1,61 @@
+﻿
+@{
+    Layout = null;
+    int id = Convert.ToInt32(ViewData["id"]);//0登陆密码修改 1，支付密码修改
+}
+@model int
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>@ViewData["name"]密码</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/password.css" />
+    <script>
+        function pwdChange() {
+            var pwd = $("#newPwd").val();
+            var pwd2 = $("#rnewPwd").val();
+            if (pwd != pwd2) {
+                return alert("两次密码输入不一致");
+            }
+            $.post("/Account/DoChangePwd", $("#pwdform").serialize(), function (data) {
+                alert(data.msg);
+                if (data.code == "1") {
+                    window.history.back();
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span>@ViewData["name"]密码</span>
+        </div>
+        @using (Html.BeginForm("DoChangePwd", "Account", FormMethod.Post, new { id = "pwdform" }))
+        {
+        <div class="same-pt-wrap1">
+            <div class="loginPsw-block">
+                <div class="loginPsw-item loginPsw-mt-1">@Html.Hidden("id", Model)
+                    <label class="psw-lab" for="">旧密码：</label>
+                    @Html.Password("oldPwd", null, new { @class = "loginPsw-iptPsw", placeholder = "请输入要修改的旧密码" })
+                </div>
+                <div class="loginPsw-item loginPsw-mt-2">
+                    <label class="psw-lab" for="">新密码：</label>
+                    @Html.Password("newPwd", null, new { @class = "loginPsw-iptPsw", placeholder = "请输入新密码" + (id == 1 ? "(6位数字)" : "") })
+                </div>
+                <div class="loginPsw-item loginPsw-mt-2">
+                    <label class="psw-lab" for="">确认新密码：</label>
+                    @Html.Password("rnewPwd", null, new { @class="loginPsw-iptPsw",placeholder="请再次输入新密码" + (id == 1 ? "(6位数字)" : "") })
+                </div>
+            </div>
+            <input class="bigBtn bg-b loginPsw-mt-3" type="button" value="确认修改"  onclick="pwdChange()" />
+        </div>
+        }
+    </div><!--wrap-->
+
+</body>
+</html>

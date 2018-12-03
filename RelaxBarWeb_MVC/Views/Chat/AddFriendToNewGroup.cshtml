@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+}
+@model Guid
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>发起群聊</title>
+   @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/friendInfo.css" />
+    <style>
+        .fcheckbox {
+            position:relative;width:2rem;height:2rem;display:inline-block;float:right;margin-top:2rem;
+        }
+        .selected {
+            background-color:#fbf9f9;
+        }
+    </style>
+    <script>
+        function GetLocalFriend() {
+            var templist = localStorage.getItem("friendList");
+            if (templist == null) {
+                return;
+            }
+            var list = JSON.parse(templist);
+
+            var flist = [];
+           
+            for (var i = 0; i < list.length; i++) {
+                
+                if (list[i].Type == 1) {
+                    if (list[i].ID == '@Model') {
+                        $("#flist").prepend("<div class='contact-item selected'><img  class='contact-img' src='" + list[i].headimg + "' /><input disabled  checked class='fcheckbox' type='checkbox' /><p>" + list[i].Remark + "</p></div>");
+                    } else {
+                        flist.push("<div class='contact-item'><img  class='contact-img' src='" + list[i].headimg + "' /><input name='group-uid' class='fcheckbox' type='checkbox' data-v='" + list[i].ID + "'/><p >" + list[i].Remark + "</p></div>");
+                    }
+                    
+                }
+
+                   
+            }
+            $("#flist").append(flist.join(""));
+        }
+        function userClick(id) {
+
+        }
+        function createGroup() {
+            var UIDS = [];
+            UIDS.push('@Model');
+            var is = $("input[name='group-uid']:checked");
+            for (var i = 0; i < is.length; i++) {
+                UIDS.push($(is[i]).attr("data-v"));
+            }
+            $.post("/Chat/CreateNewGroup", "UIDS=" + UIDS.join(","), function (data) {
+                if (data.code == "1") {
+                    location.href = "/Chat/ChatGroup/"+data.msg;
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+        $(function () {
+            GetLocalFriend();
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap vh100 of-hide">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>发起群聊</span>
+            <a class="header-r-font halfTop" style="font-size:1.7rem;color:white" onclick="createGroup()">确定</a>
+        </div>
+
+        @*<div class="addressbook-search">
+            <input class="txt" type="text" placeholder="搜索" />
+        </div>*@
+        <div class="same-pt-wrap2 same-ofauto-wrap same-pb-wrap" style="padding-top:7rem;">
+            <div class="contactlist" id="flist">
+
+
+            </div>
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

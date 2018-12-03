@@ -1,0 +1,160 @@
+.rule-enter{
+    position:relative;
+    height:6.6796875rem;
+    margin:1.5rem auto;
+    padding-left:8.1rem;
+    line-height:6rem;
+    font-size:1.7rem;
+    border-top:0.05rem solid #c1bfc4;
+    border-bottom:0.05rem solid #c1bfc4;
+    overflow:hidden;
+    background-color:#fff;
+}
+.rule-img{
+    left:1.5234375rem;
+    width:4.98046875rem;
+    height:4.98046875rem;
+    border:0.05rem solid #eaeaeb;
+    border-radius:0.4rem;
+}
+.rule-enter .gt{
+    right:2rem;
+}
+
+
+.whose-block{
+    /*height:16.0546875rem;*/
+    background-color:#f0eff5;
+    overflow:hidden;
+    text-align:center;
+    color:#6e6c6f;
+}
+.whose-img{
+    width:6.62109375rem;
+    height:6.62109375rem;
+    margin:3.45703125rem auto 0.99609375rem auto;
+    border-radius:0.6rem;
+}
+.whose-total{
+    padding:1.5234375rem;
+    color:#8e8d8d;
+    border-top:0.05rem solid #d8d7dc;
+    border-bottom:0.05rem solid #d8d7dc;
+}
+
+/*抢雷包-总结列表*/
+.saolei-jiesuanlist{
+    padding:0 1.5234375rem;
+}
+.sljs-item{
+    position:relative;
+    height:6.50390625rem;
+    padding-left:6.15234375rem;
+    border-bottom:0.05rem solid #cdcccc;
+    color:#595858;
+    overflow:hidden;
+}
+.sljs-img{
+    position:absolute;
+    left:0;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    width:5.0390625rem;
+    height:5.0390625rem;
+    border-radius:0.6rem;
+}
+.sljs-room{
+    margin-top:1.46484375rem;
+    font-size:1.7rem;
+}
+.sljs-date{
+    
+}
+.sljs-money{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    right:0;
+}
+.slfb-box-1{
+    padding:0 1.5234375rem;
+}
+.slfb-title{
+    padding-top:2.4609375rem;
+    padding-bottom:0.87890625rem;
+}
+.slfb-numberlist{
+    
+}
+.slfb-number{
+    float:left;
+    width:16.34765625rem;
+    height:3.57421875rem;
+    margin-right:1.171875rem;
+    line-height:3.57421875rem;
+    text-align:center;
+    border:0.1rem solid #e3e3e3;
+    border-radius:0.5rem;
+    color:#b8b8b8;
+}
+.slfb-number:nth-of-type(even){
+    margin-right:0;
+}
+.slfb-numberlist .active{
+    border:0.1rem solid #000;
+    color:#000;
+}
+
+.slfb-jine-leishu-list{
+    
+}
+.slfb-jl-item{
+    float:left;
+    width:6.15234375rem;
+    height:5.625rem;
+    margin-bottom:0.64453125rem;
+    margin-right:0.64453125rem;
+    line-height:5.625rem;
+    text-align:center;
+    border:0.1rem solid #e5e5e5;
+    border-radius:0.5rem;
+    color:#b8b8b8;
+}
+.slfb-jl-item:nth-of-type(5n){
+    margin-right:0;
+}
+.slfb-jine-leishu-list .active{
+    border:0.1rem solid #000;
+    color:#000;
+}
+.saolei-mt-1{
+    margin-top:3.984375rem;
+}
+.saolei-foot-remind{
+    text-align:center;
+    color:#a9a7a6;
+}
+
+
+.rule-block{
+    padding:0 1.5234375rem 5.859375rem 1.5234375rem;
+    overflow:hidden;
+}
+.rule-title{
+    padding-top:2.16796875rem;
+    padding-bottom:0.99609375rem;
+    font-weight:900;
+    border-bottom:0.05rem solid #cdcccc;
+}
+.rule-box p{
+    margin:1.23046875rem auto;
+    -webkit-text-size-adjust:none;
+}

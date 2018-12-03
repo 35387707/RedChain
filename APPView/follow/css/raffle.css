@@ -1,0 +1,233 @@
+.c-wh {
+    background-color: #FFF;
+}
+.uinn-a7 {
+    padding: 0 0.625em;
+}
+.titl-colr {
+    color: #BEBEBE;
+}
+
+.lgn-wd {
+    width: 96%;
+    margin: 0.88em auto 0.88em;
+}
+.log-in {
+    background-color: #FF5B64;
+    margin: 0 auto;
+    padding: 0.75em 0;
+}
+.uinn-btn {
+    padding-top: 1.2em;
+}
+
+.ins-sty {
+    background-color: white;
+    width: 100%;
+}
+.ins-sty textarea {
+    /*height: 3.0em;
+     padding: 0.75em 0.5em 0.5em 0.5em;
+     font-size: 0.868em;*/
+    margin: 0px;
+    border: 0px;
+    width: 97.5%;
+    height: 100%;
+    -webkit-appearance: none;
+    padding: 0.75em 0.5em 0.5em 0.5em;
+    min-height: 3.0em;
+    background: none;
+    text-decoration: none;
+    font-size: 0.868em;
+    display: block;
+}
+.txt-cnt {
+    padding: 0.3em 0.5em 0.3em 0.5em;
+}
+.txt-cnt .flt-spn {
+    float: right;
+    color: #A2A2A2;
+    font-size: 0.82em;
+}
+
+/**
+ *     list
+ */
+.list-marg-top {
+    margin-top: 1.0em;
+}
+.list-view li {
+    margin-left: 0.25em;
+}
+.list-cont-padd {
+    padding: 0.7em 0.25em 0.7em 0.5em;
+}
+
+.list-link {
+    width: 100%;
+}
+.list-link .list-marg-top {
+    width: 100%;
+}
+.list-link-left {
+    width: 48%;
+    position: absolute;
+    padding: 1.0em 0.625em;
+    background-color: white;
+}
+.list-link-middle {
+    width: 4%;
+    left: 48%;
+    background-color: #F2F2F2;
+}
+.list-link-right {
+    width: 48%;
+    margin-left: 52%;
+    padding: 1.0em 0.625em;
+    background-color: white;
+}
+.list-btn-padd {
+    padding: 0.8em 0.625em;
+    background-color: #FF5265;
+}
+.bc-white {
+    color: white;
+}
+.empty-height {
+    height: 4.0em;
+    width: 100%;
+}
+.left-txt-color {
+    color: #414141;
+}
+.money-txt-color {
+    color: #656565;
+}
+.link-txt-color {
+    color: #4e4e4e;
+}
+.t-gra-85 {
+    color: #858585;
+}
+
+/*
+ * hb
+ */
+.uinn-mito2 {
+    padding: 0.3125em 0;
+}
+.uh-mito1 {
+    height: 9.0625em;
+    width: 95%;
+}
+.mito-icon1 {
+    background-image: url('../img/mito-icon1.png');
+}
+.mito-icon2 {
+    background-image: url('../img/mito-icon2.png');
+}
+.umar-r-mito {
+    margin-right: 1.125em;
+}
+.uwh-icon1 {
+    width: 0.75em;
+    height: 0.75em;
+}
+.uamr-ar5 {
+    margin-right: 0.25em;
+}
+.t-gra9 {
+    color: #9c9c9c;
+}
+.ulev-app2 {
+    font-size: 0.9375em;
+}
+.umar-at1 {
+    margin-top: 0.625em;
+}
+.uinn-a7 {
+    padding: 0 0.625em;
+}
+.form-marg {
+    margin: 0 0 1.0em;
+}
+.header-txt-color {
+    color: #FED579;
+}
+.red-from {
+    color: #ACACAC;
+}
+.already-save {
+    color: #688EBB;
+}
+
+.img-marg-top {
+    margin-top: 0.46875em;
+}
+.disp-img-width {
+    height: 10.0em;
+}
+.actn-padd {
+    padding: 0.7em 0;
+}
+.actn-color {
+    color: #999999;
+}
+.comt-padd {
+    padding: 0.625em 0.625em 0 0.625em;
+}
+.border-padd-bottom {
+    padding-bottom: 0.625em;
+}
+.comt-icon-width {
+    height: 2.5em;
+    width: 2.5em;
+}
+.comt-user-icon {
+    background-image: url('../img/avator.png');
+}
+.user-hdr {
+    color: #5D9EF8;
+}
+.user-comt {
+    color: #333333;
+}
+.user-time {
+    color: #999999;
+}
+.user-time-marg-top {
+    margin-top: 0.5em;
+}
+.user-comt-marg-top {
+    margin-top: 0.2em;
+}
+.user-list {
+    margin-top: 0.42em;
+    color: #333333;
+}
+.kaijiang-desc {
+    padding: 0.625em 0.5em 1.0em 0.5em;
+}
+.kaijiang-title {
+    font-size: 1.0em;
+    color: #4F4F4F;
+}
+.kaijiang-time {
+    margin-top: 0.625em;
+    font-size: 0.8em;
+    color: #9E9E9E;
+}
+.empty-height {
+    height: 3.75em;
+}
+.luck-title-padd {
+    padding: 0.5em;
+}
+.luck-wait-color {
+    color: #323232;
+    font-size: 0.88em !important;
+}
+.luck-over-color {
+    color: #999999;
+    font-size: 0.88em !important;
+}

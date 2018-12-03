@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../hb/css/knock-v1.css">
+        <link rel="stylesheet" href="../hb/css/knock-v2.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body class="ub-img1 bg-size bg-img" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <div class="fuwa-bg no-dis">
+                <div class="fuwa-cont ub-img1 bg-img">
+                    <img src="../css/img/fuwa@2x.gif" />
+                </div>
+            </div>
+
+            <div id="header" class="uh ub-ver bc-text-head ub ub-img1 ub-fh">
+                <div class="usr-left close"></div>
+                <div class="usr-right close"></div>
+                <div class="usr-bot close"></div>
+                <div class="usr-cont">
+                    <div class="head-img" id="HeadImg1" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img knock-img uc-a2"></div>
+                    </div>
+                    <div class="ub-f1 ub ub-ver username-cont" id="TrueName" ontouchstart="appcan.touch('btn-act')"></div>
+                </div>
+            </div>
+
+            <div class="pack-cont">
+
+                <div class="fubaoduo-cont">
+                    <div class="fubaoduo-bg ub-img fubaoduo-img">
+                        <div class="fu-top"></div>
+                        <div class="fu-bottom">
+                            <div ontouchstart="appcan.touch('btn-act')" class="fu-money knock">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fubaoduo-top close"></div>
+                    <div class="fubaoduo-left close"></div>
+                    <div class="fubaoduo-right close"></div>
+                    <!-- <div class="temp-right"></div> -->
+                </div>
+                <div class="mask-cont">
+                    <div class="txt-left close"></div>
+                    <div class="txt-right close"></div>
+                    <a id="wishes" ontouchstart="appcan.touch('btn-act')"></a>
+                </div>
+
+                <div class="sign-cont">
+                    <div class="sign-left close"></div>
+                    <div class="sign-right close"></div>
+                    <div class="sign-disp">
+                        <img src="../hb/img/hongbaolianmengguanggao@2x.png" ontouchstart="appcan.touch('btn-act')" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script>
+            $('.knock').click(function() {
+
+                $('.fuwa-bg').removeClass('no-dis');
+                uexAudio.open("res://gongxifacai.mp3");
+                uexAudio.play(0);
+                
+                //openToast("正在打开福包...", 3000, 5, 1);
+                setTimeout(function() {
+                    
+                    openToast("话说真的祝你恭喜发财啊", 3000, 5, 1);
+
+                }, 2500);
+
+            });
+        </script>
+    </body>
+</html>

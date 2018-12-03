@@ -1,0 +1,11 @@
+.sec-tit {
+    line-height: 1.0em;
+}
+.title-bar {
+    display: inline-block;
+    height: 1.0em;
+    width: 0.2em;
+    vertical-align: top;
+    background-color: #38393E;
+    margin: 0 0.3em 0 0.1em;
+}

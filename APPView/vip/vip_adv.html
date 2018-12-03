@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../vip/css/upgrade-v1.css">
+        <link rel="stylesheet" href="../hb/css/editor-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb bc-border" style="position: fixed; z-index: 10000;">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">广告编辑</h1>
+                    <div class="nav-btn" id="nav-right">
+                        <div class="fa fa-1g ub-img1 cmpl">
+                            <!-- 个人资料 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content">
+
+                <!-- <div class="c-wh">
+                <div class="font-user"></div>
+
+                <div class="ub uinn-a12 ub-ae">
+                <div class="ub ub-ver ub-f1 ub-pc">
+                <div class="tx-c ub-f1 upgr-sty">
+                <div class="upgr-img upgr-cash" ontouchstart="appcan.touch('btn-act')"></div>
+                </div>
+                <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                收现金福包
+                </div>
+                </div>
+                <div class="ub ub-ver ub-f1 ub-pc b-gra-per">
+                <div class="tx-c ub-f1 upgr-sty">
+                <div class="upgr-img upgr-daijinjuan" ontouchstart="appcan.touch('btn-act')"></div>
+                </div>
+                <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                领商家福利券
+                </div>
+                </div>
+                <div class="ub ub-ver ub-f1 ub-pc b-gra-per">
+                <div class="tx-c ub-f1 upgr-sty">
+                <div class="upgr-img upgr-zuanshi" ontouchstart="appcan.touch('btn-act')"></div>
+                </div>
+                <div class="ub-ae upgr-txt ulev0 ufm1 tx-c">
+                攒福包得福报
+                </div>
+                </div>
+                </div>
+                </div> -->
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb ubt bc-border list-marg-top list-adv-padd c-wh ub-ac upgr-type">
+                        <div class="left-txt-color ulev0 ub-f1">
+                            会员类型
+                        </div>
+                        <div class="t-gra-85 ulev-1 tx-r UserType" data-nt="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb ubt bc-border list-adv-padd c-wh ub-ac">
+                        <div class="left-txt-color ulev0 ub-f1">
+                            福包广告剩余数
+                        </div>
+                        <div class="t-gra-85 ulev-1 tx-r" id="MainTainRedCount" data-fid="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ub ub-ver">
+                    <div class="ub-f1 ub ub-ver ins-sty">
+                        <div class="ub ub-f1">
+                            <textarea type="text" data-sign="0" class="ub-f1 outline" placeholder="你要发布的广告内容" id="title"></textarea>
+                        </div>
+                        <div class="ub ub-ac">
+                            <div class="ulev-1 ub-f1">
+                                <div class="ub ub-ac">
+                                    <div class="photo-album" data-albm_i="1">
+
+                                        <div class="cam-par">
+                                            <img data-cam_i="1" ontouchstart="appcan.touch('btn-act')" class="camera" src="../hb/img/hb_send_camera@2x.png" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- 信息验证-end  -->
+
+                <div style="height: 1.0em;"></div>
+
+            </div>
+
+            <div id="footer" class="sure-btn">
+                <div class="list-wd">
+                    <div class="bot-btn ub ub-ac bc-text-head ub-pc bc-btn bot-rds" id="vip_adv" ontouchstart="appcan.touch('btn-act')">
+                        <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                        发布
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/code.js"></script>
+        <script src="../js/com/pay.js"></script>
+        <script src="../vip/js/advert.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                localStorage.setItem("PriceType", 0);
+                
+                localStorage.setItem("redmoney", 0);
+
+                localStorage.setItem("payRoot", 'vip_adv');
+
+                var titHeight = $('#header').height();
+                var footHeight = $('#footer').height();
+                $('#content').css('padding-top', titHeight);
+                $('#content').css('padding-bottom', footHeight);
+
+                setVipInfo();
+                
+                getNewRedPacketByUID();
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        var pay_pwd = localStorage.getItem("pay_pwd");
+                        var pay = localStorage.getItem("pay");
+                        var succ = localStorage.getItem("succ");
+                        if (pay_pwd == '1' || pay_pwd == 1) {
+
+                            appcan.window.closePopover('pay_pwd');
+                            localStorage.setItem("pay_pwd", 0);
+
+                        } else if (pay == '1' || pay == 1) {
+
+                            appcan.window.closePopover('pay');
+                            localStorage.setItem("pay", 0);
+
+                        } else if (succ == '1' || succ == 1) {
+
+                            appcan.window.closePopover('succ');
+                            localStorage.setItem("succ", 0);
+
+                        } else {
+
+                            appcan.window.close(-1);
+
+                        }
+
+                    } else {
+
+                        alert('点击了其他键');
+
+                    }
+
+                }
+
+                appcan.window.subscribe('pwdSucs', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var bodyWidth = localStorage.getItem("bodyWidth");
+                        var bodyHeight = localStorage.getItem("bodyHeight");
+                        appcan.window.openPopover({
+                            name : 'succ',
+                            dataType : 0,
+                            url : "../pop/succ.html",
+                            top : 0,
+                            left : 0,
+                            width : bodyWidth,
+                            height : bodyHeight,
+                        });
+
+                    }
+
+                });
+                
+                appcan.window.subscribe('vipUpgr', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        //$('#redmoney').html(msg);
+                        debug(msg);
+                        beginVipImgUpld(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('chg_img', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var timeout = 0;
+
+                        var imgArr = JSON.parse(msg);
+                        //debug(localStorage.getItem("imgArr"));
+
+                        $(imgArr).each(function(i, v) {
+
+                            //var imgCont = '<div data-par_s="' + v.imgIndx + '" class="cam-par"><img ontouchstart="appcan.touch(&#39;btn-act&#39;)" data-img_s="' + v.imgIndx + '" data-pic_p="' + v.imgPath + '" class="disp-pic" src="' + v.imgPath + '" /></div>';
+                            var imgCont = '<div data-par_s="' + v.imgIndx + '" class="cam-par"><div ontouchstart="appcan.touch(&#39;btn-act&#39;)" data-img_s="' + v.imgIndx + '" data-pic_p="' + v.imgPath + '" class="ub-img1 disp-pic" style="background-image:url(' + v.imgPath + ');"></div></div>';
+                            //var cont = '<div class="cam-par"><img class="disp-pic" src="' + imgPath + '" /></div>';
+                            $('.photo-album').append(imgCont);
+
+                        });
+
+                        $('.disp-pic').unbind();
+                        $('.disp-pic').click(function() {
+
+                            //alert($('.photo-album').children("div:last-child").index());
+                            var picIndx = $(this).data('pic_p');
+
+                            //查看所有相关的图片
+                            var picArr = [];
+                            $('.disp-pic').each(function(j, s) {
+
+                                //debug($(this).data('pic_p'));
+                                //debug($(this).data('img_s'));
+
+                                if ($(this).data('pic_p')) {
+                                    var picSgl = {
+                                        src : $(this).data('pic_p'),
+                                        desc : $(this).data('img_s'),
+                                    };
+                                    picArr.push(picSgl);
+                                }
+
+                            });
+
+                            localStorage.setItem("imgSgl", picIndx);
+                            localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                            //debug(picArr);
+                            //var tempPath = $(this)[0].src;
+                            setTimeout(function() {
+
+                                //dispCurImg(picIndx ,picArr);
+                                openBrowser();
+
+                            }, 300);
+
+                        });
+
+                        $('.disp-pic').on('touchstart', function(e) {
+
+                            e.stopPropagation();
+                            var img_s = $(this).data('img_s');
+
+                            var picIndx = $(this).data('pic_p');
+
+                            timeout = setTimeout(function() {
+
+                                //alert('pare: ' + $("div[data-par_s='" + img_s + "']").html());
+
+                                uexWindow.actionSheet({
+                                    title : "选项",
+                                    cancel : "取消",
+                                    buttons : "查看图片,删除图片"
+                                }, function(index) {
+
+                                    if (index == 0) {
+
+                                        var picArr = [];
+                                        $('.disp-pic').each(function(j, s) {
+
+                                            //debug($(this).data('pic_p'));
+                                            //debug($(this).data('img_s'));
+
+                                            if ($(this).data('pic_p')) {
+                                                var picSgl = {
+                                                    src : $(this).data('pic_p'),
+                                                    desc : $(this).data('img_s'),
+                                                };
+                                                picArr.push(picSgl);
+                                            }
+
+                                        });
+
+                                        localStorage.setItem("imgSgl", picIndx);
+                                        localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                                        setTimeout(function() {
+
+                                            //dispCurImg(picIndx, picArr);
+                                            openBrowser();
+
+                                        }, 300);
+
+                                    } else if (index == 1) {
+
+                                        $("div[data-par_s='" + img_s + "']").remove();
+
+                                    }
+                                });
+
+                            }, 750);
+
+                        });
+
+                        $('.disp-pic').on('touchend', function(e) {
+                            e.stopPropagation();
+                            clearTimeout(timeout);
+                        });
+
+                    }
+
+                });
+
+            });
+
+            $('.camera').click(function() {
+
+                var fromPage = 'vip_upgr';
+                openEditorActn(fromPage);
+
+            });
+
+            $('#nav_left').click(function() {
+                appcan.window.close(-1);
+            });
+
+        </script>
+    </body>
+</html>

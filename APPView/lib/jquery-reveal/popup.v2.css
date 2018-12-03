@@ -1,0 +1,89 @@
+/*
+ main popup style
+ */
+.reveal-modal-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+.reveal-modal {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 15%;
+    margin-bottom: 6%;
+    height: 10%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+
+.reveal-modal .close-reveal-modal {
+    font-size: 1.25em;
+    line-height: .5;
+    position: absolute;
+    top: 0.75em;
+    right: 0.5em;
+    color: #aaa;
+    text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*
+ srch popup
+ */
+.srch-area {
+    width: 100%;
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0.5em;
+    height: 4.5em;
+    line-height: 4.5em;
+    font-size: 1.0em;
+}
+.srch-area .srch-wrap {
+    padding-top: 1.05em;
+    padding-left: 0.75em;
+    padding-right: 0.5em;
+    height: 3.2em;
+    line-height: 3.2em;
+    font-size: 1.0em;
+}
+.srch-area .srch-btn {
+    padding-top: 1.05em;
+    height: 2.55em;
+    line-height: 2.55em;
+    font-size: 1.0em;
+}
+.srch-area .srch-btn .img-btn {
+    width: 80%;
+    border-radius: 0.3em;
+}
+
+/*
+ common style
+ */
+.srch-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/srch_24.png');
+    background-size: cover;
+}
+.in-bg {
+    /*background-color: #F6F6F6;*/
+    background-color: rgb(224, 238, 238);
+}
+.sub-back {
+    /*background-color: #F6F6F6;*/
+    background-color: white;
+}
+.in-rds {
+    width: 95%;
+    border-radius: 0.5em;
+}

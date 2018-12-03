@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../start/css/wlcm-v1.css">
+    </head>
+    <body class="ub-img1 wlcm-sz wlcm-bg" ontouchstart>
+
+    </body>
+    <script src="../js/appcan.js"></script>
+    <script src="../js/appcan.control.js"></script>
+    <script src="../lib/jquery-1.8.3/jquery.min.js"></script>
+    <script src="../js/com/debug.js"></script>
+    <script src="../js/com/date.js"></script>
+    <script src="../js/com/popup.js"></script>
+    <script src="../js/com/system.js"></script>
+    <script src="../js/com/number.js"></script>
+    <script src="../js/com/cookie.js"></script>
+    <script src="../js/com/json.js"></script>
+    <script src="../js/db/db.js"></script>
+    <script src="../login/js/login.js"></script>
+    <script src="../index/js/mine.js"></script>
+    <script src="../hb/js/hbgetred.js"></script>
+    <script src="../index/js/msg.js"></script>
+    <script src="../index/js/count.js"></script>
+    <script src="../index/js/friend.js"></script>
+    <script src="../msg/js/sys.js"></script>
+    <script>
+        var t;
+        appcan.ready(function() {
+
+            if (localStorage.getItem("ifExist") == null || localStorage.getItem("ifExist") == '') {
+                //拷贝数据库
+                uexDataBaseMgr.copyDataBaseFile("res://menu.db", function(error) {
+
+                    if (!error) {
+
+                        localStorage.setItem("ifExist", 1);
+
+                    } else {
+                        //alert("拷贝失败")
+                    }
+
+                });
+
+            }
+
+            //通用设置的入口
+            setAppInfo(0, 0, 1);
+
+            //设置定时方法, 延迟1秒半后执行
+            t = setTimeout("appStart()", 1500);
+
+        });
+
+        function setAppInfo(type, appMode, localPack) {
+
+            /*
+             * type说明: 0为云端服务器的url, 1为本地服务器的url
+             * appMode说明: 0为开发模式 , 1为测试模式 , 2为用户模式
+             * localPack说明: 0在线打包模式, 1为本地打包模式
+             */
+
+            localStorage.setItem('wxShareLink', 'http://www.fbddd.com/account/regist');
+
+            uexLocation.openLocation("bd09", function(error) {
+                if (!error) {
+                    uexLocation.closeLocation();
+                } else {
+                }
+
+            });
+
+            if (localPack == 0) {
+
+                var packEnter = localStorage.getItem("packEnter");
+
+                if (packEnter == 0 || packEnter == '0' || packEnter == '' || packEnter == null || packEnter == undefined || packEnter == NaN) {
+
+                    //获取当前的经纬度
+                    uexBaiduMap.getCurrentLocation(function(error, data) {
+
+                        //currentLongitude
+                        localStorage.setItem('longitude', data.longitude);
+                        localStorage.setItem('latitude', data.latitude);
+
+                        var info = {
+                            longitude : data.longitude,
+                            latitude : data.latitude,
+                        };
+
+                        uexBaiduMap.reverseGeocode(info, function(error, json) {
+                            debug(json);
+                            localStorage.setItem('addrJson', JSON.stringify(json));
+                            //debug(json.address);
+                        });
+
+                    });
+
+                    //判断本地打包的入口
+                    localStorage.setItem('localPack', 0);
+
+                } else {
+
+                    //判断本地打包的入口
+                    localStorage.setItem('localPack', 1);
+
+                }
+
+            } else {
+
+                localStorage.setItem('localPack', 1);
+
+            }
+
+            if (type == 0) {
+
+                var ajaxEnter = localStorage.getItem("ajaxEnter");
+
+                if (ajaxEnter == 0 || ajaxEnter == '0' || ajaxEnter == '' || ajaxEnter == null || ajaxEnter == undefined || ajaxEnter == NaN) {
+
+                    localStorage.setItem("ajaxType", '服务器');
+                    localStorage.setItem("ajaxUrl", 'http://www.fbddd.com/');
+                    localStorage.setItem("wsUrl", 'ws://www.fbddd.com');
+                    localStorage.setItem("fileUrl", 'http://www.fbddd.com');
+                    localStorage.setItem("upldUrl", 'http://www.fbddd.com/File/FileUpload');
+                    localStorage.setItem("qrCodeUrl", 'http://www.fbddd.com/QRCode/GetQRCode');
+
+                } else {
+
+                    localStorage.setItem("ajaxType", '本地');
+                    localStorage.setItem("ajaxUrl", 'http://192.168.0.2:10000/');
+                    localStorage.setItem("wsUrl", 'ws://192.168.0.2:10000');
+                    localStorage.setItem("fileUrl", 'http://192.168.0.2:10000');
+                    localStorage.setItem("upldUrl", 'http://192.168.0.2:10000/File/FileUpload');
+                    localStorage.setItem("qrCodeUrl", 'http://192.168.0.2:10000/QRCode/GetQRCode');
+
+                }
+
+            } else if (type == 1) {
+
+                localStorage.setItem("ajaxType", '本地');
+                localStorage.setItem("ajaxUrl", 'http://192.168.0.2:10000/');
+                localStorage.setItem("wsUrl", 'ws://192.168.0.2:10000');
+                localStorage.setItem("fileUrl", 'http://192.168.0.2:10000');
+                localStorage.setItem("upldUrl", 'http://192.168.0.2:10000/File/FileUpload');
+                localStorage.setItem("qrCodeUrl", 'http://192.168.0.2:10000/QRCode/GetQRCode');
+
+            }
+
+            var cResolutionRatio = uexDevice.getInfo(18);
+            var cResolutionRatioWidth = cResolutionRatio.substring(0, cResolutionRatio.lastIndexOf('*'));
+            var cResolutionRatioHeight = cResolutionRatio.substring(cResolutionRatio.lastIndexOf('*') + 1);
+
+            localStorage.setItem("cResolutionRatioWidth", cResolutionRatioWidth);
+            localStorage.setItem("cResolutionRatioHeight", cResolutionRatioHeight);
+
+            localStorage.setItem("bodyWidth", document.body.clientWidth);
+            localStorage.setItem("bodyHeight", document.body.clientHeight);
+
+            //localStorage.setItem("bodyWidth", $('body').width());
+            //localStorage.setItem("bodyHeight", $('body').height());
+
+            localStorage.setItem("errorMsg", '当前无法连接到服务器，请重试');
+
+            //调试模式的判断入口
+            //正式打包的时候不传入这个, 在里面切换
+            //localStorage.setItem('appMode', appMode);
+
+            /*
+             var appInfo = {
+             ajaxUrl : localStorage.getItem("ajaxUrl"),
+             wsUrl : localStorage.getItem("wsUrl"),
+             fileUrl : localStorage.getItem("fileUrl"),
+             upldUrl : localStorage.getItem("upldUrl"),
+             appMode : localStorage.getItem("appMode"),
+             localPack : localStorage.getItem("localPack"),
+             errorMsg : localStorage.getItem("errorMsg"),
+             bodyWidth : localStorage.getItem("bodyWidth"),
+             bodyHeight : localStorage.getItem("bodyHeight"),
+             }
+
+             debug(appInfo) */
+
+            /*
+             * 测试的wsUrl
+             * localStorage.setItem("wsUrl", 'ws://bg.dolphintech168.com');
+             */
+
+            /*
+             * 屏幕分辨率的高：window.screen.height
+             * 屏幕分辨率的宽：window.screen.width
+             * */
+            /*
+
+             var window_height = window.screen.height;
+             var window_width = window.screen.width;
+
+             //alert(uexDevice.getInfo(18));
+             var cResolutionRatio = uexDevice.getInfo(18);
+             var cResolutionRatioWidth = cResolutionRatio.substring(0, cResolutionRatio.lastIndexOf('*'));
+             var cResolutionRatioHeight = cResolutionRatio.substring(cResolutionRatio.lastIndexOf('*') + 1);
+             //alert('cResolutionRatio: ' + cResolutionRatio + '\n cResolutionRatioWidth: ' + cResolutionRatioWidth + '\n cResolutionRatioHeight: ' + cResolutionRatioHeight);
+             var scrn = {
+             getInfo : uexDevice.getInfo(18),
+             cResolutionRatio : cResolutionRatio,
+             cResolutionRatioWidth : cResolutionRatioWidth,
+             cResolutionRatioHeight : cResolutionRatioHeight,
+             window_width : window_width,
+             window_height : window_height,
+             }
+             debug(scrn); */
+
+        }
+
+        //定时执行方法 && 自动登录方法
+        function appStart() {
+
+            //目前以判断localStorage的userFullName和userid来判断是否有用户登录过。
+            var uid = localStorage.getItem("uid");
+            var guide = localStorage.getItem('guide');
+
+            if (uid != null && uid != "" && guide != '' && guide != null) {
+
+                var username = localStorage.getItem("username");
+                var password = localStorage.getItem("password");
+                var before = localStorage.getItem("before");
+
+                //showLoading('正在登录中...', 1);
+                //doLoginActn(before, username, password);
+                getUserInfo(uid, 'login');
+
+            } else if (guide == null || guide == '' || guide == undefined) {
+
+                //跳转到新手引导页面
+                appcan.window.open({
+                    name : "guide",
+                    data : '../guide/guide.html',
+                    aniId : 10
+                });
+
+            } else {
+
+                //跳转到登陆页面
+                appcan.window.open({
+                    name : 'login',
+                    data : '../login/login.html'
+                });
+
+            }
+            clearTimeout(t);
+        }
+
+    </script>
+</html>

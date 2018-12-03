@@ -1,0 +1,93 @@
+﻿<style>
+    #uppwdpanel, #addpanel {
+        margin-top: 10%;
+        padding: 0;
+    }
+</style>
+<script>
+    var hasFooter = false;
+    var SysPriceManager = {};
+    SysPriceManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    SysPriceList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+      SysPriceList(index);
+    };
+    //获取用户列表
+    function SysPriceList(index) {
+        waiting();
+        $.get("SysPriceList", "index=" + index + "&key=" + SysPriceManager.searchKey +"&mindate=" + $("#mindate").val() + "&maxdate="+$("#maxdate").val(), function (data) {
+            SysPriceManager.index = index;
+            $("#adminbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function USearch() {
+        SysPriceManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        SysPriceList(1);
+        GetSysTotalPrice();
+    }
+    function GetSysTotalPrice() {
+        $.post("/Admin/GetSysTotalPrice", "mindate=" + $("#mindate").val() + "&maxdate="+$("#maxdate").val(), function (data) {
+            var p = data.msg.split("||");
+            $("#totalin").text(p[0]);
+            $("#totalout").text(p[1]);
+        },"json");
+    }
+    $(function () {
+        GetSysTotalPrice();
+    });
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a onclick="GetManager('SysPriceManager')">关于系统</a></li>
+    <li><a href="#">系统收益</a></li>
+</ol>
+<div class="col-lg-12 form-inline">
+
+    <div class="input-group col-md-2">
+        总收入：<span id="totalin"></span>总支出：<span id="totalout"></span>
+        
+    </div>
+    <input class="form-control" id="mindate" name="mindate" placeholder="开始时间：yyyy-MM-dd" onclick="WdatePicker({el:this,dateFmt:'yyyy-MM-dd'})" type="text">
+    <input class="form-control" id="maxdate" name="maxdate" placeholder="结束时间：yyyy-MM-dd" onclick="WdatePicker({el:this,dateFmt:'yyyy-MM-dd'})" type="text">
+    <div class="input-group col-lg-4">
+        <input type="text" class="form-control" placeholder="请输入关键字" id="key">
+        <span class="input-group-addon" onclick="USearch()">查询</span>
+    </div>
+
+    @*<input value="新增" type="button" class="btn btn-primary" onclick="$('#addAdmin').show()" />*@
+    <div class="col-lg-12" id="adminlist">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>收支</th>
+                    <th>金额</th>
+                    <th>备注</th>
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody id="adminbody">
+                @Html.Action("SysPriceList")
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
+</div>

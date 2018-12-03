@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pay/css/judg-v1.css">
+    </head>
+    <body style="height: 100%; width: 100%; background-color: #EAEAEA" >
+        <div id="page_0" style="width: 100%; height: 100%; background-color: #EAEAEA;">
+
+            <div class="uh bc-head ubb bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" onclick="javascript:history.back(-1);" ontouchstart>
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">身份验证</h1>
+                    <div class="nav-btn" id="nav_right">
+                        <div class="fa fa-1g ub-img1 reg-sty"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主框-start   -->
+            <div style="height: 1.0em;"></div>
+
+            <!-- <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div> -->
+
+            <div class="ubb bc-border b-gra umar-a uc-a1 c-wh msg-wd">
+                <div class="ub ub-ac in-bg">
+                    <div ontouchstart class="forget-umhw ub-img umar-for">
+                        手机号码
+                    </div>
+                    <div class="ub-f1 judg-input uinn8">
+                        <input placeholder="" id="hidePhone" readonly="" type="text" class="uc-a1 outline">
+                        <input placeholder="" id="hidePhone2" readonly="" type="hidden" class="uc-a1 outline">
+                    </div>
+
+                </div>
+            </div>
+            <div class="ubb bc-border b-gra umar-a uc-a1 c-wh msg-wd">
+                <div class="ub ub-ac in-bg">
+                    <div ontouchstart class="forget-umhw ub-img umar-for">
+                        短信验证
+                    </div>
+                    <div class="ub-f1 judg-input uinn8">
+                        <input placeholder="请输入验证码" id="judg_code" type="number" class="uc-a1 outline">
+                    </div>
+
+                    <div class="b-d9 uc-a1 ub-pc chk-bg">
+                        <div  id="send_code" class="ub ub-ac ub-pc tx-c font-color1" style="font-size: 0.88em; color: #FD614A; margin-right: 0.68em;" ontouchstart>
+                            获取验证码
+                        </div>
+                        <!-- <div class="resyzmicon resyzmwg ub-img uc-a1"></div> -->
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="height: 1.8em;"></div>
+
+            <div class="uinn-btn next-wd">
+                <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn uc-a1 log-in" id="next">
+                    <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                    下一步
+                </div>
+            </div>
+        </div>
+       
+        <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+        <script src="../js/token.js"></script>
+        <script>
+            $().ready(function () {
+                var token = GetQueryString("token");
+                if (token != null && token!="")
+                {
+                   
+                    var html = "";
+                    $.post("http://www.fbddd.com/Account/GetUserInfo", "token=" + token,
+                        function (data) {
+                            if (data.code == 1) {
+                                var temp = data.Info.Phone;
+                                var phone = hidePhoneMiddle(temp);
+                                $('#hidePhone').val(phone);
+                                $('#hidePhone2').val(temp);
+                            }
+                        }, "json");
+                }
+
+                function hidePhoneMiddle(phone) {
+
+                    var reg = /^(\d{3})\d{4}(\d{4})$/;
+
+                    var rslt = phone.replace(reg, "$1****$2");
+
+                    return rslt;
+                }
+
+                $("#send_code").click(function () {
+                    var token = GetQueryString("token");
+                    if (token != null && token != "") {
+
+                        var html = "";
+                        $.post("http://www.fbddd.com/Account/GetUserInfo", "token=" + token,
+                            function (data) {
+                                if (data.code == 1) {
+                                    var AreaCode = data.Info.AreaCode;
+                                    var phone = data.Info.Phone;
+                                    getJudgCode(AreaCode, phone);
+                                }
+                            }, "json");
+                    }
+
+                });
+
+                var btn_status = true;
+                function getJudgCode(AreaCode, mobile) {
+
+                    if (mobile.length == 0 || mobile == '' || mobile == undefined) {
+
+                        alert("请输入手机号码");
+                        return false;
+
+                    } else {
+
+                        //匹配成功后正式处理的注册逻辑
+                        //openToast(mobile, 2000, 5, 0);
+                        //1.发送验证码
+
+                        var phone = mobile;
+
+                        if (btn_status) {
+                            $.post("http://www.fbddd.com/Verifycode/getVerifyCode", "t=" + 2 + "&r=" + phone + "&b=" + AreaCode, function (data) {
+                                if (data == '1') {
+                                    btn_status = false;
+                                    time_code_value = 0;
+                                    time_code();
+                                    ajax_time = new Date();
+                                    localStorage.setItem("phone", phone);
+                                }
+                                else {
+                                    alert(data.msg);
+                                }
+                            }, "json");
+                        }
+                    }
+                }
+
+                var time_code_value = 0;
+                var t;
+                //计时方法　
+                function time_code() {
+                    time_code_value++;
+                    var value = -(time_code_value - 60);
+                    $("#send_code").text("剩余 " + value + " 秒");
+                    if (time_code_value < 60) {
+                        //继续执行
+                        t = setTimeout("time_code()", 1000);
+                    } else {
+                        //停止计时
+                        $("#send_code").text("发送验证码");
+                        btn_status = true;
+                        clearTimeout(t);
+                    }
+
+                }
+
+                $('#next').click(function () {
+
+                    doJudgCode();
+
+                });
+
+                //验证时间
+                var ajax_time = new Date();
+                //点击注册时候的方法
+                function doJudgCode() {
+
+                    var judg_code = $("#judg_code").val();
+                    var phone = '';
+                    var token = GetQueryString("token");
+
+                    phone = $("#hidePhone2").val();
+                    if (phone == localStorage.getItem("phone")) {
+
+                        if (judg_code.length == 0 || judg_code == '' || judg_code == null || judg_code == undefined) {
+
+                            alert('请输入验证码');
+                            upgr_stat = true;
+
+                        } else {
+                            if (judg_code.length == 6) {
+
+                                if (/^[0-9]+$/.test(judg_code)) {
+                                    payJudgNext(judg_code);
+
+                                } else {
+                                    alert('请输入正确的验证码格式')
+                                    upgr_stat = true;
+                                }
+
+                            } else {
+                                alert('请输入正确的验证码格式');
+                                upgr_stat = true;
+                            }
+
+                        }
+
+                    } else {
+                        alert('请先获取验证码');
+                        upgr_stat = true;
+                    }
+
+                }
+
+                function payJudgNext(judg_code) {
+
+                    localStorage.setItem("payCode", judg_code);
+
+                    
+                    window.location.href = 'PayPwd_Set.html?token=' + token;
+                }
+
+
+            });
+
+          
+           
+           
+
+
+         
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pop/css/area.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <div id="typ_mde">
+
+                <div class="right-style">
+                    <div class="menu-style" id="country">
+                        <div data-country="中国" data-areacode="86" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            中国 + 86
+                        </div>
+                        <div data-country="香港" data-areacode="852" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            中国香港  + 852
+                        </div>
+                        <div data-country="澳门" data-areacode="853" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            中国澳门  + 852
+                        </div>
+                        <div data-country="台湾" data-areacode="886" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            中国台湾  + 886
+                        </div>
+                        <div data-country="新加坡" data-areacode="65" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            新加坡  + 65
+                        </div>
+                        <div data-country="马来西亚" data-areacode="60" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            马来西亚  + 60
+                        </div>
+                        <div data-country="泰国" data-areacode="66" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            泰国  + 66
+                        </div>
+                        <div data-country="印度尼西亚" data-areacode="62" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            印度尼西亚  + 62
+                        </div>
+                        <div data-country="菲律宾" data-areacode="63" class="sub-bord menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            菲律宾  + 63
+                        </div>
+                        <div data-country="柬埔寨" data-areacode="855" class="menu-sub tx-l" ontouchstart="appcan.touch('btn-act')">
+                            柬埔寨  + 855
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../pop/js/country.js"></script>
+        <script src="../pop/js/area.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                //dispCountryList();
+
+            });
+
+            $('.empty-view').click(function() {
+
+                appcan.window.closePopover('area');
+                localStorage.setItem("area", 0);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.closePopover('area');
+                localStorage.setItem("area", 0);
+
+            });
+
+            $('.menu-sub').click(function() {
+
+                var country = $(this).data('country');
+                var areacode = $(this).data('areacode');
+
+                localStorage.setItem("before", areacode);
+
+                var area = {
+                    country : country,
+                    areacode : areacode,
+                }
+
+                debug(area);
+
+                appcan.window.publish('area', JSON.stringify(area));
+                appcan.window.closePopover('area');
+                localStorage.setItem("area", 0);
+
+            });
+
+        </script>
+    </body>
+</html>
+

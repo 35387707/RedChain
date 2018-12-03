@@ -1,0 +1,1045 @@
+﻿<style>
+    .bankShow {
+    }
+
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+        .editItem > div > div {
+            text-align: right;
+        }
+        .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .storedShow {
+        margin-top: 10%;
+    }
+
+</style>
+<script>
+    //$(function () {
+    //    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    //        // 获取已激活的标签页的名称
+    //        var activeTab = $(e.target).text();
+    //        // 获取前一个激活的标签页的名称
+    //        var previousTab = $(e.relatedTarget).text();
+    //        $(".active-tab span").html(activeTab);
+    //        $(".previous-tab span").html(previousTab);
+    //    });
+    //});
+    //$(function () {
+    // //   $('#myTab a:last').tab('show');//初始化显示哪个tab      
+
+    //    $('#myTab a').click(function (e) {
+    //        console.log(e.currentTarget);
+    //        e.preventDefault();//阻止a链接的跳转行为        
+    //        $(this).tab('show');//显示当前选中的链接及关联的content  
+    //    })
+    //})
+</script>
+<script>
+    var hasFooter = false;
+    var UserManager = {};
+    UserManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetBankList(p);
+                }
+            });
+            hasFooter = true;
+        }
+    }
+
+    function toPage(index) {
+        var TabName = $('#myTab .active a').text();
+        //console.log(TabName);
+        //switch (TabName) {
+        //    case 团队信息:
+        //        GetTeamList(index);
+        //        break;
+        //    case 银行卡信息:
+        //        GetBankList(index);
+        //        break;
+        //    default:
+        //        alert("数据错误");
+        //}
+        if (TabName == "团队信息") {
+            GetTeamList(index);
+        }
+        else if (TabName == "银行卡信息") {
+            GetBankList(index);
+        }
+        else if (TabName == "充值记录") {
+            GetRechargeList(index);
+        }
+        else if (TabName == "储值记录") {
+            GetStoreList(index);
+        }
+        else if (TabName == "转账记录") {
+            GetExchangeList(index);
+        }
+        else if (TabName == "发福包记录") {
+            GetSendRechargeList(index);
+        }
+        else if (TabName == "抢福包记录") {
+            GetRecPacketList(index);
+        }
+        else {
+            alert("数据错误");
+        }
+    };
+
+    //获取银行列表
+    function GetBankList(index) {
+        waiting();
+        var UID = $("#IID").val();
+        $.get("GetBankListManager", "index=" + index + "&UID=" + UID, function (data) {
+            UserManager.index = index;
+            $("#bankbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+
+    //获取团队
+    function GetTeamList(index) {
+        waiting();
+        var UID = $("#IID").val();
+        $.get("GetMyRecommendList", "index=" + index + "&UID=" + UID, function (data) {
+            // var list = JSON.parse(data.list);
+            //console.log(data);
+            //console.log(data.list)
+            UserManager.index = index;
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+                if (data.list != null && data.list != '') {
+                    for (var i = 0; i < data.list.length; i++) {
+                        temp.push("<tr><td><img src=" + data.list[i].HeadImg1 + " style='width:30px' /></td><td>" + '(' + data.list[i].AreaCode + ')' + data.list[i].Phone + '</td><td>' + (data.list[i].UserType == 0 ? "福星" : (data.list[i].UserType == 1 ? "福将" : "福相")) + "</td></tr>");
+                    }
+                }
+                else {
+                    temp.push("<tr><td colspan='3' style='text-align:center'>暂无数据</tr>");
+
+                }
+                $("#homebody").html(temp.join(""));
+                createTeamFooter(data.pagecount)
+                waitingHide();
+            }
+
+        }, "json")
+    }
+
+    function createTeamFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetTeamList(p);
+                }
+            });
+            hasFooter = true;
+        }
+    }
+
+
+    function showteam() {
+        waiting();
+        var UID = $("#IID").val();
+        $.post("GetUser", "UID=" + UID, function (data) {
+            if (data.code == "1") {
+                var temp = [];
+                // var list = JSON.parse(data.msg);
+                var list = data.list;
+              //  console.log(list);
+                var treeStr = '';
+                //<i class='glyphicon glyphicon-user'></i>
+                treeStr = treeStr + "<ul><li><span><img src=" + list.HeadImg1 + " style='line-height: 1px;width: 22px;height: 22px; border-radius: 50%;'> " + list.TrueName + "  " + "(" + list.AreaCode + ")" + list.Phone + "</span><a>" + (list.UserType == 0 ? "福星" : (list.UserType == 1 ? "福将" : "福相")) + " </a><ul class='onetree'></ul></li></ul>"
+
+                temp.push(treeStr);
+                showChrilteam(UID);
+                $(".tree").html(temp.join(""));
+               // $("#team").show();
+             //   $('body').css('overflow', 'auto');
+                waitingHide();
+            }
+        }, "json");
+    }
+
+    function showChrilteam(UID) {
+        $.post("GetTeamUser", "UID=" + UID, function (data) {
+            if (data.code == "1") {
+                var temp = [];
+                // var list = JSON.parse(data.msg);
+                var list = data.list;
+                for (var i = 0; i < list.length; i++) {
+                    var treeStr = '';
+                    treeStr = treeStr + "<li onclick=showGrandChrilteam('" + list[i].ID + "') class='" + list[i].ID + "' ><i class='glyphicon glyphicon-plus-sign'></i><span><img src=" + list[i].HeadImg1 + " style='line-height: 1px;width: 22px;height: 22px; border-radius: 50%;'>" + list[i].TrueName + "  " + "(" + list[i].AreaCode + ")" + list[i].Phone + "</span><a>" + (list[i].UserType == 0 ? "福星" : (list[i].UserType == 1 ? "福将" : "福相")) + " </a></li>"
+                    temp.push(treeStr);
+
+                }
+                $(".onetree").html(temp.join(""));
+
+            }
+        }, "json");
+    }
+
+    function showGrandChrilteam(UID) {
+        var id = '.' + UID;
+        $(id).find(' > i').addClass('glyphicon-minus-sign').removeClass('glyphicon-plus-sign');
+        $.post("GetTeamUser", "UID=" + UID, function (data) {
+            if (data.code == "1") {
+                var temp = [];
+                // var list = JSON.parse(data.msg);
+                var list = data.list;
+                var treeStr = '<ul id=' + UID + '>';
+                for (var i = 0; i < list.length; i++) {
+                    treeStr = treeStr + "<li class=" + list[i].ID + " onclick=showGrandChrilteam('" + list[i].ID + "') class='" + list[i].ID + "' ><i class='glyphicon glyphicon-plus-sign'></i><span><img src=" + list[i].HeadImg1 + " style='line-height: 1px;width: 22px;height: 22px; border-radius: 50%;'>" + list[i].TrueName + " " + "(" + list[i].AreaCode + ")" + list[i].Phone + "</span><a>" + (list[i].UserType == 0 ? "福星" : (list[i].UserType == 1 ? "福将" : "福相")) + " </a></li>"
+                    //  temp.push(treeStr);
+                }
+                treeStr = treeStr + '</ul>';
+                //  temp.push(treeStr);
+                var obj = document.getElementsByClassName(UID);
+                if (!document.getElementById(UID)) {
+                    $(id).append(treeStr);
+                }
+            }
+        }, "json");
+    }
+
+    //获取充值记录
+    function GetRechargeList(index) {
+        waiting();
+        var UID = $("#IID").val();
+        $.get("GetRechargeList", "index=" + index + "&UID=" + UID, function (data) {
+            // var list = JSON.parse(data.list);
+            //console.log(data);
+            //  console.log(data)
+            UserManager.index = index;
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+               // console.log(list);
+                if (data.list != null && data.list != '') {
+                    for (var i = 0; i < data.list.length; i++) {
+                        temp.push("<tr><td>" + data.list[i].Val + "</td><td>" + (data.list[i].PayType == 1 ? "余额/金币" : "积分")+"("+data.list[i].Remark+")" + "</td><td>" + ChangeDateFormat(data.list[i].CreateTime) + "</td></tr>");
+                    }
+                }
+                else {
+                    temp.push("<tr><td colspan='3' style='text-align:center'>暂无数据</tr>");
+                }
+                $("#rechargebody").html(temp.join(""));
+                createRechargeFooter(data.pagecount)
+                waitingHide();
+            }
+
+        }, "json")
+    }
+
+    function createRechargeFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetRechargeList(p);
+                }
+            });
+            hasFooter = true;
+        }
+    }
+
+    //获取储值记录
+    function GetStoreList(index) {
+        waiting();
+        var UID = $("#IID").val();
+        $.get("GetStoredList", "index=" + index + "&UID=" + UID, function (data) {
+            // var list = JSON.parse(data.list);
+            //console.log(data);
+            //  console.log(data)
+            UserManager.index = index;
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+              //  console.log(list);
+                if (data.list != null && data.list != '') {
+                    for (var i = 0; i < data.list.length; i++) {
+                        temp.push("<tr><td>" + data.list[i].Val + "</td><td>" + (data.list[i].PayType == 1 ? "余额/金币" : "积分") + "(" + data.list[i].Remark + ")" + "</td><td>" + ChangeDateFormat(data.list[i].CreateTime) + "</td></tr>");
+                    }
+                }
+                else {
+                    temp.push("<tr><td colspan='3' style='text-align:center'>暂无数据</tr>");
+                }
+                $("#storebody").html(temp.join(""));
+                createStoreFooter(data.pagecount)
+                waitingHide();
+            }
+
+        }, "json")
+    }
+
+    function createStoreFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetRechargeList(p);
+                }
+            });
+            hasFooter = true;
+        }
+    }
+
+    //获取转账记录
+    function GetExchangeList(index) {
+        waiting();
+        var UID = $("#IID").val();
+        $.get("GetExchangeList", "index=" + index + "&UID=" + UID, function (data) {
+            // var list = JSON.parse(data.list);
+            //console.log(data);
+            //  console.log(data)
+            UserManager.index = index;
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+               //   console.log(list);
+                if (data.list != null && data.list != '') {
+                    for (var i = 0; i < data.list.length; i++) {
+                        temp.push("<tr><td>" + (data.list[i].InOut == 1 ? "+" : "-") + data.list[i].Val + "</td><td>" + (data.list[i].PayType == 1 ? "余额/金币" : "积分") + "</td><td>" + ChangeDateFormat(data.list[i].CreateTime) + "</td><td>" + data.list[i].Remark + "</td></tr>");
+                    }
+                }
+                else {
+                    temp.push("<tr><td colspan='3' style='text-align:center'>暂无数据</tr>");
+                }
+                $("#exchangebody").html(temp.join(""));
+                createExchangeFooter(data.pagecount)
+                waitingHide();
+            }
+
+        }, "json")
+    }
+
+    function createExchangeFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetExchangeList(p);
+                }
+            });
+            hasFooter = true;
+        }
+    }
+   
+
+
+    //获取发福包记录
+    function GetSendRechargeList(index) {
+        waiting();
+        var UID = $("#IID").val();
+        $.get("GetSendPacketList", "index=" + index + "&UID=" + UID, function (data) {
+            UserManager.index = index;
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+                if (data.list != null && data.list != '') {
+                    for (var i = 0; i < data.list.length; i++) {
+                        temp.push("<tr><td title=" + data.list[i].title + ">" + showText(data.list[i].title, 34) + "</td><td>" + data.list[i].SinglePrice + "</td><td>" + data.list[i].TotalPrice + "</td><td>" + ((data.list[i].RedType == 1) ? "用户主动发福包" : ((data.list[i].RedType == 2) ? "升级福相/福将福包" : ((data.list[i].RedType == 3) ? "系统发福包" : ((data.list[i].RedType == 4) ? "共享福包" : ((data.list[i].RedType == 5) ? "升级福相系统发福包" : ((data.list[i].RedType == 6) ? "公司业绩自动发福包" : "直推/间推/团队福包分润")))))) + "</td><td>" + ChangeDateFormat(data.list[i].BeginTime) + "</td><td>" + ChangeDateFormat(data.list[i].EndTime) + "</td></tr>");
+                    }
+                }
+                else {
+                    temp.push("<tr><td colspan='6' style='text-align:center'>暂无数据</tr>");
+                }
+
+
+                $("#sendredpackbody").html(temp.join(""));
+                createSendRechargeFooter(data.pagecount)
+                waitingHide();
+            }
+
+        }, "json")
+    }
+
+    function createSendRechargeFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetSendRechargeList(p);
+                }
+            });
+            hasFooter = true;
+        }
+    }
+
+    //截取字符串，str对象字符串，len目标长度
+    function cutString(str, len) {
+
+        //length属性读出来的汉字长度为1 
+
+        if (str.length * 2 <= len) {
+            return str;
+        }
+        var strlen = 0;
+        var s = "";
+        for (var i = 0; i < str.length; i++) {
+            s = s + str.charAt(i);
+            if (str.charCodeAt(i) > 128) {
+                strlen = strlen + 2;
+                if (strlen >= len) {
+                    return s.substring(0, s.length - 1) + "...";
+                }
+
+            } else {
+                strlen = strlen + 1;
+                if (strlen >= len) {
+                    return s.substring(0, s.length - 2) + "...";
+                }
+            }
+        }
+        return s;
+    }
+
+    function showText(text, numSub) {
+        if (text == null)
+        {
+            return "";
+        }
+        if (text.length > numSub)
+        {
+            return text.substring(0, numSub - 1) + "...";
+        }
+        return text;
+    }
+
+   
+
+    //获取抢福包记录
+    function GetRecPacketList(index) {
+        waiting();
+        var UID = $("#IID").val();
+        $.get("GetRecPacketList", "index=" + index + "&UID=" + UID, function (data) {
+            UserManager.index = index;
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+              //  console.log(list);
+                if (data.list != null && data.list != '') {
+                    for (var i = 0; i < data.list.length; i++) {
+                        temp.push("<tr><td>" + data.list[i].Money + "</td><td>" + data.list[i].Number + "</td><td>" + ChangeDateFormat(data.list[i].CreateTime) + "</td><td>" + ChangeDateFormat(data.list[i].UpdateTime) + "</td></tr>");
+                    }
+                }
+                else {
+                    temp.push("<tr><td colspan='4' style='text-align:center'>暂无数据</tr>");
+                }
+
+                $("#redpackbody").html(temp.join(""));
+                createRechargeFooter(data.pagecount)
+                waitingHide();
+            }
+
+        }, "json")
+    }
+
+    function createRechargeFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetRecPacketList(p);
+                }
+            });
+            hasFooter = true;
+        }
+    }
+
+
+    function UserCard(UID) {
+        waiting();
+        $.post("/Admin/GetUser/", "UID=" + UID, function (data) {
+          //   console.log(data);
+            if (data.code == "1") {
+                //var temp = [];
+                //var list = data.list;
+                //var Str = '';
+                //Str = Str + "<div class='col-md-12' style='margin:10px 0'>"
+                //Str = Str + "<div class='col-md-3' style='text-align:right'>用 户 名</div>"
+                //Str = Str + "<div class='col-md-6'>" + list.Phone + "</div>"
+                //Str = Str + "</div>"
+                //Str = Str + "<input type='hidden' value='" + list.ID + "' id='uid' />"
+                //Str = Str + "<div class='col-md-12'>"
+                //Str = Str + "<div class='col-md-3' style='text-align:right'>储值金额</div>"
+                //Str = Str + "<div class='col-md-6'><input type='text' class='form-control' id='stored' name='stored'></div>"
+                //Str = Str + "</div>"
+                //temp.push(Str);
+                //$("#storedData").html(temp.join(""));
+                //$("#storedShow").show();
+                //$('body').css('overflow', 'hidden');
+                waitingHide();
+            }
+        }, "json");
+    }
+
+    $(function () {
+        var UID = $("#IID").val();
+        $.post("/Admin/GetUser/", "UID=" + UID, function (data) {
+          //  console.log(data);
+            //var list = data.list;
+            //var Str = '';
+         //   var username = "(" + data.list.AreaCode + ")" + data.list.Phone + " " + data.list.TrueName;
+            $(".User_Name").text("(" + data.list.AreaCode + ")" + data.list.Phone + " " + data.list.TrueName);
+            $('.headimg_card').attr('src', data.list.HeadImg1);
+            //$(".headimg_card").attr(data.list.HeadImg1);
+            $(".User_AreaCode").text(data.list.AreaCode);
+            $(".User_Phone").text(data.list.Phone);
+          //  $(".User_Nick").text("(" + data.list.Phone + ")" + data.list.TrueName);
+            $(".User_Nick").text(data.list.TrueName);
+            $(".User_Sex").text((data.list.Sex == null || data.list.Sex == 1) ? "男" : "女");
+
+          //  list[i].UserType == 0 ? "福星" : (list[i].UserType == 1 ? "福将" : "福相")
+            $(".User_Type").text(data.list.UserType == 0 ? "福星" : (data.list.UserType == 1 ? "福将" : "福相"));
+            $(".User_Time").text(ChangeDateFormat(data.list.CreateTime));
+            //$(".User_FName").text(data.list.FID);
+            $(".User_Balance").text(data.list.Balance);
+            $(".User_FuYin").text(data.list.TotalScore);
+            $(".User_FuLi").text(data.list.FootQuan);
+        }
+        )
+    });
+   
+    //用户储值
+    //function storedShow(UID) {
+    //    waiting();
+    //    $.post("/Admin/GetUser/", "UID=" + UID, function (data) {
+    //        if (data.code == "1")
+    //        {
+    //            var temp = [];
+    //            var list = data.list;
+    //            var Str = '';
+    //            Str = Str + "<div class='col-md-12' style='margin:10px 0'>"
+    //            Str = Str + "<div class='col-md-3' style='text-align:right'>用 户 名</div>"
+    //            Str = Str + "<div class='col-md-6'>" + list.Phone + "</div>"
+    //            Str = Str + "</div>"
+    //            Str = Str + "<input type='hidden' value='"+list.ID +"' id='uid' />"
+    //            Str = Str + "<div class='col-md-12'>"
+    //            Str = Str + "<div class='col-md-3' style='text-align:right'>储值金额</div>"
+    //            Str = Str + "<div class='col-md-6'><input type='text' class='form-control' id='stored' name='stored'></div>"
+    //            Str = Str + "</div>"
+    //            temp.push(Str);
+    //            $("#storedData").html(temp.join(""));
+    //            $("#storedShow").show();
+    //            $('body').css('overflow', 'hidden');
+    //            waitingHide();
+    //        }
+    //    }, "json");
+    //}
+
+    //function saveStored() {
+    //    var Uid = $("#uid").val();
+    //    var stored = $("#stored").val();
+    //    $.post("/Account/AdminRechargeAuccess", "UID=" + Uid + "&price=" + stored, function (data) {
+    //        alert(data.msg);
+    //        if (data.code == "1") {
+    //            GetUserList(UserManager.index);
+    //        }
+    //    }, "json");
+    //}
+
+    $(function () {
+        //   GetBankList(0); //获取银行列表
+       // GetTeamList(0); //获取团队列表
+        showteam();
+        $('#myTab a').click(function (e) {
+            //  console.log(e.currentTarget.text);
+            e.preventDefault();//阻止a链接的跳转行为        
+            $(this).tab('show');//显示当前选中的链接及关联的content  
+            if (e.currentTarget.text == "团队信息") {
+                hasFooter = false;
+                //GetTeamList(0);
+                showteam();
+            }
+            else if (e.currentTarget.text == "银行卡信息") {
+                hasFooter = false;
+                GetBankList(0);
+            }
+            else if (e.currentTarget.text == "充值记录") {
+                hasFooter = false;
+                GetRechargeList(0);
+            }
+            else if (e.currentTarget.text == "储值记录") {
+                hasFooter = false;
+                GetStoreList(0);
+            } else if (e.currentTarget.text == "转账记录") {
+                hasFooter = false;
+                GetExchangeList(0);
+            }
+            else if (e.currentTarget.text == "发福包记录") {
+                hasFooter = false;
+                GetSendRechargeList(0);
+            }
+            else if (e.currentTarget.text == "抢福包记录") {
+                hasFooter = false;
+                GetRecPacketList(0);
+            }
+        })
+    });
+
+
+
+    function ChangeDateFormat(jsondate) {
+        jsondate = jsondate.replace("/Date(", "").replace(")/", "");
+        var date = new Date(parseInt(jsondate, 10));
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var d = date.getDate() < 10 ? "0" + (date.getDate()) : date.getDate();
+        var h = date.getHours() < 10 ? "0" + (date.getHours()) : date.getHours();
+        var mm = date.getMinutes() < 10 ? "0" + (date.getMinutes()) : date.getMinutes();
+        var s = date.getSeconds() < 10 ? "0" + (date.getSeconds()) : date.getSeconds();
+        return y + '-' + m + '-' + d + ' ' + h + ':' + mm + ':' + s;
+    };
+
+   
+    function storedShow(UID) {
+        waiting();
+        $.post("/Admin/GetUser/", "UID=" + UID, function (data) {
+            //  console.log(data);
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+                var Str = '';
+                Str = Str + "<div class='col-md-12' style='margin:10px 0'>"
+                Str = Str + "<div class='col-md-3' style='text-align:right'>用 户 名</div>"
+                Str = Str + "<div class='col-md-6'>" + list.Phone + "</div>"
+                Str = Str + "</div>"
+                Str = Str + "<div class='col-md-12' style='margin:10px 0'>"
+                Str = Str + "<div class='col-md-3' style='text-align:right'>选择方式</div>"
+                Str = Str + "<div class='col-md-6'>"
+                Str = Str + "<select class='form-control' id='type'><option value='1'>储值金额</option><option value='2'>扣除金额</option></select>"
+                Str = Str + "</div>"
+                Str = Str + "</div>"
+                Str = Str + "<input type='hidden' value='" + list.ID + "' id='uid' />"
+                Str = Str + "<div class='col-md-12' style='margin:10px 0'>"
+                Str = Str + "<div class='col-md-3' style='text-align:right'>储值金额</div>"
+                Str = Str + "<div class='col-md-6'><input type='text' class='form-control' id='stored' name='stored'></div>"
+                Str = Str + "</div>"
+                temp.push(Str);
+                $("#storedData").html(temp.join(""));
+                $("#storedShow").show();
+                $('body').css('overflow', 'hidden');
+                waitingHide();
+            }
+        }, "json");
+    }
+
+    function saveStored() {
+        var Uid = $("#uid").val();
+        var type = $("#type").val();
+        var stored = $("#stored").val().trim();
+        if (stored == "" || stored == null || stored == undefined || stored.length == 0) {
+            alert("储值金额不能为空"); return
+        }
+        $.post("/Account/AdminRechargeAuccess", "UID=" + Uid + "&price=" + stored + "&type=" + type, function (data) {
+            if (data.code == "1") {
+                alert(data.msg);
+                $("#storedShow").hide();
+                $('body').css('overflow', 'auto');
+                GetManager('UserDetailManager/' + Uid)
+              //  GetUserList(UserManager.index);
+            } else {
+                alert(data.msg);
+            }
+        }, "json");
+    }
+
+</script>
+<style>
+    .user-card{
+        border: 1px solid #ebeef5;
+        background-color: #fff;
+        color: #303133;
+        transition: .3s;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    }
+    .user-card-detail{
+        padding:20px;
+    }
+    .headimg_card{
+        /*width:100px;*/
+        width:100%;
+    }
+    .user-info{
+        padding:10px;
+    }
+    .border-card{
+        background: #fff;
+        border: 1px solid #dcdfe6;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+        padding:0;
+    }
+    .border-card .tabs-header{
+        background-color: #f5f7fa;
+        border-bottom: 1px solid #e4e7ed;
+        margin: 0;
+    }
+    .tabs-header {
+        padding: 0;
+        position: relative;
+        margin: 0 0 15px;
+    }
+    .user-information{
+        padding:5px 0;
+    }
+
+</style>
+
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a onclick="GetManager('UserManager')">用户管理</a></li>
+    <li><a href="#">用户明细</a></li>
+</ol>
+
+<input type="hidden" class="form-control" id="IID" value="@ViewData["IID"]">
+
+<div class="col-lg-12 form-inline" style="margin:10px 0">
+    <a onclick="GetManager('UserManager')"><img src="~/img/goback.jpg" width="50" /></a>
+</div>
+
+<div class="col-md-12">
+    <div class="col-md-3" style="padding:0">
+        <div class="col-md-9">
+            <div class="user-card">
+                <div class="user-card-detail">
+                    <img class="headimg_card" src="~/img/chat/head.jpg" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9" style="margin:10px 0">
+            <div class="user-card">
+                <div class="user-card-detail">
+                    <div class="user-info">
+                        <div class="user-information"><span>区号：</span><span class="User_AreaCode"></span></div>
+                        <div class="user-information"><span>手机号：</span><span class="User_Phone"></span></div>
+                        <div class="user-information"><span>昵称：</span><span class="User_Nick"></span></div>
+                        <div class="user-information"><span>性别：</span><span class="User_Sex"></span></div>
+                        <div class="user-information"><span>级别：</span><span class="User_Type"></span></div>
+                        <div class="user-information"><span>推荐码：</span><span class="User_CardNumber"></span></div>
+                        <div class="user-information"><span>推荐人：</span><span class="User_FName">@ViewData["FName"]</span></div>
+                        <div class="user-information"><span>注册时间：</span><span class="User_Time"></span></div>
+                        <br />
+                        <br />
+                        <div class="user-information"><span>账号余额：</span><span class="User_Balance"></span></div>
+                        <div class="user-information"><span>福音积分：</span><span class="User_FuYin"></span></div>
+                        <div class="user-information"><span>福利积分：</span><span class="User_FuLi"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9" style="margin:10px 0 50px 0">
+            <input type="button" class="btn btn-primary" value="储值" onclick="storedShow('@ViewData["IID"]')" />
+        </div>
+    </div>
+    <div class="col-md-9 form-inline border-card">
+        <ul id="myTab" class="nav nav-tabs tabs-header">
+            <li class="active"><a href="#home" data-toggle="tab">团队信息</a></li>
+            <li><a href="#bank" data-toggle="tab">银行卡信息</a></li>
+            <li><a href="#recharge" data-toggle="tab">充值记录</a></li>
+            <li><a href="#store" data-toggle="tab">储值记录</a></li>
+            <li><a href="#exchange" data-toggle="tab">转账记录</a></li>
+            <li><a href="#sendpacket" data-toggle="tab">发福包记录</a></li>
+            <li><a href="#redpack" data-toggle="tab">抢福包记录</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="home">
+                <div class="col-md-12" id="userlist">
+                    @*<table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>头像</th>
+                                <th>(区号)手机号</th>
+                                <th>级别(福星/福将/福相)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="homebody"></tbody>
+                    </table>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>*@
+                    <div class="panel-body">
+                        <div class="tree well">
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="tab-pane fade" id="bank">
+                <div class="col-md-12" id="userlist">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>开户行</th>
+                                <th>支行</th>
+                                <th>账号</th>
+                                <th>持卡人</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bankbody"></tbody>
+                    </table>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="recharge">
+                <div class="col-md-12" id="userlist">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>到账金额</th>
+                                <th>来源(储值/微信/支付宝/银联)</th>
+                                <th>充值时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rechargebody"></tbody>
+                    </table>
+                    <nav aria-label="page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="store">
+                <div class="col-md-12" id="userlist">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>到账金额</th>
+                                <th>来源(储值/微信/支付宝/银联)</th>
+                                <th>储值时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="storebody"></tbody>
+                    </table>
+                    <nav aria-label="page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="exchange">
+                <div class="col-md-12" id="userlist">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>收支金额</th>
+                                <th>来源(储值/微信/支付宝/银联)</th>
+                                <th>转账时间</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody id="exchangebody"></tbody>
+                    </table>
+                    <nav aria-label="page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="sendpacket">
+                <div class="col-md-12" id="userlist">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>内容</th>
+                                <th>单价</th>
+                                <th>总价</th>
+                                <th>福包类型</th>
+                                <th>开始时间</th>
+                                <th>结束时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sendredpackbody"></tbody>
+                    </table>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="redpack">
+                <div class="col-md-12" id="userlist">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>金额</th>
+                                <th>福包流水号</th>
+                                <th>创建时间</th>
+                                <th>领取时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="redpackbody"></tbody>
+                    </table>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<div class="showBack" id="storedShow">
+    <div class="showBackList panel panel-default">
+        <div class="panel-primary">
+            <div class="panel-heading">用户储值<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="$('#storedShow').hide(); $('body').css('overflow', 'auto');" /></div>
+            <div class="panel-body" id="storedData">
+                
+            </div>
+            <div class="panel-footer" style="overflow:hidden">
+                <input type="button" value="确认" class="btn btn-primary" style="float:right" onclick="saveStored()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<script>
+    $(function(){
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            // 获取已激活的标签页的名称
+            var activeTab = $(e.target).text();
+            // 获取前一个激活的标签页的名称
+            var previousTab = $(e.relatedTarget).text();
+            $(".active-tab span").html(activeTab);
+            $(".previous-tab span").html(previousTab);
+        });
+    });
+</script>*@
+
+@*<script type="text/javascript">
+$(function () {   
+    $('#myTab a:last').tab('show');//初始化显示哪个tab      
+                
+    $('#myTab a').click(function (e) {           e.preventDefault();//阻止a链接的跳转行为        
+        $(this).tab('show');//显示当前选中的链接及关联的content  
+    })
+})
+</script>*@
+
+<script>
+    $(function () {
+        $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+        $('.tree li.parent_li > span').on('click', function (e) {
+            var children = $(this).parent('li.parent_li').find(' > ul > li');
+            if (children.is(":visible")) {
+                children.hide('fast');
+                $(this).attr('title', 'Expand this branch').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-minus-sign');
+            } else {
+                children.show('fast');
+                $(this).attr('title', 'Collapse this branch').find(' > i').addClass('glyphicon-plus-sign').removeClass('glyphicon-plus-sign');
+            }
+            e.stopPropagation();
+        });
+    });
+</script>
+<style>
+    .tree {
+        min-height: 20px;
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #fbfbfb;
+        border: 1px solid #999;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+
+        .tree li {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px 5px 0 5px;
+            position: relative;
+        }
+
+            .tree li::before, .tree li::after {
+                content: '';
+                left: -20px;
+                position: absolute;
+                right: auto;
+            }
+
+            .tree li::before {
+                border-left: 1px solid #999;
+                bottom: 50px;
+                height: 100%;
+                top: 0;
+                width: 1px;
+            }
+
+            .tree li::after {
+                border-top: 1px solid #999;
+                height: 20px;
+                top: 25px;
+                width: 25px;
+            }
+
+            .tree li span {
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border: 1px solid #999;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 3px 8px;
+                text-decoration: none;
+            }
+
+            .tree li.parent_li > span {
+                cursor: pointer;
+            }
+
+        .tree > ul > li::before, .tree > ul > li::after {
+            border: 0;
+        }
+
+        .tree li:last-child::before {
+            height: 30px;
+        }
+
+        .tree li.parent_li > span:hover, .tree li.parent_li > span:hover + ul li span {
+            background: #eee;
+            border: 1px solid #94a0b4;
+            color: #000;
+        }
+</style>

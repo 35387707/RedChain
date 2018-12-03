@@ -1,0 +1,127 @@
+﻿
+@{
+    Layout = null;
+    int frc = Convert.ToInt32(ViewData["count"]);
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>通讯录</title>
+    @Html.Action("CommonHead","Static")
+    <link rel="stylesheet" href="/css/friendInfo.css" />
+    <style>
+        .msgcount {
+    width: 35px;
+    height: 35px;
+    background-image: url(/img/chat/msg.png);
+    display: inline-block;
+    position: absolute;
+    top: 0rem;
+    left: 4rem;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    line-height: 35px;
+}
+    </style>
+    <script>
+    function GetFriendList(success) {
+        if (typeof (success) != "function") {
+            alert("参数错误");
+            return;
+        }
+        $.post("/Account/GetFriendList", null, function (data) {
+            if (data.code == "1") {
+                success(data.msg);
+            }
+        }, "json");
+        GetLocalFriend();
+    }
+    function GetLocalFriend(text) {
+        
+        var templist = localStorage.getItem("friendList");
+        if (templist == null) {
+            return;
+        }
+        var list = JSON.parse(templist);
+        
+        var flist = [];
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].Type == 1) {
+                
+                if (text) {
+                    if (list[i].Remark.indexOf(text) != -1) {
+                        flist.push("<div class='contact-item'><img onclick='uheadClick(\"" + list[i].ID + "\")' class='contact-img' src='" + list[i].headimg + "' /><p onclick=\"userClick('" + list[i].ID + "')\">" + list[i].Remark + "</p></div>");
+                    }
+                } else {
+                    flist.push("<div class='contact-item'><img onclick='uheadClick(\"" + list[i].ID + "\")' class='contact-img' src='" + list[i].headimg + "' /><p onclick=\"userClick('" + list[i].ID + "')\">" + list[i].Remark + "</p></div>");
+                }
+            }
+        }
+        $("#flist").html(flist.join(""));
+    }
+    function uheadClick(id) {
+        location.href = "/Friend/FriendInfo/"+id;
+    }
+    function userClick(id) {
+        return location.href = "/Chat/ToOne/" + id;
+    }
+    function searchInput() {
+
+        var text = $("#searchContent").val();
+        setTimeout(function () {
+            var text2 = $("#searchContent").val();
+            if (text == text2) {
+                console.log(text);
+                GetLocalFriend(text);
+            }
+        }, 500);
+    }
+    </script>
+    <script>
+        $(function () {
+            GetLocalFriend();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrap vh100 of-hide">
+        <div class="Header">
+            <span>通讯录</span>
+            <a class="cross halfTop" onclick="location.href = '/Friend/FindFriend'"></a>
+        </div>
+
+        <div class="addressbook-search">
+            <input class="txt" id="searchContent" type="text" placeholder="搜索" oninput="searchInput()"/>
+        </div>
+        <div class="same-pt-wrap2 same-ofauto-wrap same-pb-wrap">
+            <div class="contactlist">
+                <div class="contact-item" onclick="location.href='/Friend/NewFriend'">
+                    <img class="contact-img" src="/img/common/newfriends.png" alt="" />
+                    <p>新的朋友</p>
+                    @if (frc > 0)
+                    {
+                        <span class="msgcount">@frc</span>
+                    }
+                </div>
+                <div class="contact-item"  onclick="location.href='/Chat/GroupList'">
+                    <img class="contact-img" src="/img/common/groupChat.png" alt="" />
+                    <p>群聊</p>
+                </div>
+            </div>
+            <div class="divide"></div>
+            <div class="contactlist" id="flist">
+               
+                   
+                
+            </div>
+        </div>
+        <!--共用的底部菜单-->
+        @Html.Action("Footer","Account",new { id=2})
+    </div><!--wrap-->
+</body>
+</html>

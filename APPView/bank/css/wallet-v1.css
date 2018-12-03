@@ -1,0 +1,327 @@
+.uinn-at4 {
+    padding: 2.69em 0.5em 0em !important;
+}
+.uinn-4a {
+    padding-top: 2.69em !important;
+}
+.uinn-a4 {
+    padding: 2.69em .5em 0 !important;
+}
+
+.res-avator {
+    background-image: url(../img/avator.png);
+}
+.c-bad {
+    background-color: #bad538;
+}
+.c-faa {
+    background-color: #faa701;
+}
+.c-ffe {
+    background-color: #ffe400;
+}
+.c-00a {
+    background-color: #00adef;
+}
+.c-4e6 {
+    background-color: #4e6cbc;
+}
+.uinn-out {
+    padding: 6% 0.8em 1.3em 0.32em;
+}
+.t-686 {
+    color: #686868;
+}
+.umwh-m {
+    min-height: 1.875em;
+    min-width: 1.875em;
+}
+.uinn-m {
+    padding: 1em 0.78em 1em 1.25em;
+}
+.uinn-mtxt {
+    padding-left: 1.6em;
+}
+.wallet-header-txt {
+    padding-left: 0.75em;
+    font-size: 0.90em !important;
+    color: white;
+}
+.wallet-header-num {
+    margin-top: 6%;
+    padding-left: 0.15em;
+    font-size: 3.8em !important;
+    color: white;
+}
+.umar-avator {
+    margin-top: 0.7em;
+}
+.umar-lname {
+    margin-left: 0.5em;
+}
+.umwh-avator {
+    min-height: 5.0em;
+    min-width: 5.0em;
+}
+.uc-a2 {
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em
+}
+.ub-a2 {
+    border: 1px solid #fff;
+}
+/*
+ * 
+ */
+.wlt-btn {
+    min-height: 2em;
+    min-width: 3.6em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    box-pack: center;
+}
+.tixian-txt {
+    font-size: 1.0em;
+    color: #6D6D6D;
+}
+.wallet-btn {
+    width: 100%;
+    /*
+     position: absolute;
+     bottom: 0;*/
+
+}
+.wallet-sty {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.wallet-sub {
+    width: 33.33%;
+}
+.wallet-num {
+    width: 100%;
+    color: #EB0810;
+    font-size: 1.36em !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.wallet-txt {
+    width: 100%;
+    color: #A8A8A8;
+    margin-top: 0.2em;
+    font-size: 0.75em !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.wallet-img {
+    width: 3.6em;
+    height: 3.6em;
+}
+.wallet-yongjin {
+    background-size: cover;
+    background-image: url('../img/wallet_yongjin@2x.png');
+}
+.wallet-jiangjin {
+    background-size: cover;
+    background-image: url('../img/wallet_jiangjin@2x.png');
+}
+.wallet-fabuzongjine {
+    background-size: cover;
+    background-image: url('../img/wallet_fabuzongjine@2x.png');
+}
+.wallet-qiangdaozongjine {
+    background-size: cover;
+    background-image: url('../img/wallet_qiangdaozongjine@2x.png');
+}
+.wallet-fulijifen {
+    background-size: cover;
+    background-image: url('../img/wallet_fulijifen@2x.png');
+}
+.wallet-fuyinjifen {
+    background-size: cover;
+    background-image: url('../img/wallet_fuyinjifen@2x.png');
+}
+.wallet-padd {
+    background-color: white;
+}
+.wallet-marg {
+    margin: 1.0em 0 1.0em 0; 
+}
+.wallet-height {
+    height: 2.22em;
+}
+.middle-height {
+    height: 2.0em;
+}
+/*
+ * head fixed
+ */
+.hdr-img {
+    background-image: url('../img/wallet_zhongxinbeijing@2x.png');
+}
+.up-top {
+    padding-top: 0.40em;
+}
+.up-bot {
+    padding-bottom: 0.40em;
+}
+.bc-headbg {
+    background-color: #00abeb;
+}
+.own-data {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+
+/*
+ * 下部分
+ */
+.res-width {
+    width: 1.88em;
+    height: 1.88em;
+}
+.lis-icon-s {
+    width: 2.2em;
+    margin: 0em 0.6em 0em 0px;
+    min-height: 2em;
+}
+.umar-at3 {
+    margin-top: 1.05em;
+}
+.tixian-padd {
+    padding: 0.6em 0.75em 0.5em 1.0em;
+}
+.tixian-float-right {
+    float: right;
+}
+.tixian-float-right a {
+    color: #A2A2A2;
+}
+.c-wh {
+    background-color: white;
+}
+.wallet-width {
+    width: 1.88em;
+    height: 1.88em;
+}
+.wallet-tixian {
+    background-image: url('../img/wallet_tixian@2x.png');
+}
+/*浮动层*/
+.fixed {
+    position: fixed;
+    z-index: 10000;
+}
+.umar-mar1 {
+    margin-right: 0.625em;
+}
+.mine-data {
+    font-size: 0.88em;
+    color: white;
+    padding-right: 0.5em;
+}
+
+.wallet-header-padd {
+    padding: .72em 1em .72em 0;
+    margin: 0;
+}
+#header {
+    background-size: cover;
+    background-image: url('../img/wallet_zhongxinbeijing_top@2x.png');
+}
+.usr-bg {
+    background-size: cover;
+    background-image: url('../img/wallet_zhongxinbeijing_bottom@2x.png');
+}
+/*
+ * 当页面可见宽度大于1400px小于1537px时 ipad mini2 ipad mini4
+ */
+@media all and (min-width: 1290px) and (max-width: 1537px) {
+
+    .usr-cont {
+        height: 671px;
+        width: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1100px小于1281px时 iphone 6s
+ */
+@media all and (min-width: 1100px) and (max-width: 1281px) {
+
+    .usr-cont {
+        height: 559px;
+        width: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于900px小于1081px时 1080p iphone6s
+ */
+@media all and (min-width: 753px) and (max-width: 1081px) {
+
+    .usr-cont {
+        height: 472px;
+        width: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ * 0.437
+ */
+@media all and (min-width: 650px) and (max-width: 751px) {
+
+    .usr-cont {
+        height: 328px;
+        width: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 500px) and (max-width: 641px) {
+
+    .usr-cont {
+        width: 100%;
+        height: 280px;
+    }
+
+}

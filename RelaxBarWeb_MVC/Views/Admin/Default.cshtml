@@ -1,0 +1,261 @@
+﻿
+<link href="~/css/Calendar.css" rel="stylesheet" />
+<style>
+    .remarkdiv ul li {list-style-type:none;float:left;padding:0 20px;}
+    .remarkdiv ul li span{
+        display:inline-block;
+        border:1px solid black;
+        width:20px;
+        height:10px;
+    }
+    .allpay{width:24.28%!important;font-size:14px;border-right: 1px dotted #ddd; margin-bottom: 10px;}
+    .allpay:last-child {border: none;}
+    .allpay span{color:#337ab7}
+    .allpay2{width:20%!important;font-size:14px;border-right: 1px dotted #ddd; margin-top: 10px;}
+    .allpay2:last-child {border: none;}
+    .allpay2 h3{color:#337ab7;}
+    .recharge{
+        /*border:1px solid #c3d9ff;*/
+        width:22.28%!important;
+        border-radius:5px;
+        font-size:14px;
+        margin-left:5px;
+        border-right: 1px dotted #ddd; margin-bottom: 10px;
+    }
+    .recharge:last-child {border: none;}
+
+
+
+</style>
+<script>
+    function getTotalInOut() {
+        $.post("GetTotalInOut", "", function (data) {
+            $(".totalOut").text("-" + data.out);
+            $(".totalIn").text("+" + data.in);
+            $(".totalredOut").text("-" + data.redout);
+            $(".totalredIn").text("+" + data.redin);
+        }, "json")
+    }
+    function getRechargeTotal() {
+        $.post("GetRechargeTotal", "", function (data) {
+            $(".balance_count").text(data.BalanceCount);
+            //$(".balance_Rechargetotal").text(data.BalanceRechargeVal); //充值金额
+            $(".balance_Storedtotal").text(data.BalanceStoredVal); //储值金额
+            $(".balance_paycount").text(data.BalancePayCount);
+            $(".balance_payval").text(data.BalancePayVal);
+        }, "json")
+    }
+    function GetLog() {
+        waiting();
+        $.post("GetLogList", function (data) {
+          //  console.log(data.list);
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+                for (var i = 0; i < list.length; i++) {
+                    temp.push("<tr><td>" + list[i].Remark + "</td><td>" + ChangeDateFormat(list[i].CreateTime) + "</td></tr>");
+                }
+                $("#logbody").html(temp.join(""));
+               // $('body').css('overflow', 'hidden');
+                waitingHide();
+            }
+        }, "json");
+    }
+
+   // function add0(m) { return m < 10 ? '0' + m : m }
+    function ChangeDateFormat(jsondate) {
+        jsondate = jsondate.replace("/Date(", "").replace(")/", "");
+        var date = new Date(parseInt(jsondate, 10));
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var d = date.getDate() < 10 ? "0" + (date.getDate()) : date.getDate();
+        var h = date.getHours() < 10 ? "0" + (date.getHours()) : date.getHours();
+        var mm = date.getMinutes() < 10 ? "0" + (date.getMinutes()) : date.getMinutes();
+        var s = date.getSeconds() < 10 ? "0" + (date.getSeconds()) : date.getSeconds();
+        return y + '-' + m + '-' + d + ' ' + h + ':' + mm + ':' + s;
+    };
+    $(function () {
+        getTotalInOut();
+        getRechargeTotal();
+        GetLog();
+    });
+
+
+   
+     
+</script>
+@*<div class="col-md-6 panel panel-primary" style="padding:0;">
+    <div class="panel-heading">
+        用户活跃度
+    </div>
+    <div class="panel-body" style="padding:0;">
+        <canvas id="canvas" height="450" width="600" ></canvas>
+        <div>
+            <div class="remarkdiv">
+                <ul>
+                    <li><span style="background-color:rgba(151,187,205,1)"></span>日活跃人数</li>
+                    <li><span style="background-color:rgba(220,220,220,1)"></span>新增用户</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>*@
+<div class="col-md-11">
+    @*<div class="panel panel-default" style="padding:0;margin-left:2px">
+        <div class="panel-heading form-inline" id="top">
+            公元 <select class="form-control"></select> 年 <select class="form-control"></select> 月 农历<span></span>年 [ <span></span>年 ] <input type="button" class="btn btn-default" value="今天" title="点击后跳转回今天" />
+        </div>
+        <div class="panel-body" id="cal">
+            <ul id="wk">
+                <li>一</li>
+                <li>二</li>
+                <li>三</li>
+                <li>四</li>
+                <li>五</li>
+                <li><b>六</b></li>
+                <li><b>日</b></li>
+            </ul>
+            <div id="cm"></div>
+            <div id="bm"></div>
+        </div>
+    </div>*@
+    @*<div class="panel panel-default" style="padding:0;margin-left:2px;">
+        <div class="panel-heading form-inline" id="top"></div>
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">
+                <li class="allpay"><h4 class="totalIn">0</h4><span>总收入</span></li>
+                <li class="allpay"><h4 class="totalOut">0</h4><span>总支出</span></li>
+                <li class="allpay"><h4>0</h4><span>总访问量</span></li>
+                <li class="allpay"><h4>0</h4><span>总分享次数</span></li>
+            </ul>
+            <div id="cm"></div>
+            <div id="bm"  style="height:100%;">
+                <ul id="wk" style="height:100%;">
+                    <li class="allpay2"><h4 class="totalredOut">0</h4>发福包总额</li>
+                    <li class="allpay2"><h4 class="totalredIn">0</h4>收福包总额</li>
+                    <li class="allpay2"><h4>@Html.Raw(ViewData["newuser"])</h4>昨日新增福星</li>
+                    <li class="allpay2"><h4>@Html.Raw(ViewData["newshopuser"])</h4>新增福将</li>
+                    <li class="allpay2"><h4>@Html.Raw(ViewData["newagentuser"])</h4>新增福相</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" style="padding:0;margin-left:2px;">
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">
+                <li class="recharge"><span>储值会员数</span><h4 class="balance_count">0</h4></li>
+                <li class="recharge"><span>会员总金额(元)</span><h4 class="balance_total">0</h4></li>
+                <li class="recharge"><span>储值支付会员数</span><h4 class="balance_paycount">0</h4></li>
+                <li class="recharge"><span>储值支付金额(元)</span><h4 class="balance_payval">0</h4></li>
+            </ul>
+        </div>
+    </div>*@
+    <div class="panel panel-default" style="padding:0;margin-left:2px;">
+        @*<div class="panel-heading form-inline" id="top"></div>*@
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">
+                <li class="redtotal"><h4>@Html.Raw(ViewData["systemRedpack"])</h4><span>系统发福包总数</span></li>
+                <li class="redtotal"><h4>@Html.Raw(ViewData["singleRedpack"])</h4><span>用户发福包总数</span></li>
+                <li class="redtotal"><h4>@Html.Raw(ViewData["userRedpack"])</h4><span>已收福包数</span></li>
+                <li class="redtotal"><h4>@Html.Raw(ViewData["activedRedpack"])</h4><span>待收福包数</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">
+                <li class="totalsum"><h4 class="">@Html.Raw(ViewData["SendReds"])</h4>发福包总额</li>
+                <li class="totalsum"><h4 class="">@Html.Raw(ViewData["RecReds"])</h4>收福包总额</li>
+                <li class="totalsum"><h4 class="balance_Rechargetotal">@ViewData["OtherPay"]</h4>第三方支付总金额</li>
+                <li class="totalsum"><h4 class="balance_Storedtotal">0</h4>储值总金额</li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default" style="padding:0;margin-left:2px;">
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">
+                <li class="usercount"><h4>@Html.Raw(ViewData["totalUser"])</h4><span>会员总数</span></li>
+                <li class="usercount"><h4>@Html.Raw(ViewData["NowUser"])</h4><span>今日新增会员</span></li>
+                <li class="usercount"><h4 class="">@Html.Raw(ViewData["newuser"])</h4><span>昨日新增福星</span></li>
+                <li class="usercount"><h4 class="">@Html.Raw(ViewData["newshopuser"])</h4><span>昨日新增福将</span></li>
+                <li class="usercount"><h4 class="">@Html.Raw(ViewData["newagentuser"])</h4><span>昨日新增福相</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default" style="padding:0;margin-left:2px;">
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">  @*//class="totalIn"  ;class="totalOut"*@
+                <li class="alltotal"><h4 >@Html.Raw(ViewData["TotalIn"])</h4><span>总收入</span></li>
+                <li class="alltotal"><h4 >@Html.Raw(ViewData["TotalOut"])</h4><span>总支出</span></li>
+                <li class="alltotal"><h4>@Html.Raw(ViewData["loginCount"])</h4><span>总访问量</span></li>
+                <li class="alltotal"><h4>@Html.Raw(ViewData["FUIDCount"])</h4><span>总推荐数</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-md-12" id="userlist">
+    <div class="col-md-6">
+        <div style='width:100%;text-align:center;background-color:#337ab7;color:#fff;height:30px;line-height:30px'>操作日志</div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>描述</th>
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody id="logbody">
+                @*<tr>
+                    <td>管理员操作编号了</td>
+                    <td>2018-9-30 11:02:12</td>
+                </tr>*@
+            </tbody>
+        </table>
+    </div>
+   
+    <nav aria-label="Page navigation">
+        <ul class="pagination"></ul>
+    </nav>
+</div>
+    
+
+@*<script src="~/js/Calendar.js"></script>*@
+<script src="/js/Chart.js"></script>
+@*<script src="/js/Chart.js"></script>
+<script>
+	var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var lineChartData = {
+			labels : [@Html.Raw(ViewData["lable"])],
+			datasets : [
+				{
+					label: "新增用户",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [@Html.Raw(ViewData["newusers"])]
+				},
+				{
+					label: "活跃人数",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [@Html.Raw(ViewData["loginCount"])]
+				}
+			]
+
+		}
+		function create() {
+		    var ctx = document.getElementById("canvas").getContext("2d");
+		    window.myLine = new Chart(ctx).Line(lineChartData, {
+		        responsive: true
+		    });
+		}
+	
+		create();
+
+</script>*@

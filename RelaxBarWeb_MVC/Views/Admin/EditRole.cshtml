@@ -1,0 +1,6 @@
+﻿@model RelexBarDLL.Role
+<div class="col-md-10 col-md-offset-2 form-group editItem">
+    <div class="form-inline">@Html.HiddenFor(m => m.ID)
+        <div class="col-md-3">角色名称：</div>@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+</div>

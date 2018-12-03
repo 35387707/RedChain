@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../order/css/detail-v1.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="content" class="ub ub-ver content">
+
+                <!-- <div class="good-list">
+                    <ul class="ub ub-ac bill-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 bill-txt">
+                            下单时间: 2018-07-18
+                        </li>
+                        <li class="bill-type">
+                            卖家已发货
+                        </li>
+                    </ul>
+                    <div class="ub list-style">
+                        <div class="icon-style">
+                            <img src="../order/img/proimgs1.jpg" />
+                        </div>
+                        <div class="ub-f1 goods-padd">
+                            <div class="nick-padd ub">
+                                <div class="user-nick">
+                                    三星黑科技只能语音音箱
+                                </div>
+                            </div>
+                            <div class="user-note">
+                               如此简约，而不简单
+                            </div>
+                        </div>
+                        <div class="price-padd">
+                            <div class="nick-padd ub">
+                                <div class="price-num">
+                                    ￥200
+                                </div>
+                            </div>
+                            <div class="sgl-num">
+                                x 1
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="ub ub-ac pay-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 pay-txt"></li>
+                        <li class="pay-detail">
+                            <span>实付: <a class="pay-num">￥200</a>&nbsp;</span><a class="pay-total">共1件商品</a>
+                        </li>
+                    </ul>
+                </div> -->
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../order/js/orderList.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                appcan.frame.setBounce({
+                    bounceType : [0, 1],
+                    startPullCall : function(type) {
+
+                    },
+                    downEndCall : function(type) {
+
+                    },
+                    upEndCall : function(type) {
+
+                        if (type == 0) {
+
+                            setTimeout(function(type) {
+
+                                getOrderList(localStorage.getItem("uid"), 2, 1, 'refresh');
+
+                            }, 1000);
+
+                        } else if (type == 1) {
+
+                            setTimeout(function(type) {
+
+                                //judgCurPage(0, 20, 'fuxing');
+                                judgCurPage(localStorage.getItem("uid"), 20, 2, 'order');
+
+                            }, 1000);
+
+                        }
+
+                    },
+                    color : '#FFFFFF'
+                });
+
+                appcan.window.subscribe('getOrderList', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        if (msg == 2 || msg == '2') {
+
+                            var index = $('#content').children("div:last-child").index();
+
+                            if (index == -1) {
+                                getOrderList(localStorage.getItem("uid"), 2, 1, 'order');
+                            }
+
+                        }
+
+                    }
+
+                });
+
+            });
+        </script>
+    </body>
+</html>

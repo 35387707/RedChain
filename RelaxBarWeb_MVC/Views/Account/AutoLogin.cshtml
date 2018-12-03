@@ -1,0 +1,23 @@
+﻿<script>
+    function login(){
+        var cookie = android.getCookie();
+        try {
+            if (cookie == null || cookie == "") {
+                return;
+            }
+            cookie = cookie.substring(cookie.indexOf('token=') + 6, cookie.length);
+            if (cookie.indexOf(';') != -1) {
+                cookie = cookie.substring(0, cookie.indexOf(';'));
+            }
+            location.href = "@ViewData["backUrl"]?token=" + cookie;
+
+        } catch (e) {
+            alert("参数不正确");
+        }
+    }
+    if (typeof (android) == "object") {
+        login();
+    } else {
+        alert("参数不正确");
+    }
+</script>

@@ -1,0 +1,317 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+    <script src="/scripts/jquery-1.10.2.min.js"></script>
+    <script src="/scripts/jquery.cookie.js"></script>
+    <script>
+        var ws;
+        var uid, token;
+        var message = {};
+        message.Api = '';
+        message.Sid = '';
+        message.Rid = '';
+        message.Gid = '';
+        message.TType = '1';
+        message.Type = '1';
+        message.Content = '';
+        message.Status = '1';
+
+        var domain = window.location.host;
+        $().ready(function () {
+            $('#txtDomain').val(domain);
+            $('#btnReset').click(function () {
+                domain = $('#txtDomain').val();
+            })
+
+            $('#conn').click(function () {
+                //ws = new WebSocket('ws://' + window.location.hostname + ':' + window.location.port + '/Services/testWS.ashx?user=' + $("#user").val());
+                //ws = new WebSocket('ws://bg.dolphintech168.com/Service/ConWS?openid=' + $("#user").val());
+                ws = new WebSocket('ws://' + domain + '/IM/WSConnet?id=' + uid + '&token=' + token);
+
+                $('#msg').append('<p>正在连接</p>');
+
+                ws.onopen = function () {
+                    $('#msg').append('<p>已经连接</p>');
+                }
+                ws.onmessage = function (evt) {
+                    $('#msg').append('<p>' + evt.data + '</p>');
+                }
+                ws.onerror = function (evt) {
+                    $('#msg').append('<p>' + JSON.stringify(evt) + '</p>');
+                }
+                ws.onclose = function () {
+                    $('#msg').append('<p>已经关闭</p>');
+                }
+            });
+            $('#close').click(function () {
+                ws.close();
+            });
+
+            $('#send').click(function () {
+                message.Api = "sendToUser";
+                message.Rid = $('#recuser').val();
+                message.Content = $('#content').val();
+                message.Type = $('#msgtype').val();
+                wsSendmsg(JSON.stringify(message));
+            });
+
+            $('#login').click(function () {
+                $.post("http://" + domain + "/Account/DoLogin?before=&phone=" + $('#username').val() + "&pwd=" + $('#pwd').val() + "&remember=1&ostype&device=", "",
+                    function (data) {
+                        if (data.code == 1)
+                        {
+                            uid = data.user.ID;
+                            token = $.cookie('token');
+                            message.Sid = uid;
+                            $('#msg').append('<p>uid=' + uid + ';token=' + token + '</p>');
+                        }
+                        else
+                        {
+                            alert("登陆失败：" + data.msg);
+                        }
+                },"json")
+            });
+
+            $('#regist').click(function () {
+                $.post("http://" + domain + "/Verifycode/getVerifyCode?t=2&r=" + $('#nusername').val() + "&b=", "",
+                    function (data2) {
+                        if (data2 == 1) {
+                            $('#msg').append('<p>' + data2 + '</p>');
+
+                            $.post("http://" + domain + "/Account/DoRegist?code=6666&pwd=" + $('#npwd').val() + "&tjr=", "",
+                                function (data) {
+                                    if (data.code == 1) {
+                                        $('#msg').append('<p>' + data.msg + '</p>');
+                                    }
+                                    else {
+                                        alert("注册失败：" + data.msg);
+                                    }
+                                }, "json")
+                        }
+                        else {
+                            alert("发送验证码失败");
+                        }
+                    }, "json")
+            });
+
+            //发红包事件
+            var redmoneystr = "";
+            for (var i = 1; i <= 10; i+=1)
+            {
+                redmoneystr += "<option value='"+i+"'>" +i+ "</option>";
+            }
+            $('#redmoney').html(redmoneystr);
+            $('#sendred').click(function () {
+                $.post("http://" + domain + "/RedPacket/SendRedPacket?Redmoney=" + $('#redmoney').val() + "&Payment=0&title=" + $('#redtitle').val() + "&img=/img/open.png;&linkto=", "",
+                    function (data) {
+                        if (data.code == 1) {
+                            alert("发送成功：" + data.msg);
+                            $('#msg').append('<p>' + data.msg + '</p>');
+                        }
+                        else {
+                            alert("发送失败：" + data.msg);
+                        }
+                    }, "json")
+            });
+
+            $('#getreds').click(function () {
+                $.post("http://" + domain + "/RedPacket/GetPacketList", "",
+                    function (data) {
+                        if (data.code == 1) {
+                            $('#msg').append('<p>' + JSON.stringify(data.list) + '</p>');
+                        }
+                        else {
+                            alert("获取失败：" + data.msg);
+                        }
+                    }, "json")
+            });
+            $('#getreddetial').click(function () {
+                $.post("http://" + domain + "/RedPacket/GetRecPacketDetail?RID=" + $('#redid').val() + "&number=" + $('#rednum').val(), "",
+                    function (data) {
+                        if (data.code == 1) {
+                            $('#msg').append('<p>' + JSON.stringify(data.info) + '</p>');
+                        }
+                        else {
+                            alert("获取失败：" + data.msg);
+                        }
+                    }, "json")
+            });
+            $('#clickredpack').click(function () {
+                $.post("http://" + domain + "/RedPacket/ClickRedPacket?RID=" + $('#redid').val() + "&number=" + $('#rednum').val(), "",
+                    function (data) {
+                        if (data.code == 1) {
+                            $('#msg').append('<p>' + data.msg + '</p>');
+                        }
+                        else {
+                            alert("领取失败：" + data.msg);
+                        }
+                    }, "json")
+            });
+
+            $('#testapi').click(function () {
+                $.post("http://" + domain + "/" + $('#apiname').val() + "?" + $('#apidata').val(), "",
+                    function (data) {
+                        if (data.code == 1) {
+                            $('#msg').append('<p>API Return:【' + JSON.stringify(data) + '】</p>');
+                        }
+                        else {
+                            alert("获取失败：" + data.msg);
+                        }
+                    }, "json")
+            });
+        });
+        function wsSendmsg(msg) {
+            if (ws.readyState == WebSocket.OPEN) {
+                ws.send(msg);
+            }
+            else {
+                $('#tips').text('连接已经关闭');
+            }
+        }
+
+        function sendcmd(v) {
+            switch (v) {
+                case 0: wsSendmsg('{"cmd":"0"}'); break;
+                case 1: wsSendmsg('{"cmd":"1"}'); break;
+                case 2: wsSendmsg('{"cmd":"2","score":"' + $('#content').val() + '"}'); break;
+                case 3: wsSendmsg('{"cmd":"3","score":"' + $('#content').val() + '"}'); break;
+                case 4: wsSendmsg('{"cmd":"4","tid":"红牌"}'); break;
+                case 5: wsSendmsg('{"cmd":"5","x":"150","y":"300"}'); break;
+                case 6: wsSendmsg('{"cmd":"6","msg":"' + $('#content').val() + '"}'); break;
+                case 7: wsSendmsg('{"cmd":"7"},"zhuangkuai":"150","count":"36"}'); break;
+            }
+        }
+    </script>
+
+    <!--聊天模块-->
+    <script>
+        var datetime = "";
+        function Connet()
+        {
+            $('#btnconnet').hide();
+            $.ajax({
+                url: "http://" + domain + '/APPIM/Connet',  //请求的URL
+                timeout: 60000, //超时时间设置，单位毫秒
+                type: 'post',  //请求方式，get或post
+                //data: {},  //请求所传参数，json格式
+                dataType: 'json',//返回的数据格式
+                success: function (data) { //请求成功的回调函数
+                    if (data == 0)
+                        Connet();//理解连接第二次
+                    else if (data.code == -97)
+                    {
+                        alert(data.msg);
+                    }
+                    else
+                    {
+                        GetNewMsg();
+                    }
+                },
+                complete: function (XMLHttpRequest, status) { //请求完成后最终执行参数
+                    if (status == 'timeout') {//超时
+                        Connet();
+                    }
+                }
+            });
+        }
+
+        function GetNewMsg()
+        {
+            $.post("http://" + domain + "/Chat/GetMyRecMessage?date=" + datetime, "",
+                    function (data) {
+                        if (data.code == 1) {
+                            $('#msg').append('<p>GetMyRecMessage Return:【' + JSON.stringify(data) + '】</p>');
+                            datetime = data.timeStamp;
+                        }
+                        else {
+                            alert("获取失败：" + data.msg);
+                        }
+                    }, "json");
+            Connet();
+        }
+
+        function SendAjaxMsg()
+        {
+            $.post("http://" + domain + "/Chat/QueryMessages?TType=1&Rid=" + $('#recuserax').val() + "&Gid=&Type=" + $('#msgtypeax').val() + "&Content=" + $('#contentax').val(), "",
+                function (data) {
+                    if (data.code == 1) {
+                        $('#msg').append('<p>' + data.msg + '</p>');
+                    }
+                    else {
+                        alert("发送失败" + data.msg);
+                    }
+                }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <fieldset>
+            <legend>服务器地址</legend>
+            <input id="txtDomain" type="text" value="" />
+            <input id="btnReset" type="button" value="重连" />
+        </fieldset>
+        <fieldset>
+            <legend>注册</legend>
+            账号：<input id="nusername" type="text" />
+            密码：<input id="npwd" type="text" />
+            <input id="regist" type="button" value="注册" />
+        </fieldset>
+        <fieldset>
+            <legend>登陆</legend>
+            账号：<input id="username" type="text" />
+            密码：<input id="pwd" type="text" />
+            <input id="login" type="button" value="登陆" />
+        </fieldset>
+        <fieldset>
+            <legend>ajax聊天模块</legend>
+            <input id="btnconnet" type="button" value="连接IM" onclick="Connet()" />
+            <br/>
+            <input id="contentax" type="text" placeholder="文本内容" />
+            <input id="recuserax" type="text" placeholder="接收者ID" />
+            <select id="msgtypeax"><option value="0">普通消息</option><option value="10">好友申请</option><option value="19">打招呼</option></select><input id="sendax" type="button" value="发送消息" onclick="SendAjaxMsg()" /><br />
+        </fieldset>
+        <fieldset>
+            <legend>发红包</legend>
+            金额：<select id="redmoney"></select>
+            广告文字标题：<input id="redtitle" type="text" />
+            <input id="sendred" type="button" value="发红包" />
+            <br/>            
+            红包ID：<input id="redid" type="text" placeholder="redid" />
+            <input id="getreds" type="button" value="获取红包列表" />           
+            <input id="getreddetial" type="button" value="红包详情" />
+            <br />            
+            红包Number：<input id="rednum" type="text" />
+            <input id="clickredpack" type="button" value="领取红包" />
+        </fieldset>
+        <fieldset>
+            <legend>调接口</legend>
+            接口名称：<input id="apiname" type="text" />
+            参数：<input id="apidata" type="text" />
+            <input id="testapi" type="button" value="测试" />
+        </fieldset>
+    </div>
+    <br />
+    <div>
+        <input id="user" type="text" />
+        <input id="conn" type="button" value="连接" />
+        <input id="close" type="button" value="关闭" /><br />
+        <span id="tips"></span>
+        <input id="content" type="text" />
+        <input id="recuser" type="text" placeholder="接收者ID" />
+        <select id="msgtype"><option value="0">普通消息</option><option value="10">好友申请</option><option value="19">打招呼</option></select><input id="send" type="button" value="发送消息" /><br />
+        <br />
+        <div id="msg" style="height:300px;overflow:auto">
+        </div>
+    </div>
+</body>
+</html>

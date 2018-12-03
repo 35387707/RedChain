@@ -1,0 +1,174 @@
+/*
+ * normal
+ */
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+#page_0 {
+    width: 100%;
+    height: 100%;
+}
+#content {
+    width: 100%;
+    height: 100%;
+}
+/*
+ * style
+ */
+.bc-text-yb {
+    color: #D2D2D2;
+}
+.yb-btn {
+    min-height: 100%;
+    min-width: 33.33%;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    box-pack: center;
+    font-size: 1.7em;
+    padding: 0.1em 0;
+}
+.ub-yb {
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+}
+.fa-street-view:before {
+    content: "\f21d";
+}
+.bc-head-yb {
+    background-color: green;
+}
+.bc-footer-yb {
+    background-color: green;
+}
+.fa-yb {
+    font-size: 1.5em
+}
+
+/*
+ * middle
+ */
+.res-avator {
+    background-image: url(../img/avator.png);
+}
+.usr-img {
+    min-height: 2em;
+    min-width: 2.5em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    box-pack: center;
+}
+
+.usr-img .rnd-img {
+    min-height: 2.0em;
+    min-width: 2.0em;
+    line-height: 2.0em;
+    --webkit-border-radius: 2.0em;
+    border-radius: 2.0em;
+    background-size: cover;
+    background-image: url(../img/avator.png);
+}
+
+.uinn-out {
+    width: auto;
+    margin: 0 auto;
+    padding: 0.10em 0.5em;
+    background-color: white;
+    --webkit-border-radius: 2.4em;
+    border-radius: 2.4em;
+}
+.area-color {
+    color: #636363;
+}
+.user-color {
+    color: #818181;
+    font-size: 0.8em;
+}
+.umwh-m {
+    min-height: 1.875em;
+    min-width: 1.875em;
+}
+.uinn-m {
+    padding: 1em 0.78em 1em 1.25em;
+}
+.uinn-mtxt {
+    padding-left: 1.6em;
+}
+.uinn-avator {
+    padding: 0.3em 0.5em 0.3em 0.4em;
+}
+.umar-avator {
+    margin-top: 0.3em;
+}
+.umar-lname {
+    margin-left: 0.5em;
+}
+.umwh-avator {
+    min-height: 2.3em;
+    min-width: 2.3em;
+}
+.img-mrg-r {
+    margin-right: 0.15em;
+}
+.stat-sty {
+    background-color: pink;
+    --webkit-border-radius: 4.0em;
+    padding: 0.2em 0.36em;
+    border-radius: 4.0em;
+}
+.stat-1 {
+
+}
+
+.uc-a2 {
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em
+}
+.ub-a2 {
+    border: 1px solid #fff;
+}
+.hdr-pad {
+    padding: .72em 1em .72em 0;
+    margin: 0;
+    font-size: 0.96em !important;
+    font-style: normal;
+    color: #7B7B7B;
+}
+.footer-uinn {
+    padding: 0.5em 0;
+    margin: 0;
+}
+#header {
+    background-color: white;
+}
+#header h1 {
+    font-size: 0.96em !important;
+    font-style: normal;
+    color: #7B7B7B;
+}
+#footer {
+    background-color: white;
+    border-bottom-color: 1px solid gray;
+}
+.btn-color-1 {
+    color: #F3B627;
+}
+.btn-color-2 {
+    color: #FF8B98;
+}
+.btn-color-3 {
+    color: #32A6E3;
+}

@@ -1,0 +1,37 @@
+﻿@model List<RelexBarDLL.Users>
+    @{ 
+        var ubll = new RelexBarBLL.UsersBLL();
+    }
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        @*<td>@Model[i].AreaCode</td>*@
+        <td>(@Model[i].AreaCode)@Model[i].Phone</td>
+        <td><img src="@Model[i].HeadImg1" style="width:30px" /></td>
+        @*<td>@Model[i].Email</td>*@
+        <td>@Model[i].TrueName</td>
+        <td>@((Model[i].Sex == null || Model[i].Sex == (int)RelexBarBLL.Common.enSex.Man) ? "男" : "女")</td>
+        <td>@(Model[i].UserType==(int)RelexBarBLL.Common.enUserType.User?"福星":(Model[i].UserType == (int)RelexBarBLL.Common.enUserType.Shop?"福将":"福相"))</td>
+        <td>@Model[i].CardNumber @*<br/><a href="javascript:void()" onclick="showteam('@Model[i].ID')">查看他的团队</a>*@ </td>
+        <td>@Model[i].Balance</td>
+        <td>@Model[i].TotalScore</td>
+        @*<td><span class="btn-link" onclick="bankShow('@Model[i].ID')"><i class="glyphicon glyphicon-zoom-in"></i>查看</span></td>*@
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CUStatus('@Model[i].ID',this)" />
+        </td>
+        @*<td>
+            @(Model[i].RealCheck == (int)RelexBarBLL.Common.enRealCheckStatus.未验证 ? "未验证" :
+            (Model[i].RealCheck == (int)RelexBarBLL.Common.enRealCheckStatus.审核中 ? "审核中" : (Model[i].RealCheck == (int)RelexBarBLL.Common.enRealCheckStatus.已验证 ? "已通过" : "不通过")))
+        </td>*@
+        <td>@(Model[i].FID.HasValue && Model[i].FID.Value!=Guid.Empty? ubll.GetUserById(Model[i].FID.Value).Phone : "无")</td>
+        <td>@Model[i].CreateTime</td>
+        <td>@Model[i].LastLoginTime</td>
+        <td>
+            @*<span class="btn-link" onclick="EditUser('@Model[i].ID')"><i class="glyphicon glyphicon-edit"></i>编辑</span>
+            <br />*@
+            <span class="btn-link" onclick="GetManager('UserDetailManager/@Model[i].ID')" style="cursor:pointer"><i class="glyphicon glyphicon-eye-open"></i>查看</span>
+            @*<a onclick="GetManager('UserDetailManager/@Model[i].ID')" style="padding-left:30px">查看</a>*@
+        </td>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

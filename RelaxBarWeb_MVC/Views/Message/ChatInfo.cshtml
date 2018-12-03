@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.Users
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>聊天信息</title>
+  @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/group.css" />
+    <script>
+        function isTop(e) {
+            var isTop = 0;
+            isTop = ($(e).hasClass("switch-on")) ? 0 : 1;
+            $.post("/Chat/UpdateIsTop", "FUID=@Model.ID&isTop=" + isTop, function (data) {
+                if (data.code != "1") {
+                    if (isTop == 0) {
+                        $(e).removeClass("switch-off");
+                        $(e).addClass("switch-on");
+                    } else {
+                        $(e).removeClass("switch-on");
+                        $(e).addClass("switch-off");
+                    }
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap of-hide min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>聊天信息</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <ul class="memberlist clearf">
+                <li class="member">
+                    <img class="member-img" src="@Model.HeadImg1"  onclick="location.href = '/Friend/FriendInfo/@Model.ID'"/>
+                    <p>@Model.Name</p>
+                </li>
+                <li class="member" onclick="location.href='/Chat/AddFriendToNewGroup/@Model.ID'">
+                    <div class="member-bgImg-wrap">
+                        <i class="member-addImg"></i>
+                    </div>
+                </li>
+                <!--<li class="member">
+                    <div class="member-bgImg-wrap">
+                        <i class="member-reduceImg"></i>
+                    </div>
+                </li>-->
+            </ul>
+            <ul class="enter-itemlist group-mt-1"  onclick="location.href = '/Chat/SearchChatMessageRecord/@Model.ID?param=UID'">
+                <li class="enter-item">
+                    <span>查找聊天记录</span>
+                    <i class="gt bgSR halfTop"></i>
+                </li>
+            </ul>
+            <ul class="enter-itemlist group-mt-1">
+                <li class="enter-item">
+                    <span>置顶聊天</span>
+                    <div class="switch switch-@(ViewData["isTop"].ToString()=="1"?"on":"off") halfTop" onclick="isTop(this)">
+                        <span class="move move-@(ViewData["isTop"].ToString()=="1"?"on":"off")"></span>
+                    </div>
+                </li>
+                <li class="enter-item">
+                    <span>消息免打扰</span>
+                    <div class="switch switch-off halfTop">
+                        <span class="move move-off"></span>
+                    </div>
+                </li>
+            </ul>
+            @*<ul class="enter-itemlist group-mt-1">
+                <li class="enter-item">
+                    <span>清空聊天记录</span>
+                </li>
+            </ul>*@
+        </div>
+
+        <div class="blackmask">
+            <div class="mask-main-wrap">
+                <div class="alert-block">
+                    <p class="alert-remind">确定删除和小乔的聊天记录吗？</p>
+                    <p class="alert-confirm"><a class="ab-mr" href="javascript:void(0);">取消</a><a class="color-r" href="javascript:void(0);">清空</a></p>
+                </div>
+            </div>
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

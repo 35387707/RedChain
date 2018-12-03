@@ -1,0 +1,22 @@
+﻿@model List<RelexBarDLL.BankList>
+@if (Model != null && Model.Count > 0)
+{
+    for (int i = 0; i < Model.Count; i++)
+    {
+
+        <tr>
+            <th>@Model[i].BankName</th>
+            <th>@Model[i].BankZhiHang</th>
+            <th>@Model[i].BankAccount</th>
+            <th>@Model[i].BankUser</th>
+
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <th colspan="4" style="text-align:center"> 暂无数据 </th>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

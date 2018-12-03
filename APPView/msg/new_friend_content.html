@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../msg/css/add_friend.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+        <link rel="stylesheet" href="../index/css/msg-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+        <div class="up ub ub-ver" tabindex="0">
+
+            <div id="new_friend" class="ub ub-ver">
+
+                <!-- <div class="ub ubb bc-border msg-div">
+                <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul">
+                <li class="ub icon-li">
+                <div class="ub-img sys-style say-img"></div>
+                </li>
+                <li class="ub ub-f1 cont-li">
+                <div class="ub ub-ver ub-f1 cont-style">
+                <div class="msg-title">
+                <span>无尽感激</span>
+                </div>
+                <div class="msg-desc">
+                <span class="txt-normal">来自红连邂逅的人</span>
+                <span class="txt-spec">消逝</span>
+                </div>
+                </div>
+                <div class="ub ub-ver info-style">
+                <div class="info-temp"></div>
+                <div class="info-top">
+                <span>已添加</span>
+                </div>
+                <div class="info-bot"></div>
+                </div>
+                </li>
+                </ul>
+                </div>
+
+                <div class="ub ubb bc-border msg-div">
+                <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul">
+                <li class="ub icon-li">
+                <div class="ub-img sys-style say-img"></div>
+                </li>
+                <li class="ub ub-f1 cont-li">
+                <div class="ub ub-ver ub-f1 cont-style">
+                <div class="msg-title">
+                <span>无尽感激</span>
+                </div>
+                <div class="msg-desc">
+                <span class="txt-normal">来自红连邂逅的人</span>
+                <span class="txt-spec">消逝</span>
+                </div>
+                </div>
+                <div class="spec-middle">
+                <div class="ignore-btn">
+                忽略
+                </div>
+                </div>
+                <div class="spec-middle">
+                <div class="agree-btn">
+                同意
+                </div>
+                </div>
+                </li>
+                </ul>
+                </div>
+
+                <div class="ub ubb bc-border msg-div">
+                <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul">
+                <li class="ub icon-li">
+                <div class="ub-img sys-style say-img"></div>
+                </li>
+                <li class="ub ub-f1 cont-li">
+                <div class="ub ub-ver ub-f1 cont-style">
+                <div class="msg-title">
+                <span>无尽感激</span>
+                </div>
+                <div class="msg-desc">
+                <span class="txt-normal">来自红连邂逅的人</span>
+                <span class="txt-spec">消逝</span>
+                </div>
+                </div>
+                <div class="ub-pe ulev-2 spec-middle">
+                <div class="add-btn">
+                添加
+                </div>
+                </div>
+                </li>
+                </ul>
+                </div> -->
+
+                <!-- <div class="end-nope-number">
+                没有更多了
+                </div> -->
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/chat/tool.js"></script>
+        <script src="../js/chat/home.js"></script>
+        <script src="../js/chat/msg.js"></script>
+        <script src="../js/chat/chat.js"></script>
+        <script src="../js/chat/new.js"></script>
+        <script src="../js/chat/sys.js"></script>
+        <script src="../js/chat/say.js"></script>
+        <script src="../js/chat/srch.js"></script>
+        <script src="../index/js/msg.js"></script>
+        <script src="../msg/js/isrt.js"></script>
+        <script src="../msg/js/new.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                applyGetList(localStorage.getItem("uid"), 1, 'new_friend');
+
+                appcan.frame.setBounce(1, function(type) {
+
+                }, function(type) {
+
+                }, function(type) {
+
+                    setTimeout(function(type) {
+
+                        appcan.frame.resetBounce(1);
+
+                    }, 1000);
+
+                });
+
+                appcan.window.subscribe('getNewFriend', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var signJson = JSON.parse(msg);
+                        var count = $('#new_friend').children("div:last-child").index() + 1;
+                        if (signJson.newTmp > count) {
+                            
+                            applyGetList(localStorage.getItem("uid"), 1, 'new_friend');
+                            
+                        }
+
+                    }
+
+                });
+
+            });
+        </script>
+    </body>
+</html>

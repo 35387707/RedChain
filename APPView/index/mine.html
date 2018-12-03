@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../index/css/pers-v1.css">
+        <link rel="stylesheet" href="../index/css/mine-v1.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+            .no-dis {
+                display: none;
+            }
+        </style>
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh ub-ver bc-text-head ub ub-img1 ub-fh hdr-img">
+                <div class="own-data">
+
+                    <!-- <div class="ub fixed ub-fh bc-text-head up-top up-bot headbg">
+                    <div class="ub ub-fh" >
+                    <div class="uinput ub ub-f1 umar-mar1 uc-a"></div>
+                    <div class="ub nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ub-ac ub-img umar-l mine-data">
+                    个人资料
+                    </div>
+                    </div>
+                    </div>
+                    </div> -->
+
+                    <!-- <div class="ub fixed ub-fh bc-text-head headbg">
+                    <div class="ub ub-fh">
+                    <div class="index-mine" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                    <div class="index-txt no-dis">
+                    我的
+                    </div>
+                    </div>
+                    <h1 class="mine-right-padd ub-f1 ulev-3 ut-s tx-c font-normal sc-white">&nbsp;</h1>
+                    </div>
+                    </div> -->
+
+                    <div class="ub ub-f1 t-bla ub-ac uinn-out">
+                        <div id="HeadImg" ontouchstart="appcan.touch('btn-act')" class="personal-data">
+                            <!-- <div class="ub-img1 umwh-avator mine-round uc-a2 ub-a2"></div> -->
+                        </div>
+                        <div class="ub-f1 ub ub-ver user-height">
+                            <div class="user-top"></div>
+                            <div class="ub name-height">
+                                <div class="user-name" ontouchstart="appcan.touch('btn-act')">
+                                    <span id="TrueName" class="personal-data"></span>
+                                </div>
+                                <div class="ub ub-ver upgr-height">
+                                    <!-- <div class="upgr-top"></div> -->
+                                    <div class="upgr-bot">
+
+                                        <div class="stat-sty sty-mrg" ontouchstart="appcan.touch('btn-act')">
+                                            <div class="ub ub-ac">
+                                                <div class="ub ub-img little-icon-width user-icon-gray"></div>
+                                                <div class="little-txt ufm1 UserType" data-usertype="empty">
+                                                    福星
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="upgr-sty upgrape" ontouchstart="appcan.touch('btn-act')">
+                                            <div class="ub ub-ac">
+                                                <div class="upgr-txt">
+                                                    升级会员
+                                                </div>
+                                                <div class="ub ub-img upgr-arrow upgr-icon"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="margin-left upgr-sty adv-edit no-dis" ontouchstart="appcan.touch('btn-act')">
+                                            <div class="ub ub-ac">
+                                                <div class="upgr-txt">
+                                                    广告编辑
+                                                </div>
+                                                <div class="ub ub-img upgr-arrow upgr-icon"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vip-height FUserName no-dis">
+                                <!-- <div class="stat-sty" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub ub-ac">
+                                <div class="ub ub-img little-icon-width user-icon-gray"></div>
+                                <div class="little-txt ufm1" id="UserType" data-usertype="empty">
+                                福星
+                                </div>
+                                </div>
+                                </div> -->
+                                <div class="stat-sty" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="ub ub-ac">
+                                        <!-- <div class="ub ub-img little-icon-width user-icon-gray"></div> -->
+                                        <div class="little-txt">
+                                            推荐人: <a id="FUserName" data-fid=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="upgr-sty upgr-typ" ontouchstart="appcan.touch('btn-act')">
+                                <span>升级会员</span>
+                                </div> -->
+                            </div>
+                            <div class="vip-height guanggaofubao no-dis">
+                                <!-- <div class="stat-sty" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub ub-ac">
+                                <div class="ub ub-img little-icon-width user-icon-gray"></div>
+                                <div class="little-txt ufm1" id="UserType" data-usertype="empty">
+                                福星
+                                </div>
+                                </div>
+                                </div> -->
+                                <div class="stat-sty" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="ub ub-ac">
+                                        <!-- <div class="ub ub-img little-icon-width user-icon-gray"></div> -->
+                                        <div class="little-txt">
+                                            福包广告剩余数: <a id="MainTainRedCount" data-fid=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="upgr-sty upgr-typ" ontouchstart="appcan.touch('btn-act')">
+                                <span>升级会员</span>
+                                </div> -->
+                            </div>
+                            <div class="user-bot"></div>
+                        </div>
+                        <!-- <div ontouchstart="appcan.touch('btn-act')">
+                        <div class="qrcode-wrap">
+                        <img id="qrcode" src="../index/img/mine/index_mine_qrcode@2x.png"/>
+                        </div>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+
+            <!--content开始-->
+            <div id="content" class="ub-f1 tx-l">
+
+                <div class="ub ub-ver">
+
+                    <div class="ub-f1 ub ub-ver parent-padd">
+
+                        <div class="bc-border umar-at1 parent-radius">
+
+                            <div class="ub bill-padd ub-ae">
+                                <div class="ub ub-ver ub-f1 ub-pc bill-sub account-balance" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="ub-f1 mine-color bill-num" id="Balance">
+                                        0
+                                    </div>
+                                    <div class="bill-txt">
+                                        账户余额
+                                    </div>
+                                </div>
+                                <div class="ub ub-ver ub-f1 ub-pc bill-sub all-rewards" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="ub-f1 mine-color bill-num" id="AllRewards">
+                                        0
+                                    </div>
+                                    <div class="bill-txt">
+                                        总收入
+                                    </div>
+                                </div>
+                                <div class="ub ub-ver ub-f1 ub-pc bill-sub today-rewards" ontouchstart="appcan.touch('btn-act')">
+                                    <div class="bill-num" id="TodayRewards">
+                                        0
+                                    </div>
+                                    <div class="bill-txt">
+                                        今日收入
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- <div class="bc-border umar-at1 parent-radius">
+
+                        <div class="ub bill-padd ub-ae">
+                        <div class="ub ub-ver ub-f1 ub-pc bill-sub" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-f1 mine-color bill-num" id="RedBalance">
+                        0
+                        </div>
+                        <div class="bill-txt">
+                        福包贡献池
+                        </div>
+                        </div>
+                        <div class="ub ub-ver ub-f1 ub-pc bill-sub" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-f1 mine-color bill-num" id="FubaoShare">
+                        0
+                        </div>
+                        <div class="bill-txt">
+                        福包共享池
+                        </div>
+                        </div>
+                        <div class="ub ub-ver ub-f1 ub-pc bill-sub" ontouchstart="appcan.touch('btn-act')">
+                        <div class="bill-num" id="BigFubaoShare">
+                        0
+                        </div>
+                        <div class="bill-txt">
+                        超级福包共享池
+                        </div>
+                        </div>
+                        </div>
+
+                        </div> -->
+
+                    </div>
+
+                    <div class="mine-height"></div>
+
+                    <div class="ub-f1 ub ub-ver c-wh">
+
+                        <div class="mine-spl"></div>
+
+                        <div class="ub wallet-padd ub-ae">
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub shoudaofubao">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-gerenzhuye page_mine" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub page_mine" ontouchstart="appcan.touch('btn-act')">
+                                    个人主页
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub fubaofenrun">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-tuiguang qrcode" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub qrcode" ontouchstart="appcan.touch('btn-act')">
+                                    推广
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub tuijianliangli">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-qianbao wallet" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub wallet" ontouchstart="appcan.touch('btn-act')">
+                                    钱包
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mine-spl"></div>
+
+                        <div class="ub wallet-padd ub-ae">
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub shoudaofubao">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-dingdan order" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub order" ontouchstart="appcan.touch('btn-act')">
+                                    订单
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub fubaofenrun">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-zhuanzhang carry" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub carry" ontouchstart="appcan.touch('btn-act')">
+                                    转账
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub tuijianliangli">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-tuandui team" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub team" ontouchstart="appcan.touch('btn-act')">
+                                    团队
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mine-spl"></div>
+
+                        <div class="ub wallet-padd ub-ae">
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub shoudaofubao">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-shoucang collection" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub collection" ontouchstart="appcan.touch('btn-act')">
+                                    收藏
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub fubaofenrun">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-guanzhu follow" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub follow" ontouchstart="appcan.touch('btn-act')">
+                                    关注
+                                </div>
+                            </div>
+                            <div class="ub ub-ver ub-f1 ub-pc wallet-sub tuijianliangli">
+                                <div class="wallet-sty">
+                                    <div class="ub-img mine-img res-shezhi setting" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="mine-sub setting" ontouchstart="appcan.touch('btn-act')">
+                                    设置
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mine-spl"></div>
+
+                        <!-- <div class="guanggaofubao no-dis">
+
+                        <ul class="ub ubb bc-border ub-ac mine-uinn c-wh" ontouchstart="appcan.touch('btn-act')">
+                        <li class="lis-icon-s ub ub-ac ub-pc">
+                        <div class="ub-img res-choujiang res-width"></div>
+                        </li>
+                        <li class="ub-f1 ut-s mine-txt">
+                        <span class="UserType">...</span>广告福包
+                        </li>
+                        <li class="tain-txt">
+                        剩余福包数: <span id="MainTainRedCount"></span>
+                        </li>
+                        </ul>
+
+                        </div> -->
+
+                        <!-- <ul class="ub ubb bc-border ub-ac mine-uinn c-wh" id="luck" ontouchstart="appcan.touch('btn-act')">
+                        <li class="lis-icon-s ub ub-ac ub-pc">
+                        <div class="ub-img res-choujiang res-width"></div>
+                        </li>
+                        <li class="ub-f1 ut-s mine-txt">
+                        抽奖
+                        </li>
+                        </ul> -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../index/js/mine.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                uexWindow.setMultilPopoverFlippingEnbaled(1);
+
+                uexWindow.setWindowScrollbarVisible(false);
+
+                appcan.window.enableBounce();
+
+                appcan.window.showBounceView({
+                    type : 0,
+                    color : '#F95747',
+                    flag : 1
+                });
+
+                appcan.window.showBounceView({
+                    type : 1,
+                    color : '#F2F2F2',
+                    flag : 1
+                });
+
+                appcan.frame.setBounce(0, function(type) {
+                    //$("#pullstatus").html("开始下拉");
+                }, function(type) {
+                    //$("#pullstatus").html("下拉超过临界点,产生事件了！");
+                }, function(type) {
+                    //$("#pullstatus").html("松手了,产生事件了,开始更新数据！");
+                    setTimeout(function(type) {
+                        appcan.frame.resetBounce(type);
+                        //具体逻辑的入口
+                        getUserInfo(localStorage.getItem("uid"), 'refresh_mine');
+
+                    }, 1000);
+
+                }, '#F95747');
+
+                //setUserInfo(localStorage.getItem("uid"), JSON.parse(localStorage.getItem("UserInfo")), 'mine');
+
+                //getUserInfo(localStorage.getItem("uid"), 'mine');
+
+                appcan.window.subscribe('getMainList', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        if (msg == 3 || msg == '3') {
+
+                            var UserType = $('.UserType').data('usertype');
+                            debug(UserType);
+                            if (UserType == 'empty') {
+
+                                setUserInfo(localStorage.getItem("uid"), JSON.parse(localStorage.getItem("UserInfo")), 'mine');
+
+                            }
+
+                        }
+
+                    }
+
+                });
+
+                appcan.window.subscribe('refreshCash', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        getUserInfo(localStorage.getItem("uid"), 'mine');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('chgSucc', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        getUserInfo(localStorage.getItem("uid"), 'mine');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('upgrSucc', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var bodyWidth = localStorage.getItem("bodyWidth");
+                        var bodyHeight = localStorage.getItem("bodyHeight");
+                        localStorage.setItem("succ", 1);
+                        appcan.window.openPopover({
+                            name : 'succ',
+                            dataType : 0,
+                            url : "../pop/succ.html",
+                            top : 0,
+                            left : 0,
+                            width : bodyWidth,
+                            height : bodyHeight,
+                        });
+
+                        /*
+                         if (parseInt(msg) == 1) {
+                         $('.UserType').text('福将特权');
+                         $('.UserType').data('usertype', 1);
+                         } else if (parseInt(msg) == 2) {
+                         $('.UserType').text('福相特权');
+                         $('.UserType').data('usertype', 1);
+                         }*/
+                        getUserInfo(localStorage.getItem("uid"), 'mine');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('mineInit', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        setUserInfo(JSON.parse(localStorage.getItem("UserInfo")), 'minePay');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('orderMine', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.closePopover('pay_pwd');
+                        localStorage.setItem("pay_pwd", 0);
+
+                        $("#order").click();
+
+                    }
+
+                });
+
+                appcan.window.subscribe('pwdSucs', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        getUserInfo(localStorage.getItem("uid"), 'mine');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('carrySucs', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var bodyWidth = localStorage.getItem("bodyWidth");
+                        var bodyHeight = localStorage.getItem("bodyHeight");
+                        appcan.window.openPopover({
+                            name : 'succ',
+                            dataType : 0,
+                            url : "../pop/succ.html",
+                            top : 0,
+                            left : 0,
+                            width : bodyWidth,
+                            height : bodyHeight,
+                        });
+
+                        getUserInfo(localStorage.getItem("uid"), 'mine');
+
+                    }
+
+                });
+
+            });
+
+            $(window).scroll(function() {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop > 30) {
+                    var opt = (scrollTop - 30) / 200;
+                    if (opt > 0.9) {
+                        opt = 0.9;
+                    }
+                    $(".headbg").css({
+                        'background-color' : "rgba(255,66,98," + opt + ")",
+                    });
+                    $(".index-txt").removeClass('no-dis');
+                }
+                if (scrollTop < 30) {
+                    $(".headbg").css({
+                        'background-color' : "rgba(255,66,98,0)",
+                    });
+                    $(".index-txt").addClass('no-dis');
+                }
+            });
+
+            $('.carry').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'carry',
+                        data : '../pay/carry.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "carry",
+                        data : "../pay/carry.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.wallet').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'wallet',
+                        data : '../wallet/wallet.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "wallet",
+                        data : "../wallet/wallet.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.setting').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'setting',
+                        data : '../setup/setting.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "setting",
+                        data : "../setup/setting.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.page_mine').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'page_mine',
+                        data : '../mine/page_mine.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "page_mine",
+                        data : "../mine/page_mine.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.luck').click(function() {
+
+                /*
+                 var localPack = localStorage.getItem('localPack');
+
+                 if (localPack == '1' || localPack == 1) {
+
+                 appcan.window.open({
+                 name : 'luck',
+                 data : '../luck/luck.html',
+                 aniId : 10,
+                 });
+
+                 } else {
+
+                 uexWindow.open({
+                 name : "luck",
+                 data : "../luck/luck.html",
+                 animID : 10,
+                 flag : 1024
+                 });
+
+                 }*/
+
+                openToast("抽奖功能暂不开放", 3000, 5, 0);
+
+            });
+
+            $('.order').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'order',
+                        data : '../order/order.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "order",
+                        data : "../order/order.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+                //openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+            });
+
+            $('.team').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'team',
+                        data : '../team/team.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "team",
+                        data : "../team/team.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+                //openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+            });
+
+            $('.follow').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'follow',
+                        data : '../follow/follow.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "follow",
+                        data : "../follow/follow.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+                //openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+            });
+
+            $('.collection').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'collection',
+                        data : '../clct/collection.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "collection",
+                        data : "../clct/collection.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.adv-edit').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'vip_adv',
+                        data : '../vip/vip_adv.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "vip_adv",
+                        data : "../vip/vip_adv.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.personal-data').click(function() {
+
+                debug('sake');
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'personal_data',
+                        data : '../mine/personal_data.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "personal_data",
+                        data : "../mine/personal_data.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('#FUserName').click(function() {
+
+                var FUserName = trim($(this).text());
+                debug(FUserName);
+
+                if (FUserName == '' || FUserName == null || FUserName == undefined) {
+
+                } else {
+
+                    var uid = localStorage.getItem("uid");
+
+                    var fid = $(this).data('fid');
+
+                    if (uid == fid) {
+
+                        openToast('-_-|||，这个是你本人啊', 3000, 5, 0);
+
+                    } else {
+
+                        var name = new Date().format("yyyyMMddhhmmssSS");
+
+                        localStorage.setItem("userid", fid);
+                        localStorage.setItem("fromPage", 'mine');
+
+                        var localPack = localStorage.getItem('localPack');
+                        if (localPack == '1' || localPack == 1) {
+
+                            appcan.window.open({
+                                name : name,
+                                data : '../other/page_other.html',
+                                aniId : 10,
+                            });
+
+                        } else {
+
+                            uexWindow.open({
+                                name : name,
+                                data : '../other/page_other.html',
+                                animID : 10,
+                                flag : 1024,
+                            });
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+            $('.qrcode').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'invite_qrcode',
+                        data : '../mine/invite_qrcode.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "invite_qrcode",
+                        data : "../mine/invite_qrcode.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.upgrape').click(function() {
+
+                var UserType = $('.UserType').data('usertype');
+
+                debug(UserType);
+
+                if (UserType == 2 || UserType == '2') {
+
+                    openToast("您已成功升级为福相", 3000, 5, 0);
+
+                } else {
+
+                    if (UserType == 0 || UserType == '0' || UserType == '') {
+                        localStorage.setItem("UserType", 0);
+                    } else if (UserType == 1 || UserType == '1') {
+                        localStorage.setItem("UserType", 1);
+                    }
+
+                    localStorage.setItem("fromPage", 'mine');
+
+                    var localPack = localStorage.getItem('localPack');
+
+                    if (localPack == '1' || localPack == 1) {
+
+                        appcan.window.open({
+                            name : 'vip_upgr',
+                            data : '../vip/vip_upgr.html',
+                            aniId : 10,
+                        });
+
+                    } else {
+
+                        uexWindow.open({
+                            name : "vip_upgr",
+                            data : "../vip/vip_upgr.html",
+                            animID : 10,
+                            flag : 1024
+                        });
+
+                    }
+
+                }
+
+            });
+
+            $('.account-balance').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'account_balance',
+                        data : '../wallet/account_balance.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "account_balance",
+                        data : "../wallet/account_balance.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.all-rewards').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'all_rewards',
+                        data : '../wallet/all_rewards.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "all_rewards",
+                        data : "../wallet/all_rewards.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.today-rewards').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'today_rewards',
+                        data : '../wallet/today_rewards.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "today_rewards",
+                        data : "../wallet/today_rewards.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+        </script>
+    </body>
+</html>

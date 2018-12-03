@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../login/css/log-v1.css">
+    </head>
+    <body style="height: 100%; width: 100%; background-color: #EAEAEA" >
+        <div id="page_0" style="width: 100%; height: 100%; background-color: #EAEAEA;">
+
+            <div class="uh bc-head ubb bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">新的密码</h1>
+                    <div class="nav-btn" id="nav_right">
+                        <div class="fa fa-1g ub-img1 reg-sty"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主框-start   -->
+            <div style="height: 1.2em;"></div>
+
+             <!-- 输入框 -->
+            <div class="ubb bc-border b-gra umar-a uc-a1 c-wh phone-wd">
+                <div class="ub ub-ac in-bg">
+                    <div ontouchstart="appcan.touch('btn-act')" class="pwd-umhw umar-for">
+                        新密码
+                    </div>
+                    <div class="ub-f1 uinn8">
+                        <input placeholder="输入新密码" id="new_pwd" type="password" class="pwd-input uc-a1 onlyNumAlpha outline">
+                    </div>
+                    <!-- <div class="b-d9 uc-a1 ub-pc chk-bg">
+                    <div class="ub ub-ac ub-pc tx-c font-color1" style="font-size: 0.88em; color: #FBB9C0; margin-right: 0.68em;">
+                    获取验证码
+                    </div>
+                    <div class="resyzmicon resyzmwg ub-img uc-a1"></div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- <div style="width: 100%; height: 2px; background-color: #DBDBDB"></div> -->
+
+            <div class="ubb bc-border b-gra umar-a uc-a1 c-wh msg-wd">
+                <div class="ub ub-ac in-bg">
+                    <div ontouchstart="appcan.touch('btn-act')" class="pwd-umhw umar-for">
+                        确认新密码
+                    </div>
+                    <div class="ub-f1 uinn8">
+                        <input placeholder="输入确认新密码" id="agn_pwd" type="password" class="pwd-input uc-a1 onlyNumAlpha outline">
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="height: 1.8em;"></div>
+            
+            <div class="uinn-btn next-wd">
+                <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn uc-a1" id="cmpl" ontouchstart="appcan.touch('btn-act')">
+                    <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                    完成
+                </div>
+            </div>
+
+            <!-- <div style="height: 1.98em;"></div>
+
+            <div class="titl-di">
+            <p class="txt-logo">
+            <span style="color: #626262">第三方登陆 </span>
+            </p>
+            </div>
+
+            <div class="ub ub-ver ub-ac ub-con" style="height: auto;">
+            <div class="ub-f1 tx-l ub ub-ver c-wh ub-fh" style="width: 88%;">
+
+            <div class="uinn-log ub ub-ac ub-pc">
+            <div class="res-weibo ub-img umhw2"></div>
+            <div class="res-qq ub-img umhw2 umar-di"></div>
+            <div class="res-wechat ub-img umhw2"></div>
+            </div>
+
+            </div>
+            </div> -->
+
+        </div>
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../login/js/forget.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+            });
+
+            $("#nav_left").click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+        </script>
+    </body>
+</html>

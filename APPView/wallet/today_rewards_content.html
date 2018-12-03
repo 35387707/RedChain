@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+        <link rel="stylesheet" href="../wallet/css/msg-v2.css">
+        <link rel="stylesheet" href="../wallet/css/trd-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+        
+        <div class="up ub ub-ver" tabindex="0">
+            
+            <div class="ub ub-ver" id="content">
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../wallet/js/wallet.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                appcan.frame.setBounce(1, function(type) {
+
+                }, function(type) {
+
+                }, function(type) {
+
+                    setTimeout(function(type) {
+                        
+                        //getBillList(index + 1, 6, 'today_rewards');
+                        judgCurPage(6, 'today_rewards', 20);
+                        
+                    }, 1000);
+
+                });
+
+                getBillList(1, 6, 'today_rewards');
+
+            });
+
+        </script>
+    </body>
+</html>

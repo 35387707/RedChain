@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/ui-box.css">
+    <link rel="stylesheet" href="../css/ui-base.css">
+    <link rel="stylesheet" href="../css/ui-color.css">
+    <link rel="stylesheet" href="../css/appcan.icon.css">
+    <link rel="stylesheet" href="../css/appcan.control.css">
+    <link rel="stylesheet" href="../setup/css/acct-v1.css">
+</head>
+<body class="bc-bg" ontouchstart>
+
+    <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+        <div id="header" class="uh bc-head ubb bc-border">
+            <div class="ub">
+                <div class="nav-one" id="nav_left" onclick="javascript:history.back(-1);">
+                    <div class="ub-img1 nav-back"></div>
+                </div>
+                <div class="nav-two"></div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">密码设置</h1>
+                <div class="nav-btn" id="nav_right">
+                    <div class="nav-txt"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content" class="ub ub-ver">
+            <div class="ub ub-ver ub-fv list-view pay" >
+                <div class="ub ubb bc-border list-marg-top list-cont-padd c-wh ub-ac redmoney">
+                    <div class="left-txt-color ulev0 ub-f1">
+                        支付密码
+                    </div>
+                    <div class="t-gra-85 ulev-1 tx-r" id="HasPayPwd">
+                        未设置
+                    </div>
+                    <li>
+                        <div class="ub-img li-right-arrow"></div>
+                    </li>
+                </div>
+            </div>
+
+            <div class="ub ub-ver ub-fv list-view login" >
+                <div class="ub ubb bc-border list-cont-padd c-wh ub-ac redmoney">
+                    <div class="left-txt-color ulev0 ub-f1">
+                        登录密码
+                    </div>
+                    <div class="t-gra-85 ulev-1 tx-r" id="log_pwd">
+                        已设置
+                    </div>
+                    <li>
+                        <div class="ub-img li-right-arrow"></div>
+                    </li>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+    <script src="../js/token.js"></script>
+    <script>
+
+        $().ready(function () {
+            var token = GetQueryString("token");
+            if (token != null && token != "") {
+
+                var html = "";
+                $.post("http://www.fbddd.com/Account/GetUserInfo", "token=" + token,
+                    function (data) {
+                       
+                        if (data.code == 1) {
+                          //  var temp = data.Info.Phone;
+                            var TrueName = '';
+                            if (data.Info.TrueName == '' || data.Info.TrueName == null || data.Info.TrueName == undefined) {
+                                TrueName = data.Info.Phone;
+                            } else {
+                                TrueName = data.Info.TrueName;
+                            }
+                            var Phone = data.Info.Phone;
+
+                            var HasPayPwd = '';
+                            if (data.Info.HasPayPwd == false || data.Info.HasPayPwd == 'false') {
+                                HasPayPwd = '未设置';
+                            } else {
+                                HasPayPwd = '已设置';
+                            }
+
+                            $('#HasPayPwd').text(HasPayPwd);
+
+                            $('#TrueName').text(TrueName);
+                            $('#Phone').val(Phone);
+                        }
+                    }, "json");
+            }
+
+            $('.pay').click(function () {
+
+                var HasPayPwd = $('#HasPayPwd').text().trim();
+
+                localStorage.setItem("HasPayPwd", HasPayPwd);
+
+                var localPack = localStorage.getItem('localPack');
+
+                window.location.href = 'judg.html?token=' + token;
+
+            });
+          
+            $('.login').click(function () {
+                window.location.href = 'ChangePwd.html?token=' + token;
+            })
+
+        });
+
+       
+    </script>
+</body>
+</html>

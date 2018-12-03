@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../index/css/msg-v1.css">
+        <link rel="stylesheet" href="../lib/swiper-3.4.2/dist/css/swiper.min.css">
+        <link rel="stylesheet" href="../lib/swiper-3.4.2/dist/css/slider.v2.css">
+        <style type="text/css"></style>
+    </head>
+    <body class="" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="header" class="uh bc-text-head ub bc-head">
+                <div class="nav-btn" id="nav_left">
+                    <!-- <div class="fa fa-1g ub-img1 fa-angle-left fa-2x sc-white"></div> -->
+                </div>
+                <div class="msg-hdr-pad ub-f1 ulev-3 ut-s tx-c" tabindex="0">
+                    <div id="tab_view" class="uf ub-f1">
+                        <div class="tab-txt tab-clk" data-tab_i="0" ontouchstart="appcan.touch('btn-act')">
+                            <div class="tab-title title-style title-active" data-tab_t="0">
+                                动态
+                            </div>
+                            <div class="tab-line tab-active" data-tab_l="0"></div>
+                        </div>
+                        <div class="tab-txt tab-clk" data-tab_i="1" ontouchstart="appcan.touch('btn-act')">
+                            <div class="tab-title title-style" data-tab_t="1">
+                                好友
+                            </div>
+                            <div class="tab-line" data-tab_l="1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                    <img src="../index/img/msg/index_msg_tianjiahaoyou@2x.png" class="new-friend"/>
+                </div>
+            </div>
+
+            <div class="chk-cont">
+
+                <div class="swiper-container main-cont" >
+
+                    <div class="swiper-wrapper main-wrap">
+
+                        <div class="swiper-slide main-slide">
+
+                            <div class="sub-cont" id="follow_list">
+
+                                <div id="sys_msg">
+
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="系统消息">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style sys-img" data-sys_img="系统消息"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="系统消息" class="ub ub-ac ub-pc pos-num">
+                                                        10
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span data-sys_title="系统消息">系统消息</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal" data-sys_txt="系统消息">系统赠送您</span>
+                                                        <span class="txt-spec" data-sys_red="系统消息">0张红包卷</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver info-style">
+                                                    <div class="info-temp"></div>
+                                                    <div class="info-top">
+                                                        <span data-sys_time="系统消息">101</span>
+                                                    </div>
+                                                    <div class="info-bot" data-sys_icon="系统消息">
+                                                        <img src="../hb/img/hongbao_kai@2x.png"/>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="新的朋友">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style new-img" data-sys_img="新的朋友"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="新的朋友" class="ub ub-ac ub-pc pos-num">
+                                                        5
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span data-sys_title="新的朋友">新的朋友</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal" data-sys_txt="新的朋友">您当前有</span>
+                                                        <span class="txt-spec" data-sys_red="新的朋友">0个好友申请</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver info-style">
+                                                    <div class="info-temp"></div>
+                                                    <div class="info-top">
+                                                        <span data-sys_time="新的朋友">2018-08-15 上午09:30</span>
+                                                    </div>
+                                                    <div class="info-bot" data-sys_icon="新的朋友">
+                                                        <img src="../hb/img/hongbao_kai@2x.png"/>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="打招呼">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style say-img" data-sys_img="打招呼"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="打招呼" class="ub ub-ac ub-pc pos-num">
+                                                        10
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span data-sys_title="打招呼">收到0个打招呼</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal" data-sys_txt="打招呼">红包敲门中</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver info-style">
+                                                    <div class="info-temp"></div>
+                                                    <div class="info-top">
+                                                        <span data-sys_time="打招呼">0.11元</span>
+                                                    </div>
+                                                    <div class="info-bot" data-sys_icon="打招呼">
+                                                        <img src="../hb/img/hongbao_kai@2x.png"/>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                                <div class="sys-height"></div>
+
+                                <div id="ws_msg">
+
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="打招呼">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style say-img" data-sys_img="打招呼"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="打招呼" class="ub ub-ac ub-pc pos-num">
+                                                        10
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span>收到0个打招呼</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal">红包敲门中</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver time-style">
+                                                    <div class="time-top">
+                                                        <span>0.11元</span>
+                                                    </div>
+                                                    <div class="time-bot" data-sys_icon="打招呼">
+                                                        <span>未领取</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="打招呼">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style say-img" data-sys_img="打招呼"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="打招呼" class="ub ub-ac ub-pc pos-num">
+                                                        10
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span data-sys_title="打招呼">15737315338</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal overflow" data-sys_txt="打招呼">红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver time-style">
+                                                    <div class="time-top">
+                                                        <span data-sys_time="打招呼">0.11元</span>
+                                                    </div>
+                                                    <div class="time-bot" data-sys_icon="打招呼">
+                                                        <span>中领取</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="打招呼">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style say-img" data-sys_img="打招呼"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="打招呼" class="ub ub-ac ub-pc pos-num">
+                                                        10
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span class="overflow" data-sys_title="打招呼">红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal overflow" data-sys_txt="打招呼">红包敲门中红包敲门</span>
+                                                    </div>
+                                                </div>
+                                                <div class="ub ub-ver time-style">
+                                                    <div class="time-top">
+                                                    </div>
+                                                    <div class="time-bot" data-sys_icon="打招呼">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="打招呼">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style sys-img" data-sys_img="打招呼"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="打招呼" class="ub ub-ac ub-pc pos-num">
+                                                        1
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span data-sys_title="打招呼">15737315338</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal overflow" data-sys_txt="打招呼">红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中红包敲门中</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="ub ubb bc-border msg-div">
+                                        <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-f1 msg-ul sys-sub" data-sys_enter="打招呼">
+                                            <li class="ub icon-li">
+                                                <div class="ub-img sys-style sys-img" data-sys_img="打招呼"></div>
+                                                <div class="ub ub-ac ub-pc pos-style">
+                                                    <div data-sys_count="打招呼" class="ub ub-ac ub-pc pos-num">
+                                                        1
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="ub ub-f1 cont-li">
+                                                <div class="ub ub-ver ub-f1 cont-style">
+                                                    <div class="msg-title">
+                                                        <span data-sys_title="打招呼">15737315338</span>
+                                                    </div>
+                                                    <div class="msg-desc">
+                                                        <span class="txt-normal overflow" data-sys_txt="打招呼">abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="swiper-slide main-slide">
+
+                            <div class="sub-cont" id="friend_list">
+
+                                <ul class="ub ub-f1 friend-padd to-chat">
+                                    <li class="ub">
+                                        <div class="ub-img friend-width sys-img"></div>
+                                    </li>
+                                    <li class="ub ub-f1">
+                                        <div class="friend-info">
+                                            收到一个打招呼
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination main-menu"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/appcan.tab.js"></script>
+        <script src="../lib/swiper-3.4.2/dist/js/swiper.min.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/ws/ws.js"></script>
+        <script src="../js/ws/home.js"></script>
+        <script src="../js/ws/msg.js"></script>
+        <script src="../js/ws/chat.js"></script>
+        <script src="../js/ws/new.js"></script>
+        <script src="../js/ws/sys.js"></script>
+        <script src="../js/ws/say.js"></script>
+        <script src="../js/ws/srch.js"></script>
+        <script src="../hb/js/fahongbao.js"></script>
+        <script src="../index/js/msg.js"></script>
+        <script src="../index/js/count.js"></script>
+        <script src="../index/js/friend.js"></script>
+        <script src="../msg/js/new.js"></script>
+        <script src="../msg/js/say.js"></script>
+        <script src="../msg/js/sys.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(0);
+
+                uexWindow.setMultilPopoverFlippingEnbaled(1);
+
+                var bodyHeight = $('body').height();
+                var titHeight = $('#header').height();
+                var footHeight = $('#footer').height();
+                var contHeight = bodyHeight - titHeight;
+                $('.chk-cont').css('height', contHeight);
+
+                //alert('msg_lst: ' + contHeight);
+
+                //friendAjaxList(localStorage.getItem("uid"));
+                friendSrchBegin(localStorage.getItem("uid"), 'login');
+
+                appcan.window.subscribe('recvMsg', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        msgWsMsg(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('msgInit', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        debug('进入了消息刷新的逻辑');
+                        friendAjaxList(localStorage.getItem("uid"), 'msg');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('refreshMsg', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        msgSrchBegin(localStorage.getItem("uid"), 1, 1, 'msg');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('newFriendMsg', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        /*
+                         var indx = '鏂扮殑鏈嬪弸';
+                         var temp = parseInt($("div[data-sys_count='" + indx + "']").text());
+                         var rslt = temp - parseInt(msg);
+                         if (rslt <= 0 || rslt == undefined || rslt == NaN) {
+                         $("div[data-sys_count='" + indx + "']").text('');
+                         $("span[data-sys_red='" + indx + "']").text('0涓ソ鍙嬬敵璇�);
+                         } else {
+                         $("div[data-sys_count='" + indx + "']").text(rslt);
+                         $("span[data-sys_red='" + indx + "']").text(rslt + '涓ソ鍙嬬敵璇�);
+                         }*/
+
+                        friendAjaxList(localStorage.getItem("uid"), 'msg');
+
+                    }
+
+                });
+
+                appcan.window.subscribe('sayRefreshMsg', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        /*
+                         var indx = '鎵撴嫑鍛�;
+                         var temp = parseInt($("div[data-sys_count='" + indx + "']").text());
+                         var rslt = temp - parseInt(msg);
+                         if (rslt <= 0 || rslt == undefined || rslt == NaN) {
+                         $("div[data-sys_count='" + indx + "']").text('');
+                         $("div[data-sys_title='" + indx + "']").text('鏀跺埌0涓墦鎷涘懠');
+                         $("div[data-sys_count='" + indx + "']").addClass('no-dis');
+                         $("div[data-sys_time='" + indx + "']").text('');
+                         $("div[data-sys_icon='" + indx + "']").addClass('no-dis');
+                         } else {
+                         $("div[data-sys_count='" + indx + "']").text(rslt);
+                         $("div[data-sys_title='" + indx + "']").text('鏀跺埌' + rslt + '涓墦鎷涘懠');
+                         }*/
+
+                        friendAjaxList(localStorage.getItem("uid"), 'msg');
+
+                    }
+
+                });
+
+            });
+
+            //最大的在最下面
+            var mainSwiper = new Swiper('.main-cont', {
+                pagination : '.main-menu',
+                slidesPerView : 1,
+                paginationClickable : false,
+                spaceBetween : 30,
+                onSlideChangeStart : function(e) {
+                    //tabview.moveTo(e.activeIndex);
+                    var indx = e.activeIndex;
+                    $(".tab-title").removeClass('title-active');
+                    $('.tab-line').removeClass('tab-active');
+                    $("div[data-tab_t='" + indx + "']").addClass('title-active');
+                    $("div[data-tab_l='" + indx + "']").addClass('tab-active');
+                }
+            });
+
+            $(".tab-clk").click(function() {
+                var indx = $(this).data('tab_i');
+                $(".tab-title").removeClass('title-active');
+                $('.tab-line').removeClass('tab-active');
+                //$("div[data-tab_t='" + indx + "']").removeClass('tab-colr');
+                //$("div[data-tab_l='" + indx + "']").removeClass('tab-colr');
+                $("div[data-tab_t='" + indx + "']").addClass('title-active');
+                $("div[data-tab_l='" + indx + "']").addClass('tab-active');
+                mainSwiper.slideTo(indx, 500, false);
+            });
+
+            $('#nav_right').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    //getPacketList();
+                    appcan.window.open({
+                        name : 'add_friend',
+                        data : '../msg/add_friend.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "add_friend",
+                        data : "../msg/add_friend.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('.sys-sub').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                var indx = $(this).data('sys_enter');
+
+                /*
+                 var num = $("div[data-sys_count='" + indx + "']").text();
+                 appcan.window.publish('refreshMsgNum', num);
+
+                 $("div[data-sys_count='" + indx + "']").addClass('no-dis');
+                 $("div[data-sys_count='" + indx + "']").text('');*/
+
+                if (indx == '系统消息') {
+
+                    /*
+                     if (localPack == '1' || localPack == 1) {
+
+                     appcan.window.open({
+                     name : 'sys_msg',
+                     data : '../msg/sys_msg.html',
+                     aniId : 10,
+                     });
+
+                     } else {
+
+                     uexWindow.open({
+                     name : "sys_msg",
+                     data : "../msg/sys_msg.html",
+                     animID : 10,
+                     flag : 1024
+                     });
+
+                     }*/
+                    openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+                } else if (indx == '新的朋友') {
+
+                    if (localPack == '1' || localPack == 1) {
+
+                        //getPacketList();
+                        appcan.window.open({
+                            name : 'new_friend',
+                            data : '../msg/new_friend.html',
+                            aniId : 10,
+                        });
+
+                    } else {
+
+                        uexWindow.open({
+                            name : "new_friend",
+                            data : "../msg/new_friend.html",
+                            animID : 10,
+                            flag : 1024
+                        });
+
+                    }
+
+                } else if (indx == '打招呼') {
+
+                    if (localPack == '1' || localPack == 1) {
+
+                        //getPacketList();
+                        appcan.window.open({
+                            name : 'say_hello',
+                            data : '../msg/say_hello.html',
+                            aniId : 10,
+                        });
+
+                    } else {
+
+                        uexWindow.open({
+                            name : "say_hello",
+                            data : "../msg/say_hello.html",
+                            animID : 10,
+                            flag : 1024
+                        });
+
+                    }
+
+                }
+
+            });
+
+            $('body').on('touchstart', function(e) {
+
+                e.stopPropagation();
+                var curWindow = localStorage.getItem('curWindow');
+                if (curWindow == 'chat' || curWindow == 'new_friend' || curWindow == 'sys_msg' || curWindow == 'say_hello' || curWindow == 'srch_friend') {
+                    localStorage.setItem("curWindow", 'home');
+                    localStorage.setItem("homeIndex", 1);
+                }
+
+            });
+
+            $('body').on('touchend', function(e) {
+                e.stopPropagation();
+            });
+
+        </script>
+    </body>
+</html>

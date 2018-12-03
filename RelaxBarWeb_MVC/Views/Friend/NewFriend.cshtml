@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>新的朋友</title>
+   @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/friendInfo.css" />
+    <script>
+        var index = 1;
+        var status = 1;
+        function getNewFriendPartView() {
+            
+            
+                status = 0;
+                $.get("/Friend/NewFriendPartView/" + index, function (data) {
+
+                    if (data.length == 0) {
+                        status = 0;
+                        return;
+                    };
+                    $("#newfriendlist").append(data);
+                    index++;
+                    status = 1;
+                }, "html");
+            
+            
+        }
+        $(function () {
+            getNewFriendPartView();
+        });
+        $(document).scroll(
+            function () {
+                if ($(document).scrollTop() + window.innerHeight == $(document).height()) {
+                  
+                    if (status==1) {
+                        getNewFriendPartView();
+                    }
+                }
+            });
+        function agree(id, mid) {
+            $.post("/Friend/Agree", "id=" + id + "&mid=" + mid, function (data) {
+                code = parseInt(data.code);
+                if (code>0) {
+                    location.reload();
+                    location.reload();
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <font class="header-l-font halfTop" onclick="window.history.back()">返回</font>
+            <span>新的朋友</span>
+            <a class="header-r-font halfTop" href="javascript:void(0);"></a>
+        </div>
+        <div class="same-pt-wrap1">
+            <ul class="newfriendList" id="newfriendlist">
+                
+                
+            </ul>
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

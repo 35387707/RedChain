@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../biz/css/editor-v1.css">
+        <link rel="stylesheet" href="../biz/css/type-v1.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div class="uh bc-head ubb bc-border" id="header" style="position: fixed; z-index: 10000;">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">商圈信息</h1>
+                    <div class="nav-btn">
+                        <div class="fa fa-1g ub-img1 cmpl">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="ub ub-ver">
+                    <div class="ub-f1 ub ub-ver ins-sty">
+                        <div class="ub ub-f1">
+                            <textarea type="text" class="ub-f1 outline" placeholder="想要对大家说" id="title"></textarea>
+                        </div>
+                        <div class="ub ub-ac">
+                            <div class="ulev-1 ub-f1">
+                                <div class="ub ub-ac">
+                                    <div class="photo-album" data-albm_i="1">
+
+                                        <div class="cam-par">
+                                            <img data-cam_i="1" ontouchstart="appcan.touch('btn-act')" class="camera" src="../hb/img/hb_send_camera@2x.png" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb ubt bc-border list-marg-top list-input-padd c-wh ub-ac">
+                        <div class="uinput ub ub-f1">
+                            <input id="linkto" placeholder="链接地址" type="search" class="ub-f1 outline">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub list-marg-top list-cont-padd c-wh ub-ac">
+                        <div class="left-txt-color ulev0 ub-f1">
+                            商圈类型
+                        </div>
+                        <div class="t-gra-85 ulev-1 tx-r" id="biz_type"></div>
+                        <li>
+                            <div class="ub-img li-right-arrow"></div>
+                        </li>
+                    </div>
+                </div>
+
+                <div class="ub ub-ver ub-fv">
+                    <div class="ub type-cont-padd c-wh ub-ac">
+                        <div class="money-view" id="type_list">
+
+                            <!-- <div class="money-width">
+
+                                <div class="money-inside">
+
+                                    <div class="money-style money-sub">
+                                        微商
+                                    </div>
+
+                                </div>
+
+                            </div> -->
+                            
+                        </div>
+                    </div>
+
+                    <!-- <div class="ub share-padd ub-ae">
+                    <div class="ub ub-ver ub-f1 ub-pc">
+                    <div class="ub-ae share-txt ulev-1 tx-l share-left">
+                    链接标题
+                    </div>
+                    </div>
+                    <div class="ub ub-ver ub-f1 ub-pc">
+                    <div class="ub-ae share-txt ulev-1 tx-l share-right">
+                    链接地址
+                    </div>
+                    </div>
+                    </div> -->
+
+                    <!-- <div class="ub ub-ver ub-fv list-view" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb ubt bc-border list-marg-top list-btn-padd ub-ac bc-btn" id="send_fubao">
+                    <div class="ulev-3 ub-f1 tx-c sc-white">
+                    确定发布
+                    </div>
+                    </div>
+                    </div>
+
+                    <div style="height: 1.0em;"></div> -->
+
+                </div>
+
+                <div id="footer" class="sure-btn">
+                    <div class="list-wd">
+                        <div class="bot-btn ub ub-ac bc-text-head ub-pc bc-btn bot-rds" id="send_info" ontouchstart="appcan.touch('btn-act')">
+                            <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                            确定发布
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <script src="../js/appcan.js"></script>
+            <script src="../js/appcan.control.js"></script>
+            <script src="../js/com/debug.js"></script>
+            <script src="../js/com/date.js"></script>
+            <script src="../js/com/popup.js"></script>
+            <script src="../js/com/system.js"></script>
+            <script src="../js/com/image.js"></script>
+            <script src="../js/com/json.js"></script>
+            <script src="../biz/js/type.js"></script>
+            <script src="../biz/js/pub.js"></script>
+            <script>
+                appcan.ready(function() {
+
+                    localStorage.setItem("itid", '');
+
+                    var titHeight = $('#header').height();
+                    var footHeight = $('#footer').height();
+                    $('#content').css('padding-top', titHeight);
+                    $('#content').css('padding-bottom', footHeight);
+
+                    setSwipeCloseEnable(1);
+                    
+                    dispSelData();
+
+                    appcan.window.subscribe('chg_img', function(msg) {
+
+                        if (msg != "" && msg != null && msg != undefined) {
+
+                            var timeout = 0;
+
+                            var imgArr = JSON.parse(msg);
+                            //debug(localStorage.getItem("imgArr"));
+
+                            $(imgArr).each(function(i, v) {
+
+                                //var imgCont = '<div data-par_s="' + v.imgIndx + '" class="cam-par"><img ontouchstart="appcan.touch(&#39;btn-act&#39;)" data-img_s="' + v.imgIndx + '" data-pic_p="' + v.imgPath + '" class="disp-pic" src="' + v.imgPath + '" /></div>';
+                                var imgCont = '<div data-par_s="' + v.imgIndx + '" class="cam-par"><div ontouchstart="appcan.touch(&#39;btn-act&#39;)" data-img_s="' + v.imgIndx + '" data-pic_p="' + v.imgPath + '" class="ub-img1 disp-pic" style="background-image:url(' + v.imgPath + ');"></div></div>';
+                                //var cont = '<div class="cam-par"><img class="disp-pic" src="' + imgPath + '" /></div>';
+                                $('.photo-album').append(imgCont);
+
+                            });
+
+                            $('.disp-pic').unbind();
+                            $('.disp-pic').click(function() {
+
+                                //alert($('.photo-album').children("div:last-child").index());
+                                var picIndx = $(this).data('pic_p');
+
+                                //查看所有相关的图片
+                                var picArr = [];
+                                $('.disp-pic').each(function(j, s) {
+
+                                    //debug($(this).data('pic_p'));
+                                    //debug($(this).data('img_s'));
+
+                                    if ($(this).data('pic_p')) {
+                                        var picSgl = {
+                                            src : $(this).data('pic_p'),
+                                            desc : $(this).data('img_s'),
+                                        };
+                                        picArr.push(picSgl);
+                                    }
+
+                                });
+
+                                localStorage.setItem("imgSgl", picIndx);
+                                localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                                //debug(picArr);
+                                //var tempPath = $(this)[0].src;
+                                setTimeout(function() {
+
+                                    //dispCurImg(picIndx ,picArr);
+                                    openBrowser();
+
+                                }, 300);
+
+                            });
+
+                            $('.disp-pic').on('touchstart', function(e) {
+
+                                e.stopPropagation();
+                                var img_s = $(this).data('img_s');
+
+                                var picIndx = $(this).data('pic_p');
+
+                                timeout = setTimeout(function() {
+
+                                    //alert('pare: ' + $("div[data-par_s='" + img_s + "']").html());
+
+                                    uexWindow.actionSheet({
+                                        title : "选项",
+                                        cancel : "取消",
+                                        buttons : "查看图片,删除图片"
+                                    }, function(index) {
+
+                                        if (index == 0) {
+
+                                            var picArr = [];
+                                            $('.disp-pic').each(function(j, s) {
+
+                                                //debug($(this).data('pic_p'));
+                                                //debug($(this).data('img_s'));
+
+                                                if ($(this).data('pic_p')) {
+                                                    var picSgl = {
+                                                        src : $(this).data('pic_p'),
+                                                        desc : $(this).data('img_s'),
+                                                    };
+                                                    picArr.push(picSgl);
+                                                }
+
+                                            });
+
+                                            localStorage.setItem("imgSgl", picIndx);
+                                            localStorage.setItem("imgArr", JSON.stringify(picArr));
+
+                                            setTimeout(function() {
+
+                                                //dispCurImg(picIndx, picArr);
+                                                openBrowser();
+
+                                            }, 300);
+
+                                        } else if (index == 1) {
+
+                                            $("div[data-par_s='" + img_s + "']").remove();
+
+                                        }
+                                    });
+
+                                }, 750);
+
+                            });
+
+                            $('.disp-pic').on('touchend', function(e) {
+                                e.stopPropagation();
+                                clearTimeout(timeout);
+                            });
+
+                        }
+
+                    });
+
+                    // 拦截返回按钮
+                    uexWindow.setReportKey(0, 1);
+                    // 拦截后的事件绑定
+                    uexWindow.onKeyPressed = function(keyCode) {
+                        if (keyCode == 0) {
+                            //alert('点击了返回键')
+                            var pay = localStorage.getItem("pay");
+                            var money = localStorage.getItem("money");
+                            if (pay == '1' || pay == 1) {
+
+                                appcan.window.closePopover('pay');
+                                localStorage.setItem("pay", 0);
+
+                            } else if (money == '1' || money == 1) {
+
+                                appcan.window.closePopover('money');
+                                localStorage.setItem("money", 0);
+
+                            } else {
+
+                                appcan.window.close(-1);
+
+                            }
+
+                        } else {
+                            alert('点击了其他键')
+                        }
+
+                    }
+                });
+
+                $('#nav_left').click(function() {
+
+                    appcan.window.close(-1);
+
+                });
+
+                $('.biz-type').click(function() {
+
+                    var tabArr = localStorage.getItem("tabArr");
+
+                    var typArr = new Array();
+                    typArr = tabArr.split(",");
+
+                    uexWindow.actionSheet({
+                        title : "商圈类型",
+                        cancel : "取消",
+                        buttons : tabArr
+                    }, function(index) {
+
+                        if (index == typArr.length) {
+
+                        } else {
+
+                            var itid = findTypeId(typArr[index]);
+
+                            localStorage.setItem("itid", itid);
+
+                            $('#biz_type').text(typArr[index]);
+
+                        }
+
+                    });
+
+                });
+
+                $('.camera').click(function() {
+
+                    var fromPage = 'pub';
+                    openEditorActn(fromPage);
+
+                });
+
+            </script>
+    </body>
+</html>

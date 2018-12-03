@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../msg/css/chat.css">
+        <link rel="stylesheet" href="../msg/css/common.css">
+        <style>
+            .more {
+                margin-left: 10%;
+                width: 70%;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+            .chat-hdr-pad {
+                padding: 0.79em 1em 0.79em;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body class="um-vp padbg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <!--header开始-->
+            <div id="header" class="uh bc-head sc-white">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="chat-hdr-pad ub-f1 ulev-3 ut-s tx-c font-normal" id="friend_name">&nbsp;</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img nav-more"></div>
+                    </div>
+                </div>
+            </div>
+            <!--header结束-->
+
+            <!--content开始-->
+            <div id="content" class="ub-f1 tx-l">
+
+            </div>
+            <!--content结束-->
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                localStorage.setItem("homeIndex", '');
+                localStorage.setItem("curWindow", 'chat');
+                
+                localStorage.setItem("lastMsgTime", '');
+
+                setSwipeCloseEnable(1);
+
+                var friend_name = localStorage.getItem("friend_name");
+                var friend_phone = localStorage.getItem("friend_phone");
+                if (friend_name == '' || friend_name == null || friend_name == undefined) {
+                    $('#friend_name').text(friend_phone);
+                } else {
+                    $('#friend_name').text(friend_name);
+                }
+
+                var titHeight = $('#header').height();
+                appcan.frame.open("content", "chat_content.html", 0, titHeight);
+                window.onorientationchange = window.onresize = function() {
+                    appcan.frame.resize("content", 0, titHeight);
+                };
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+                        //alert('点击了返回键')
+                        var popup = localStorage.getItem("popup");
+                        if (popup == '1' || popup == 1) {
+
+                            appcan.window.closePopover('popup');
+                            localStorage.setItem("popup", 0);
+
+                        } else {
+
+                            localStorage.setItem("curWindow", 'home');
+                            localStorage.setItem("homeIndex", 1);
+                            appcan.window.close(-1);
+
+                        }
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+            });
+
+            $('#nav_left').click(function() {
+
+                localStorage.setItem("curWindow", 'home');
+                localStorage.setItem("homeIndex", 1);
+                appcan.window.close(-1);
+
+            });
+
+            $('#nav_right').click(function() {
+
+                var bodyWidth = localStorage.getItem("bodyWidth");
+                var bodyHeight = localStorage.getItem("bodyHeight");
+                localStorage.setItem("popup", 1);
+                appcan.window.openPopover({
+                    name : 'popup',
+                    dataType : 0,
+                    url : "../pop/popup.html",
+                    top : 0,
+                    left : 0,
+                    width : bodyWidth,
+                    height : bodyHeight,
+                });
+
+            });
+
+        </script>
+    </body>
+</html>

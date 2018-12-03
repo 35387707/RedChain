@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../clct/css/collection.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="content" class="ub ub-ver cont-padd">
+
+                <!-- <div class="ub uc-a1 ub-ver collc-sty">
+
+                    <div class="ub c-wh">
+                        <div class="ub-img collc-img collc-wh umar-a"></div>
+                        <div class="ub-f1 collc-cont">
+                            <div class="collc-txt">
+                                <div class="goods-title title-overflow">
+                                    这条连衣裙的小心机和风暴都在后面哦! 
+                                </div>
+                                <div class="goods-name name-overflow">
+                                    这条连衣裙的小心机和风暴都在后面哦! 
+                                </div>
+                            </div>
+                            <div class="ub collc-actn">
+
+                                <div class="ub ub-ac collc-div price-sty" ontouchstart="appcan.touch('btn-act')">
+                                    ￥200
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../clct/js/goods.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                appcan.frame.setBounce({
+                    bounceType : [0, 1],
+                    startPullCall : function(type) {
+
+                    },
+                    downEndCall : function(type) {
+
+                    },
+                    upEndCall : function(type) {
+
+                        if (type == 0) {
+
+                            setTimeout(function(type) {
+
+                                getCollectionList(localStorage.getItem("uid"), 1, 4, 'refresh_goods');
+
+                            }, 1000);
+
+                        } else if (type == 1) {
+
+                            setTimeout(function(type) {
+
+                                judgCurPage(localStorage.getItem("uid"), 20, 4, 'goods');
+
+                            }, 1000);
+
+                        }
+
+                    },
+                    color : '#FFFFFF'
+
+                });
+
+                appcan.window.subscribe('getClctList', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        if (msg == 2 || msg == '2') {
+
+                            //获取广告收藏的数据
+                            var index = $('#content').children("div:last-child").index();
+
+                            if (index == -1) {
+                                getCollectionList(localStorage.getItem("uid"), 1, 4, 'goods');
+                            }
+
+                        }
+
+                    }
+
+                });
+
+                appcan.window.subscribe('removeGoods', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $("div[data-cid='" + msg + "']").remove();
+
+                    }
+
+                });
+
+            });
+
+        </script>
+    </body>
+</html>

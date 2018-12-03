@@ -1,0 +1,279 @@
+/*
+ main swiper
+ */
+#main_cont {
+    width: 100%;
+    height: 100%;
+    border-top: 0;
+}
+#main_cont .main-wrap .main-slide {
+    width: 100%;
+    background: none;
+    color: black;
+}
+#main_cont #main_menu {
+    display: none;
+}
+
+/*
+ left menu swiper
+ */
+#left_cont {
+    width: 100%;
+    height: 100%;
+}
+#left_menu {
+    width: 50%;
+    background-size: cover;
+    background-image: url('img/bg.png');
+    color: #fff;
+}
+.menu-icon {
+    background-size: cover;
+    background-image: url('img/mark.png');
+    margin: 3.0em auto;
+    width: 5.0em;
+    height: 5.0em;
+    position: relative;
+}
+.projs-icon {
+    background-size: cover;
+    background-image: url('img/museum.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.turn-icon {
+    background-size: cover;
+    background-image: url('img/turn_edit.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.net-icon {
+    background-size: cover;
+    background-image: url('img/network.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.add-icon {
+    background-size: cover;
+    background-image: url('img/add_acep.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.chg-icon {
+    background-size: cover;
+    background-image: url('img/chg_pwd.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.exit-icon {
+    background-size: cover;
+    background-image: url('img/safe_exit.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.sync-icon {
+    background-size: cover;
+    background-image: url('img/synchronize.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+.about-icon {
+    background-size: cover;
+    background-image: url('img/about.png');
+    width: 1.0em;
+    height: 1.0em;
+}
+
+/*
+ nav swiper
+ */
+#nav_cont {
+    height: 100%;
+}
+.nav-sub {
+    text-align: center;
+    width: auto;
+}
+
+/*
+ sub nav swiper
+ */
+#proj_tab {
+    height: 100%;
+}
+.tab-sub {
+    text-align: center;
+    width: auto;
+}
+
+/*
+ common style
+ */
+.menu-li {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 0.15em;
+}
+
+/*
+ sub cont swiper
+ */
+
+/*
+ * 当页面可见宽度大于1400px小于1537px时 ipad mini2 ipad mini4
+ */
+@media all and (min-width: 1290px) and (max-width: 1537px) {
+
+    .proj-com {
+        width: 90%;
+        height: 77.00%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+    .proj-slide {
+        background-position: center;
+        background-size: cover;
+        width: 76%;
+        height: 100%;
+    }
+    .proj-slide .proj-img {
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1243px小于1281px时 iphone 6s
+ */
+@media all and (min-width: 1243px) and (max-width: 1281px) {
+
+    .proj-com {
+        width: 100%;
+        height: 79.6%;
+        padding-top: 10.4%;
+        padding-bottom: 10%;
+    }
+    .proj-slide {
+        background-position: center;
+        background-size: cover;
+        width: 82.5%;
+        height: 100%;
+    }
+    .proj-slide .proj-img {
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1100px小于1243px时 iphone 6s
+ */
+@media all and (min-width: 1100px) and (max-width: 1243px) {
+
+    .proj-com {
+        width: 100%;
+        height: 66.8%;
+        padding-top: 20%;
+        padding-bottom: 12%;
+    }
+    .proj-slide {
+        background-position: center;
+        background-size: cover;
+        width: 82.5%;
+        height: 100%;
+    }
+    .proj-slide .proj-img {
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于900px小于1081px时 1080p iphone6s
+ */
+@media all and (min-width: 753px) and (max-width: 1081px) {
+
+    .proj-com {
+        width: 100%;
+        height: 65.6%;
+        padding-top: 20%;
+        padding-bottom: 12%;
+    }
+    .proj-ios {
+        width: 100%;
+        height: 62%;
+        padding-top: 23.6%;
+        padding-bottom: 12%;
+    }
+    .proj-slide {
+        background-position: center;
+        background-size: cover;
+        width: 80%;
+        height: 100%;
+    }
+    .proj-slide .proj-img {
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 650px) and (max-width: 751px) {
+
+    .proj-com {
+        width: 100%;
+        height: 63.6%;
+        padding-top: 22.5%;
+        padding-bottom: 15%;
+    }
+    .proj-slide {
+        background-position: center;
+        background-size: cover;
+        width: 77.5%;
+        height: 100%;
+    }
+    .proj-slide .proj-img {
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 500px) and (max-width: 641px) {
+
+    .proj-com {
+        width: 100%;
+        height: 60%;
+        padding-top: 25%;
+        padding-bottom: 15%;
+    }
+    .proj-slide {
+        background-position: center;
+        background-size: cover;
+        width: 72.5%;
+        height: 100%;
+    }
+    .proj-slide .proj-img {
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+}

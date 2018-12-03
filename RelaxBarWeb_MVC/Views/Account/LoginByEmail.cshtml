@@ -1,0 +1,215 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登陆</title>
+    <script src="/js/jquery-2.0.0.min.js"></script>
+    <script src="/js/adaptation.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="~/js/Base64.js"></script>
+    <style>
+        #arealist {
+            position: absolute;
+            width: 100%;
+            z-index: 99999;
+            top: 0;
+            display: none;
+        }
+    </style>
+    <style>
+        #arealist dl, dt, dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        .areacode1 {
+            padding-bottom: 10%;
+            background-color: #f1f1f1;
+        }
+
+        .ac-item dt,
+        .ac-item dd {
+            padding: 3% 5%;
+            border-bottom: 0.05rem solid #ccc;
+            font-size: 1.5rem;
+            -webkit-text-size-adjust: none;
+        }
+
+        .ac-item dt {
+            background-color: #f1f1f1;
+        }
+
+        .ac-item dd {
+            position: relative;
+            background-color: #fff;
+        }
+
+            .ac-item dd span {
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                transform: translateY(-50%);
+                right: 8%;
+                color: #bbb !important;
+            }
+
+        .ac-rightnav {
+            position: fixed;
+            right: 0;
+            top: 6.50390625rem;
+            width: 5%;
+            background-color: rgba(0,0,0,.3);
+            height: 100%;
+            padding-bottom: 20%;
+            box-sizing: border-box;
+        }
+
+            .ac-rightnav li {
+                position: relative;
+                height: 4%;
+                text-align: center;
+            }
+
+                .ac-rightnav li a {
+                    color: #fff;
+                }
+    </style>
+    <script>
+
+        $(function () {
+
+            var user = getCookie("user");
+
+            var pwd = getCookie("pwd");
+            console.log(user);
+            if (!isNull(user) && !isNull(pwd)) {
+                $("#phone").val(user);
+                $("#pwd").val(base64decode(pwd));
+            }
+            localStorage.clear();
+            $(".areacode").on("click", function () {
+                $("#arealist").show(200);
+            });
+            $(".ac-item dd").on("click", function () {
+                $("#before").val($(this).find("span").text());
+                $("#arealist").hide(200);
+            });
+        });
+
+        function login() {
+            sync();
+            $.post("/Account/DoLoginByEmail", $("#loginForm").serialize(), function (data) {
+                if (data.code == "1") {
+                    setCookie("user", "", -1);
+                    setCookie("pwd", "", -1);
+                    setCookie("user", $("#phone").val(),360);
+                    setCookie("pwd", base64encode($("#pwd").val()), 360);
+                    $.post("/AjaxIM/Init",null, function (data2) {
+                        if (data.code == "1") {
+                           // setCookie("imtoken", "", -1);
+                            //setCookie("imtoken", data2.msg, 360);
+                            localStorage.setItem("imtoken", data2.msg);
+                            location.href = "/Account/ChatPage";
+                        } else {
+                            alert("请刷新后重新登陆");
+                            return;
+                        }
+                        syncHide();
+                    }, "json");
+                } else {
+                    alert(data.msg);
+                    syncHide();
+                }
+            }, "json");
+        }
+        function isNull(str) {
+            if (str == null || str == "" || str.length == 0) {
+                return true;
+            }
+        }
+        function setCookie(c_name, value, expiredays) {
+            var exdate = new Date()
+            exdate.setDate(exdate.getDate() + expiredays)
+            document.cookie = c_name + "=" + escape(value) +
+            ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+        }
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=")
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1
+                    c_end = document.cookie.indexOf(";", c_start)
+                    if (c_end == -1) c_end = document.cookie.length
+                    return unescape(document.cookie.substring(c_start, c_end))
+                }
+            }
+            return ""
+        }
+    </script>
+    <link rel="stylesheet" href="/css/commonmodule.css" />
+    <link rel="stylesheet" href="/css/lr.css" />
+</head>
+<body>
+    @Html.Action("SyncView", "Static")
+    <div class="wrap min-h100 of-hide">
+        <div class="lr-top">
+            @using (Html.BeginForm("DoLogin", "Account", FormMethod.Post, new
+            {
+                id = "loginForm",
+                @class = "lr-block"
+            }))
+            {
+                <div class="iptTxt-wrap">
+                    @Html.TextBox("email", "", new { @class = "lr-iptPsw", placeholder = "请输入邮箱" })
+                </div>
+                    <div class="iptTxt-wrap" style="margin-top:0.5rem">
+                        @Html.Password("pwd", "", new { @class = "lr-iptPsw", placeholder = "请输入密码" })
+                    </div>
+                    <div class="psw-wrap clearf">
+                        <input id="remember" name="remember" type="hidden" value="1" />
+                        <div class="lr-ml-1 fl psw-item-wrap">
+                            <a class="psw-item" onclick="$('#remember').val('1')" href="javascript:void(0);"><i class="psw-cb-icon checked"></i>记住密码</a>
+                        </div>
+                        <div class="lr-mr-1 fr psw-item-wrap">
+                            <a class="psw-item" onclick="$('#remember').val('0')" href="javascript:void(0);"><i class="psw-cb-icon"></i>忘记密码</a>
+                        </div>
+                    </div>
+                    <input class="bigBtn bg-r lr-mt-1" type="button" value="登入" onclick="login()" />
+            }
+        </div>
+        <div class="lr-bot">
+            @Html.ActionLink("没有账号？立即注册", "Regist", "Account", null, new { @class = "login-foot" })
+            <div class="gc-logo" style="margin-top:7rem"></div>
+
+        </div>
+    </div><!--wrap-->
+    <script>
+	    $(document).ready(function(){
+	        $(".back").on("click", function () {
+	            $("#arealist").hide(200);
+	        });
+	        $(".ac-rightnav li").on("click",function(){
+	            var i = $(this).index();
+	            var h=0;
+	            $(".ac-item").each(function(index,ele){
+	            	if(index===i){
+	                    return false;
+	                };
+	                h+=$(ele).height();
+	            });
+	            $(document).scrollTop(h);
+	        });
+
+	    });
+    </script>
+</body>
+</html>

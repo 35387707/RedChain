@@ -1,0 +1,644 @@
+.uinn-ver {
+    padding: 15% 0 0 0;
+}
+.versionIcon {
+    background-image: url('../img/logo_fangxing@2x.png');
+}
+.uwh-ver2 {
+    width: 6.0em;
+    height: 6.0em;
+}
+.umar-b-ver {
+    margin-bottom: 0.625em;
+}
+.succ {
+    margin-top: 0.4em;
+    font-size: 1.0em !important;
+    color: #65A1D3;
+}
+.hl-text {
+    margin-top: 0.3em;
+    font-size: 2.0em !important;
+    color: #FD614A;
+}
+.connect-us {
+    margin-top: 0.4em;
+    width: 100%;
+}
+.sc-btn {
+    color: #4A4A4A;
+}
+.lgn-wd {
+    margin: 0.88em auto 0.88em;
+}
+.log-in {
+    background-color: #FF5B64;
+    margin: 0 auto;
+    padding: 0.75em 0;
+}
+.uinn-btn {
+    padding-top: 1.2em;
+}
+
+.log-in2 {
+    background-color: #F2F2F2;
+    margin: 0 auto;
+    padding: 0.75em 0;
+}
+
+.btn-btm {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding-bottom: 1.5em;
+}
+
+.btn-btm2 {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.btn-btm2 div {
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    color: #CCCCCC;
+    font-size: 0.75em;
+}
+.btn-btm2 div span {
+    color: #94BDFA;
+}
+.protocol {
+}
+.copyright {
+    padding-top: 0.15em;
+    padding-bottom: 0.5em;
+}
+
+/*
+ main popup style
+ */
+.reveal-modal-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(1,1,1,0.5);
+    z-index: 1000;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+.reveal-modal {
+    /*width: 94%;
+     margin-left: 3%;
+     margin-right: 3%;
+     margin-top: 15%;
+     margin-bottom: 7%;
+     height: 80%;
+     visibility: hidden;
+     position: absolute;
+     z-index: 1001;*/
+}
+
+.reveal-modal .clos-mde {
+    font-size: 1.820em;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    color: #aaa;
+    background-color: red;
+    text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+    font-weight: bold;
+    cursor: pointer;
+}
+.reveal-modal .close-reveal-modal span {
+    position: absolute;
+    color: #2AC897;
+    bottom: 0;
+    right: 0.12;
+}
+/*
+ msg disp
+ */
+#msg_mde {
+    background-color: #FFFFFF;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 55%;
+    border-radius: 0.5em 0.5em;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#msg_tab {
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#msg_tab .nav-tabs .ub-ver {
+    color: #2AC897;
+    font-weight: bold;
+}
+#msg_cont {
+}
+.spec-mde {
+    display: none;
+}
+.fa-fl-r {
+    font-size: 1.0em;
+    font-weight: bold;
+    float: right;
+}
+.fa-gr {
+    color: #2AC897;
+}
+/*
+ login sel tab & cont
+ */
+#login_mde {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 40%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+.login-main {
+    background-color: #FFFFFF;
+    border-radius: 1.0em;
+}
+.usr-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/usr_icon.png');
+    background-size: cover;
+}
+.pwd-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/pwd_icon.png');
+    background-size: cover;
+}
+.cancel-btn {
+    margin-top: 0.25em;
+    width: 100%;
+    text-align: center;
+}
+.cancel-btn img {
+    width: 3.0em;
+    height: 3.0em;
+}
+/*
+ record stat sel
+ */
+#rec_mde {
+    background-color: #FFFFFF;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 75%;
+    height: 15%;
+    border-radius: 0.5em 0.5em;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+.rec-mde {
+    display: none;
+}
+.rec-pad {
+    padding: 0.42em 0.56em;
+}
+.audio {
+}
+
+/*
+ * chg mode sel
+ */
+#chg_mde {
+    background-color: #FFFFFF;
+    width: 96%;
+    text-align: center;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 75%;
+    height: 15%;
+    border-radius: 0.5em 0.5em;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+.spec-mde {
+    display: none;
+}
+
+/*
+ part sel tab & cont
+ */
+#part_mde {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 15%;
+    margin-bottom: 7%;
+    height: 80%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#part_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#part_tab .nav-tabs {
+    border-bottom: 0.05em solid #ececec;
+    height: 2.0em;
+    font-weight: normal;
+    padding-top: 0.2em;
+    padding-left: 0.45em;
+    padding-right: 0.51em;
+    line-height: 2.0em;
+    font-size: 0.94em;
+}
+#part_tab .nav-tabs .ub-ver {
+    border-radius: 0.5em 0.5em 0 0;
+    text-align: left;
+    width: 100% !important;
+    color: #2AC897;
+    font-weight: bold;
+}
+#part_foot {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 3.36em;
+    line-height: 3.36em;
+    /*height: 0.78em;
+     line-height: 0.78em;*/
+    width: 100%;
+}
+.part-srch {
+    margin-top: 0.36em;
+    margin-left: 0.36em;
+}
+.part-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.part-add .sub-add {
+    margin-top: 17%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.2em;
+    height: 2.2em;
+}
+#part_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+.part-img {
+    background-size: cover;
+    background-image: url('img/part_icon.png');
+    width: 1.0em;
+    height: 1.18em;
+    margin-left: 55%;
+}
+.part-stat {
+    color: #2AC897;
+}
+.part-mde {
+    display: none;
+}
+/*
+ resp sel tab & cont
+ */
+#resp_mde {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 15%;
+    margin-bottom: 7%;
+    height: 80%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#resp_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#resp_tab .nav-tabs {
+    border-bottom: 0.05em solid #ececec;
+    height: 2.0em;
+    font-weight: normal;
+    padding-top: 0.2em;
+    padding-left: 0.45em;
+    padding-right: 0.51em;
+    line-height: 2.0em;
+    font-size: 0.94em;
+}
+#resp_tab .nav-tabs .ub-ver {
+    border-radius: 0.5em 0.5em 0 0;
+    text-align: left;
+    width: 100% !important;
+    color: #2AC897;
+    font-weight: bold;
+}
+#resp_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+#resp_foot {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    /*height: 3.36em;
+     line-height: 3.36em;*/
+    height: 0.78em;
+    line-height: 0.78em;
+    width: 100%;
+}
+
+.resp-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.resp-add .sub-add {
+    margin-top: 17%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.2em;
+    height: 2.2em;
+}
+.resp-img {
+    background-size: cover;
+    background-image: url('img/bld_icon.png');
+    width: 1.0em;
+    height: 1.0em;
+    margin-left: 55%;
+}
+.resp-stat {
+    color: #2AC897;
+}
+
+/*
+ desc sel tab & cont
+ */
+#desc_mde {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 15%;
+    margin-bottom: 7%;
+    height: 80%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#desc_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#desc_tab .nav-tabs {
+    border-bottom: 0.05em solid #ececec;
+    height: 2.0em;
+    font-weight: normal;
+    padding-top: 0.2em;
+    padding-left: 0.45em;
+    padding-right: 0.51em;
+    line-height: 2.0em;
+    font-size: 0.94em;
+}
+#desc_tab .nav-tabs .ub-ver {
+    border-radius: 0.5em 0.5em 0 0;
+    text-align: left;
+    width: 100% !important;
+    color: #2AC897;
+    font-weight: bold;
+}
+#desc_foot {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 3.36em;
+    line-height: 3.36em;
+    /*height: 0.78em;
+     line-height: 0.78em;*/
+    width: 100%;
+}
+.desc-srch {
+    margin-top: 0.36em;
+    margin-left: 0.36em;
+}
+.desc-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.desc-add .sub-add {
+    margin-top: 17%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.2em;
+    height: 2.2em;
+}
+#desc_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+.desc-img {
+    background-size: cover;
+    background-image: url('img/desc_icon.png');
+    width: 1.0em;
+    height: 1.1em;
+    margin-left: 65%;
+}
+.desc-stat {
+    color: #2AC897;
+}
+
+/*
+ area sel tab & cont
+ */
+#area_mde {
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 15%;
+    margin-bottom: 7%;
+    height: 80%;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1001;
+}
+#area_tab {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#area_tab .nav-tabs {
+    border-bottom: 0.05em solid #ececec;
+    height: 2.0em;
+    font-weight: normal;
+    padding-top: 0.2em;
+    padding-left: 0.45em;
+    padding-right: 0.51em;
+    line-height: 2.0em;
+    font-size: 0.94em;
+}
+#area_tab .nav-tabs .ub-ver {
+    border-radius: 0.5em 0.5em 0 0;
+    text-align: left;
+    width: 100% !important;
+    color: #2AC897;
+    font-weight: bold;
+}
+#area_foot {
+    background-size: cover;
+    background-image: url('img/bg_80.png');
+    border-radius: 0 0 1.0em 1.0em;
+    height: 3.36em;
+    line-height: 3.36em;
+    width: 100%;
+}
+.area-srch {
+    margin-top: 0.36em;
+    margin-left: 0.36em;
+}
+.area-srch {
+    margin-top: 0.38em;
+    margin-left: 0.42em;
+}
+.area-add .sub-add {
+    margin-top: 17%;
+    margin-left: 2.5%;
+    background-size: cover;
+    background-image: url('img/add_96.png');
+    width: 2.2em;
+    height: 2.2em;
+}
+#area_cont {
+    padding: 0.1em 1.0em 0.25em;
+    background-size: cover;
+    background-image: url('img/bg_w.png');
+}
+.area-img {
+    background-size: cover;
+    background-image: url('img/area_icon.png');
+    width: 1.0em;
+    height: 1.1em;
+    margin-left: 60%;
+}
+.area-stat {
+    color: #2AC897;
+}
+
+/*
+ common style
+ */
+.part-icon {
+    width: 1em;
+    height: 1.2em;
+    background-image: url('img/part_icon.png');
+    background-size: cover;
+}
+.bld-icon {
+    width: 1em;
+    height: 1em;
+    background-image: url('img/bld_icon.png');
+    background-size: cover;
+}
+.edit-icon {
+    width: 1.1em;
+    height: 1.1em;
+    background-image: url('img/edit_128.png');
+    background-size: cover;
+}
+.num-icon {
+    width: 1.1em;
+    height: 1.2em;
+    background-image: url('img/numeral.png');
+    background-size: cover;
+}
+.in-bg {
+    /*background-color: #F6F6F6;*/
+    background-color: rgb(224, 238, 238);
+}
+.desc-bg {
+    background-color: rgb(224, 225, 225);
+}
+
+.sub-back {
+    /*background-color: #F6F6F6;*/
+    background-color: white;
+}
+.in-rds {
+    border-radius: 0.5em;
+}
+.spec-pad {
+    padding: 0.15em 0;
+}
+
+.edit-li {
+    background-color: white;
+    padding-left: 0.9375em;
+    color: #363636;
+}
+.li3 {
+    font-size: 1.14em;
+}
+
+.li5 {
+    background-color: white;
+    width: 80%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 0.15em;
+    margin-bottom: 0.15em;
+}
+.pop-li {
+    background-color: white;
+    width: 97%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-bottom: 0.15em;
+}
+a {
+    text-decoration: none;
+    color: #CCCCCC;
+}

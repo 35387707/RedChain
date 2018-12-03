@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pop/css/money.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <!-- 支付窗口 -->
+            <div class="money-mode">
+                <div class="ub ub-ver">
+                    <div class="ub ub-ac">
+                        <div class="ulev-1 ub-f1">
+                            <div class="ub ub-ac">
+
+                                <div id="money_view" class="title-view">
+
+                                    <div class="money-title-width">
+
+                                        <div class="money-title-inside">
+
+                                            <div class="money-title-style">
+                                                金额
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ub ub-ver">
+                    <div class="ub ub-ac">
+                        <div class="ulev-1 ub-f1">
+                            <div class="ub ub-ac">
+
+                                <div id="redmoney" class="money-view">
+
+                                    <!-- <div class="money-width">
+
+                                    <div class="money-inside">
+
+                                    <div class="money-style money-sub money-choose">
+                                    100
+                                    </div>
+
+                                    </div>
+
+                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../index/js/send.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                dispSelData();
+
+            });
+
+            $('.empty-view').click(function() {
+
+                appcan.window.closePopover('money');
+                localStorage.setItem("money", 0);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.closePopover('money');
+                localStorage.setItem("money", 0);
+
+            });
+
+        </script>
+    </body>
+</html>
+

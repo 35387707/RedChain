@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>手机号</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/lr.css" />
+    <script src="~/Scripts/common.js"></script>
+    <script>
+        function cphone() {
+            $.post("DoChangePhone", function (data) {
+               
+                if (data.code == "1") {
+                    self.location = document.referrer;
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>手机号</span>
+        </div>
+        <div class="same-pt-wrap1">
+@using (Html.BeginForm("DoChangePhone", "Account", FormMethod.Post, new { id = "phoneForm", @class = "lr-block" }))
+{
+                <div class="iptTxt-wrap lr-mb">
+                    <a class="areacode" href="javascript:void(0);">+86</a>
+                    @Html.TextBox("Phone",null,new { @class = "lr-iptTxt", placeholder = "请输入手机号" })
+               
+                </div>
+                <div class="iptTxt-wrap lr-mb">
+                    @Html.TextBox("code", null, new { placeholder = "请输入验证码", @class = "lr-iptPsw" })
+                    <input class="lr-code halfTop" type="button" value="获取验证码" onclick="GetSMSCode(this, $('#phone').val());" />
+                </div>
+                <input type="button" value="确认" onclick="cphone()" />
+ 
+}
+        </div>
+    </div><!--wrap-->
+
+</body>
+</html>

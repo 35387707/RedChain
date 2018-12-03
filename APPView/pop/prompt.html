@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pop/css/prompt.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <div class="pack-cont">
+
+                <div class="rtn-cont">
+                    <div class="logo-cont">
+                        <img src="../pop/img/submit_yitijiao@2x.png" />
+                    </div>
+                    <div class="txt-cont">
+                        提现已到账，请查收!
+                    </div>
+
+                    <div class="titl-di">
+                        <p class="txt-logo">
+                            <span style="color: #626262">通过以下的方式个告诉TA</span>
+                        </p>
+                    </div>
+
+                    <div class="ub share-padd ub-ae">
+                        <div class="ub ub-ver ub-f1 ub-pc">
+                            <div class="tx-c ub-f1 share-sty">
+                                <div class="share-img share-weixin" ontouchstart="appcan.touch('btn-act')" id="send_fubao"></div>
+                            </div>
+                            <div class="ub-ae share-txt ulev0 ufm1 tx-c">
+                                分享给好友
+                            </div>
+                        </div>
+                        <div class="ub ub-ver ub-f1 ub-pc">
+                            <div class="tx-c ub-f1 share-sty">
+                                <div class="share-img share-pengyouquan" ontouchstart="appcan.touch('btn-act')" id="send_choujiang"></div>
+                            </div>
+                            <div class="ub-ae share-txt ulev0 ufm1 tx-c">
+                                分享到朋友圈
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="midl-cont close" >
+                    <div class="disp-wht"></div>
+                </div>
+
+                <div class="clos-cont close">
+                    <div class="clos-icon" ontouchstart="appcan.touch('btn-act')">
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script>
+            $('.empty-view').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+        </script>
+    </body>
+</html>
+

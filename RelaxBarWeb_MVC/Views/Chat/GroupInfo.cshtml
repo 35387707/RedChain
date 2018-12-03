@@ -1,0 +1,201 @@
+﻿
+@{
+    Layout = null;
+    List < RelexBarBLL.Models.GroupUser> ulist= ViewData["Users"] as List<RelexBarBLL.Models.GroupUser>;
+    bool isAdmin = Convert.ToBoolean(ViewData["isAdmin"]);
+}
+@model RelexBarDLL.ChatGroup
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>聊天信息</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/group.css" />
+  
+    <script>
+        function back() {
+
+            if (document.referrer.indexOf("AddFriend") > 0 || document.referrer.indexOf("Announce")>0) {
+                //alert(document.referrer);
+                window.history.go(-3);
+            } else {
+                window.history.back()
+            }
+
+        }
+        function CNick() {
+            var nick = $("#cnicktext").val();
+            $.post("/Chat/UpdateGroupNick", "GID=@Model.GID&Nick="+nick, function (data) {
+                if (data.code == "1") {
+                    $("#mynick").text(nick);
+                    $("#cnick").hide();
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+        function isTop(e) {
+            var isTop = 0;
+            isTop = ($(e).hasClass("switch-on")) ? 0 : 1;
+            $.post("/Chat/UpdateIsTop", "GID=@Model.GID&isTop=" + isTop, function (data) {
+                if (data.code != "1") {
+                    if (isTop == 0) {
+                        $(e).removeClass("switch-off");
+                        $(e).addClass("switch-on");
+                    } else {
+                        $(e).removeClass("switch-on");
+                        $(e).addClass("switch-off");
+                    }
+                }
+            }, "json");
+        }
+        function exitGroup() {
+            $.post("/Chat/ExitGroup", "GID=@Model.GID", function (data) {
+                alert(data.msg);
+                if (data.code == "1") {
+                    location.href = "/Account/ChatPage";
+                }
+            }, "json");
+        }
+        function DropGroup() {
+            $.post("/Chat/DropGroup", "GID=@Model.GID", function (data) {
+                alert(data.msg);
+                if (data.code == "1") {
+                    location.href = "/Account/ChatPage";
+                }
+            }, "json");
+        }
+        function GoFriend(id) {
+            location.href = "/Friend/FriendInfo/" + id;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrap gray-wrap of-hide">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="back()"></i>    
+            <span class="header-l-font halfTop" onclick="back()">返回</span>
+            <span>聊天信息</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <ul class="memberlist clearf">
+                @foreach (var item in ulist)
+                {
+                    <li class="member">
+                        <img class="member-img" src="@item.HeadImg1" alt="" onclick="GoFriend('@item.UID')" />
+                        <p>@item.UNick</p>
+                    </li>
+                }
+                @if (isAdmin)
+                {
+                    <li class="member" onclick="location.href='/Chat/AddFriendToGroup/@Model.GID'">
+                        <div class="member-bgImg-wrap">
+                            <i class="member-addImg"></i>
+                        </div>
+                    </li>
+                    <li class="member" onclick="location.href='/Chat/RemoveGroupUser/@Model.GID'">
+                        <div class="member-bgImg-wrap">
+                            <i class="member-reduceImg"></i>
+                        </div>
+                    </li>
+                }
+                
+            </ul>
+            <ul class="enter-itemlist group-mt-1">
+                <li class="enter-item" onclick="location.href='/Chat/GroupName/@Model.GID'">
+                    <span>群聊名称</span>
+                    <i class="gt bgSR halfTop"></i>
+                    <font class="item-info halfTop">@Model.GName</font>
+                </li>
+                <li class="enter-item" onclick="$('#noticeshow').show().find('#ab-announce').show()" id="alert_groupAnnounce">
+                    <span>群公告</span>
+                    <i class="gt bgSR halfTop"></i>
+                    <font class="item-info halfTop">@(string.IsNullOrEmpty(Model.Notice) ? "未设置" : Model.Notice)</font>
+                </li>
+                <li class="enter-item" onclick='$("#cnick").show().find("#ab-leavegroup").show()' >
+                    <span>我在本群的昵称</span>
+                    <i class="gt bgSR halfTop"></i>
+                    <font class="item-info halfTop" id="mynick">@ViewData["nick"]</font>
+                </li>
+            </ul>
+            <ul class="enter-itemlist group-mt-1">
+                <li class="enter-item" onclick="location.href = '/Chat/SearchChatMessageRecord/@Model.GID?param=GID'">
+                    <span>查找聊天记录</span>
+                    <i class="gt bgSR halfTop"></i>
+                </li>
+            </ul>
+            <ul class="enter-itemlist group-mt-1">
+                <li class="enter-item">
+                    <span>置顶聊天</span>
+                    <div class="switch switch-@(ViewData["isTop"].ToString()=="1"?"on":"off") halfTop" onclick="isTop(this)">
+                        <span class="move move-@(ViewData["isTop"].ToString()=="1"?"on":"off")"></span>
+                    </div>
+                </li>
+                @*<li class="enter-item">
+                    <span>消息免打扰</span>
+                </li>*@
+                @*<li class="enter-item">
+                    <span>保存到通讯录</span>
+                </li>*@
+            </ul>
+            <ul class="enter-itemlist group-mt-1">
+                @*<li class="enter-item">
+                    <span>清空聊天记录</span>
+                </li>*@
+            </ul>
+            <input class="bigBtn bg-r group-mt-2" type="button" onclick='$("#deleteandexit").show().find("#ab-leavegroup").show()' value="删除并退出" />
+        </div>
+            <div class="blackmask" id="deleteandexit">
+                <div class="mask-main-wrap">
+                    <div class="alert-block" id="ab-leavegroup">
+                        @if (isAdmin)
+                        {
+                            <p class="alert-remind">删除并退出后，将解散该群</p>
+                        }
+                        else
+                        {
+                            <p class="alert-remind">删除并退出后，将不再接收此群聊信息</p>
+                        }
+                        <p class="alert-confirm"><a class="ab-mr" href="javascript:void(0);">取消</a><a class="color-r" onclick="@(isAdmin?"DropGroup()":"exitGroup()")" href="javascript:void(0);">确定</a></p>
+                    </div>
+                </div>
+                
+            </div>
+        <div class="blackmask" id="noticeerr" onclick="$('.blackmask').hide();">
+            <div class="mask-main-wrap">
+                <div class="alert-block" id="ab-leavegroup">
+                    <p class="alert-remind">只有群主可以编辑群公告</p>
+                    <p class="alert-confirm"><a class="color-g" href="javascript:void(0);"></a></p>
+                </div>
+            </div>
+        </div>
+        <div class="blackmask" id="cnick" style="display:none">
+            <div class="mask-main-wrap">
+                <div class="alert-block" id="ab-leavegroup"  style="display:block">
+                    <input id="cnicktext" type="text" name="cnicktext" style="border:1px solid black;height:3rem;width: 20.5rem;border-radius: .5rem;" />
+                    <p class="alert-confirm"><a class="ab-mr" href="javascript:void(0);">取消</a><span class="color-r" onclick="CNick()" href="javascript:void(0);">确定</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="blackmask" id="noticeshow" style="display:none">
+            <div class="mask-main-wrap">
+                <div class="alert-block" id="ab-announce"  style="word-wrap: break-word;">
+                    <p class="alert-remind">@(string.IsNullOrEmpty(Model.Notice) ? "未设置" : Model.Notice)</p>
+                    <p class="alert-confirm">
+                    @if ((Convert.ToBoolean(ViewData["isAdmin"])))
+                    {
+                        <a class="ab-mr" href="/Chat/GroupAnnounce/@Model.GID">编辑</a>
+                    }
+                    <a class="color-r" href="javascript:void(0);">退出</a></p>
+                </div>
+            </div>
+        </div>
+      </div><!--wrap-->
+    
+</body>
+</html>

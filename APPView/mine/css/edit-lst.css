@@ -1,0 +1,189 @@
+/*
+ check list right list style
+ */
+.fixed {
+    position: fixed;
+    z-index: 10000;
+}
+.door-fixed {
+    position: fixed;
+    z-index: 10000;
+}
+.dining-fixed {
+    position: fixed;
+    z-index: 10000;
+}
+#first_li {
+    background-size: cover;
+    background-image: url('../imgs/bg_80.png');
+}
+#door_first_li {
+    background-size: cover;
+    background-image: url('../imgs/bg_80.png');
+}
+#dining_first_li {
+    background-size: cover;
+    background-image: url('../imgs/bg_80.png');
+}
+.second-li {
+    background-color: white;
+}
+
+/*
+ * room
+ */
+.room-fixed {
+    position: fixed;
+    z-index: 10000;
+}
+#room_first_li {
+    background-size: cover;
+    background-image: url('../imgs/bg_80.png');
+}
+
+.bor-fb {
+    border-bottom: 0.03125em solid #ececec;
+}
+
+.umh4-1 {
+    min-height: 2.15em;
+}
+.lst-pdg {
+    padding-top: 0.656em;
+    padding-left: 1.2em;
+    padding-right: 0.9375em;
+    padding-bottom: 0.300em;
+}
+.txt-i {
+    font-style: italic;
+}
+.uinn-det4 {
+    padding: 0 0 1.08em 0;
+}
+.uinn-wea {
+    padding: 0.618em 0 0.618em 0;
+}
+.uinn-det5 {
+    padding: 1.08em 0;
+}
+.up-pa9 {
+    padding-left: 0.9375em;
+}
+.up-pa10 {
+    padding: 0.567em 0.9375em;
+}
+
+.bghuis {
+    background-color: #eceaea;
+}
+
+.umhline {
+    line-height: 1.5em;
+}
+
+.umar-ft3 {
+    margin-top: 0.5em;
+}
+
+.ulev-1-1 {
+    font-size: 0.875em !important;
+}
+
+.umar-mar1 {
+    margin-right: 0.625em;
+}
+
+.neircolor {
+    /*color: #afafb0;*/
+    /*color: #6C6C6C;*/
+    color: #7B7B7B;
+}
+
+.umar-2t {
+    margin-top: 0.2em;
+}
+
+.umar-b-2 {
+    margin-bottom: 0.75em;
+}
+
+.t-qy-color {
+    color: #383c40;
+}
+
+/*字体颜色*/
+.font-color1 {
+    color: #00abec;
+}
+
+.ulev-4-0 {
+    font-size: 1em !important;
+}
+
+.bor-fl {
+    border-left: 0.03125em solid #ececec;
+}
+
+.ub-f5 {
+    position: relative;
+    -webkit-box-flex: 5;
+    box-flex: 5;
+}
+
+/*
+ check result list tyle
+ */
+.uinn-at4 {
+    padding: 2.69em 0.5em 0em !important;
+}
+.uinn-4a {
+    padding-top: 2.69em !important;
+}
+.uinn-a4 {
+    padding: 2.69em .5em 0 !important;
+}
+.c-gra-ef {
+    background-color: #efefef;
+}
+.c-bla-op {
+    background-color: rgba(0,0,0,0.5);
+}
+.uh-det1 {
+    height: 12.75em;
+}
+.detban {
+    background-image: url('myImg/dban1.png');
+}
+.uinn-det1 {
+    padding: 0.3125em 0.625em;
+}
+.uinn-det2 {
+    padding: 0.875em 0.625em;
+}
+.uinn-det3 {
+    padding: 0.875em 0;
+}
+.t-gra-4e {
+    color: #4e4e4e;
+}
+.t-gra-85 {
+    color: #858585;
+}
+.umar-at1 {
+    margin-top: .5em;
+}
+.mar-ar1 {
+    margin-right: .5em;
+}
+.uinn-a7 {
+    padding: .7em;
+}
+.uinn-a1 {
+    padding: .4em
+}
+.uinn-a2 {
+    padding: 0 .5em;
+}
+.c-wh {
+    background-color: white;
+}

@@ -1,0 +1,23 @@
+﻿@model List<RelexBarBLL.Models.NewFriendModel>
+@foreach (var item in Model)
+{
+    <li class="newfriendItem">
+        <img class="nf-img" src="@item.HeadImg" alt="" />
+        <p class="nf-name">@item.Name</p>
+        <p class="nf-greet">@item.Content</p>
+        @if (item.HadRead == 0)
+        {
+            <input class="nf-addbtn" style="right:7rem" type="button" value="通过" onclick="agree(1,'@item.MID')" />
+            <input class="nf-addbtn" type="button" value="不通过" onclick="agree(2,'@item.MID')" />
+        }
+        else if (item.HadRead == 1)
+        {
+            <input class="nf-disable-btn" type="button" value="已通过" disabled="">
+        }
+        else
+        {
+            <input class="nf-disable-btn" type="button" value="未通过" disabled="">
+        }
+
+    </li>
+}

@@ -1,0 +1,371 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.AdminUser
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>福包多后台管理系统</title>
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/js/PageUtil.js"></script>
+
+    <style>
+        .showBack {width:100%;height:100%;background-color:rgba(90, 90, 90,.2);background-repeat:no-repeat;position:fixed;top:0;left:0;display:none;z-index:1031;overflow:auto}
+        #waiting{background-image:url(/img/waiting.gif);background-position:50% 50%;}
+        .page-header {margin-top:20px;}
+        a {cursor:pointer; }
+        .input-group-addon {cursor:pointer;}
+        #main-nav{ 
+            border-top:1px solid #f5f5f5;
+             border-bottom:1px solid #f5f5f5;
+            /*border:1px solid #f5f5f5;*/ 
+             border-radius:4px;}
+        ul#main-nav li{
+            /*border:1px solid #f5f5f5;*/
+            border-bottom:1px solid #f5f5f5;
+            border-top:1px solid #f5f5f5;
+            border-radius:4px;
+            background:#fff;
+        }
+        ul#main-nav > li
+        {
+                background-image: -webkit-linear-gradient(top, white 1%, #f3f3f3 100%);
+                background-image: linear-gradient(to bottom, #ffffff 1%, #f3f3f3 100%);
+                background-color: #FFF;
+                border-bottom: 1px solid #c9c9c9!important;
+                box-shadow: none;
+                margin-bottom: 0!important;
+                background-repeat: repeat-x;
+        }
+        .nav-tabs > li > a {
+             margin-right: 0px; 
+             border: none; 
+        }
+        .nav-tabs > li.active > a,.nav-tabs > li.active > a:hover,.nav-tabs > li.active > a:focus{
+            border:none
+        }
+        .nav-list > li.activity > a, .nav-list > li.active > a:hover, .nav-list > li.active > a:focus {
+            color: #555;
+            cursor: default;
+            background-color: #fff;
+            font-weight: bold;
+       }
+
+    </style>
+    <script>
+        function waiting() {
+            $("#waiting").show();
+        }
+        function waitingHide() {
+            $("#waiting").hide();
+        }
+        $(function () {
+            $("#main-nav li").on("click", function () {
+                $("#main-nav li").removeClass("active");
+                $(this).addClass("active");
+            })
+        });
+        $(function () {
+            $(".secondmenu li").on("click", function () {
+               
+                $(".secondmenu li").removeClass("activity");
+                 $(this).addClass("activity");
+            })
+        });
+
+        $(function () {
+            $("#leftnav li").on("click", function () {
+                $("#leftnav li").removeClass("active");
+                $(this).addClass("active");
+                var v = parseInt($(this).children().attr("data-v"));
+                switch (v) {
+                    case 0:
+                        GetManager("Default");
+                        break;
+                    case 1:
+                        GetManager("UserManager");
+                        break;
+                    case 2:
+                        GetManager("PayListManager");
+                        break;
+                    case 3:
+                        GetManager("TransforoutManager");
+                        break;
+                    case 4: 
+                        GetManager("AdminManager");
+                        break;
+                    case 5:
+                        GetManager("SysConfig");
+                        break;
+                    case 6:
+                        GetManager("ProblemManager");
+                        break;
+                    case 7:
+                        GetManager("SysPriceManager");
+                        break;
+                    //case 8:
+                    //    GetManager("GroupManager");
+                    //    break;
+                    case 9:
+                        GetManager("VersionManager");
+                        break;
+                    case 11:
+                        GetManager("UserQuickManager");
+                        break;
+                    case 12:
+                        GetManager("AdsManager");
+                        break;
+                    case 13:
+                        GetManager("RedPacketManager");
+                        break;
+                    case 16:
+                        GetManager("RedPacketListGrabManager");
+                        break;
+                    case 14:
+                        GetManager("UserAgentManager");
+                        break;
+                    case 15:
+                        GetManager("PayRewarsManager");
+                        break;
+                    case 17:
+                        GetManager("OrderListManager");
+                        break;
+                    case 18:
+                        GetManager("OrderTurnoverManager");
+                        break;
+                }
+            });
+        });
+        
+        $(function () {
+            $(".active-hide dl.userlist dd").on("click", function () {
+                $(this).addClass("active");
+                $(".active-hide dl.userlist dd").remove("active");
+              //  $(".userlist").parent().removeClass("active");
+                var v = parseInt($(this).children('a').attr("data-v"));
+                switch (v) {
+                    case 11:
+                        GetManager("UserQuickManager");
+                        break;
+                }
+            });
+        });
+
+       
+        function GetManager(page) {
+            waiting();
+            $.get(page, function (data) {
+                $("#rightContent").html(data);
+                waitingHide();
+            }, "html");
+        }
+     
+      
+    </script>
+</head>
+<body>
+   
+        @*<div class="col-md-12 page-header text-center">
+            <span style="float:left">当前用户:&nbsp;<strong>@Model.Name</strong>&nbsp;<a class="btn-link" href="LoginOut">退出</a></span>
+            <h2>红链后台管理系统</h2>
+        </div>*@
+    <header class="col-md-12 navbar-fixed-top navbar" role="banner">
+            <div class="navbar-branding col-md-4">
+                <a class="navbar-brand" href="#">福包多后台管理系统</a>
+            </div>
+            <div class="login-info ue-clear col-md-2">
+                <div class="welcome ue-clear"><span>当前用户,</span>
+                <a href="javascript:;" class="user-name">@Model.Name</a>
+                </div>
+                <div class="slidebold"></div>
+                <div class="ue-clear">
+                    <a class="btn-link" href="LoginOut">退出</a>
+                </div>
+            </div>
+    </header>
+
+    <div class="col-md-12">
+        <div class="col-md-2" style="margin-top:70px">
+           
+            <ul id="main-nav" class="panel-group nav nav-tabs nav-stacked" style="">
+                <li class="active panel panel-default">
+                    <a onclick="GetManager('Default')" href="#homeSetting" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        首页
+                    </a>
+                    <ul id="homeSetting" class="nav nav-list collapse secondmenu" style="height: 0px;"></ul>
+                </li>
+                <li class="panel panel-default">
+                    <a href="#userSetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-user"></i>
+                        用户管理
+                        <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul id="userSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                        <li><a onclick="GetManager('UserManager')" style="padding-left:30px">用户明细</a></li>
+                        @*<li><a onclick="GetManager('UserStoredManager')" style="padding-left:30px">用户储值</a></li>*@
+                        <li><a onclick="GetManager('UserCheckManager')" style="padding-left:30px">实名认证</a></li>
+                        @*<li><a onclick="GetManager('UserQuickManager')" style="padding-left:30px">快速查询</a></li>*@
+                    </ul>
+                </li>
+                <li class="panel panel-default">
+                    <a href="#productSetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                        商品管理
+                        <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul id="productSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                        <li><a onclick="GetManager('ProuductManager')" style="padding-left:30px">商品列表</a></li>
+                        <li><a onclick="GetManager('CategoryManager')" style="padding-left:30px">商品分类</a></li>
+                    </ul>
+                </li>
+               
+                <li class="panel panel-default">
+                    <a href="#orderSetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                        订单管理
+                        <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul id="orderSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                        <li><a onclick="GetManager('OrderListManager')" style="padding-left:30px">订单明细</a></li>
+                        @*<li><a onclick="GetManager('OrderTurnoverManager')" style="padding-left:30px">订单营业额</a></li>*@
+                    </ul>
+                </li>
+                <li class="panel panel-default">
+                    <a href="#paySetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-credit-card"></i>
+                        财务管理
+                        <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul id="paySetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                        <li><a onclick="GetManager('PayListManager')" style="padding-left:30px">收支管理</a></li>
+                        <li><a onclick="GetManager('ScoreManager')" style="padding-left:30px">积分管理</a></li>
+                        @*<li><a onclick="GetManager('PayRewarsManager')" style="padding-left:30px">佣金管理</a></li>*@
+                        <li><a onclick="GetManager('TransforoutManager')" style="padding-left:30px">提现管理</a></li>
+                    </ul>
+                </li>
+                <li class="panel panel-default">
+                    <a href="#adSetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                        营销管理
+                        <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul id="adSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                        @*<li><a onclick="GetManager('AdsManager')" style="padding-left:30px">广告管理</a></li>*@
+                        <li><a onclick="GetManager('RedPacketManager')" style="padding-left:30px">发福包管理</a></li>
+                        <li><a onclick="GetManager('RedPacketListGrabManager')" style="padding-left:30px">收福包管理</a></li>
+                    </ul>
+                </li>
+                <li class="panel panel-default">
+                    <a href="#InformationSetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-book"></i>
+                        福音天地
+                        <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul id="InformationSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                        <li><a onclick="GetManager('InfomationsManager')" style="padding-left:30px">福音天地</a></li>
+                        <li><a onclick="GetManager('InfomationTypeManager')" style="padding-left:30px">福音类型</a></li>
+                        @*<li><a onclick="GetManager('RedPacketManager')" style="padding-left:30px">发福包管理</a></li>
+                        <li><a onclick="GetManager('RedPacketListGrabManager')" style="padding-left:30px">收福包管理</a></li>*@
+                    </ul>
+                </li>
+                @*<li class="panel panel-default">
+                    <a onclick="GetManager('UserAgentManager')" href="#agentSetting" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-globe"></i>
+                        福相管理
+                    </a>
+                    <ul id="agentSetting" class="nav nav-list collapse secondmenu" style="height: 0px;"></ul>
+                </li>*@
+                <li class="panel panel-default">
+                    <a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        关于系统
+                        <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                     
+                        <li><a onclick="GetManager('SysNoticeManager')" style="padding-left:30px">系统公告</a></li>
+                        @*<li><a onclick="GetManager('SysPriceManager')" style="padding-left:30px">系统收益</a></li>*@
+                        <li><a onclick="GetManager('SysConfig')" style="padding-left:30px">系统设置</a></li>
+                        <li><a onclick="GetManager('VersionManager')" style="padding-left:30px">APP版本号管理</a></li>
+                        <li><a onclick="GetManager('PwdManager')" style="padding-left:30px">密码管理</a></li>
+                    </ul>
+                </li>
+                <li class="panel panel-default">
+                    <a onclick="GetManager('ProblemManager')" href="#problemSetting" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-comment"></i>
+                        问题反馈
+                    </a>
+                    <ul id="problemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;"></ul>
+                </li>
+                <li class="panel panel-default">
+                    <a onclick="GetManager('UserMsgManager')" href="#userMsgSetting" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-bullhorn"></i>
+                        系统通知
+                    </a>
+                    <ul id="userMsgSetting" class="nav nav-list collapse secondmenu" style="height: 0px;"></ul>
+                </li>
+                <li class="panel panel-default">
+                    <a onclick="GetManager('ContactManager')" href="#contactSetting" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-phone-alt"></i>
+                        联系我们
+                    </a>
+                    <ul id="contactSetting" class="nav nav-list collapse secondmenu" style="height: 0px;"></ul>
+                </li>
+                <li class="panel panel-default">
+                    <a onclick="GetManager('UserHelpManager')" href="#userHelpSetting" data-toggle="collapse" data-parent="#main-nav">
+                        <i class="glyphicon glyphicon-question-sign"></i>
+                        帮助中心
+                    </a>
+                    <ul id="userHelpSetting" class="nav nav-list collapse secondmenu" style="height: 0px;"></ul>
+                </li>
+                @{
+                    //  var a=RelexBarBLL.AdminPermissionBLL()
+                    RelexBarBLL.AdminPermissionBLL bll = new RelexBarBLL.AdminPermissionBLL();
+                    string permission = bll.GetAdminPermission(Model.ID);
+                    if (permission != null && !string.IsNullOrEmpty(permission))
+                    {
+                        int[] ps = Array.ConvertAll(permission.Split(','), m => Convert.ToInt32(m));
+                        if (ps.Contains((int)RelexBarBLL.Common.PermissionName.权限管理))
+                        {
+                            @*<li class="panel panel-default">
+                                <a onclick="GetManager('AdminPermissionManager')" href="#AdminPermissionSetting" data-toggle="collapse" data-parent="#main-nav">
+                                    <i class="glyphicon glyphicon-tower"></i>
+                                    权限管理
+                                </a>
+                                <ul id="AdminPermissionSetting" class="nav nav-list collapse secondmenu" style="height: 0px;"></ul>
+                            </li>*@
+
+                            <li class="panel panel-default">
+                                <a href="#AdminPermissionSetting" class="nav-header collapsed" data-toggle="collapse" data-parent="#main-nav">
+                                    <i class="glyphicon glyphicon-tower"></i>
+                                    权限管理
+                                    <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                                <ul id="AdminPermissionSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                                    <li><a onclick="GetManager('AdminPermissionManager')" style="padding-left:30px">权限管理</a></li>
+                                    <li><a onclick="GetManager('RoleManager')" style="padding-left:30px">角色管理</a></li>
+                                    <li><a onclick="GetManager('AdminManager')" style="padding-left:30px">管理员管理</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
+
+                }
+            </ul>
+     
+        </div>
+        <div class="col-md-10" id="rightContent" style="margin-top:70px">
+            @Html.Action("Default")
+        </div>
+    </div>
+    <div id="waiting" class="showBack"></div>
+</body>
+</html>

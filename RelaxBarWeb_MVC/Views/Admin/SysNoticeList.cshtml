@@ -1,0 +1,20 @@
+﻿@model List<RelexBarDLL.ChatMessage>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        @*<td>@Model[i].Subject</td>*@
+        <td class="col-md-7">@Model[i].Content</td>
+        @*<td><img src="@Model[i].Img" style="width:86px" /></td>
+        <td>@Model[i].Title</td>*@
+        @*<td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].IsShow==1)?"启用":"禁用")" onclick="CShow('@Model[i].ID',this)" />
+        </td>*@
+        <td class="col-md-1">
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CStatus('@Model[i].MID',this)" />
+        </td>
+        <td class="col-md-2">@Model[i].CreateTime</td>
+        <td class="col-md-2"><span class="btn-link" onclick="EditSysNotice('@Model[i].MID')"><i class="glyphicon glyphicon-edit"></i>编辑</span></td>
+        @*<td><input type="button" value="编辑" onclick="EditSysNotice('@Model[i].ID')" class="btn btn-danger" /></td>*@
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

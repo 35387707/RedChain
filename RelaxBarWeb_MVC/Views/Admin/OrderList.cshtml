@@ -1,0 +1,38 @@
+﻿@model List<RelexBarBLL.Models.OrderListModel>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        @*<td>@((Model[i].Name == null) ? "系统" : (Model[i].TrueName + "(" + Model[i].Phone + ")"))</td>*@
+        @*<th>@Model[i].Name</th>*@
+        @*<th>@Model[i].TrueName</th>*@
+        <td>@Model[i].Number</td>
+        <td>@Model[i].OName</td>
+        <td>@Model[i].CreateTime</td>
+        <td>@Model[i].OPrice</td>
+        <td>@Model[i].OCount</td>
+        @*<th>@(Model[i].InOut == 1 ? "+" : "-")@Model[i].Val</th>
+        <th>@(Model[i].PayType == 1 ? "余额" : "筹码")</th>*@
+        <th>@Model[i].Price</th>
+        <td>
+               会员账号：@((Model[i].Name == null) ? "系统" : (Model[i].TrueName + "(" + Model[i].Phone + ")"))<br />
+               收货人:@Model[i].RecName -- @Model[i].RecPhone<br />
+               收货地址：@Model[i].RecAddress
+        </td>
+        <td>@Model[i].ProductSpecificationStr</td>
+        @*<th>@Model[i].Price</th>*@
+        @*<th>@Model[i].Status</th>*@
+        <td>@((Model[i].Status == -1) ? "取消" : ((Model[i].Status == 0) ? "下单" : ((Model[i].Status == 1) ? "已支付" : ((Model[i].Status == 2) ? "已发货" : ((Model[i].Status == 3) ? "已收货" : ((Model[i].Status == 4) ? "已完成订单" : "退货中"))))))</td>
+
+        @*<th>@Model[i].PayTime</th>
+        <th>@Model[i].SendTime</th>
+        <th>@Model[i].RecTime</th>
+        <th>@Model[i].FinishTime</th>*@
+        <th>
+            @if (Model[i].Status == 1)
+            {
+                <input type="button" value="发货"  onclick="ChangeOrderStatus('@Model[i].ID',this)" class="btn btn-danger" />
+            }
+        </th>
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

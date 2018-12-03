@@ -1,0 +1,134 @@
+﻿<style>
+    .bankShow {
+    }
+
+    .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+        .editItem > div > div {
+            text-align: right;
+        }
+</style>
+<script>
+    var hasFooter = false;
+    var ContactManager = {};
+    ContactManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage:parseInt((sum-1)/10+1),
+               // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetContactList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+        GetContactList(index);
+    };
+    //获取用户列表
+    function GetContactList(index) {
+        waiting();
+        $.get("ContactList", "index=" + index + "&key=" + ContactManager.searchKey, function (data) {
+            ContactManager.index = index;
+
+           $("#userbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function USearch() {
+        ContactManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetContactList(1);
+    }
+  
+    //更改用户状态
+    function CUStatus(UID, e) {
+        waiting();
+        var status = 1;
+        if (e.value == "启用")
+        { status = 0; }
+        $.post("CUStatus", "UID=" + UID+"&status="+status, function (data) {
+            if (data.code == "1") {
+                if (status == 1) {
+                    e.value = "启用";
+                } else {
+                    e.value = "禁用";
+                }
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+        }, "json")
+    }
+    function EditUser(id) {
+        waiting();
+        $.get("/Admin/EditUser/" + id, function (data) {
+            $("#editUserBody").html(data);
+
+            $("#editUser").show();
+            waitingHide();
+        }, "html")
+    }
+  
+   
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a href="#">联系我们</a></li>
+</ol>
+<div class="col-lg-12 form-inline">
+    关键字：
+    <div class="input-group col-lg-4">
+        <input type="text" class="form-control" id="key">
+        <span class="input-group-addon" onclick="USearch()">查询</span>
+
+    </div>
+   
+    <div class="col-lg-12" id="userlist">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>公司名称</th>
+
+                    <th>姓名</th>
+                    <th>手机号</th>
+                    <th>描述</th>
+                    <th>备注</th>
+                    @*<th>状态</th>*@
+                    <th>注册时间</th>
+                    @*<th>操作</th>*@
+                </tr>
+            </thead>
+            <tbody id="userbody">
+                @Html.Action("ContactList")
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
+</div>
+
+

@@ -1,0 +1,16 @@
+﻿@model List<RelexBarBLL.Models.ChatGroupModel>
+@for (int i = 0; i < Model.Count; i++)
+{
+    <tr>
+        <td>@Model[i].GName</td>
+        <td>@Model[i].MName</td>
+        <td>
+            <input type="button" class="btn btn-danger" value="@((Model[i].Status==1)?"启用":"禁用")" onclick="CStatus('@Model[i].GID',this)" />
+        </td>
+        <td>@Model[i].CreateTime</td>
+        @*<td>
+            <input type="button" value="修改密码" onclick="UpPwd('@Model[i].GID')" class="btn btn-danger" />
+        </td>*@
+    </tr>
+}
+<script>createFooter(@ViewData["sum"])</script>

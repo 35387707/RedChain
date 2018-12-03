@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../index/css/send-v1.css">
+        <link rel="stylesheet" href="../lib/red-packet-rain-0.0.1/css/red.packet.rain.css">
+    </head>
+    <body class="" ontouchstart>
+
+        <div id="page_0" class="up ub-img1 ub-ver" style="background-image: url('../index/img/index_send_bg@2x.jpg')" tabindex="0">
+
+            <!-- <div id="petalbox"></div> -->
+
+            <div class="tmp-cont close-view"></div>
+
+            <div class="ub ub-ver send-btn">
+
+                <div class="ub-f1 ub ub-ver">
+
+                    <div class="bc-border c-wh">
+
+                        <div class="ub uinn-a12 ub-ae send-fst">
+                            <div class="ub ub-ver ub-f1 ub-pc">
+                                <div class="tx-c ub-f1 send-sty">
+                                    <div class="ub-img1 send-img send-fubao" id="send_fubao" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="send-txt" ontouchstart="appcan.touch('btn-act')">
+                                    发布福包信息
+                                </div>
+                            </div>
+                            <!-- <div class="ub ub-ver ub-f1 ub-pc">
+                                <div class="tx-c ub-f1 send-sty">
+                                    <div class="ub-img1 send-img send-choujiang" id="send_choujiang" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                                <div class="send-txt" ontouchstart="appcan.touch('btn-act')">
+                                    发布抽奖信息
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div class="ub ub-ae close-view send-snd">
+                            <div class="ub ub-ver ub-f1 ub-pc">
+                                <div class="tx-c ub-f1 send-sty">
+                                    <div class="close-img close-btn" ontouchstart="appcan.touch('btn-act')"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../lib/red-packet-rain-0.0.1/js/red.packet.rain.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../index/js/send.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                appcan.window.enableBounce();
+
+                var bodyHeight = $('body').height();
+                var sendHeight = $('.send-btn').height();
+                var contHeight = bodyHeight - sendHeight;
+                $('.tmp-cont').css('height', contHeight);
+
+                setTimeout(function() {
+                    //$(".send-fst").css('visibility', 'visible');
+                    $(".send-fst").animate({
+                        opacity : '1',
+                    });
+                }, 300);
+
+                setTimeout(function() {
+                    $(".send-snd").animate({
+                        opacity : '1',
+                    });
+                }, 500);
+
+                appcan.window.subscribe('doGetRedPacket', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.close(-1);
+
+                    }
+
+                });
+
+            });
+
+            $('.close-view').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('#send_fubao').click(function() {
+
+                var RedPrice = localStorage.getItem("RedPrice");
+                if (RedPrice == null || RedPrice == '' || RedPrice == undefined) {
+
+                    getRedPrice();
+
+                } else {
+
+                    var localPack = localStorage.getItem('localPack');
+                    if (localPack == '1' || localPack == 1) {
+
+                        appcan.window.open({
+                            name : 'hbeditor',
+                            data : '../hb/hbeditor.html',
+                            aniId : 10,
+                        });
+
+                    } else {
+
+                        uexWindow.open({
+                            name : "hbeditor",
+                            data : "../hb/hbeditor.html",
+                            animID : 10,
+                            flag : 1024
+                        });
+
+                    }
+
+                }
+
+                //doFaHongBao();
+
+            });
+
+            $('#send_choujiang').click(function() {
+
+                /*
+                var localPack = localStorage.getItem('localPack');
+                                if (localPack == '1' || localPack == 1) {
+                
+                                    appcan.window.open({
+                                        name : 'luck_editor',
+                                        data : '../luck/luck_editor.html',
+                                        aniId : 10,
+                                    });
+                
+                                } else {
+                
+                                    uexWindow.open({
+                                        name : "luck_editor",
+                                        data : "../luck/luck_editor.html",
+                                        animID : 10,
+                                        flag : 1024
+                                    });
+                
+                                }*/
+                openToast("抽奖功能暂不开放", 3000, 5, 0);
+
+            });
+
+        </script>
+    </body>
+</html>

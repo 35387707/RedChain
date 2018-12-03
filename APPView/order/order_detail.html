@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../order/css/detail-v2.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div id="header" class="uh bc-head">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">订单详情</h1>
+                    <div class="nav-btn">
+                        <div class="fa fa-1g ub-img1 cmpl">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content" class="ub ub-ver"></div>
+
+            <div id="footer">
+                <ul class="ub ub-ac cancel-padd">
+                    <li class="ub-f1 cancel-num" ontouchstart="appcan.touch('btn-act')">
+                        总计: <a class="cancel-unit whole">￥0</a>
+                    </li>
+                    <li class="cancel-detail" ontouchstart="appcan.touch('btn-act')">
+                        <div class="cancel-stat" id="cancel">
+                            取消订单
+                        </div>
+                    </li>
+                    <li class="cancel-detail" ontouchstart="appcan.touch('btn-act')">
+                        <div class="pay-stat" id="payOrder">
+                            付款
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/pay.js"></script>
+        <script src="../order/js/orderDetail.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                localStorage.setItem("payRoot", 'order_detail');
+
+                setSwipeCloseEnable(1);
+
+                var titHeight = $('#header').offset().height;
+                var footHeight = $('#footer').offset().height;
+
+                var bodyHeight = $('body').height();
+                var contHeight = bodyHeight - titHeight - footHeight;
+                $('#content').css('height', contHeight);
+
+                appcan.frame.open("content", "order_detail_content.html", 0, titHeight);
+                window.onorientationchange = window.onresize = function() {
+                    appcan.frame.resize("content", 0, titHeight);
+                };
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        var succ = localStorage.getItem("succ");
+                        var pay_pwd = localStorage.getItem("pay_pwd");
+                        var pay = localStorage.getItem("pay");
+                        if (pay_pwd == '1' || pay_pwd == 1) {
+
+                            appcan.window.closePopover('pay_pwd');
+                            localStorage.setItem("pay_pwd", 0);
+
+                        } else if (pay == '1' || pay == 1) {
+
+                            appcan.window.closePopover('pay');
+                            localStorage.setItem("pay", 0);
+
+                        } else if (succ == '1' || succ == 1) {
+
+                            appcan.window.closePopover('succ');
+                            localStorage.setItem("succ", 0);
+
+                        } else {
+
+                            appcan.window.close(-1);
+
+                        }
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+
+                }
+
+                appcan.window.subscribe('dispPrice', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $('.whole').text(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('doPayOrder', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        //$('#redmoney').html(msg);
+                        debug(msg);
+                        doPayOrder(msg);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('detailBack', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        appcan.window.close(-1);
+
+                    }
+
+                });
+
+            });
+
+            $('#nav_left').click(function() {
+                appcan.window.close(-1);
+            });
+
+        </script>
+    </body>
+</html>

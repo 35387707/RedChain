@@ -1,0 +1,239 @@
+/*
+ * map defn
+ */
+.us-a{
+    -moz-box-shadow:0 0 3px 3px #e4e4e4;
+    -webkit-box-shadow:0 0 3px 3px #e4e4e4;
+    box-shadow:0 0 3px 3px #e4e4e4;
+}
+/*
+ common
+ */
+.fh-btn {
+    min-height: 2.5em;
+    min-width: 2.5em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: center;
+    box-pack: center;
+}
+
+/**
+ public
+ *  地图头部
+ */
+.map-header {
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    /*height: 1.28125rem;*/
+    height: 2.5em;
+    border: 1px solid #e5e5e5;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    /*-moz-box-shadow: 0 0 5px #d8d7d8;*/
+    /*-webkit-box-shadow: 0 0 5px #d8d7d8;*/
+    /*box-shadow: 0 0 5px #d8d7d8;*/
+    background-color: #f1f1f1;
+}
+
+.map-header.active {
+    background-color: #fff;
+}
+.map-header .map-title {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.map-header .map-title p:nth-of-type(1) {
+    color: #33bcf0;
+    font-size: 0.8em;
+    line-height: 0.8em;
+    text-align: center;
+    margin: 0.20313 rem 0 0.21875 rem 0;
+}
+.map-header .map-title p:nth-of-type(2) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 0.8em;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.map-header .back {
+    position: absolute;
+    top: 0;
+    /*left: 0.59375rem;*/
+    font-size: 0.34375 rem;
+    width: 2rem;
+    height: 100%;
+    /*line-height: 1.28125rem;*/
+    line-height: 1rem;
+    /*padding-left: 0.5625rem;*/
+    background: url("../img/arrow.png") no-repeat center center;
+    -moz-background-size: 0.29688 rem, 0.53125 rem;
+    -o-background-size: 0.29688 rem, 0.53125 rem;
+    -webkit-background-size: 0.29688 rem, 0.53125 rem;
+    background-size: 0.29688 rem, 0.53125 rem;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-filter: blur(100px); /* Chrome, Opera */
+    -moz-filter: blur(100px);
+    -ms-filter: blur(100px);
+    filter: blur(100px);
+}
+
+/**
+ *  地图底部
+ */
+.map-footer {
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 2rem;
+    background-color: #f9f9f9;
+}
+.map-footer .progress-content {
+    position: absolute;
+    left: 50%;
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    /*top:0.37037rem;*/
+    top: 0.24740 rem;
+    width: 84.375%;
+    /*height:0.85rem;*/
+    /*line-height:0.85rem;*/
+    /*font-size:0.85rem;*/
+    /*font-size:0.75rem;*/
+    /*height:0.75rem;*/
+    /*line-height:0.75rem;*/
+    line-height: 0.48444 rem;
+    font-size: 0.3 rem;
+    color: #323232;
+}
+.map-footer .progress-content span {
+    font-size: 0.3 rem;
+}
+.map-footer .progress-content span:nth-of-type(1) {
+    position: absolute;
+    left: 0;
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.map-footer .progress-content span:nth-of-type(2) {
+    position: absolute;
+    left: 50%;
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.map-footer .progress-content span:nth-of-type(3) {
+    position: absolute;
+    right: 0;
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+}
+.map-footer .progress-bar {
+    position: absolute;
+    /*top:1.59259rem;*/
+    top: 1.25555 rem;
+    left: 50%;
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 84.375%;
+    height: 0.111111 rem;
+    background-color: #e7e7e7;
+    /*border-top:2px solid #e8e8e8;*/
+    /*border-bottom:1px solid #e8e8e8;*/
+}
+.map-footer .progress-bar span {
+    position: absolute;
+    top: 50%;
+    /*-moz-transform: translateY(-50%);*/
+    /*-ms-transform: translateY(-50%);*/
+    /*-webkit-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 0.37037 rem;
+    height: 0.37037 rem;
+    border: 0.023888 rem solid #e8e8e8;
+    background-color: #ededed;
+    -moz-border-radius: 0.37037 rem;
+    -webkit-border-radius: 0.37037 rem;
+    border-radius: 0.37037 rem;
+}
+.map-footer .progress-bar span:nth-of-type(2) {
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.map-footer .progress-bar span:nth-of-type(3) {
+    right: 0;
+    -moz-transform: translate(50%, -50%);
+    -ms-transform: translate(50%, -50%);
+    -webkit-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+}
+.map-footer .progress-bar .current-step {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /*width:1.2222rem;*/
+    /*height:1.2222rem;*/
+    width: 1.25925 rem;
+    height: 1.25925 rem;
+    background: url("../img/rent.png") no-repeat;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+/*
+ * page
+ */

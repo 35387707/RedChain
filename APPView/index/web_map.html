@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body,html{margin: 0 auto;padding: 0;}
+		</style>
+		<script src="../js/appcan.js"></script>
+		<script src="../js/appcan.control.js"></script>
+		<script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../hb/js/hbgetred.js"></script>
+        <script src="../index/js/msg.js"></script>
+        <script src="../index/js/count.js"></script>
+        <script src="../index/js/friend.js"></script>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id='app'>
+			<div :id='id' :style="'width: '+width+'px;height: '+height+'px;'">
+			</div>
+			<div v-show="showErr" style='width: 100%;height: 100%;position: absolute;z-index: 9999'>
+				{{err}}
+			</div>
+		</div>
+		<script type="text/javascript">
+		
+		var app = null;
+		
+		appcan.ready(function() {
+		    
+		    uexWindow.setMultilPopoverFlippingEnbaled(1);
+		    
+		var baka = JSON.parse(localStorage.getItem("redList"));
+		try{
+		   //baka = JSON.parse(localStorage.getItem("redList")); 
+		} catch (e){
+		    //alert(e);
+		}
+		
+		
+		//debug(JSON.stringify(baka));
+		
+		var redList = [
+                        {
+                            data:{},
+                            point:{
+                                lng:113.395831//经度
+                                ,lat:23.13237//纬度
+                            }
+                        },
+                        {
+                            data:{},
+                            point:{
+                                lng:113.395841//经度
+                                ,lat:23.13247//纬度
+                            }
+                        }
+                    ]
+		
+		    
+		    //getPacketList('login');
+		    
+        var lng = parseFloat(localStorage.getItem('longitude'));
+        var lat = parseFloat(localStorage.getItem('latitude'));
+        
+        debug({
+           lng : lng,
+           lat : lat, 
+        });
+                    
+			app=new Vue({
+				el:'#app',
+				data:{
+				    showErr:false,
+				    err:'',
+					id:'baiduMap',
+					mp:null,
+					defaultPoint:{
+						lng:lng//经度
+						,lat:lat//纬度
+					},
+					myPoint:null,
+					width:window.innerWidth,
+					height: window.innerHeight,
+					redList: baka,
+				},
+				methods:{
+					markerClick(point){
+						let item=this.redList.find(m=>m.point.lng==point.lng&&m.point.lat==point.lat)
+						if(item){
+							//console.log(item)
+							/*
+							 * 点击事件的入口
+							 */
+							localStorage.setItem("redPacketId", item.data.id);
+							debug(item);
+							debug(item.data.id);
+							
+							openToast("正在打开红包...", 500, 5, 1);
+            setTimeout(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'hbknock',
+                        data : '../hb/hbknock.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "hbknock",
+                        data : "../hb/hbknock.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            }, 500);
+							
+							
+						}
+					},
+					getCurrentPosition(){//根据浏览器获取位置
+						let v=this;
+						if(this.myPoint){
+							let mk = new BMap.Marker(this.myPoint);
+							v.mp.addOverlay(mk);
+						}else{
+							alert(0)
+							let geolocation = new BMap.Geolocation();
+							geolocation.getCurrentPosition(function(r){
+								if(this.getStatus() == BMAP_STATUS_SUCCESS){
+									let mk = new BMap.Marker(r.point);
+									v.mp.addOverlay(mk);
+									v.mp.panTo(r.point);
+								}
+								else {
+									switch(this.getStatus()){
+										case 6:
+										alert('权限不足')
+										break;
+										case 8:
+										alert('获取定位超时')
+										break;
+										default:
+										alert('failed'+this.getStatus());
+										break;
+									}
+									
+								}        
+							},{enableHighAccuracy: true})
+						}
+						
+						//关于状态码
+						//BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
+						//BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
+						//BMAP_STATUS_UNKNOWN_LOCATION	位置结果未知。对应数值“2”。
+						//BMAP_STATUS_UNKNOWN_ROUTE	导航结果未知。对应数值“3”。
+						//BMAP_STATUS_INVALID_KEY	非法密钥。对应数值“4”。
+						//BMAP_STATUS_INVALID_REQUEST	非法请求。对应数值“5”。
+						//BMAP_STATUS_PERMISSION_DENIED	没有权限。对应数值“6”。(自 1.1 新增)
+						//BMAP_STATUS_SERVICE_UNAVAILABLE	服务不可用。对应数值“7”。(自 1.1 新增)
+						//BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+					},
+					RandomNum(Min, Max) {
+						  let Range = Max - Min;
+						  let Rand = Math.random();
+						  let num = Min + Math.floor(Rand * Range); //舍去
+						  return num;
+					},
+					loadBMapScript() {
+						let t=document.getElementById('baiduScript');
+						if(t){
+							t.parentNode.removeChild(t);
+						}
+					   let script = document.createElement('script');
+							script.type = "text/javascript";
+							
+							//let protocolStr = document.location.protocol;
+							let temp='https';
+// 							if(protocolStr.indexOf('https')!=-1){
+// 								temp='https'
+// 							}else{
+// 								temp='http'
+// 							}
+							script.id='baiduScript';
+							script.src = temp+'://api.map.baidu.com/api?v=3.0&ak=7HIVpRdtl2sOoQc8MEC3OIgGas1yACHQ&callback=bMapInit';
+							document.body.appendChild(script);	
+					},
+					mapClick(e){
+						let mk = new BMap.Marker(e.point);
+						//this.mp.clearOverlays();//清除所有标记
+						//this.mp.addOverlay(mk);
+						//this.$emit('mapClick',e.point);
+						
+					},
+					test(){
+						let v=this;
+						for(let i in this.redList){
+							let pt = new BMap.Point(this.redList[i].point.lng,this.redList[i].point.lat);
+							var myIcon = new BMap.Icon("img/r.png", new BMap.Size(50,50));
+							var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+							marker2.addEventListener("click",()=>{
+								let p = marker2.getPosition();       //获取marker的位置
+								v.markerClick(p); 
+							});
+							this.mp.addOverlay(marker2);
+						}
+					}
+				},
+				created(){
+				    
+					let v=this;
+					window.onresize = function () {
+						v.width = window.innerWidth;
+						v.height = window.innerHeight;
+					}
+					window['bMapInit'] = () => {
+						v.mp = new BMap.Map(v.id,{enableMapClick:false});  //创建地图实例，注意在调用此构造函数时应确保容器元素已经添加到地图上
+						
+						v.mp.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+						let p=new BMap.Point(v.defaultPoint.lng,v.defaultPoint.lat)
+						v.mp.centerAndZoom(p, 18);//设置默认中心位置
+						let mk = new BMap.Marker(p)
+						this.mp.addOverlay(mk)
+						v.mapClick({point:v.defaultPoint});
+						 v.mp.addEventListener('click',v.mapClick);
+						 //this.getCurrentPosition()
+						 //v.initSearch(v.mp);
+						 v.test();
+						 
+						 
+						 
+						 this.myPoint={
+                           lng:lng, //经度
+                           lat:lat//纬度
+                        }
+						 this.getCurrentPosition();
+						 /*
+                          * 必须初始化完成之后才添加
+                         */
+                        //app.redList = baka;
+					};
+					//window.prototype.loadbaiduScript=true;
+					this.loadBMapScript();
+					this.id='map'+this.RandomNum(10000,99999);
+					
+				},
+				watch:{
+					redList(newVal,oldVal){
+						this.mp.clearOverlays();//清除所有标记
+						//this.getCurrentPosition();
+						let v=this;
+						for(let i in newVal){
+							console.log(newVal[i].point.lng,newVal[i].point.lat)
+							let pt = new BMap.Point(newVal[i].point.lng,newVal[i].point.lat);
+							let myIcon = new BMap.Icon("img/r.png", new BMap.Size(50,50));
+							let marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+							marker2.addEventListener("click",()=>{
+								let p = marker2.getPosition();       //获取marker的位置
+								v.markerClick(p);
+							});
+							this.mp.addOverlay(marker2);
+						}
+					}
+				}
+				
+			});
+			
+			debug('hello');
+			
+    appcan.window.subscribe('removeRedPacket', function(msg) {
+
+        if (msg != "" && msg != null && msg != undefined) {
+            
+            debug('移除标注');
+            var index = findSglBubble();
+        
+            try{
+                var allOverlay = app.mp.getOverlays();
+                debug(allOverlay.length);
+                for (var i = 0; i < allOverlay.length; i++){
+                    if(allOverlay[i].point.lng == index){
+                        debug('+++++');
+                        app.mp.removeOverlay(allOverlay[i]);
+                        var temp = app.mp.getOverlays();
+                        debug(temp.length);
+                        debug('-----');
+                        return false;
+                    }
+                }
+                
+            } catch(e) {
+                debug(e);
+
+        }
+        
+        }
+
+    });
+    
+    });
+    
+    function deletePoint(){
+        
+        debug('进入移除标注');
+        
+        try{
+        
+        
+            }catch(e){
+                //app.mp.showErr=true;
+                //app.mp.err=e;
+                debug(e);
+                
+            }
+        
+                
+                
+                
+            }
+            
+            /*
+             
+                    defnRemove() {
+                        
+                        let index = findSglBubble();
+            
+            //getHongBaoList();
+            debug('去移除福包了哦');
+            let allOverlay = app.mp.getOverlays();
+            debug('allOverlay.length:   '+allOverlay.length);
+        for(let i = 0;i<allOverlay.length;i++) {
+            //删除指定经度的点
+            if (allOverlay[i].point.lng == index) {
+                debug(app.redList.length);
+                app.mp.removeOverlay(allOverlay[i]);
+                debug(app.redList.length);
+                return false;
+            }
+        }
+                        
+                        
+                    } 
+             
+               
+             */
+			
+			
+		</script>
+	</body>
+	
+</html>

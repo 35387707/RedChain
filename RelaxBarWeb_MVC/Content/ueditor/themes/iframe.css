@@ -1,0 +1,13 @@
+/*可以在这里添加你自己的css*/
+#Descrition{
+    text-align:left
+}
+#Content{
+    text-align:left
+}
+
+/*内容框高度*/
+.edui-default .edui-editor-iframeholder {
+     /*height: 400px!important;*/
+     /*height:10000px!important;*/
+ }

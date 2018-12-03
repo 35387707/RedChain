@@ -1,0 +1,23 @@
+.personal-block{
+    margin-top:1.5rem;
+    padding:1rem;
+    border-top:0.05rem solid #000;
+    border-bottom:0.05rem solid #000;
+}
+.person-head{
+    position:relative;
+    height:8rem;
+    line-height:8rem;
+    border-bottom:0.05rem solid #000;
+}
+.person-headimg{
+    position:absolute;
+    right:1rem;
+    width:5rem;
+    height:5rem;
+    border:0.05rem solid #000;
+    border-radius:0.4rem;
+}
+.personal-block .enter-itemlist{
+    border-bottom:none;
+}

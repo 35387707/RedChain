@@ -1,0 +1,154 @@
+/*#header {
+    background-color: #323232;
+}*/
+.shop-bg {
+    background-color: #FFFFFF;
+}
+.empty-height {
+    height: 3.75em;
+}
+
+.goods-style {
+    background-color: #FFFFFF;
+    padding: 0.3em 0.5em 0 0.5em;
+}
+
+.goods-img-style {
+    height: 100%;
+    width: 100%;
+}
+.goods-cont {
+    height: 12.0em; 
+}
+.goods-title-color {
+    color: #373737;
+    font-size: 0.88em !important;
+}
+.goods-title-style {
+    padding: 0 0 0.3em 0;
+}
+.goods-info-img {
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.goods-info-right {
+    position: absolute;
+    z-index: 11;
+    height: 15%;
+    width: auto;
+    right: 0;
+    top: 0;
+}
+.goods-info-bot {
+    position: absolute;
+    background-color: rgba(1,1,1,0.5);
+    z-index: 11;
+    height: 15%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+.info-bot-style {
+    height: 100%;
+}
+.info-bot-left {
+    margin-left: 0.5em;
+    height: 100%;
+    width: auto;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: left;
+    box-pack: left;
+}
+.info-bot-right {
+    margin-right: 0.5em;
+}
+.info-icon-width {
+    width: 0.88em;
+    height: 0.88em;
+    margin-right: 0.25em;
+}
+.fubao-icon {
+    background-image: url('../img/shop/shop_fubao@2x.png');
+}
+.info-txt-style {
+    color: #FFD052;
+    font-size: 0.85em !important;
+}
+.info-right-txt {
+    font-style: normal;
+    color: white;
+    font-size: 0.70em !important;
+}
+.right-size {
+    width: 100%;
+    height: 100%;
+}
+.right-img {
+    background-image: url('../img/shop/shop_right@2x.png');
+}
+.right-top {
+    height: 78%;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.right-txt {
+    padding: 0 0.34em;
+    color: white;
+    font-size: 0.80em !important;
+}
+.right-bot {
+    height: 22%;
+    width: 100%;
+}
+.goods-line {
+    margin-top: 0.5em;
+    height: 1px;
+    width: 100%;
+    background-color: #DFDFDF;
+}
+
+/*
+ nav swiper
+ */
+.nav-bg {
+    background-color: white;
+    border-bottom: 1px solid #E8E8E8;
+}
+.nav-cont {
+    height: 100%;
+}
+.nav-sub {
+    color: #989898;
+    text-align: center;
+    width: auto;
+}
+.nav-pd {
+    font-style: normal;
+    padding: 0.636em;
+    font-size: 0.90em !important;
+}
+.active {
+    color: #FD614A;
+}
+.biz-right {
+    color: white;
+}

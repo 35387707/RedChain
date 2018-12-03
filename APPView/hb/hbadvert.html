@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../msg/css/chat.css">
+        <link rel="stylesheet" href="../msg/css/common.css">
+        <link rel="stylesheet" href="../hb/css/detail-v1.css">
+        <link rel="stylesheet" href="../hb/css/detail-v2.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+            .more {
+                margin-left: 10%;
+                width: 70%;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+            .reveal-modal-bg {
+                position: fixed;
+                height: 50%;
+                width: 100%;
+                overflow-y: hidden;
+                overflow-x: hidden;
+                background: rgba(1,1,1,0);
+                z-index: 1000;
+                display: none;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+
+        <div class="reveal-modal-bg"></div>
+
+        <div id="page_0" class="ub ub-ver bc-bg" tabindex="0">
+
+            <!-- <div id="header" class="uh ub-ver ub ub-img1 ub-fh hdr-img">
+            <div class="own-data">
+            <div class="uh fixed ub-fh header-txt-color headbg">
+            <div class="ub">
+            <div class="nav-btn" id="nav_left">
+            <div class="fa fa-1g ub-img1 fa-angle-left fa-2x"></div>
+            </div>
+            <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal">红包信息</h1>
+            <div class="more-btn">
+            <div class="more" id="nav_right">
+            <a class="fa fa-ellipsis-h fa-1x1"></a>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="usr-cont" id="HeadImg1">
+            <div class="ub-img red-wd icon-cont"></div>
+            </div>
+            </div>
+            </div> -->
+
+            <div id="header" class="uh header-txt-color">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 hb-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal">福包</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <!-- <div class="ub-img hb-more"></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <!--header开始-->
+
+            <div id="content" class="ub-f1 tx-l"></div>
+
+            <div id="footer" class="ub ub-ac shukbg umh4-5 up-left up-right probot">
+                <div class="ub ub-ac ub-pc ub-f1 uinput fsbtng bg-white footer-radius up-04-l up-04-r">
+                    <input placeholder="禁止在他人评论区发广告" id="Content" type="search" class="ub ub-f1 ulev-1-1 up-04-l">
+                </div>
+                <div class="ub ub-ac ub-pc footer-radius fontc-8 send-btn-bg up-pa9 up-pafr9 fsbtng umar-l ulev-1-1" ontouchstart="appcan.touch('btn-act')" id="Comment">
+                    评论
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../hb/js/hbdetail.js"></script>
+        <script src="../hb/js/hbaction.js"></script>
+        <script src="../hb/js/hbcomment.js"></script>
+        <script>
+            //倒计时逻辑
+            var seconds = 0;
+            var timeout;
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(0);
+
+                localStorage.setItem("share", 0);
+
+                var temp = localStorage.getItem("redPacketId");
+                var number = temp.substring(0, temp.lastIndexOf('_&_'));
+                var rid = temp.substring(temp.lastIndexOf('_&_') + 3);
+
+                $('#Content').data('rid', rid);
+                $('#Content').data('number', number);
+
+                var titHeight = $('#header').offset().height;
+                var footHeight = $('#footer').offset().height;
+                appcan.frame.open("content", "hbdetail_content.html", 0, titHeight);
+                window.onorientationchange = window.onresize = function() {
+                    appcan.frame.resize("content", 0, titHeight);
+                };
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        //alert('点击了返回键')
+                        var share = localStorage.getItem("share");
+                        var display = $('.reveal-modal-bg').css('display');
+                        if (display != 'none') {
+
+                            openToast("请查看片刻", 5000, 5, 0);
+
+                        } else if (share == '1' || share == 1) {
+
+                            appcan.window.closePopover('share');
+                            localStorage.setItem("share", 0);
+
+                        } else {
+
+                            appcan.window.close(-1);
+
+                        }
+
+                    } else {
+
+                        alert('点击了其他键');
+
+                    }
+                }
+                var fromPage = localStorage.getItem("fromPage");
+                if (fromPage == 'hbknock') {
+                    //广告倒计时
+                    advertCountDown();
+                }
+
+                appcan.window.subscribe('cleanComment', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        //$('#Content').val('');
+                        $("input[data-rid='" + msg + "']").val('');
+
+                    }
+
+                });
+                
+            });
+
+            function advertCountDown() {
+
+                seconds++;
+                var second = -(seconds - 11);
+                $('.reveal-modal-bg').show();
+                $('#nav_left').children().remove();
+                $('#nav_left').html('<div class="fa fa-1g ub-img1 fa-1x">' + second + '</div>');
+
+                if (second < 11 && second >= 0) {
+
+                    timeout = setTimeout("advertCountDown()", 1000);
+
+                } else {
+
+                    $('#nav_left').children().remove();
+                    $('#nav_left').html('');
+                    $('#nav_left').append('<div class="ub-img1 hb-back"></div>');
+                    $('.reveal-modal-bg').hide();
+                    clearTimeout(timeout);
+                    closeToast();
+
+                }
+
+            }
+
+
+            $('#nav_left').click(function() {
+                appcan.window.close(-1);
+            });
+
+        </script>
+    </body>
+</html>

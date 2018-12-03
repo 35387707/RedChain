@@ -1,0 +1,40 @@
+/*  --------------------------------------------------
+    Reveal Modals
+    -------------------------------------------------- */
+        
+    .reveal-modal-bg {
+        position: fixed; 
+        height: 100%;
+        width: 100%;
+        background: #000;
+        background: rgba(0,0,0,0.5);
+        z-index: 100;
+        display: none;
+        top: 0;
+        left: 0;
+        }
+    
+    .reveal-modal {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 12%;
+        margin-bottom: 6%;
+        height: 88%;
+        visibility: hidden;
+        position: absolute;
+        z-index: 101;
+        }
+        
+    .reveal-modal .close-reveal-modal {
+        font-size: 1.25em;
+        line-height: .5;
+        position: absolute;
+        top: 0.75em;
+        right: 0.5em;
+        color: #aaa;
+        text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+        font-weight: bold;
+        cursor: pointer;
+        } 
+

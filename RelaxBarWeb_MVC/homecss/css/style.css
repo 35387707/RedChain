@@ -1,0 +1,42 @@
+*{margin: 0;padding: 0;list-style: none;text-decoration: none;box-sizing: border-box;}
+html{font-size: 5.3333vw;height: 100%;}
+@media screen and (min-width: 640px){html{font-size: 34.2px;}}
+body{max-width: 640px;margin: 0 auto;height: 100%;}
+.index{width: 100%;height: 100%;padding-top: 1.1rem;background-color: #fff;background-image: url(../image/88.png);background-size: 100%;background-repeat: no-repeat;background-position: bottom;position: relative;}
+.index .logo{width: 3.3rem;height: 3.3rem;display: block;margin: 0 auto;}
+.index .about{width: 9.5rem;display: block;margin: 1rem auto 0;}
+.index .info{font-size: 0.75rem;color: #333;margin: 1rem 1.5rem 0;line-height: 1.05rem;}
+.index .foot{width: 100%;height: 4.4rem;padding:0.6rem 0 0 1.7rem;background-color: #ff5265;position: absolute;bottom: 0;font-size: 0.8rem;color: #fff;line-height: 1.1rem;}
+.page{width: 100%;height: 33rem;padding-top: 5.5rem;position: relative;background-size: 100% 100%;}
+.page1{padding-top: 0.8rem;background-image: url(../image/bg1.png);}
+.page1 img{width: 15rem;display: block;margin: 0 auto;}
+.page2{padding-top: 3rem;background-image: url(../image/bg2.png);}
+.page2 img{width: 4.5rem;height:4.5rem;display: block;margin: 0 auto;}
+.page2 .name{font-size: 1.5rem;color: #fff;text-align: center;margin-top: 0.4rem;}
+.page2 .tet{font-size: 0.85rem;color: #fff;text-align: center;margin-bottom: 11.2rem;}
+.page2 .nimg{width: 14rem;position: absolute;top: 11rem;left: 2.4rem;opacity: 0.5;font-size: 1.1rem;color: #fff;text-align: center;line-height: 1.9rem;}
+.page2 a{display: block;width: 10rem;height: 2.2rem;background-size: 100% 100%;margin: 0 auto 0.75rem;}
+.page2 a.android{background-image: url(../image/android.png);}
+.page2 a.ios{background-image: url(../image/ios.png);}
+.page3{background-image: url(../image/bg3.png);}
+.page4{background-image: url(../image/bg4.png);}
+.page5{background-image: url(../image/bg5.png);}
+.page6{background-image: url(../image/bg6.png);}
+.page .img{position: absolute;top: 1.5rem;left: 1rem;opacity: 0.5;font-size: 1.2rem;color: #fff;line-height: 2rem;}
+.page .img div{height: 0.1rem;width: 20%;background-color: #ffd677;}
+.page .cont{font-size: 0.8rem;color: #fff;width: 17rem;margin: 0 auto;line-height: 1rem;font-weight: 500;}
+.page7{padding-top: 28rem;background-image: url(../image/bg7.png);}
+.page7 .img{top: 2rem;left: 7rem;}
+.page7 .img::after{content: "";display: block;width: 100%;height: 0.1rem;background-color: #ffd677;}
+.page7 .apply{width: 10rem;height: 2.2rem;margin: 0 auto;border-radius: 1.1rem;background-color: #fff;line-height: 2.25rem;text-align: center;font-size: 1rem;color: #ff5d5c;}
+.popup{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, 0.7);}
+.popup .popup-box{width: 13.5rem;height: 15rem;background-color: #fff;border-radius: 10px;margin: 25vh auto;overflow: hidden;}
+.popup .popup-box .head{height: 2.2rem;padding: 0 0.7rem;background: linear-gradient(to right,#ff4650,#ff6e45)}
+.popup .popup-box .close{float: right;width: 1rem;height: 1rem;line-height: 1.05rem;background-color: #fff;border-radius: 50%;margin: 0.5rem 0 0 -1rem;text-align: center;}
+.popup .popup-box .title{font-size: 0.8rem;color: #fff;line-height: 2.2rem;text-align: center;}
+.popup .form label{font-size: 0.7rem;color: #333;width: 4rem;display: inline-block;}
+.popup .form label span{color: #fb5468;width: 0.6rem;display: inline-block;}
+.popup .form input{width: 7.8rem;height: 1.3rem;padding: 0 0.3rem;outline: none;border: 1px solid #999;border-radius: 5px;font-size: 0.7rem;color: #333;margin-top: 0.5rem;}
+.popup .form textarea{width: 7.8rem;height: 3rem;outline: none;border: 1px solid #999;border-radius: 5px;padding: 0.3rem;font-size: 0.7rem;color: #333;vertical-align: text-top;margin-top: 0.5rem;resize: none;}
+.popup .form .tip{text-align: center;font-size: 0.6rem;color: #fb5468;line-height: 1.2rem;height: 1.2rem;margin-bottom: -1.2rem;display: none;}
+.popup .form .btn{display: block;border: none;width: 5rem;height: 1.6rem;line-height: 1.65rem;background-color: #ff5669;border-radius: 0.8rem;font-size: 0.75rem;color: #fff;margin: 1.2rem auto 0;}

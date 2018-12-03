@@ -1,0 +1,432 @@
+.chatblock-wrap{
+    width:110%;
+    height:100vh;
+    padding-top:9.78515625rem;
+    padding-right:10%;
+    overflow-y:auto;
+    box-sizing:border-box;
+}
+.chatblock-wrap-ptUp{
+    padding-bottom:17.40625rem;
+}
+.chatblock-wrap-ptDown{
+    padding-bottom:5.80078125rem;
+}
+.chatblock{
+    padding:0 1.5234375rem;
+}
+.chat-search-ipt-wrap{
+    position:fixed;
+    top:6.50390625rem;
+    z-index:100;
+    width:100%;
+    background-color:#fff;
+}
+.chat-search-ipt{
+    display:block;
+    width:100%;
+    height:3.28125rem;
+    margin:0 auto;
+    padding-left:3rem;
+    border:0.05rem solid #cdcccc;
+    background:url(../img/header/searchbtn.png) no-repeat;
+    background-position:1rem 50%;
+}
+
+/*三角形*/
+.chat-window-wrap{
+    width:110%;
+    height:100vh;
+    padding-right:10%;
+    overflow-y:auto;
+    box-sizing:border-box;
+}
+.chat-window{
+    padding:0 1.5234375rem;
+    padding-bottom:5.80078125rem;
+    overflow:hidden;
+}
+.l-sanjiao,.r-sanjiao{
+    position:absolute;
+    top:1.5234375rem;
+    display:block;
+    width:0;
+    height:0;
+    border-style:solid;
+    border-width:0.703125rem;
+    border-top-color:transparent;
+    border-bottom-color:transparent;
+}
+.l-sanjiao{
+    right:99%;
+    border-left-color:transparent;
+    border-right-color:#666;
+}
+.r-sanjiao{
+    left:99%;
+    border-right-color:transparent;
+    border-left-color:#666;
+}
+.chat-message-wrap{
+    position:relative;
+    margin-top:2.51953125rem;
+}
+.chat-message-wrap .chat-message.fl{
+    margin-left:1.171875rem;
+}
+.chat-message-wrap .chat-message.fr{
+    margin-right:1.171875rem;
+}
+.chat-message{
+    position:relative;
+    max-width:23.96484375rem;
+    padding:1.23046875rem;
+    background-color:#666;
+    border-radius:0.8rem;
+    color:#fff;
+    -webkit-text-size-adjust:none;
+}
+.chat-userhead{
+    width:4.04296875rem;
+    height:4.04296875rem;
+    border-radius:0.8rem;
+    overflow:hidden;
+}
+.chat-datetime{
+    max-width:8.37890625rem;
+    margin:2.9296875rem auto;
+    background-color:#ccc;
+    color:#fff;
+    font-size:1.0546875rem;
+    text-align:center;
+    border-radius:0.5rem;
+    -webkit-text-size-adjust:none;
+}
+.calling-card{
+    position:relative;
+    width:20rem;
+    height:8.2rem;
+    padding:0.3rem;
+    background-color:#666;
+    border-radius:0.4rem;
+}
+.calling-card.fr{
+    margin-right:1.171875rem;
+}
+.calling-card.fl{
+    margin-left:1.171875rem;
+}
+.cc-wrap{
+    width:100%;
+    height:8rem;
+    margin-top:0.1rem;
+    background-color:#fff;
+    border-radius:0.4rem;
+}
+.cc-top{
+    position:relative;
+    height:6.3rem;
+    padding-left:6.3rem;
+    border-bottom:0.05rem solid #e9e9e9;
+    overflow:hidden;
+}
+.cc-top-img{
+    position:absolute;
+    left:1.15rem;
+    top:1.15rem;
+    width:3.9rem;
+    height:3.9rem;
+}
+.cc-top-name{
+    margin-top:1.6rem;
+    font-size:1.4rem;
+    font-weight:600;
+}
+.cc-top-nickname{
+    font-size:1.2rem;
+    color:#bbb;
+}
+.cc-bot{
+    padding-left:1rem;
+    font-size:1.1rem;
+    color:#949494;
+}
+
+/*红包*/
+.redpocket{
+    width:22.08984375rem;
+    height:8.90625rem;
+    border-radius:0.4rem;
+}
+.redpocket-l{
+    margin-left:1.171875rem;
+}
+.redpocket-r{
+    margin-right:1.171875rem;
+}
+.rp-top{
+    position:relative;
+    height:6.6796875rem;
+    padding-left:5.859375rem;
+    color:#fff;
+    background-color:#e79d50;
+    border-top-left-radius:0.6rem;
+    border-top-right-radius:0.6rem;
+}
+.rp-bot{
+    width:100%;
+    height:2.2265625rem;
+    line-height:2.2265625rem;
+    color:#a3a2a6;
+    text-indent:1.5234375rem;
+    background-color:#f0eff5;
+    border-bottom-left-radius:0.6rem;
+    border-bottom-right-radius:0.6rem;
+}
+.rp-l-sanjiao,.rp-r-sanjiao{
+    position:absolute;
+    top:1.5234375rem;
+    display:block;
+    width:0;
+    height:0;
+    border-width:0.8203125rem;
+    border-style:solid;
+    border-top-color:transparent;
+    border-bottom-color:transparent;
+}
+.rp-l-sanjiao{
+    right:99.5%;
+    border-left-color:transparent;
+    border-right-color:#e79d50;
+}
+.rp-r-sanjiao{
+    left:99.5%;
+    border-right-color:transparent;
+    border-left-color:#e79d50;
+}
+.rp-pocketicon,.rp-transfericon,.rp-successicon{
+    position:absolute;
+    top:1.5234375rem;
+    left:1.5234375rem;
+    display:block;
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+.rp-pocketicon{
+    width:3.046875rem;
+    height:3.80859375rem;
+    background-image:url(../img/chat/redpocket.png);
+}
+.rp-transfericon{
+    width:3rem;
+    height:3rem;
+    background-image:url(../img/chat/transfer.png);
+}
+.rp-successicon{
+    width:3rem;
+    height:3rem;
+    background-image:url(../img/chat/success.png);
+}
+.rp-num{
+    padding-top:1.51640625rem;
+    font-size:1.58203125rem;
+}
+.rp-font{
+    padding-top:0.403125rem;
+    font-size:1.1rem;
+}
+.rp-transparent{
+    opacity:0.5;
+}
+.photo-wrap{
+    position:relative;
+    max-width:5.9912109375rem;
+    min-width:5.9912109375rem;
+    padding:0.3rem;
+    border:0.05rem solid #ccc;
+    border-radius:0.4rem;
+    background-color:#666;
+}
+.photo-wrap-r{
+    margin-right:1.171875rem;
+}
+.photo-wrap-l{
+    margin-left:1.171875rem;
+}
+.bigimg-wrap{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:999999;
+    display:none;
+    width:100%;
+    height:100vh;
+    background-color:#000;
+}
+.bigimg-block{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+.bigimg{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    display:block;
+}
+
+.statement-title{
+    margin-bottom:1rem;
+    font-weight:900;
+}
+.operate-list{
+    position:absolute;
+    z-index:99999;
+    top:101%;
+    right:5.17rem;
+    background-color:#fff;
+}
+.operate-list li{
+    float:left;
+    margin-right:1.5rem;
+}
+/*转发盒子*/
+.zf-block{
+    position:absolute;
+    z-index:99999;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+       -moz-transform:translate(-50%,-50%);
+        -ms-transform:translate(-50%,-50%);
+         -o-transform:translate(-50%,-50%);
+            transform:translate(-50%,-50%);
+    width:100%;
+    height:100%;
+    padding-bottom:6rem;
+    border-radius:0.4rem;
+    background-color:#fff;
+    box-sizing:border-box;
+    overflow:hidden;
+}
+.zf-block .title{
+    padding:1rem;
+    background-color:#000;
+    color:#fff;
+    font-size:1.6rem;
+}
+.zf-ofhide-block{
+    width:100%;
+    height:95%;
+    padding-right:10%;
+    overflow-y:auto;
+}
+.zf-contact-list{
+    /*padding:0 1rem;*/
+}
+.zf-contant-item{
+    position:relative;
+    width:100%;
+    height:6rem;
+    padding-left:5rem;
+    border-bottom:0.05rem solid #ccc;
+    line-height:6rem;
+    font-size:1.7rem;
+    box-sizing:border-box;
+}
+.zf-contact-img{
+	display:inline-block;
+    width:4rem;
+    height:4rem;
+    margin-right:1rem;
+    vertical-align:middle;
+}
+.zf-checkbox{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    left:1rem;
+    display:block;
+    width:2rem;
+    height:2rem;
+    border-radius:50%;
+    border:0.05rem solid #000;
+}
+
+.zf-checkbox.active{
+    background:url(../img/common/checkedicon.png);
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+.zf-btn{
+    padding:0.5rem 2rem;
+    border-radius:0.3rem;
+}
+.zf-btn.active{
+	margin-left:4rem;
+	margin-right:2rem;
+    background-color:#09bb07;
+    color:#fff;
+}
+.zf-qx-font{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    left:4rem;
+    font-size:1.5rem;
+}
+/*对对方消息的复制和转发*/
+.df-cz-list{
+    position:absolute;
+    top:108%;
+    left:5.20rem;;
+}
+.df-cz-list li{
+    float:left;
+    margin-right:1.5rem;
+}
+/*红包已被领取消息*/
+.rp-got-msg-block{
+    padding-top:8.90625rem;
+}
+.rp-got-msg{
+	margin-top:1rem;
+	margin-bottom:1rem;
+    margin-left:50%;
+    padding:0.2rem 1rem;
+    -webkit-transform:translateX(-50%);
+       -moz-transform:translateX(-50%);
+        -ms-transform:translateX(-50%);
+         -o-transform:translateX(-50%);
+            transform:translateX(-50%);
+    color:#fff;
+    background-color:#ccc;
+    text-align:center;
+    font-size:1.0546875rem;
+    border-radius:0.5rem;
+    -webkit-text-size-adjust:none;
+}
+.rp-got-icon{
+    display:inline-block;
+    width:1rem;
+    height:1.5rem;
+    margin-right:0.5rem;
+    background:url(../img/chat/redpocket.png) no-repeat;
+    background-size:100%;
+    vertical-align:middle;
+}
+.rp-got-msg .color-r{
+    color:#f99e37;
+}

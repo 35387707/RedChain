@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../setup/css/feed-v1.css">
+        <link rel="stylesheet" href="../hb/css/editor-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div id="content" class="ub ub-ver">
+                <div class="uinn-Set2 ulev-app1 t-gra3 ubb bc-border titl-colr">
+                    常见问题
+                </div>
+                <div class="ub-f1 ub ub-ver" id="help_list">
+
+                    <!-- <div class="ub ub-ver ub-fv list-view who-can" ontouchstart="appcan.touch('btn-act')">
+                    <div class="ub ubb bc-border list-cont-padd c-wh ub-ac">
+                    <div class="left-txt-color ulev0 ub-f1">
+                    谁可以领
+                    </div>
+                    <li>
+                    <div class="ub-img li-right-arrow"></div>
+                    </li>
+                    </div>
+                    </div> -->
+
+                </div>
+
+                <div style="height: 1.0em;"></div>
+
+                <!-- <div class="list-wd">
+                    <div class="btn2 ub ub-ac bc-text-head ub-pc bc-btn bot-rds" id="suggestion" ontouchstart="appcan.touch('btn-act')">
+                        我要反馈
+                    </div>
+                </div> -->
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/appcan.listview.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../setup/js/feedback.js"></script>
+        <script src="../setup/js/help_list.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                getHelpList(localStorage.getItem("uid"), 'help_list');
+
+            });
+
+        </script>
+    </body>
+</html>

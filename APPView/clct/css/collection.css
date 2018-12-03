@@ -1,0 +1,168 @@
+.nav-bg {
+    background-color: white;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+/*
+ nav swiper
+ */
+.nav-cont {
+    height: 100%;
+}
+.nav-sub {
+    color: #989898;
+    padding: 0.625em 0;
+    text-align: center;
+    width: 33.33%;
+}
+.nav-pd {
+    font-style: normal;
+    font-size: 0.90em !important;
+}
+.active {
+    color: #FD614A;
+    border-bottom: 3px solid #FD614A;
+}
+/*
+ * public
+ */
+.collc-left-wd {
+    width: 2.0em;
+    min-height: 2.0em;
+    -webkit-border-radius: 2.0em;
+    border-radius: 2.0em
+}
+.umar-at3 {
+    margin-top: 1.05em;
+}
+.collc-padd {
+    /*padding: 0.6em 1.0em 0.5em 0.4em;*/
+    padding: 0.5em 0.2em 0 0.4em;
+}
+.collc-float-right {
+    float: right;
+}
+.collc-float-right a {
+    color: #A2A2A2;
+}
+.c-wh {
+    background-color: white;
+}
+.collc-width {
+    width: 2.0em;
+    height: 2.0em;
+    -webkit-border-radius: 2.0em;
+    border-radius: 2.0em;
+}
+.collc-user-img {
+    background-size: cover;
+    background-image: url('../img/comImg.png');
+}
+.collc-right-wd {
+    padding-left: 0.3em;
+}
+.collc-user {
+    color: #7A7A7A;
+    font-size: 0.935em !important;
+}
+.collc-whole {
+    font-size: 0.86em;
+    margin-right: 0.3em;
+}
+.cont-padd {
+    padding: 0 0.5em 0.5em;
+}
+.collc-sty {
+    margin-top: 0.75em;
+    padding: 0.1em 0.1em 0.25em 0.1em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    background-color: white;
+}
+
+/*
+ * collc
+ */
+.collc-img {
+    background-size: cover;
+    background-image: url('../img/nopicinfo.jpg');
+}
+.collc-wh {
+    min-width: 6.0em;
+    min-height: 5.0em;
+}
+.span-left {
+}
+.span-middle {
+    margin: 0 1.0em;
+}
+.span-right {
+    
+}
+.little-num {
+    margin-left: 0.33em;
+}
+.collc-cont {
+    margin-top: 0.4em;
+    width: 100%;
+    height: 5.0em;
+}
+.collc-txt {
+    width: 100%;
+    height: 3.5em;
+    margin-bottom: 0.3em;
+}
+.txt-sty {
+    width: 100%;
+    height: 100%;
+    color: #5F5F5F;
+    font-size: 0.90em !important;
+}
+.goods-title {
+    height: auto;
+    color: #5F5F5F;
+    font-size: 0.95em !important;
+}
+.goods-name {
+    height: auto;
+    color: #7A7A7A;
+    font-size: 0.88em !important;
+}
+.price-sty {
+    color: #FE4F64;
+    font-size: 0.88em !important;
+}
+.title-overflow {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.name-overflow {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+.txt-overflow {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.collc-actn {
+    width: 100%;
+    height: 1.2em;
+}
+.collc-div {
+    margin-right: 0.36em;
+    position: absolute;
+    right: 0;
+}
+.collc-more-width {
+    width: 1.3em;
+    height: 1.2em;
+}
+.collc-more-icon {
+    background-image: url('../img/collc_more@2x.png');
+}

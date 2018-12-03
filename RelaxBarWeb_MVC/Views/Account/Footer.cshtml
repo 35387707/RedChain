@@ -1,0 +1,37 @@
+﻿@model int?
+<div class="Footer">
+    <ul class="footerlist clearf">
+        <li class="footer-item @(Model==1?"active":"")" onclick="location.href = '/Account/ChatPage'">
+            <div class="auto">
+                <div class="icon-wrap">
+                    <i class="icon chat-icon-active"></i>
+                </div>
+                <p class="font">聊天</p>
+            </div>
+        </li>
+        <li class="footer-item @(Model==2?"active":"")"  onclick="location.href = '/Account/Addressbook'">
+            <div class="auto">
+                <div class="icon-wrap">
+                    <i class="icon address-icon"></i>
+                </div>
+                <p class="font">通讯录</p>
+            </div>
+        </li>
+        <li class="footer-item @(Model==3?"active":"")"  onclick="location.href = '/Account/Discover'">
+            <div class="auto">
+                <div class="icon-wrap">
+                    <i class="icon discover-icon"></i>
+                </div>
+                <p class="font">发现</p>
+            </div>
+        </li>
+        <li class="footer-item @(Model==4?"active":"")" onclick="location.href = '/Account/My'">
+            <div class="auto">
+                <div class="icon-wrap">
+                    <i class="icon mine-icon"></i>
+                </div>
+                <p class="font">我</p>
+            </div>
+        </li>
+    </ul>
+</div>

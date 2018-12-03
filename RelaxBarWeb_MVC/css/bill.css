@@ -1,0 +1,184 @@
+.bill-top{
+    position:relative;
+    padding:2.8125rem 1.5234375rem 1.40625rem 1.5234375rem;
+    background-color:#f0eff5;
+}
+.bill-date{
+    font-size:1.6rem;
+}
+.bill-detail{
+    margin-top:0.5rem;
+}
+.income{
+    margin-left:1rem;
+}
+.calendar-icon{
+    position:absolute;
+    right:1.5234375rem;
+    top:40%;
+    display:block;
+    width:2.9296875rem;
+    height:3.10546875rem;
+    background:url(../img/common/calendar.png) no-repeat;
+    background-size:100%;
+}
+.bill-botlist{
+    padding:0 1.5234375rem;
+    border-top:0.05rem solid #cdcccc;
+    border-bottom:0.05rem solid #cdcccc;
+}
+.bill-item{
+	position:relative;
+    /*height:6.97265625rem;*/
+        padding-right: 3rem;
+    padding-left:6.2109375rem;
+    border-bottom:0.05rem solid #cdcccc;
+    overflow:hidden;
+}
+.bill-item:last-child{
+    border-bottom:none;
+}
+.bill-img{
+    position:absolute;
+    top:50%;
+    left:0;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    width:5.0390625rem;
+    height:5.0390625rem;
+    border-radius:0.8rem;
+    overflow:hidden;
+}
+.bill-towho{
+    margin-top:1.875rem;
+    font-size:1.7rem;
+}
+.bill-time{
+    color:#8e8d8d;
+}
+.bill-money{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+       -moz-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+         -o-transform:translateY(-50%);
+            transform:translateY(-50%);
+    right:0;
+    font-size:1.7rem;
+}
+.bill-color-r{
+    color:#b60005;
+}
+.bill-color-b{
+    color:#000;
+}
+
+/*选择交易类型*/
+.deal-block{
+    position:fixed;
+    bottom:0;
+    z-index:99999;
+    width:100%;
+    height:30.78125rem;
+    background-color:#fff;
+    text-align:center;
+    transition:0.3s;
+}
+.deal-block-up{
+    bottom:0;
+}
+.deal-block-down{
+    bottom:-30.78125rem;
+}
+.deal-title{
+    height:4.51171875rem;
+    line-height:4.51171875rem;
+    border-bottom:0.05rem solid #ccc;
+}
+.deal-type{
+    padding:3.22265625rem 1.5234375rem 3.046875rem 1.5234375rem;
+}
+.deal-type .active{
+    border:.1rem solid #000;
+    color:#000;
+}
+.deal-item{
+    float:left;
+    width:10.83984375rem;
+    height:4.453125rem;
+    margin-right:0.64453125rem;
+    margin-bottom:0.64453125rem;
+    border:0.1rem solid #e5e5e5;
+    border-radius:0.4rem;
+    line-height:4.453125rem;
+}
+.deal-item:nth-of-type(3n){
+    margin-right:0;
+}
+.deal-cancelbtn{
+    display:block;
+    width:100%;
+    height:4.21875rem;
+    background-color:transparent;
+    border-top:0.05rem solid #ccc;
+}
+
+.date-plugIn-wrap{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:none;
+}
+.date-plugIn{
+    position:absolute;
+    top:38%;
+    left:50%;
+    -webkit-transform:translateX(-50%);
+       -moz-transform:translateX(-50%);
+        -ms-transform:translateX(-50%);
+         -o-transform:translateX(-50%);
+            transform:translateX(-50%);
+    width:25.4296875rem;
+    background-color:#fff;
+    border-radius:0.4rem;
+    overflow:hidden;
+}
+.plugIn-title{
+    padding:2.05078125rem 0 0.99609375rem 2.51953125rem;
+    border-bottom:0.05rem solid #b2b2b2;
+    font-size:1.5rem;
+}
+.pI-select-wrap{
+    padding-top:1rem;
+    padding-bottom:1rem;
+    font-size:1.6rem;
+}
+.plugIn-select{
+    width:6.4453125rem;
+    height:2.8125rem;
+    border-radius:0.4rem;
+    font-size:1.4rem;
+    outline:0 none;
+}
+.plugIn-select:first-child{
+    margin-left:5rem;
+}
+.pI-confirm-wrap{
+    width:100%;
+    padding-top:1.34765625rem;
+    padding-bottom:1.34765625rem;
+    border-top:0.05rem solid #b2b2b2;
+}
+.pI-cancel{
+    float:left;
+    margin-left:2.4609375rem;
+}
+.pI-ensure{
+    float:right;
+    margin-right:2.4609375rem;
+    color:#b60005;
+}

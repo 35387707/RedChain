@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pay/css/pwd.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <!--浮动层-->
+            <div class="num-cont">
+
+                <div class="num-input-box">
+
+                    <div class="uh ubb bc-border">
+                        <div class="ub">
+                            <div class="nav-btn" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub-img1 reg-back"></div>
+                            </div>
+                            <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-back">请输入支付密码</h1>
+                            <div class="nav-btn">
+                                <div class="fa fa-1g ub-img1 reg-sty"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="num-height"></ul>
+
+                    <ul class="num-disp-box">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+
+                    <ul class="num-fgt-pwd">
+                        <span class="forget" ontouchstart="appcan.touch('btn-act')">忘记密码?</span>
+                    </ul>
+
+                    <ul class="num-height"></ul>
+                    <ul class="num-height"></ul>
+
+                    <ul class="num-key">
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-sgl">1</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-border num-sgl">2</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-sgl">3</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-sgl">4</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-border num-sgl">5</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-sgl">6</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-sgl">7</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-border num-sgl">8</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-sgl">9</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-empty">清空</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-border num-sgl">0</a>
+                        </li>
+                        <li>
+                            <a ontouchstart="appcan.touch('btn-act')" href="javascript:void(0);" class="num-del">删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../lib/jquery-1.8.3/jquery.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/com/pay.js"></script>
+        <script src="../pay/js/pwd.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.subscribe('wrongPwd', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        $(".num-empty").click();
+                        closeToast();
+
+                        appcan.window.alert({
+                            title : "",
+                            content : "支付密码不正确！",
+                            buttons : ['忘记密码', '取消', '重新输入'],
+                            callback : function(err, data, dataType, optId) {
+                                //alert(data);
+                                if (data == 0) {
+
+                                    localStorage.setItem("HasPayPwd", '已设置');
+
+                                    var localPack = localStorage.getItem('localPack');
+
+                                    if (localPack == '1' || localPack == 1) {
+
+                                        appcan.window.open({
+                                            name : 'judg',
+                                            data : '../pay/judg.html',
+                                            aniId : 10,
+                                        });
+
+                                    } else {
+
+                                        uexWindow.open({
+                                            name : "judg",
+                                            data : "../pay/judg.html",
+                                            animID : 10,
+                                            flag : 1024
+                                        });
+
+                                    }
+
+                                } else if (data == 1) {
+
+                                    var payRoot = localStorage.getItem("payRoot");
+                                    debug(payRoot);
+
+                                    if (payRoot == 'fubao') {
+
+                                        appcan.window.publish('fubaoBack', 1);
+
+                                        appcan.window.closePopover('pay_pwd');
+                                        localStorage.setItem("pay_pwd", 0);
+
+                                    } else if (payRoot == 'order_pay') {
+
+                                        payOrderBack();
+
+                                    } else if (payRoot == 'order_detail') {
+
+                                        appcan.window.publish('detailBack', 1);
+                                        appcan.window.closePopover('pay_pwd');
+                                        localStorage.setItem("pay_pwd", 0);
+
+                                    } else if (payRoot == 'carry') {
+
+                                        appcan.window.publish('carryBack', 1);
+                                        appcan.window.closePopover('pay_pwd');
+                                        localStorage.setItem("pay_pwd", 0);
+
+                                    } else if (payRoot == 'vip_upgr') {
+                                        
+                                        appcan.window.publish('vipBack', 1);
+                                        appcan.window.closePopover('pay_pwd');
+                                        localStorage.setItem("pay_pwd", 0);
+                                                                                
+                                    } else if (payRoot == 'withdraw') {
+                                        
+                                        appcan.window.closePopover('pay_pwd');
+                                        localStorage.setItem("pay_pwd", 0);
+                                        
+                                    }
+
+                                } else if (data == 2) {
+                                    
+                                }
+
+                            }
+                        });
+
+                    }
+
+                });
+
+            });
+
+            $('.forget').click(function() {
+
+                localStorage.setItem("HasPayPwd", '已设置');
+
+                var localPack = localStorage.getItem('localPack');
+
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : 'judg',
+                        data : '../pay/judg.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : "judg",
+                        data : "../pay/judg.html",
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+        </script>
+    </body>
+</html>
+

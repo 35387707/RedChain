@@ -1,0 +1,174 @@
+.nav-bg {
+    background-color: white;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+/*
+ nav swiper
+ */
+.nav-cont {
+    height: 100%;
+}
+.nav-sub {
+    color: #989898;
+    padding: 0.625em 0;
+    text-align: center;
+    width: 50%;
+}
+.nav-pd {
+    font-style: normal;
+    font-size: 0.90em !important;
+}
+.active {
+    color: #FD614A;
+    border-bottom: 3px solid #FD614A;
+}
+
+/*
+ * list
+ */
+.content {
+    padding: 0.75em 0;
+}
+.list-style {
+    background-color: white;
+    border-color: #F2F2F2;
+    padding: 0.4em 0.3em 0.4em 0.4em;
+}
+.icon-style {
+    min-height: 3.2em;
+    min-width: 3.2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.info-style {
+    height: 3.2em;
+}
+.icon-style img {
+    height: 3.2em;
+    width: 3.2em;
+}
+.icon-width {
+    height: 3.0em;
+    width: 3.0em;
+    -webkit-border-radius: 3.0em;
+    border-radius: 3.0em;
+}
+.arrow-style {
+    min-width: auto;
+    min-height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.icon-bg {
+    background-image: url('../img/head.jpg');
+}
+.icon-marg-right {
+}
+.user-padd {
+    padding: 0.5em 0.3em 0.5em 0.3em;
+}
+.nick-padd {
+    padding-bottom: 0.30em;
+}
+.info-top {
+    background-color: blue;
+    height: 0.25em;
+}
+.info-bot {
+    height: 0.25em;
+    background-color: red;
+}
+.nick-style {
+    background-color: pink;
+    height: 1.55em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: left;
+    box-pack: left;
+}
+.desc-style {
+    background-color: orange;
+    height: 1.15em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-box-pack: left;
+    box-pack: left;
+}
+.desc-style span {
+    font-style: normal;
+    color: #888888;
+    font-size: 0.8125em !important;
+}
+.user-nick {
+    margin-right: 0.3em;
+    font-style: normal;
+    color: #6D6D6D;
+    font-size: 0.95em !important;
+}
+.user-note {
+    font-style: normal;
+    color: #888888;
+    font-size: 0.8125em !important;
+}
+.user-stat {
+    min-height: 0.95em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.stat-sty {
+    background-color: white;
+    font-size: 0.6em !important;
+    color: #FD614A;
+    padding: 0.1em 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    border: 1px solid #FD614A;
+}
+.stat-sty span {
+    margin-left: 0.2em;
+}
+
+.overflow {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    word-break: break-all;
+}

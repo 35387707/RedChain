@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../pop/css/popup.css">
+        <link rel="stylesheet" href="../pop/css/approval.css">
+    </head>
+    <body class="ub um-vp ub-ver" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <div id="typ_mde">
+
+                <div class="ub ub-fv ub-fh">
+                    <div class="ub-b1 ub-fh"></div>
+                    <div class="right-style">
+                        <div class="ub-pe triangle"></div>
+                        <div class="menu-style">
+                            <div id="page_other" class="sub-bord menu-sub tx-c" ontouchstart="appcan.touch('btn-act')">
+                                查看用户详情
+                            </div>
+                            <!-- <div class="sub-bord menu-sub tx-c" ontouchstart="appcan.touch('btn-act')">
+                            投诉
+                            </div>
+                            <div class="sub-bord menu-sub tx-c" ontouchstart="appcan.touch('btn-act')" id="add_black_menu">
+                            加入黑名单
+                            </div> -->
+                            <div class="menu-sub tx-c" ontouchstart="appcan.touch('btn-act')" id="del_msg">
+                                清空聊天内容
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script>
+            $('.empty-view').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('#add_black_menu').click(function() {
+
+                appcan.window.alert({
+                    title : '提示',
+                    content : '拉黑后无法撤销, 确定拉黑对方?',
+                    buttons : ["确认", "取消"],
+                    callback : function(err, data, dataType, optld) {
+                        if (data == "0") {
+
+                            appcan.window.openToast("正在拉黑对方...", 2000, 5, 1);
+
+                            setTimeout(function() {
+
+                                $('.empty-view').click();
+
+                            }, 1500);
+                        }
+                    }
+                });
+
+            });
+
+            //localStorage.setItem("friend_uid", $(this).data('friend_uid'));
+
+            $('#page_other').click(function() {
+
+                var friend_uid = localStorage.getItem("friend_uid");
+
+                localStorage.setItem("userid", friend_uid);
+
+                var name = new Date().format("yyyyMMddhhmmssSS");
+
+                localStorage.setItem("fromPage", 'chat_list');
+
+                var localPack = localStorage.getItem('localPack');
+                if (localPack == '1' || localPack == 1) {
+
+                    appcan.window.open({
+                        name : name,
+                        data : '../other/page_other.html',
+                        aniId : 10,
+                    });
+
+                } else {
+
+                    uexWindow.open({
+                        name : name,
+                        data : '../other/page_other.html',
+                        animID : 10,
+                        flag : 1024
+                    });
+
+                }
+
+            });
+
+            $('#del_msg').click(function() {
+
+                uexWindow.actionSheet({
+                    title : "",
+                    cancel : "取消",
+                    buttons : "清空聊天记录"
+                }, function(index) {
+
+                    if (index == 0) {
+
+                        openToast('正在清空聊天记录...', 30000, 5, 1);
+                        appcan.window.publish('delMsgLog', 1);
+
+                    }
+
+                });
+
+            });
+
+        </script>
+    </body>
+</html>
+

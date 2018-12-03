@@ -1,0 +1,49 @@
+*{margin: 0;padding: 0;box-sizing: border-box;text-decoration: none;}
+html{font-size: 20px;width: 100%;height: 100%;}
+@media (max-width: 1200px){html{font-size:16px;}}
+@media (min-width: 1200px) and (max-width: 1500px){html{font-size:18px;}}
+body{width: 100%;height: 100%;background-color: #fff;position: relative;}
+.swiper-container{width: 100%;height: 100%;min-width: 900px;min-height: 600px;}
+.swiper-wrapper{width: 100%;height: 100%;}
+.swiper-slide{width: 100%;height: 100%;position: relative;background-size: cover;background-position: center center;}
+.b1{background-image: url(../homecss/image2/bg1.png);}
+.b2{background-image: url(../homecss/image2/bg2.png);}
+.b3{background-image: url(../homecss/image2/bg3.png);}
+.b4{background-image: url(../homecss/image2/bg4.png);}
+.b5{background-image: url(../homecss/image2/bg5.png);}
+.b6{background-image: url(../homecss/image2/bg6.png);}
+.b7{background-image: url(../homecss/image2/bg7.png);}
+.b8{background-image: url(../homecss/image2/bg8.png);}
+/*.b1 .cont{width: 50rem;height: 31.2rem;margin: -15.6rem -25rem;position: absolute;top: 40%;left: 50%;}*/
+.b1 .cont{width: 46rem;height: 31.2rem;margin:0 -23rem;position: absolute;top: 12%;left: 50%;}
+.b1 .cont .title{width: 5rem;height: 5rem;display: block;margin: 0 auto 1.5rem;}
+.b1 .cont .about{width: 15rem;height: 2.8rem;display: block;margin: 0 auto 2.5rem;}
+.b1 .cont p{font-size: 1.1rem;color: #333;line-height: 1.9rem;margin-bottom: 1.4rem;}
+.b1 .foot{position: absolute;bottom: 0;width: 100%;height: 8.3rem;padding: 1rem 0;background-color: #ff5265;}
+.b1 .foot p{font-size: 1.2rem;margin: 0 auto;line-height: 2.1rem;color: #fff;width: 23rem;}
+.b2 .cont{width: 20rem;height: 36rem;margin: -18rem -10rem;position: absolute;top: 50%;left: 50%;color: #fff;text-align: center;}
+.b2 .cont .logo{width: 6.5rem;height: 6.5rem;display: block;margin: 0 auto 0.5rem;}
+.b2 .cont .title{font-size: 2.1rem;}
+.b2 .cont .sub{font-size: 1.2rem;margin: 0.6rem 0 2rem;}
+.b2 .cont .text{line-height: 3.2rem;font-size: 1.5rem;}
+.b2 .cont .btn{width: 14rem;height: 3.1rem;display: block;margin: 1rem auto 0;}
+.b2 .cont .btn img{width: 100%;height: 100%;}
+.b3 img{width: 27rem;height: 36rem;display: block;margin: -18rem -13.5rem;position: absolute;top: 50%;left: 50%;}
+.common{width: 46rem;margin: 0 -23rem;position: absolute;top: 12%;left: 50%;color: #fff;}
+.common .title{font-size: 1.6rem;margin-bottom: 2rem;}
+.common .wenzi{font-size: 1.2rem;line-height: 2rem;}
+.b8 .cont{width: 45rem;height: 32rem;margin: -16rem -22.5rem;position: absolute;left: 50%;top: 50%;}
+.b8 .cont .title{font-size: 2.2rem;color: #fff;text-align: center;}
+.b8 .cont img{width: 100%;height: 20rem;display: block;margin: 4rem 0 3rem;}
+.b8 .cont .apply{width: 12rem;height: 2.2rem;margin: 0 auto;border-radius: 1.1rem;background-color: #fff;line-height: 2.25rem;text-align: center;font-size: 1rem;color: #ff5d5c;}
+.popup{position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, 0.7);display: none;z-index: 999;}
+.popup .popup-box{width: 15rem;height: 17rem;background-color: #fff;border-radius: 10px;margin: 25vh auto;overflow: hidden;}
+.popup .popup-box .head{height: 2.4rem;padding: 0 0.7rem;background: linear-gradient(to right,#ff4650,#ff6e45)}
+.popup .popup-box .close{float: right;width: 1.2rem;height: 1.2rem;line-height: 1.2rem;background-color: #fff;border-radius: 50%;margin: 0.6rem 0 0 -1.1rem;text-align: center;}
+.popup .popup-box .title{font-size: 0.9rem;color: #fff;line-height: 2.4rem;text-align: center;}
+.popup .form label{font-size: 0.8rem;color: #333;width: 4.5rem;display: inline-block;}
+.popup .form label span{color: #fb5468;width: 0.6rem;display: inline-block;}
+.popup .form input{width: 8.4rem;height: 1.4rem;padding: 0 0.3rem;outline: none;border: 1px solid #999;border-radius: 5px;font-size: 0.7rem;color: #333;margin-top: 0.8rem;}
+.popup .form textarea{width: 8.4rem;height: 3.4rem;outline: none;border: 1px solid #999;border-radius: 5px;padding: 0.3rem;font-size: 0.7rem;color: #333;vertical-align: middle;margin-top: 0.8rem;resize: none;}
+.popup .form .tip{text-align: center;font-size: 0.6rem;color: #fb5468;line-height: 1.2rem;height: 1.2rem;margin-bottom: -1.2rem;display: none;}
+.popup .form .btn{display: block;border: none;width: 5rem;height: 1.6rem;line-height: 1.65rem;background-color: #ff5669;border-radius: 0.8rem;font-size: 0.75rem;color: #fff;margin: 1.2rem auto 0;}

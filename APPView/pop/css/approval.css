@@ -1,0 +1,34 @@
+.triangle {
+    width: 0px;
+    border-top: 0;
+    border-right: 0.60em solid transparent;
+    border-bottom: 0.60em solid white;
+    border-left: 0.60em solid transparent;
+    margin-left: 82%;
+}
+
+.menu-width {
+    width: 48%;
+}
+.menu-style {
+    padding: 0.25em 10% 0;
+    background-color: white;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+.menu-sub {
+    border-color: #F2F2F2;
+    padding: 0.85em 0;
+    font-style: normal;
+    font-size: 0.90em !important;
+}
+.sub-bord {
+    border-bottom: 2px solid #F2F2F2;
+}
+.right-style {
+    width: 48%;
+    position: absolute;
+    top: 1.5em;
+    /*right: 0.625em;*/
+    right: 0;
+}

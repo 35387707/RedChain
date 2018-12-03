@@ -1,0 +1,39 @@
+.new-friend {
+    width: 1.8em;
+    margin-top: 0.2em;
+}
+.msg-hdr-pad {
+    padding: .72em 20% .36em;
+    margin: 0;
+}
+#tab_view {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+#tab_view .tab-txt {
+    height: 100%;
+    width: 50%;
+    -webkit-box-flex: 1;
+}
+.tab-txt {
+    vertical-align: middle;
+}
+.tab-txt .tab-line {
+    height: 0.1em;
+    margin: 0.35em 30% 0 30%;
+    width: 40%;
+}
+.title-style {
+    font-weight: normal;
+}
+.title-active {
+    font-weight: bold;
+}
+.tab-color {
+    background-color: #FF5265;
+}
+.tab-active {
+    background-color: #fff;
+}

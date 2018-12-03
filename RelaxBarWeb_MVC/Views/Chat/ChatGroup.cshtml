@@ -1,0 +1,951 @@
+﻿
+@{
+    Layout = null;
+    List<RelexBarBLL.Models.UserHeadModel> uHeadImg = ViewData["groupHeadImg"] as List<RelexBarBLL.Models.UserHeadModel>;
+}
+@model RelexBarDLL.ChatGroup
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>@Model.GName</title>
+    @Html.Action("ChatCommon", "Static")
+    <style>
+        #fb {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255,.99);
+        } 
+        .mywindow {
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            display:none;
+            z-index:10000;
+        }
+        .mywindow2 {
+            width:100%;
+            height:100%;
+            position:fixed;
+            top:0;
+            left:0;
+            display:none;
+            z-index:10000;
+        }
+        .fcheckbox {
+            position:relative;width:2rem;height:2rem;display:inline-block;float:right;margin-top:2rem;
+        }
+    </style>
+    <!--@@弹出层-->
+    <style>
+        .at-block {
+            position: absolute;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+            .at-block .title {
+                padding: 1rem;
+                background-color: #000;
+                color: #fff;
+                font-size: 1.6rem;
+            }
+            .atback{
+                display:inline-block;
+                width: 3rem;float:left;padding-top:1rem;
+                background-image:url("/img/atback.png");
+    height: 1.2rem;background-size:contain;margin-top:.7rem;
+                       background-repeat:no-repeat;
+            }
+            .at-header{height:3.5rem;background-color:#000;color:white;box-sizing:border-box;
+            }
+            .at-header p{padding:1rem 0;}
+    </style>
+    <!--全局-->
+    <script>
+        var ws;
+        var gid = '@Model.GID.ToString()';
+        var uid = '@ViewData["id"]';
+        var topMID = "@ViewData["lastMID"]";
+        var lastMID = "@ViewData["lastMID"]";
+        var syncTopStatus = 1;
+        var syncStatus = 1;
+        var startX, startY, endX, endY;
+        var HeadImg = "@ViewData["HeadImg"]";
+        var isGroup = true;
+        var userHeadImg = {
+            uList:[
+                    @if (uHeadImg != null) {
+                        for (int i = 0; i < uHeadImg.Count; i++)
+                        {
+                            @Html.Raw((i > 0 ? "," : "") + "{UID:\"" + uHeadImg[i].UID + "\",HeadImg:\"" + uHeadImg[i].HeadImg + "\",\"UNick\":\"" + uHeadImg[i].UNick + "\"}")
+                        }
+                    }
+            ],
+            GetHeadImg: function (id) {
+                for (var i = 0; i <this.uList.length; i++) {
+                    if (id == this.uList[i].UID) {
+                        return this.uList[i].HeadImg;
+                    }
+                }
+            },
+            GetUNick: function (id) {
+                for (var i = 0; i < this.uList.length; i++) {
+                    if (id == this.uList[i].UID) {
+                        return this.uList[i].UNick;
+                    }
+                }
+            }
+
+        };
+        $(function () {
+            $("#gucount").text("("+userHeadImg.uList.length+")");
+        });
+    </script>
+    <script>
+        var slred = {
+            gid:'@Model.GID',
+            count: 5,
+            price: 10,
+            lei:1,
+        };
+        $(function () {
+            $("#packetcount li").on("click", function () {
+                slred.count = $(this).attr("data-v");
+            });
+            $("#price li").on("click", function () {
+                slred.price = $(this).attr("data-v");
+            });
+            $("#ls li").on("click", function () {
+                slred.lei = $(this).attr("data-v");
+            });
+
+            //$(".slfb").delegate("div","click", function () {
+            //    alert($(this).attr("id"));
+            //});
+
+            //$(".slfb").live("click", function (data) {
+
+            //});
+            if (topMID == "") {
+                getMessageRecord(function () {
+                    var $list = $(".chat-window-wrap");
+                    $list[0].scrollTop = $list[0].scrollHeight;
+                });
+            } else {
+                getMessageRecordButtom();
+            }
+        });
+            function fabao() {
+                $("#fb").show();
+                slred.count = 5;
+                slred.price = 10;
+                slred.lei = 1;
+            }
+            function doSendSLRed() {
+                //if (ws.readyState != 1) {
+                //    getWS();
+                //    doSendSLRed();
+                //    return;
+                //}
+                $.post("/Chat/SendSLRed", slred, function (data) {
+
+                    if (data.code == "1") {
+                        $("#fb").hide();
+                    } else {
+                        alert(data.msg);
+                    }
+                }, "json");
+            }
+    </script>
+    <!--websocket-->
+    <script>
+        $(function () {
+           // getWS('@ViewData["token"]');
+            GetMessage(localStorage.getItem("imtoken"));
+        });
+    </script>
+    <script>
+        function sendText(){
+            sendGroupMessage();
+        }
+        //$(document).keypress(function (e) {
+        //    var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+        //    if (eCode == 13) {
+        //        sendGroupMessage();
+        //        //自己写判断操作
+        //    }
+        //});
+        
+        //往下滑动加载数据
+        function getMessageRecord(endFun) {
+            $.post("/Chat/MessageRecord", "TType=2&gid=" + gid + "&lastMID=" + topMID, function (data) {
+                if (data.code == "1") {
+                    var list = JSON.parse(data.msg);
+                    //if (list.length > 0) {
+                    //    $("#content").prepend("<p class='chat-datetime'>" + list[0].CreateTime + "</p>");
+                    //}
+                    for (var i = 0; i < list.length; i++) {
+                        var row = list[i];
+                       // console.log(row);
+                        doMessageRecoed(row);
+                    }
+                    if (list.length > 0) {
+                        topMID = list[list.length - 1].MID;
+                        if (typeof (endFun) == "function") {
+                            endFun();
+                        }
+                    }
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+        //往上滑动加载数据
+        function getMessageRecordButtom(endFun) {
+            $.post("/Chat/MessageRecordButtom", "TType=2&gid=" + gid + "&lastMID=" + lastMID, function (data) {
+                if (data.code == "1") {
+                    var list = JSON.parse(data.msg);
+                    if (list.length > 0) {
+                        lastMID = list[list.length - 1].MID;
+                        if (list.length == 1) {
+                            return;
+                        }
+                        
+                        for (var i = 1; i < list.length; i++) {
+                            var row = list[i];
+                           // console.log(row);
+                            doMessage(row);
+                        }
+                        if (typeof (endFun) == "function") {
+                            endFun();
+                        }
+                    }
+                    
+                } else {
+                    alert(data.msg);
+                }
+
+            }, "json");
+        }
+        function slhbclick(mid) {
+            $.post("/Chat/SLRedClick","gid="+gid+"&mid="+mid, function (data) {
+                alert(data.msg);
+                if (data.code == "1") {
+
+                }
+            });
+        }
+        function sendGroupMessage() {
+            var msg = $("#scontent").val();
+            if (msg == "" || msg.length == "") {
+                return;
+            }
+            msg = js.lang.String.encodeHtml(msg);
+            $.post("/Chat/SendMessages", "TType=2&Gid=" + gid + "&Type=0&Content=" + msg, function (data) {
+                if (data.code != "1") {
+                    alert("发送失败！");
+                } else {
+                    $("#scontent").val("");
+                }
+            }, "json");
+
+        }
+        var MsgData = {
+            Api: "",
+            Sid: "",
+            TType: 2,
+            Gid: "",
+            Type: 0,
+            Status: 1,
+            Content:""
+        }
+
+    </script>
+    <!--发送消息脚本-->
+    <script>
+        //发红包
+        function sendRed() {
+            $("#red").toggle();
+            redinit();
+
+        }
+        //发送文字类
+        function sendMessage(type, content) {
+            //SendMessages(int TType,Guid? Rid,Guid? Gid,int Type,string Content)
+            $.post("/Chat/SendMessages", "TType=1&Rid=@Model.GID&Type=" + type + "&Content=" + content, function (data) {
+
+                if (data.code != "1") {
+                    alert(data.msg);
+                } else {
+                    $("#scontent").val("");
+                    //聊天类型，0文字/表情，1图片，6链接，4个人名片，5心跳包，7视频,8语音,2普通红包，9扫雷红包，3转账,10好友申请,9其他等
+                    switch (type) {
+                        case 0:
+                            $('#content').append("<div class='chat-message-wrap clearf'><img class='chat-userhead fr' src='" + HeadImg + "' /><p class='chat-message fr'><i class='r-sanjiao'></i>" + content + "</p></div>");
+                            break;
+                        case 2:
+                            break;
+
+                    }
+                    toButtom();
+                }
+            }, "json");
+        }
+        var red = {
+            Rid: '@Model.GID',
+            count: 1,
+            price: 0,
+            type: 0,//0普通，1随机
+            content: "恭喜发财，大吉大利"
+        };
+        function redinit() {
+            red.price = 0;
+            red.type = 1;
+            red.count = 1;
+            red.content = "恭喜发财，大吉大利";
+            $("#redprice").val("");
+            $("#redcontent").val("");
+            $("#redpricetext").text("0.00");
+            $("#redcount").val("")
+            $("#redstr1").text("每人抽到的金额随机");
+            $("#redstr2").text("改为固定红包");
+        }
+        function redtypeChange() {
+            if (red.type == 0) {
+                red.type = 1;
+                $("#redstr1").text("每人抽到的金额随机");
+                $("#redstr2").text("改为固定红包");
+            } else {
+                red.type = 0;
+                $("#redstr1").text("每人抽到的固定随机");
+                $("#redstr2").text("改为随机红包");
+            }
+        }
+        function doSendRed(paypwd) {
+            if (!paypwd) {
+                $("#paytype").val("1");
+                $(".pwdbody-item").text("");
+                $('#input_pay_pwd').show();
+                return;
+            }
+            red.price = $("#redprice").val();
+            if (isNaN(red.price)) {
+                alert("不能使用非数字！");
+                return;
+            }
+
+            if (parseFloat(red.price) < 0.1) {
+                alert("红包金额不能小于0.1元");
+                return;
+            }
+            red.count = $("#redcount").val();
+            if (red.count.indexOf(".") != -1) {
+                alert("只能使用整数");
+                return;
+            }
+            var maxcount=@(ViewData["groupCount"]);
+            if(red.count>=maxcount){
+                alert("红包数量不能超过"+(maxcount-1)+"个");
+                return;
+            }
+            if (isNaN(red.count)) {
+                alert("不能使用非数字！");
+                return;
+            }
+
+            if (parseFloat(red.count) < 1) {
+                alert("红包数量不能少于1");
+                return;
+            }
+            var minprice=0.01*parseInt(red.count);
+            if(red.price<minprice){
+                alert("红包金额不能小于"+minprice);
+                return;
+            }
+            var tempredcontent = $("#redcontent").val();
+            if (tempredcontent != "") {
+                red.content = tempredcontent;
+            }
+            //if (ws.readyState != 1) {
+            //    getWS();
+            //    doSendSLRed();
+            //    return;
+            //}
+            red.paypwd = paypwd;
+            sync();
+            $.post("/Chat/SendGroupRed", red, function (data) {
+
+                if (data.code == "1") {
+                    paypwdCancel();
+                    red.paypwd = "";
+                    $('#red').toggle();
+                    //$("#content").append("<div id=" + data.msg + "  onclick='lookRed(\"" + data.msg + "\")' class='chat-message-wrap clearf'><img class='chat-userhead fr' src='" + HeadImg + "' /><div class='redpocket redpocket-r fr'><div class='rp-top'><i class='rp-r-sanjiao'></i><i class='rp-pocketicon'></i><p class='rp-num'>" + red.content + "</p><p class='rp-font'>查看红包</p></div><div class='rp-bot'>玩信红包</div></div></div>");
+                } else {
+                    alert(data.msg);
+                    if (data.msg == "请先设置支付密码") {
+                        location.href = "/Account/ChangePwd/1";
+                    }
+                }
+                syncHide();
+            }, "json");
+        }
+        function redClick(mid){
+            if ($("#" + mid).children().eq(0).hasClass("fr")) {
+                location.href = "/Chat/RedDetail/" + mid;
+                return;
+            }
+            if (mid) {
+                $.post("/Chat/HasRed/" + mid, null, function (data) {
+                    var $mitem = $("#" + mid);
+                    $("#redopenid").val(mid);
+                    $(".redsender").text(userHeadImg.GetUNick($mitem.children().eq(0).attr("data-sid")));
+                    $(".redimg").css("background-image", "url(" + $mitem.find("img").attr("src") + ")");
+                    $(".red-text").text($mitem.find(".rp-num").text());
+                    if (parseInt(data.msg) > 0) {
+                        $(".open-btn-img").show();
+                        
+                    } else {
+                        $(".redtext").html("<a href='/Chat/RedDetail/" + mid + "'>查看领取详情</a>");
+                    }
+                    $(".redopen2").show();
+                });
+            } else {
+                mid = $("#redopenid").val();
+                RedClick(mid);
+            }
+        }
+        //红包点击事件
+        function RedClick(mid) {
+            sync();
+            $.post("/Chat/RedClick", "gid=" + gid + "&mid=" + mid, function (data) {
+                syncHide();
+                if (data.code == "1" || data.code == "-10"||data.code=="-2") {
+                    if(data.code=="1"){
+                        //redOpenSuccess(data.msg.split("||")[0],mid);
+                        SaveRedMsg(mid, "你已领取了" + data.msg.split("||")[1] + "的红包");
+                        location.href = "/Chat/RedDetail/" + mid;
+                    }else{
+                        location.href = "/Chat/RedDetail/" + mid;
+                    }
+                    
+                    
+                }
+            });
+        }
+        ////查看红包
+        //function lookRed(mid) {
+        //    location.href = "/Chat/RedDetail/"+mid;
+        //}
+        //发送照片
+        function sendPhoto(url) {
+            $.post("/Chat/SendMessages", "TType=2&Gid="+gid+"&Type=1&Content=" +url, function (data) {
+                if (data.code != "1") {
+                    alert(data.msg);
+                }
+            }, "json");
+
+        }
+        function GetLocalFriend() {
+            var templist = localStorage.getItem("friendList");
+            if (templist == null) {
+                return;
+            }
+            var list = JSON.parse(templist);
+
+            var flist = [];
+
+            for (var i = 0; i < list.length; i++) {
+
+                if (list[i].Type == 1) {
+
+                    flist.push("<div class='contact-item'><img  class='contact-img' src='" + list[i].headimg + "' /><input name='group-uid' class='fcheckbox' type='radio' data-v='" + list[i].ID + "'/><p >" + list[i].Remark + "</p></div>");
+
+                }
+
+
+            }
+            $("#flist").append(flist.join(""));
+        }
+        function sendCard() {
+            GetLocalFriend();
+            $("#sendMyCardView").show();
+        }
+        function sendCardBefore() {
+            $input = $("input[name='group-uid']:checked");
+            if ($input.length == 0) {
+                alert("未选择用户");
+                return;
+            }
+            sendGRMP($input.attr("data-v"));
+        }
+        //发送个人名片
+        function sendGRMP(id) {
+            if (!confirm("是否发送给名片")) {
+                return;
+            }
+            $.post("/chat/SendUserCard", "GID=" + gid + "&CID=" + id, function (data) {
+                if (data.code == "1") {
+                    $("#sendMyCardView").hide();
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+        function RevokeMSG(mid) {
+            if (confirm("是否撤回消息")) {
+                $.post("/Chat/RevokeMSG", "TType=2&Gid=" + gid + "&MID=" + mid, function (data) {
+                    if (data.code == "1") {
+                        $("#" + mid).remove();
+                    } else {
+                        alert(data.msg);
+                    }
+                }, "json");
+            }
+        }
+        function DeleteMSG(mid) {
+            if (confirm("是否删除消息")) {
+                $.post("/Chat/RevokeMSG", "TType=2&Gid=" + gid + "&MID=" + mid, function (data) {
+                    if (data.code == "1") {
+                        $("#" + mid).remove();
+                    } else {
+                        alert(data.msg);
+                    }
+                }, "json");
+            }
+        }
+    </script>
+    <style>
+       .redopen,.redopen2{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display:none;
+            z-index: 9999;
+        }
+       .redopen2{background-color:rgba(30,30,30,.5);color:#ebcd99;text-align:center;}
+        .redopen2-body{height:60%;width:80%;background-image:url(/img/red.png);background-size:100%;margin-top:10%;margin-top: 30%;margin-left: 10%;}
+        .redopen2-body>div{width:100%;}
+        .redopen2-body>div:nth-child(1){height:9%;}
+        .redclose{width:4rem;height:4rem;}
+        .redopen2-body>div:nth-child(2){height:13%;background:url(/upload/20170831/d6290597-7b78-48cb-8bd2-7fba879cb446.jpg) no-repeat center center;background-size:contain;
+        }
+        .redopen2-body>div:nth-child(3){height:6%;font-size:1.8rem;}
+        .redopen2-body>div:nth-child(4){height:6%;font-size:1.5rem;}
+        .redopen2-body>div:nth-child(5){height:17%;font-size:2.5rem;box-sizing: border-box;padding-top: 5%;}
+        .redopen2-body>div:nth-child(6){height:26%;}
+        .open-btn{width:35%;height:100%;margin:0 auto;}
+        .open-btn-img{background:url(/img/open.png) no-repeat center center;background-size:contain;width:100%;height:100%;display:none;}
+        .redopen2-body>div:nth-child(7){height:6%;margin-top:10%;}
+        .rp-img{
+            position:absolute;
+                top: 31%;
+    left: 23%;
+            width:50%;
+            height:35%;
+            background-image: url(/img/redopen.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+
+        }
+        .rd-price{position:absolute;
+                  display:inline-block;
+                  bottom:8rem;
+                  left:26%;
+                  color:#fdd82f;
+        }
+        .lookred{background-color:white;display:inline-block;position:absolute;
+                 left:22%;
+                 padding:.3rem 1.2rem;
+                 color:red;
+                 bottom:6rem;    border-radius: .4rem;
+        }
+        .rp-close{position:absolute;right:0rem;
+                  border:1px solid #ccc;
+                  color:#183ae6;
+                      padding: .2rem .4rem;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".redclose").on("click", function () {
+                $(".redimg").css("background-image","");
+                $(".redtext").html("");
+                $(".open-btn-img").hide();
+                $(".redopen2").hide();
+            });
+            $(".open-btn").on("click", function () {
+                redClick();
+            });
+        });
+    </script>
+    <!--@@监听-->
+    <script>
+        function atclick(name){
+            $("#scontent").val($("#scontent").val()+name+" ");
+            $(".at-block").hide();
+        }
+        $(function(){
+            function atinit(){
+                var tlist=[];
+                for (var i = 0; i <userHeadImg.uList.length; i++) {
+                    tlist.push('<li onclick="atclick(\''+userHeadImg.uList[i].UNick+'\')" class="zf-contant-item"><img class="zf-contact-img" src="'+userHeadImg.uList[i].HeadImg
+                        +'" alt="">'+userHeadImg.uList[i].UNick+'</li>');
+                }
+                $("#atlist").html(tlist.join(""));
+            }
+            atinit();
+            $("#scontent").on("input",function(){
+                var text=$(this).val();
+                if(text[text.length-1]=="@@"){
+                    $(".at-block").show();    
+                }
+            });
+            $(".atback").on("click",function(){
+                $(".at-block").hide();
+            });
+        });
+        
+    </script>
+</head>
+<body>
+
+    <audio id="bg-music" preload="auto" src="~/Voice/red.wav"></audio>
+    @Html.Action("SyncView", "Static")
+    <div class="wrap vh100 of-hide">
+        <div class="Header">
+            <i class="backto halfTop bgSR"  onclick="backtoindex()"></i>
+            <font class="header-l-font halfTop" onclick="backtoindex()">消息(<span id="otherMsgCount">0</span>)</font>
+            <span>@Model.GName<span id="gucount">(0)</span></span>
+            <i class="header-person halfTop" onclick="location.href = '/Chat/GroupInfo/@Model.GID'"></i>
+        </div>
+        <div class="same-pt-wrap1 chat-window-wrap chatblock-wrap-ptDown">
+            <div class="chat-window" id="content"  style="padding-bottom:5.80078125rem">
+
+            </div>
+        </div>
+
+        <div class="chatfoot-block cfb-down" id="chatfoot-block">
+            <div class="cfb-top">
+                <div class="cfb-txt-wrap"><textarea class="cfb-txt" id="scontent" name="" rows="4" cols="" maxlength=""></textarea></div>
+                <a class="cfb-emoji halfTop" href="javascript:void(0);"></a>
+                <a class="cfb-more halfTop" href="javascript:void(0);"></a>
+                <a class="cfb-sendbtn halfTop" href="javascript:void(0);">发送</a>
+            </div>
+            <div class="cfb-mid"></div>
+            <div class="cfb-bot">
+                <div class="cfb-item-wrap">
+                    <a class="cfb-item" href="javascript:void(0);" onclick="$('#photoUpload').click()"><i class="cfb-photo cfb-icon"></i><font class="cfb-font">照片</font></a>
+                    <a class="cfb-item" href="javascript:void(0);" onclick="sendRed()"><i class="cfb-pocket cfb-icon"></i><font class="cfb-font">红包</font></a>
+                    @*<a class="cfb-item" href="javascript:void(0);"><i class="cfb-transfer cfb-icon"></i><font class="cfb-font">转账</font></a>*@
+                    <a class="cfb-item" href="javascript:void(0);" onclick="sendCard()"><i class="cfb-card cfb-icon"></i><font class="cfb-font">个人名片</font></a>
+                </div>
+                <div id="mySwipe" class="swipe" style="max-width:37.5rem; margin:0 auto;">
+                    <ul class="clearf swipe-wrap">
+                        <li class="cfb-emoji-item clearf"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--转发盒子-->
+        <div class="zf-block" style="display:none">
+            <p class="title">请勾选需要转发的联系人</p>
+            <div class="zf-ofhide-block">
+                <input type="hidden" id="zfmid" />
+                <ul class="zf-contact-list" id="zf-contact-list"></ul>
+            </div><!--zf-ofhide-block-->
+            <div style="position:relative;text-align:center;line-height:6rem;">
+                <i class="zf-checkbox" id="zf-qx-i"></i>
+                <span class="zf-qx-font">全选</span>
+                <input class="zf-btn active zf-btn-ok" type="button" value="确定" />
+                <input class="zf-btn zf-btn-cancel" type="button" value="取消" />
+            </div>
+        </div>
+        <!--放大图片的盒子-->
+        <div class="bigimg-wrap" id="bigimg-wrap">
+            <div class="bigimg-block">
+                <img class="bigimg" id="bigimg" src="" alt="" />
+            </div>
+        </div>
+    </div><!--wrap-->
+    <div style="display:none">
+        <input type="file" id="photoUpload" style="" onchange="ImgUpload(this)" />
+    </div>
+    <div id="red" class="mywindow">
+        <script>
+            function redpricechange(e) {
+                $('#redpricetext').text(e.value)
+            }
+        </script>
+        <div class="wrap min-h100 gray-wrap">
+            <div class="Header">
+                <span>发红包</span>
+                <a class="header-r-font halfTop" href="javascript:void(0);" onclick="$('#red').toggle();">关闭</a>
+            </div>
+            <div class="same-pt-wrap1">
+                <div class="pocket-block">
+                    <div class="money-ipt-wrap of-hide pocket-mb-1">
+                        <font class="money-font-2 halfTop">总金额</font>
+                        <input class="money-iptTxt" oninput="redpricechange(this)" onpropertychange="redpricechange(this)" type="text" id="redprice" placeholder="0.00" />
+                        <font class="money-unit halfTop">元</font>
+                        
+                    </div>
+                    <div style="position:relative;margin-bottom:1.2rem">
+                        <span><span id="redstr1">每人抽到的金额固定</span>，<a id="redstr2" style="color:#1629fe" onclick="redtypeChange()">改为随机红包</a></span>
+                    </div>
+                    <div class="money-ipt-wrap pocket-mb-2">
+                        <font class="money-font-2 halfTop">红包个数</font>
+                        <input class="money-iptTxt" type="text" id="redcount" placeholder="填写个数" />
+                        <font class="money-unit halfTop">个</font>
+                        <span class="group-memNum-remind">本群共 @ViewData["userCount"]人</span>
+                    </div>
+                    <textarea class="pocket-remark-area borderbox pocket-mb-2" id="redcontent" name="" rows="" cols="" placeholder="恭喜发财，大吉大利"></textarea>
+                    <p class="big-money-font pocket-mb-3">&yen;<span id="redpricetext">0.00</span></p>
+                    <input class="bigBtn bg-r transparent" type="button" value="塞钱进红包" onclick="doSendRed()" />
+                    @*<p class="pocket-notice">对方可领取的金额为0.01~200元</p>*@
+                </div>
+            </div>
+        </div><!--wrap-->
+        <div style="display:none">
+            <input type="file" id="photoUpload" style="" onchange="ImgUpload(this)" />
+        </div>
+    </div>
+    <div class="mywindow" id="sendMyCardView" style="background-color:white;z-index:99999">
+        <div class="wrap vh100 of-hide">
+            <div class="Header">
+                <i class="backto halfTop bgSR" onclick="$('#sendMyCardView').hide()"></i>
+                <span class="header-l-font halfTop" onclick="$('#sendMyCardView').hide()">返回</span>
+                <span>选择名片</span>
+                <a class="header-r-font halfTop" style="font-size:1.7rem;color:white" onclick="sendCardBefore()">确定</a>
+            </div>
+
+            <div class="addressbook-search">
+                <input class="txt" type="text" placeholder="搜索" />
+            </div>
+            <div class="same-pt-wrap2 same-ofauto-wrap same-pb-wrap">
+                <div class="contactlist" id="flist">
+
+
+                </div>
+            </div>
+        </div><!--wrap-->
+    </div>
+    <div class="redopen2"><input type="hidden" id="redopenid" />
+        <div class="redopen2-body">
+            <div><div class="redclose"></div></div>
+            <div class="redimg"></div>
+            <div class="redsender">哈哈</div>
+            <div>发了一个红包</div>
+            <div class="red-text">5/10/1</div>
+            <div>
+                <div class="open-btn"><div class="open-btn-img"></div></div>
+            </div>
+            <div class="redtext"></div>
+        </div>
+    </div>
+    <div class="redopen">
+        <div>
+            <div class="rp-img">
+                <div class="rp-close" onclick="redOpenClose()">关闭</div>
+                <spn class="rd-price">
+                    <h2>￥：<span id="redprice-show">20</span></h2>
+                </spn>
+                <a class="lookred" href="">查看红包记录</a>
+            </div>
+
+        </div>
+    </div>
+    <!--@@弹出层-->
+    <div class="at-block" style="display:none">
+        <div class="at-header">
+            <span class="atback"></span><p>选择提醒人</p>
+        </div>
+        
+        <div class="zf-ofhide-block">
+            <ul class="zf-contact-list" id="atlist">
+               
+            </ul>
+        </div>
+    </div>
+    <style>
+        .pay-alert {
+            top: 38% !important;
+        }
+
+        .pwdbody {
+            overflow: hidden;
+            height: 4rem;
+            width: 24rem;
+            border: 1px solid #999;
+        }
+
+            .pwdbody > div {
+                float: left;
+                width: 4rem;
+                height: 4rem;
+                box-sizing: border-box;
+                text-align: center;
+                line-height: 4rem;
+                font-size: 3rem;
+            }
+
+                .pwdbody > div:nth-child(n+1) {
+                    border-left: 1px solid #dcd3d3;
+                }
+
+        .key-input {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+        }
+
+            .key-input > .key-row {
+                width: 100%;
+                border-top: 1px solid #999;
+                overflow: hidden;
+                border-top: 1px solid #999;
+                overflow: hidden;
+                height: 6rem;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 6rem;
+                font-size: 3rem;
+            }
+
+                .key-input > .key-row > .key-col {
+                    float: left;
+                    width: 33%;
+                }
+
+                    .key-input > .key-row > .key-col:nth-child(n+1) {
+                        border-left: 1px solid #999;
+                    }
+    </style>
+    <script>
+        function paypwdCancel() {
+            $("#paypwd").val("");
+            $("#paytype").val(""); $('#input_pay_pwd').hide();
+        }
+        function paypwdOK() {
+            var paytype = $("#paytype").val();
+            var paypwd = $("#paypwd").val();
+            if (paypwd == null || paypwd == "") {
+                return alert("支付密码不能为空");
+            }
+            switch (parseInt(paytype)) {
+                case 1:
+                    doSendRed(paypwd);
+                    break;
+                case 2:
+                    Transfer(paypwd);
+                    break;
+                default:
+
+            }
+        }
+        $(function () {
+            $(".key-col").on("touchstart", function () {
+                var val = $(this).attr("data-v");
+
+                if (!isNaN(val)) {
+                    var paypwd = $("#paypwd").val();
+                    if (val == -1 && paypwd.length != 0) {
+                        $(".pwdbody-item").eq(paypwd.length-1).text("");
+                        paypwd= paypwd.substring(0, paypwd.length - 1);
+                        $("#paypwd").val(paypwd);
+                    } else {
+                        if (paypwd.length != 6&&val!=-1) {
+                            $(".pwdbody-item").eq(paypwd.length).text("●");
+                            $("#paypwd").val(paypwd + val);
+                        }
+                    }
+
+
+                    $(this).css("background-color", "#dcd3d3");
+                }
+                
+            });
+            $(".key-col").on("touchend", function () {
+                var val = $(this).attr("data-v");
+                if (!isNaN(val)) {
+                    if (val == -1) {
+                        $(this).css("background-color","");
+                    } else {
+                        $(this).css("background-color", "white");
+                    }
+                    
+                }
+            });
+        })
+    </script>
+    <div class="mask" id="input_pay_pwd" style="display:none">
+        <div class="pay-alert">
+            <h3 class="title">请输入支付密码</h3><input type="hidden" id="paytype" value="" />
+            <input type="hidden" id="paytype" value="" />
+            <div class="pwdbody">
+                <div class="pwdbody-item"></div>
+                <div class="pwdbody-item"></div>
+                <div class="pwdbody-item"></div>
+                <div class="pwdbody-item"></div>
+                <div class="pwdbody-item"></div>
+                <div class="pwdbody-item"></div>
+            </div>
+            <input class="txt" id="paypwd" type="password" style="display:none" />
+            <div class="confirm">
+                <a class="no" onclick="paypwdCancel()" href="javascript:void(0);">取消</a>
+                <a class="yes" onclick="paypwdOK()" href="javascript:void(0);">确定</a>
+            </div>
+        </div>
+        <div class="key-input">
+            <div class="key-row">
+                <div class="key-col" data-v="1">1</div>
+                <div class="key-col" data-v="2">2</div>
+                <div class="key-col" data-v="3">3</div>
+            </div>
+            <div class="key-row">
+                <div class="key-col" data-v="4">4</div>
+                <div class="key-col" data-v="5">5</div>
+                <div class="key-col" data-v="6">6</div>
+            </div>
+            <div class="key-row">
+                <div class="key-col" data-v="7">7</div>
+                <div class="key-col" data-v="8">8</div>
+                <div class="key-col" data-v="9">9</div>
+            </div>
+            <div class="key-row" style="background-color:#ccc">
+                <div class="key-col">&nbsp;</div>
+                <div class="key-col" data-v="0" style="background-color:white">0</div>
+                <div class="key-col" data-v="-1">删除</div>
+            </div>
+        </div>
+    </div>
+    @*<div class="input_pay_pwd" id="input_pay_pwd">
+        <div class="paypwd">
+            <div class="paypwd_head">请输入支付密码</div>
+            <div class="paypwd_body">
+                <input type="hidden" id="paytype" value="" />
+                <input type="password" id="paypwd" placeholder="请输入支付密码" />
+            </div>
+            <div class="paypwd_footer">
+                <input type="button" class="btn" value="确认" onclick="paypwdOK()" style="margin-left:3rem;" />
+                <input type="button" class="btn" value="取消" onclick="paypwdCancel()" />
+            </div>
+        </div>
+    </div>*@
+</body>
+</html>

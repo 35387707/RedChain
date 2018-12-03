@@ -1,0 +1,204 @@
+.empty-view {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#page_0 {
+    min-height: 100%;
+    max-width: 100%;
+}
+
+/* CSS RESET */
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: #efeff4;
+    min-height: 100%;
+    max-width: 100%;
+    color: #000;
+}
+a {
+    text-decoration: none;
+    color: #666666;
+}
+a, img {
+    border: none;
+}
+img {
+    vertical-align: middle;
+}
+ul, li {
+    list-style: none;
+}
+em, i {
+    font-style: normal;
+}
+.clear {
+    clear: both;
+}
+.txt-clear:after {
+    content: ".";
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.pay-txt {
+    width: 91.3%;
+    margin: 0 auto;
+}
+.pay-txt p {
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    font-size: 16px;
+}
+/********/
+.num-cont {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+}
+.z-index {
+    z-index: 10;
+}
+.num-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 8;
+    background-color: #F2F2F2;
+    top: 0;
+    left: 0;
+}
+.num-cont .num-wrap {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+}
+.txt-box {
+    height: auto;
+    font-size: 1.08em;
+    height: 2.5em;
+    line-height: 2.5em;
+    border-bottom: 1px solid #c9daca;
+    overflow: hidden;
+}
+.txt-box a {
+    display: block;
+    width: 10%;
+    padding: 10px 0;
+    text-align: center;
+}
+.txt-box img.box-img {
+    width: 10%;
+    padding: 10px 0;
+}
+.txt-box span {
+    padding: 18px 8px;
+}
+.goods-box {
+    text-align: center;
+    padding: 0.75em 0 0;
+    overflow: hidden;
+}
+.goods-box .goods-title {
+    font-size: 0.88em;
+    float: left;
+    width: 100%;
+}
+.goods-box .goods-price {
+    font-size: 1.2em;
+    float: left;
+    width: 100%;
+}
+.num-disp-box {
+    width: 89%;
+    margin: 0.625em auto;
+    height: 3.0em;
+    -webkit-border-radius: 0.15em;
+    border-radius: 0.15em;
+    overflow: hidden;
+    border: 1px solid #bebebe;
+    background: #FFF;
+}
+.num-disp-box li {
+    border-right: 1px solid #efefef;
+    height: 3.0em;
+    float: left;
+    width: 16.2%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.num-disp-box li.num-cover {
+    background: #FFF url(../img/dd_03.png) center no-repeat;
+    background-size: 25%;
+}
+.num-disp-box li:last-child {
+    border-right: none;
+}
+.num-display {
+    padding: 0.75em 0;
+    text-align: center;
+    border-top: 1px solid #dadada;
+}
+.num-input-box {
+    position: absolute;
+    z-index: 10;
+    background: #f5f5f5;
+    width: 100%;
+    bottom: 0px;
+}
+.num-key {
+    border: 1px solid #dadada;
+    overflow: hidden;
+    border-bottom: none;
+}
+.num-key li {
+    width: 33.3333%;
+    border-bottom: 1px solid #dadada;
+    float: left;
+    text-align: center;
+    font-size: 1.0em;
+}
+.num-key li a {
+    display: block;
+    color: #000;
+    height: 2.8em;
+    line-height: 2.8em;
+    overflow: hidden;
+}
+.num-key li a:active {
+    background: #e0e0e0;
+}
+.num-key li a.num-border {
+    border-left: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+}
+.num-height {
+    height: 1.0em;
+}

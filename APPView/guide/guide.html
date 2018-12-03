@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../setup/css/abt-v1.css">
+        <link rel="stylesheet" href="../lib/swiper-3.4.2/dist/css/swiper.min.css">
+        <style type="text/css">
+            body {
+                height: 100%;
+            }
+            #guide_cont {
+                width: 100%;
+                height: 100%;
+            }
+            .guide-slide img {
+                width: 100%;
+                height: 100%;
+            }
+            .guide-cont {
+                width: 100%;
+                height: 100%;
+            }
+            .flash1 {
+                background-size: cover;
+                background-image: url('../guide/img/flash_1@2x.jpg');
+            }
+            .flash2 {
+                background-size: cover;
+                background-image: url('../guide/img/flash_2@2x.jpg');
+            }
+            .flash3 {
+                background-size: cover;
+                background-image: url('../guide/img/flash_3@2x.jpg');
+            }
+            .guid-log {
+                width: 12.5%;
+                margin: 5% 5% 0 82.5%;
+                position: fixed;
+                top: 0;
+            }
+            .guid-btn-bg {
+                background-color: rgba(1,1,1,0.5);
+                color: white;
+                padding: 1.0em 0;
+                text-align: center;
+                -webkit-border-radius: 5.0em;
+                border-radius: 5.0em;
+                font-size: 82%;
+            }
+        </style>
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+        <div class="swiper-container" id="guide_cont">
+            <div class='swiper-wrapper' id="guide_wrap">
+                <div class="swiper-slide guide-slide">
+                    <div class="guide-cont flash1"></div>
+                </div>
+                <div class="swiper-slide guide-slide">
+                    <div class="guide-cont flash2"></div>
+                </div>
+                <div class="swiper-slide guide-slide" id="lgn_clk">
+                    <div class="guide-cont flash3">
+                        <div class="guid-log">
+                            <div class="guid-btn-bg" ontouchstart="appcan.touch('btn-act')">
+                                <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                                跳过
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-pagination" id="guide_page"></div>
+        </div>
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../lib/swiper-3.4.2/dist/js/swiper.min.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        //alert('点击了返回键')
+
+                    } else {
+                        alert('点击了其他键')
+                    }
+                }
+            });
+
+            var mySwiper = new Swiper('#guide_cont', {
+                pagination : '#guide_page',
+                //autoplay: 1000,//可选选项，自动滑动
+                slidesPerView : 1,
+                paginationClickable : true,
+                loop : false,
+            });
+
+            $("#lgn_clk").click(function() {
+
+                window.localStorage.setItem('guide', 1);
+                appcan.window.open({
+                    name : 'login',
+                    data : '../login/login.html'
+                });
+
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../addr/css/area-v1.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="list"></div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../addr/js/country.js"></script>
+        <script>
+            /*
+             appcan.ready(function() {
+
+             uexIndexBar.onTouchResult = function(opId, dataType, data) {
+             alert(opId + ":" + dataType + ":" + data);
+             location.href = "#" + data;
+
+             }
+
+             }); */
+
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                uexIndexBar.onTouchResult = function(opId, dataType, data) {
+                    //alert(opId + ":" + dataType + ":" + data);
+                    // appcan.logs('data=='+data);
+                    if (data != '') {
+                        openToast('  ' + data + '  ', 3000, 5, 0);
+                        location.href = "#" + data;
+                    }
+                }
+                var arr = {
+                    'A' : '',
+                    'B' : '',
+                    'C' : '',
+                    'D' : '',
+                    'E' : '',
+                    'F' : '',
+                    'G' : '',
+                    'H' : '',
+                    //'I' : '',
+                    'J' : '',
+                    'K' : '',
+                    'L' : '',
+                    'M' : '',
+                    'N' : '',
+                    //'O' : '',
+                    'P' : '',
+                    //'Q' : '',
+                    'R' : '',
+                    'S' : '',
+                    'T' : '',
+                    // 'U' : '',
+                    // 'V' : '',
+                    'W' : '',
+                    'X' : '',
+                    'Y' : '',
+                    'Z' : ''
+                }
+
+                var middle = '&nbsp;&nbsp;&nbsp;+&nbsp;';
+
+                var str = '';
+                for (var i in countryJson) {
+                    arr[countryJson[i].code] += '<div data-country="' + countryJson[i].chineseName + '" data-areacode="' + countryJson[i].region + '" ontouchstart="appcan.touch(&#39;btn-act&#39;)" class="ubb bc-border sc-bg menu-sub">' + countryJson[i].name + middle + countryJson[i].region + '</div>';
+                }
+                for (var i in arr) {
+                    var aa = arr[i];
+                    str += ('<div id="' + i + '" class="bar-title">' + i + '</div>' + aa);
+                }
+
+                debug(arr);
+                debug(str);
+
+                $('#list').html(str);
+
+                indexBarOpen();
+
+                $('.menu-sub').click(function() {
+
+                    var country = $(this).data('country');
+                    var areacode = $(this).data('areacode');
+
+                    localStorage.setItem("before", areacode);
+
+                    var area = {
+                        country : country,
+                        areacode : areacode,
+                    }
+
+                    debug(area);
+
+                    appcan.window.publish('area', JSON.stringify(area));
+
+                });
+
+            });
+
+            function indexBarOpen() {
+                var x = parseInt($('#list').offset().width);
+                var y = parseInt(appcan.getLocVal('uexIndexBar_y'));
+                var em = $('#list').css('font-size');
+                var w = 2 * parseInt(em);
+                var h = parseInt(appcan.getLocVal('uexIndexBar_h'));
+                var data = {
+                    textColor:"#373737",
+                    indices : ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "W", "X", "Y", "Z", ""]
+                }
+                var extras = JSON.stringify(data);
+                uexIndexBar.open(x - w, y, w, h, extras);
+            }
+
+        </script>
+    </body>
+</html>

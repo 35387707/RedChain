@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<RelexBarDLL.BankList>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>管理银行卡</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/bank.css" />
+    <script>
+        function bdelete(id, dom) {
+            if (!confirm("确认删除？")) {
+                return;
+            }
+            $.post("Delete","id="+id,function(data){
+                if (data.code == "1") {
+                    alert("删除成功");
+                    $(dom).parent().parent().remove();
+                } else {
+                    alert(data.msg);
+                }
+            },"json");
+        }
+    </script>
+</head>
+<body>
+        <div class="wrap gray-wrap min-h100">
+            <div class="Header">
+                <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+                <font class="header-item-font halfTop"></font>
+                <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+                <span>管理银行卡</span>
+                <i class="moreBtn halfTop"></i>
+            </div>
+            <div class="same-pt-wrap1">
+                <div class="banklist" id="banklist">
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="bankCard">
+                            <p class="bankName">@Model[i].BankName</p>
+                            <p class="cardNumber">尾号：@(Model[i].BankAccount.Length>4?Model[i].BankAccount.Substring(Model[i].BankAccount.Length - 4):Model[i].BankAccount)</p>
+                            <input class="modi-btn halfTop" type="button" value="修改" onclick="location.href = '/Bank/EditBank/@Model[i].ID'" />
+                            <input class="dele-btn halfTop" type="button" value="删除" onclick="bdelete('@Model[i].ID',this)" />
+                        </div>
+                    }
+
+
+                </div>
+                <div class="bankCard-manage clearf">
+                    @Html.ActionLink("添加银行卡", "EditBank", null, new { @class = "fl" })
+                </div>
+                <input class="bigBtn bg-w" type="button" value="确定" />
+            </div>
+            </div><!--wrap-->
+</body>
+</html>

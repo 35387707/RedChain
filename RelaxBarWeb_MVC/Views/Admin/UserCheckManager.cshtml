@@ -1,0 +1,252 @@
+﻿<style>
+    .bankShow {
+    }
+
+    .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+        .editItem > div > div {
+            text-align: right;
+        }
+     
+    #jjyypanel{
+        margin-top:10%;
+        padding:0;
+    }
+
+    .bg-img{position: fixed;background-color: rgba(90, 90, 90,.2);z-index:9999;}
+    .tra-img{text-align:center;position:relative;
+            /*-webkit-transform:translateY(-50%);
+            -moz-transform:translateY(-50%);
+            -o-transform:translateY(-50%);
+            -ms-transform:translateY(-50%);
+            transform:translateY(-50%);*/
+        }
+    .zoom-in{
+            cursor: -moz-zoom-in;
+            cursor: -webkit-zoom-in;            
+            cursor: zoom-in;
+            cursor: url(../../img/zoomin.cur);
+        }
+        .zoom-out{
+            cursor: -moz-zoom-out;
+            cursor: -webkit-zoom-out;
+            cursor: zoom-out;
+            cursor: url(../../img/zoomout.cur);
+        }
+        .tra-img{
+                width: 50%;
+                 margin: 50px auto;
+                  /*margin-top: 50%;*/
+        }
+        .tra-img img{
+            width:100%;
+        }
+        .bg-img{
+            width:100%;
+            height:100%;
+            bottom:0;
+            left:0;
+            overflow:auto;
+        }
+</style>
+<script>
+        //点击图片放大
+        //$(document).on("click", "table tr td img.zoom-in", function () {
+        //    var img_content = $(this).attr("src");
+        //    $("body").append(
+        //        "<div class='bg-img'>"
+        //        + "<div class='tra-img'>"
+        //            + "<img src='" + img_content + "' class='zoom-out'>"
+        //        + "</div></div>"
+        //    );
+        //    //bottom:'0',left:'0';会让图片从页面左下放出现，如果想从左上方出现，将bottom:'0'改成top:'0';
+        //    $(".bg-img").show({
+        //        width: "100%",
+        //        height: "100%",
+        //        bottom: "0",
+        //        left: "0",
+        //    }, "normal")
+        //   // $(".bg-img").show();
+        //})
+        ////点击外层区域页面图片隐藏
+        //$(document).on("click", ".bg-img", function () {
+        //    $(this).remove();
+
+        //})
+
+    function onshow(img) {
+        console.log(img);
+        $(".zoom-out").attr("src", img);
+        $(".bg-img").show();
+    };
+    $(document).on("click", "table tr td img.zoom-in", function () {
+        var img_content = $(this).attr("src");
+        $(".zoom-out").attr("src", img_content);
+        $(".bg-img").show();
+        $('body').css('overflow', 'hidden');
+    });
+    function onhide() {
+        $('.bg-img').hide();
+        $(".zoom-out").attr("src", "");
+        $('body').css('overflow', 'auto');
+    };
+</script>
+<script>
+    var hasFooter = false;
+    var UserManager = {};
+    UserManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetUserList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+        GetUserList(index);
+    };
+    //获取用户列表
+    function GetUserList(index) {
+        waiting();
+        $.get("UserCheckList", "index=" + index + "&key=" + UserManager.searchKey, function (data) {
+            UserManager.index = index;
+
+            $("#userbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function USearch() {
+        UserManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetUserList(1);
+    }
+    
+    function txSuccess(id) {
+        waiting();
+        $.post("UserCheckUpdate", "ID=" + id + "&status=2", function (data) {
+            if (data.code == "1") {
+                alert("操作成功");
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+            GetUserList(UserManager.index);
+        });
+    }
+
+    function txFaild(id) {
+        $("#txID").val(id);
+        $("#jjyy").show();
+        $('body').css('overflow', 'hidden');
+    }
+    function DoTxFaild() {
+        waiting();
+        $.post("UserCheckUpdate", "ID=" + $("#txID").val() + "&status=3&remark=" + $("#ApplyRemark").val(), function (data) {
+            if (data.code == "1") {
+                alert("操作成功");
+                jjyyClose();
+                $('body').css('overflow', 'auto');
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+            GetUserList(UserManager.index);
+
+        });
+    }
+    function jjyyClose() {
+        $('#jjyy').hide();
+        $('body').css('overflow', 'auto');
+        $("#txID").val("");
+        $("#ApplyRemark").val("")
+    }
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a onclick="GetManager('UserManager')">用户管理</a></li>
+    <li><a href="#">用户审核</a></li>
+</ol>
+<div class="col-lg-12 form-inline">
+    关键字：
+    <div class="input-group col-lg-4">
+        <input type="text" class="form-control" id="key">
+        <span class="input-group-addon" onclick="USearch()">查询</span>
+    </div>
+    <div class="col-lg-12" id="userlist">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>区号</th>
+                    <th>手机号</th>
+                    <th>头像</th>
+                    <th>昵称</th>
+                    <th>性别</th>
+                    <th>级别</th>
+
+                    <th>真实姓名</th>
+                    <th>身份证</th>
+                    <th>身份正面</th>
+                    <th>身份反面</th>
+
+                    <th>状态</th>
+                    <th>注册时间</th>
+                    <th>最后登录时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="userbody">
+                @Html.Action("UserCheckList")
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
+</div>
+<div class="showBack col-md-12" id="jjyy">
+    <div class="panel panel-danger col-md-4 col-md-offset-4" id="jjyypanel">
+        <div class="panel-heading">
+            拒绝原因<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="jjyyClose()" />
+        </div>
+
+        <div class="panel-body">
+            <input type="hidden" id="txID" />
+            <input type="text" id="ApplyRemark" class="form-control" />
+        </div>
+        <div class="panel-footer" style="overflow:hidden">
+            <input type="button" value="保存" class="btn btn-primary" style="float:right" onclick="DoTxFaild()" />
+        </div>
+    </div>
+</div>
+<div class='bg-img' style="display:none" onclick="onhide()" >
+    <div class='tra-img'>
+        <img src='' class='zoom-out'>
+    </div>
+</div>
+
+

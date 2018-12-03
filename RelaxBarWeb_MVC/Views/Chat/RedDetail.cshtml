@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = null;
+    int redCount = Convert.ToInt32(ViewData["rcount"]);
+    string lei = ViewData["lei"].ToString();
+    double random = new Random().NextDouble();
+    Guid UID = Guid.Parse(ViewData["uid"].ToString());
+}
+@model List<RelexBarBLL.Models.RedDetailModel>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>@(ViewData["zdshow"] != null ? "扫雷包" : "玩信红包")</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/saolei.css?r=@random" />
+    <style>
+        .red {
+            background-color:#fbbebe;
+        }
+        .myprice{display:none;}
+        .myprice>span{font-size:6rem;}
+    </style>
+    @if(Convert.ToBoolean(ViewData["isfbr"])){
+    <script>
+        function ylje() {
+            var yl = 0.0;
+            $(".jeitem").each(function () {
+                 yl+=parseFloat($(this).text());
+            });
+            $(".fbr-show").text("。已领金额："+yl.toFixed(2));
+        }
+        $(function () {
+            ylje();
+        });
+    </script>
+    }
+</head>
+<body>
+    <div class="wrap">
+        <div class="Header">
+            @*<i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>*@
+            <i class="backto halfTop bgSR" onclick="location.href='@Request.UrlReferrer'"></i>
+            <span class="header-l-font halfTop" onclick="location.href='@Request.UrlReferrer'">返回</span>
+            <span>@(ViewData["zdshow"] != null? "扫雷包" : "玩信红包")</span>
+            @if (ViewData["zdshow"]!=null)
+            {
+                <a class="header-r-font halfTop" href="/Chat/SLGameRecord/@ViewData["RID"]">结算账单</a>
+            }
+            
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="whose-block">
+                <img class="whose-img" src="@ViewData["himg"]" alt="" />
+                <p class="whose-msg">@ViewData["sname"] 的红包</p>
+                <p>@ViewData["rc"]</p>
+                <div class="myprice"><span>0.00</span>元</div>
+            </div>
+            <p class="whose-total">@(redCount)个红包，剩余@(redCount-Model.Count)个<span class="fbr-show"></span></p>
+            <div class="saolei-jiesuanlist">
+                @foreach (var item in Model)
+                {
+                    if (item.UID==UID) {
+                        <script>$(".myprice span").text("@item.Price"); $(".myprice").show();</script>
+                    }
+                    string p = item.Price.ToString();
+                    <div class="sljs-item@(ViewData["zdshow"] != null&&lei==p[p.Length-1].ToString()?" red":"")" >
+                        <img class="sljs-img" src="@item.HeadImg" alit="" />
+                        <p class="sljs-room">@item.Name</p>
+                        <p class="sljs-date">@item.UpdateTime</p>
+                        <font class="sljs-money"><span class="jeitem">@item.Price</span> 元</font>
+                    </div>
+                }
+            </div>
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

@@ -1,0 +1,241 @@
+/*****************************************/
+/*基础header颜色*/
+.bc-head {
+    /*background-color: #FF5265;*/
+   background-image: url('../css/img/header@2x.png');
+   background-size: cover;
+}
+.hb-bg {
+    background-color: #FF5265;
+}
+.hb-spec-bg {
+    background-color: #FB5858;
+}
+.fb-bg {
+    background-color: #FA9E3B;
+}
+/*
+ * 返回按钮、header文字的颜色
+ */
+.sc-white {
+    color: #FFFFFF;
+}
+.sc-back {
+    color: #6B6B6B;
+}
+/*****************************************/
+/*基础body背景颜色*/
+.bc-bg {
+    background-color: #F2F2F2;
+    /*background-color: #2B2B2B;*/
+    /*background-color: #04B1C8;*/
+}
+/*辅助控件背景颜色*/
+.sc-bg {
+    background-color: #FFFFFF;
+}
+/*辅助控件背景颜色*/
+.sc-bg-active {
+    background-color: #EEEEEE;
+}
+/*警告背景色*/
+.sc-bg-alert {
+    background-color: #F16412;
+}
+/*****************************************/
+/*基础字体颜色*/
+.bc-text {
+    color: black;
+}
+/*基础标题字体颜色*/
+.bc-text-head {
+    color: white;
+}
+/*辅助字体颜色*/
+.sc-text {
+    color: #848484;
+}
+/*辅助字体颜色*/
+.sc-text-active {
+    color: #dd3030 !important;
+}
+/*辅助字体颜色*/
+.sc-text-hint {
+    color: #E3E3E3;
+}
+/*辅助字体颜色*/
+.sc-text-warn {
+    color: #FC7800;
+}
+/*辅助字体颜色*/
+.sc-text-tab {
+    color: #636363;
+}
+/*****************************************/
+/*基础边框颜色*/
+.bc-border {
+    border-color: #EAEAEA;
+}
+.ul-border {
+    border-color: #BABABA;
+}
+/*辅助边框颜色*/
+.sc-border {
+    border-color: #FFFFFF;
+}
+.sc-border-tab {
+    border-color: #dd3030;
+}
+/*****************************************/
+/*基础按钮颜色*/
+.bc-btn {
+    /*background-color: #DD3030;*/
+    background-image: url('../css/img/btn_bg@2x.png');
+    background-size: cover;
+}
+.bc-btn-border {
+    border: 3px solid #C6DEF3;
+}
+.bc-btn-color {
+    color: #78AFFC;
+}
+.bc-btn-border2 {
+    border: 3px solid #DCDCDC;
+}
+.bc-btn-color2 {
+    color: #323232;
+}
+.stat-btn-bg {
+    /*background-color: #DD3030;*/
+    background-color: rgb(224, 238, 238);
+    border-radius: 0.40em;
+    padding: 0 0.36em;
+    font-size: 0.856em;
+}
+.stat-btn-text {
+    color: black;
+}
+/*辅助按钮颜色*/
+.sc-btn {
+    background-color: #F7CB8C;
+}
+
+/*
+ * self
+ */
+.r-bor {
+    border-right: 0.05em solid rgb(0, 171, 236);
+}
+.l-bor {
+    border-left: 0.05em solid rgb(0, 171, 236);
+}
+.m-bor {
+    border-left: 0.05em solid rgb(0, 171, 236);
+    border-right: 0.05em solid rgb(0, 171, 236);
+}
+
+.colr-f {
+    color: #FFF8DC;
+}
+.colr-g {
+    color: gray;
+}
+.mrg-b {
+    margin-bottom: 0.12em;
+}
+.circle-colr {
+    color: #ff7575;
+    font-size: 0.636em !important;
+}
+.star-colr {
+    color: #2AC897;
+    font-size: 0.636em !important;
+}
+.colr-titl {
+    font-size: 0.8386em !important;
+    color: #008fce;
+}
+.colr-cont {
+    margin-top: 0.45em;
+}
+.unread {
+    font-weight: bold;
+}
+.read {
+    font-weight: normal;
+}
+.fa-colr {
+    /*color: #008fce;*/
+    font-size: 1.02em;
+    width: 1.02em;
+    height: 1.02em;
+    /*color: #008fce;*/
+    margin-left: 0.08em;
+    margin-right: 0.56em;
+}
+.blue {
+    color: #0FADFE;
+}
+.green {
+    color: #46C01C;
+}
+.orange {
+    color: #FEC900;
+}
+.purple {
+    color: #F76060;
+}
+.rec-bg {
+    background-color: rgb(224, 238, 238);
+}
+.disp-pic {
+    vertical-align: middle;
+    width: 3.0em;
+    height: 3.0em;
+}
+.colr-1 {
+    color: #FF0000;
+}
+.colr-2 {
+    color: #FF7F00;
+}
+.colr-3 {
+    color: #FFFF00;
+}
+.colr-4 {
+    color: #00FF00;
+}
+.colr-5 {
+    color: #00FFFF;
+}
+.colr-6 {
+    color: #0000FF;
+}
+.colr-7 {
+    color: #8B00FF;
+}
+.black {
+    color: black;
+    font-weight: bold;
+}
+.sign-colr {
+    font-weight: normal;
+}
+.defn-bg {
+    background: rgba(1,1,1,0.5);
+}
+.flt-r {
+    float: right;
+}
+.colr-8 {
+    color: #008B8B;
+}
+.bg-white {
+    color: #FFFFFF;
+}
+
+.stat-colr {
+    color: #008fce;
+    font-size: 0.636em !important;
+    font-weight: normal;
+}

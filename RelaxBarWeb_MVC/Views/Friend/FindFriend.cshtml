@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<RelexBarDLL.Users>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>添加朋友</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/friendInfo.css" />
+    <script>
+        $(document).keypress(function (e) {
+            var eCode = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+            if (eCode == 13) {
+                // sendMessage(0, $("#scontent").val());
+                $("#fform").submit();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+@using (Html.BeginForm("FindFriend", "Friend", FormMethod.Post, new { id = "fform" }))
+{
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <font class="header-l-font halfTop" onclick="window.history.back()">返回</font>
+            <span>添加朋友</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="nf-search-wrap">
+                
+                    @Html.TextBox("id", ViewData["id"], new { @class = "nf-search-txt", placeholder = "玩信账号" })
+                
+                <i class="nf-search-icon"></i>
+            </div>
+        </div>
+}
+        <div class="">
+            <ul class="newfriendList">
+                @*@foreach (var item in Model)
+                {
+                    <li class="newfriendItem" onclick="location.href = '/Friend/FriendInfo/@item.ID'">
+                        <img class="nf-img" src="@item.HeadImg1" alt="" />
+                        <p class="nf-name">@item.Name</p>
+                        <input class="nf-addbtn" type="button" value="添加" />
+                    </li>
+                }*@
+            </ul>
+        </div>
+    </div><!--wrap-->
+           
+</body>
+</html>
+

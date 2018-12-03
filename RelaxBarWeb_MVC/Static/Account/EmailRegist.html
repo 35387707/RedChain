@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>注册</title>
+    <script src="/js/jquery-2.0.0.min.js"></script>
+    <script src="/js/adaptation.js"></script>
+    <link rel="stylesheet" href="/css/commonmodule.css" />
+    <link rel="stylesheet" href="/css/lr.css" />
+    <script src="/Scripts/common.js"></script>
+    <style>
+        #arealist {
+            position: absolute;
+            width: 100%;
+            z-index: 99999;
+            top: 0;
+            display: none;
+        }
+    </style>
+    <style>
+        #arealist dl, dt, dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        .areacode1 {
+            padding-bottom: 10%;
+            background-color: #f1f1f1;
+        }
+
+        .ac-item dt,
+        .ac-item dd {
+            padding: 3% 5%;
+            border-bottom: 0.05rem solid #ccc;
+            font-size: 1.5rem;
+            -webkit-text-size-adjust: none;
+        }
+
+        .ac-item dt {
+            background-color: #f1f1f1;
+        }
+
+        .ac-item dd {
+            position: relative;
+            background-color: #fff;
+        }
+
+            .ac-item dd span {
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                transform: translateY(-50%);
+                right: 8%;
+                color: #bbb !important;
+            }
+
+        .ac-rightnav {
+            position: fixed;
+            right: 0;
+            top: 6.50390625rem;
+            width: 5%;
+            background-color: rgba(0,0,0,.3);
+            height: 100%;
+            padding-bottom: 20%;
+            box-sizing: border-box;
+        }
+
+            .ac-rightnav li {
+                position: relative;
+                height: 4%;
+                text-align: center;
+            }
+
+                .ac-rightnav li a {
+                    color: #fff;
+                }
+    </style>
+    <script>
+        function regist() {
+            sync();
+            var phone = $("#email").val();
+            if (!checkEmail(phone)) {
+                syncHide();
+                return alert("邮箱格式不正确");
+            }
+            var pwd = $("#pwd").val();
+            var reg = /^[A-Za-z0-9]+$/;
+
+            $.post("/Account/DoRegistByEmail", $("#regForm").serialize(), function (data) {
+
+                if (data.code == "1") {
+                    location.href = "/Account/ChatPage";
+                } else {
+                    alert(data.msg);
+                }
+                syncHide();
+            }, "json");
+        }
+        function checkEmail(val) {
+            var reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            return reg.test(val);
+        }
+        function getVerifycode(e){
+            var phone = $("#email").val();
+            if (!checkEmail(phone)) {
+                return alert("邮箱格式不正确");
+            }
+            $.post("/Verifycode/getVerifyCode", "t=3&r=" + phone, function (data) {
+                if (data == "1") {
+                    $(c).attr("now", "60");
+                    interdjs = setInterval(daojishi, 1000, c);
+                }
+                else {
+                    alert('短信获取失败！请重新点击获取。');
+                    $(c).removeAttr("disabled");
+                }
+            });
+        }
+        $(function () {
+
+            // GetImgCode(document.getElementById("checkcode"));
+            $(".areacode").on("click", function () {
+                $("#arealist").show(200);
+            });
+            $(".ac-item dd").on("click", function () {
+                $("#before").val($(this).find("span").text());
+                $("#arealist").hide(200);
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <style>
+        .sync {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-color: rgba(255,255,255,0);
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            display: none;
+        }
+    </style>
+    <script>
+        function sync() {
+            $(".sync").show();
+        }
+        function syncHide() {
+            $(".sync").hide();
+        }
+    </script>
+    <div class="sync">
+
+    </div>
+    <div class="wrap vh100 of-hide">
+        <form id="regForm" class="lr-block">
+            <div class="iptTxt-wrap lr-mb">
+                <input id="email" name="email" placeholder="请输入邮箱" class="lr-iptPsw"/>
+            </div>
+            <div class="iptTxt-wrap lr-mb">
+                <input id="code" name="code" placeholder="请输入验证码" class="lr-iptPsw" />
+                <input type="button" value="获取验证码" onclick="getVerifycode(this)" class="lr-code halfTop" style="width:initial !important" />
+            </div>
+            <div class="iptTxt-wrap lr-mb">
+                <input id="pwd" name="pwd" placeholder="请输入登陆密码" class="lr-iptPsw" type="password"/>
+            </div>
+            <div class="iptTxt-wrap">
+                <input id="tjr" placeholder="请输入推荐人海信号" class="lr-iptPsw"/>
+            </div>
+            <input class="bigBtn bg-r lr-mt-1" type="button" value="注册" onclick="regist()" />
+        </form>
+        <a href="/Account/Login" class="login-foot">已有账号？立即登录</a>
+        <div class="gc-logo" style="margin-top:7rem"></div>
+
+    </div><!--wrap-->
+
+</body>
+</html>

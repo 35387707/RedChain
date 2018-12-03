@@ -1,0 +1,26 @@
+﻿@model List<RelexBarDLL.BankList>
+<div class="wrap gray-wrap min-h100">
+    <div class="Header">
+            <i class="backto halfTop bgSR" onclick="back()"></i>
+            <font class="header-l-font halfTop" onclick="back()">返回</font>
+        <span>选择银行卡</span>
+        <i class="moreBtn halfTop"></i>
+    </div>
+    <div class="same-pt-wrap1">
+        <div class="banklist" id="banklist">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                string wh = Model[i].BankAccount.Substring(Model[i].BankAccount.Length - 4);
+                <div class="bankCard" onclick="bankitemClick('@Model[i].ID','@Model[i].BankName','@wh')">
+                    <p class="bankName">@Model[i].BankName</p>
+                    <p class="cardNumber">尾号：@wh</p>
+                    @if (i == 0) { Html.Raw("<i class='checked-icon'></i>"); }
+                </div>
+            }
+        </div>
+        <div class="bankCard-manage clearf">
+            <a class="fl" href="/Bank/EditBank">添加银行卡</a>
+           @* <a class="fr" href="javascript:void(0);">管理银行卡</a>*@
+        </div>
+    </div>  
+    </div><!--wrap-->

@@ -1,0 +1,167 @@
+#page_0 {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(1,1,1,0.5);
+}
+.empty-view {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.pack-cont {
+    z-index: 999;
+    width: 85%;
+    margin: 30% 7.5% 0;
+    height: auto;
+    position: absolute;
+}
+.rtn-cont {
+    width: 100%;
+    height: 80%;
+    padding-top: 1.5em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    background-color: white;
+}
+.midl-cont {
+    width: 100%;
+    height: 1.0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.disp-wht {
+    background-color: white;
+    width: 3px;
+    height: 100%;
+}
+.clos-cont {
+    width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.clos-cont .clos-icon {
+    background-color: white;
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0.1em;
+    background-size: cover;
+    background-image: url('../img/close_yuanxing@2x.png');
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em;
+}
+.logo-cont {
+    width: 100%;
+    height: auto;
+    margin: 2.0em 0 0.3em 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.logo-cont img {
+    width: 4.5em;
+    height: 4.5em;
+}
+.mask-cont {
+    width: 100%;
+    text-align: center;
+    color: #FD6660;
+    font-size: 1.4em;
+}
+.txt-cont {
+    width: 100%;
+    text-align: center;
+    color: #606060;
+    margin: 0.8em 0 1.5em;
+    font-size: 1.8em;
+}
+.btn-cont {
+    width: 80%;
+    margin: 0 10% 20%;
+}
+.btn-cont .btn2 {
+    background-color: #FF5265;
+}
+
+.share-mode {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+
+}
+.share-sty {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.share-txt {
+    color: #535353;
+    margin-top: 0.36em;
+    font-size: 0.88em !important;
+}
+.share-img {
+    width: 2.2em;
+    height: 2.2em;
+}
+.share-pengyouquan {
+    background-size: cover;
+    background-image: url('../img/share_pengyouquan_bottom@2x.png');
+}
+.share-weixin {
+    background-size: cover;
+    background-image: url('../img/share_weixin_bottom@2x.png');
+}
+.share-qqhaoyou {
+    background-size: cover;
+    background-image: url('../img/share_qq_bottom@2x.png');
+}
+.share-xinlang {
+    background-size: cover;
+    background-image: url('../img/share_xinlang_bottom@2x.png');
+}
+.share-padd {
+    padding: 1.5em 10% 1.5em;
+}

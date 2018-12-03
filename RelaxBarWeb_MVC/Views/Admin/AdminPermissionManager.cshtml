@@ -1,0 +1,256 @@
+﻿
+<script language="javascript" type="text/javascript" src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+
+<style>
+    .bankShow {
+    }
+
+    .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+    .editItem > div > div {
+        text-align: right;
+    }
+     .cell {
+        box-sizing: border-box;
+        white-space: normal;
+        word-break: break-all;
+        line-height: 23px;
+    }
+    .p_tag {
+        background-color: rgba(64,158,255,.1);
+        padding: 0 10px;
+        height: 32px;
+        line-height: 30px;
+        font-size: 12px;
+        color: #337ab7;
+        border-radius: 4px;
+        box-sizing: border-box;
+        border: 1px solid rgba(64, 114, 165, 0.2);
+        white-space: nowrap;
+        display:inline-block;
+        margin:1px 0;
+    }
+
+    input[type='checkbox']:checked:before {
+        width: 14px;
+        height: 14px;
+        -webkit-appearance: none;
+        border: 1px solid #c9c9c9;
+        border-radius: 2px;
+        outline: none;
+        border-color: #fff;
+        background: #fff;
+    }
+    input[type='checkbox'] {
+        width: 14px;
+        height: 14px;
+        -webkit-appearance: none;
+        
+        border: 1px solid #c9c9c9;
+        border-radius: 2px;
+        outline: none;
+        border-color: #409eff;
+        background: #fff;
+    }
+    input[type='checkbox']:checked:after {
+        position: absolute;
+        top: 1px;
+        color: #409eff;
+        box-sizing: content-box;
+        content: '\2713';
+        font-weight:bold;
+    }
+
+</style>
+<script>
+    var hasFooter = false;
+    var UserHelpManager = {};
+    UserHelpManager.searchKey = "";
+    UserHelpManager.index = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage:parseInt((sum-1)/10+1),
+               // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetAdminPermissionList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+        GetAdminPermissionList(index);
+    };
+    //获取管理权限列表
+    function GetAdminPermissionList(index) {
+        waiting();
+        $.get("AdminPermissionList", "index=" + index, function (data) {
+            UserHelpManager.index = index;
+            $("#Adsbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function USearch() {
+        UserHelpManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetAdminPermissionList(1);
+    }
+   
+    //更改授权状态
+    function CAdminPermissionStatus(ID, e) {
+        waiting();
+        var status = 1;
+        if (e.value == "启用")
+        { status = 0; }
+        $.post("CAdminPermissiontatus", "ID=" + ID + "&status=" + status, function (data) {
+            if (data.code == "1") {
+                if (status == 1) {
+                    e.value = "启用";
+                } else {
+                    e.value = "禁用";
+                }
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+        }, "json")
+    }
+    function EditAdminPermission(id) {
+        waiting();
+        $.get("/Admin/EditAdminPermission/" + id, function (data) {
+            $("#editAdsBody").html(data);
+
+            $("#editPermission").show();
+            $('body').css('overflow', 'hidden');
+            waitingHide();
+        }, "html")
+    }
+
+    function saveUserHelp() {
+     
+        var ID = $("#ID").val();
+        var AID = $("#AID").val();
+        var RoleID = $("#RoleID").val();
+
+        var PermissionID = "";
+        var pp = $("input[name='permissonID']"); 
+        for(var i=0;i<pp.length;i++)
+        {
+            if(pp[i].checked)
+            {
+                PermissionID += pp[i].value + ",";
+            }
+        }
+        PermissionID = (PermissionID.substring(PermissionID.length - 1) == ',') ? PermissionID.substring(0, PermissionID.length - 1) : PermissionID;//去掉字符串尾部','号;
+       // console.log(p);
+        if (AID == 0)
+        {
+            alert("授权管理不能为空");
+            return false;
+        }
+        if (RoleID == 0)
+        {
+            alert("角色不能空");
+            return false;
+        }
+
+        $.post("/Admin/DoEditAdminPermission", "ID=" + ID + "&AID=" + AID + "&RoleID=" + RoleID + "&PermissionID=" + PermissionID, function (data) {
+            
+            if (data.code == "1") {
+                alert(data.msg);
+                $("#editAdsBody").html("");
+
+                $("#editPermission").hide();
+                $('body').css('overflow', 'auto');
+                GetAdminPermissionList(UserHelpManager.index);
+            }
+            else {
+                $("#editAdsBody").html("");
+
+                $("#editPermission").hide();
+                $('body').css('overflow', 'auto');
+                alert(data.msg);
+            }
+        }, "json");
+    }
+
+    function check(e) {
+        if ($(e).is(":checked")) {
+            $(e).parent().nextAll().children("input[name='permissonID']").prop("checked", true);
+            
+        }
+        else {
+            $(e).parent().nextAll().children("input[name='permissonID']").prop("checked",false);
+        }
+    }
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a href="#">管理权限</a></li>
+</ol>
+<div class="col-md-12 form-inline">
+    @*关键字：*@
+    <div class="input-group col-md-4">
+        @*<input type="text" class="form-control" id="key">
+        <span class="input-group-addon" onclick="USearch()">查询</span>*@
+        <input type="button" class="btn btn-primary" value="新 增" onclick="EditAdminPermission('')" />
+    </div>
+  
+</div>
+<div class="col-md-12" id="userlist">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>管理员</th>
+                <th>角色</th>
+                <th>权限</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="Adsbody">
+            @Html.Action("AdminPermissionList")
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination"></ul>
+    </nav>
+</div>
+
+<div class="showBack col-md-12" id="editPermission">
+    <div class="editUserBody col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">修改权限<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="$('#editPermission').hide(); $('body').css('overflow', 'auto');" /></div>
+            <div class="panel-body" style="overflow:auto;">
+                <form id="editUserForm">
+                    <div id="editAdsBody"></div>
+                </form>
+               
+            </div>
+            <div class="panel-footer" style="overflow:hidden">
+                <input type="button" value="保存" class="btn btn-primary" style="float:right" onclick="saveUserHelp()" />
+            </div>
+        </div>
+    </div>
+</div>

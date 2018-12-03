@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ResultUrl</title>
+</head>
+<body>
+    <div> 
+        <div class="weui-mask weui-mask--visible"></div>
+        <div class="weui-dialog weui-dialog--visible  doing_dialog_box">
+            <div class="weui-dialog__hd">
+                <strong class="weui-dialog__title">请确认微信支付是否已完成</strong>
+            </div>
+            <div class="weui-dialog__bd" onclick="javascript:window.location.href='/WxAPI/ResultUrl?pid=@ViewData["OID"]'"><a href="javascript:">已完成支付 @ViewData["number"]</a></div>
+            <div class="weui-dialog__ft" onclick="javascript:window.location.href='/WxAPI/ResultUrl?pid=@ViewData["OID"]'">
+                <a class="weui-dialog__btn" href="javascript:">支付遇到问题，重新支付</a>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.Users
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>详细资料</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/friendInfo.css" />
+    <style>
+        #addfriend {
+            display:none;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        function addFriend() {
+            $("#addfriend").show();
+            
+            
+        }
+        function sendAddFriendReq(){
+        
+            $.post("/Friend/SendFriendRequest", "uid=@Model.ID&content=" + $("#content").val(), function (data) {
+                alert(data.msg);
+                if (data.code == "1") {
+                }
+                
+            }, "json");
+        }
+        function changeRemark() {
+            $("#remarkshow").show();
+        }
+        function cr() {
+            $.post("/Friend/CRemark", "fuid=@Model.ID&" + "remark=" + $("#remark").val(), function (data) {
+                if (data.code == "1") {
+                    location.reload();
+                }
+                alert(data.msg);
+            }, "json")
+        }
+        function dfriend() {
+            $.post("/Friend/DeleteFriend", "fuid=@Model.ID", function (data) {
+                if (data.code == "1") {
+                    localStorage.removeItem("friendList");
+                    GetFriendList(function (friendlist) {
+                        console.log(friendlist);
+                        localStorage.setItem("friendList", friendlist);
+                    });
+                    location.href = '/Account/Addressbook';
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+        function GetFriendList(success) {
+            if (typeof (success) != "function") {
+                alert("参数错误");
+                return;
+            }
+            $.post("/Account/GetChatPageData", null, function (data) {
+                if (data.code == "1") {
+                    success(data.msg);
+                }
+            }, "json");
+
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap min-h100 gray-wrap">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <font class="header-l-font halfTop" onclick="window.history.back()">返回</font>
+            <span>详细资料</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="friInfo-block">
+                <img class="friInfo-img halfTop" src="@Model.HeadImg1" alt="" />
+                <p class="fri-name">@Model.Name<i style="background-size:contain;" class="gender-icon @((Model.Sex==null||Model.Sex==0)?"men-icon":"women-icon")"></i></p>
+                <p class="fri-telephone">账号：@Model.Phone</p>
+            </div>
+            @if (!Convert.ToBoolean(ViewData["isFriend"]))
+            {
+                <tr>
+                    <td>
+                        <input value="添加好友"  class="bigBtn bg-b fri-mt-1" type="button" onclick="sendAddFriendReq()" />
+                    </td>
+                </tr>
+            }
+            else
+            {//如果是好友
+                <ul class="enter-itemlist">
+                    <li class="enter-item" onclick="location.href = '/Friend/CRemark/@Model.ID'">
+                        <span>设置备注和标签</span>
+                        <i class="gt bgSR halfTop"></i>
+                    </li>
+                </ul>
+                <input class="bigBtn bg-b fri-mt-1" type="button" value="发消息" onclick="location.href = '/Chat/ToOne/@Model.ID'"/>
+                <input class="bigBtn bg-r fri-mt-2" type="button" value="删除好友" onclick="$('#duser').show().find('.alert-block').show()" />
+                @*<tr>
+                    <td>备注：<span id="remarkshow" style="display:none"><input id="remark" /><input type="button" value="确认" onclick="cr()" /></span>@(string.IsNullOrEmpty(ViewData["Remark"].ToString()) ? @Model.Name : ViewData["Remark"]) </td>
+                    <td><input value="修改备注" type="button" onclick="changeRemark()" /></td>
+                </tr>*@
+            }
+            
+            
+        </div>
+
+        <div class="blackmask" id="duser">
+            <div class="mask-main-wrap">
+                <div class="alert-block">
+                    <p class="alert-title">删除好友</p>
+                    <p class="alert-remind">将好友对方名字删除，将同时删除与好友的聊天记录</p>
+                    <p class="alert-confirm"><a class="ab-mr" href="javascript:$('#duser').hide();">取消</a><a class="color-r" onclick="dfriend()" href="javascript:void(0);">删除</a></p>
+                </div>
+            </div>
+        </div>
+    </div><!--wrap-->
+
+
+        <div id="addfriend">
+            <h3>填写验证信息</h3>
+               <textarea id="content" name="content">我是 @ViewData["name"]</textarea>
+            <input value="发送" type="button" onclick="sendAddFriendReq()" />
+        </div>
+  
+</body>
+</html>

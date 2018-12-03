@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../hb/css/received-v1.css">
+        <link rel="stylesheet" href="../hb/css/received-v2.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="um-vp" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver bc-bg" tabindex="0">
+
+            <div id="content" class="ub-f1 tx-l">
+                <div class="ub ub-ver bc-bg">
+                    <div class="ub-f1 ub ub-ver">
+
+                        <div class="bc-border money-marg">
+
+                            <div class="usr-cont usr-bg"></div>
+
+                            <div class="head-img" id="HeadImg1" ontouchstart="appcan.touch('btn-act')">
+                                <div class="ub-img1 red-wd icon-cont uc-a2 ub-a2"></div>
+                            </div>
+
+                            <div class="ub uinn-a12 ub-ae">
+                                <div class="ub ub-ver ub-f1 ub-pc b-gra-per">
+                                    <div class="ub-ae tx-c" ontouchstart="appcan.touch('btn-act')">
+                                        <a class="red-from" id="TrueName"></a>
+                                    </div>
+                                    <div class="tx-c ub-f1 money-sty" ontouchstart="appcan.touch('btn-act')">
+                                        <!-- <a class="cash-num" id="GetMoney"></a><a class="cash-unit">元</a> -->
+                                    </div>
+                                    <!-- <div class="ub-ae ulev-4 ufm1 tx-c already-save" ontouchstart="appcan.touch('btn-act')">
+                                    已存入零钱
+                                    </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="uba bc-border c-wh umar-at3">
+                            <ul ontouchstart="appcan.touch('btn-act')" class="ubb ub bc-border bc-text ub-ac uinn-a9">
+                                <li class="ub-f1 ut-s already-received ulev-app1">
+                                    已领取<span class="recv-cnt" id="reccount">0</span>份
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="empty-height"</div>
+
+                        <div class="user-list" id="reclist">
+
+                        <!-- <div class="comt-padd c-wh" data-truename="" data-userid="">
+                        <div class="ub ubb bc-border border-padd-bottom">
+                        <div class="ub-img comt-icon-width comt-user-icon mar-ar1"></div>
+                        <div class="ub ub-ver ub-f1 mar-ar1">
+                        <div class="user-hdr">
+                        likegor
+                        </div>
+                        <div class="ut-s user-time">
+                        7-3 22:40
+                    </div>
+                </div>
+                <div class="ub ub-ver ub-ae ub-pe">
+                    <div class="list-cash tx-r">
+                        0.01元
+                    </div>
+                    <div class="ut-s user-time">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        </div>
+
+        </div>
+        </div>
+        </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../hb/js/hbdetail.js"></script>
+        <script src="../hb/js/hbreceived.js"></script>
+        <script src="../hb/js/hbaction.js"></script>
+        <script src="../hb/js/hbcomment.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+
+                //getPacketDetail(RID, number, 'hbreceived');
+                //listPacketDetail(JSON.parse(localStorage.getItem("PacketDetail")));
+
+                appcan.frame.setBounce({
+                    bounceType : [0, 1],
+                    startPullCall : function(type) {
+
+                    },
+                    downEndCall : function(type) {
+
+                    },
+                    upEndCall : function(type) {
+
+                        if (type == 0) {
+
+                            setTimeout(function(type) {
+
+                                var number = $('#content').data('number');
+                                var rid = $('#content').data('rid');
+                                getRecDetailList(rid, number, 1, 'refresh_hbreceived');
+
+                            }, 1000);
+
+                        } else if (type == 1) {
+
+                            setTimeout(function(type) {
+
+                                var number = $('#content').data('number');
+                                var rid = $('#content').data('rid');
+                                judgRecCurPage(rid, number, 20, 'hbreceived');
+
+                            }, 1000);
+
+                        }
+
+                    },
+                    color : '#FB5858'
+
+                });
+
+                var temp = localStorage.getItem("redPacketId");
+                var number = temp.substring(0, temp.lastIndexOf('_&_'));
+                var rid = temp.substring(temp.lastIndexOf('_&_') + 3);
+                getRecDetailList(rid, number, 1, 'hbreceived');
+
+            });
+
+        </script>
+    </body>
+</html>

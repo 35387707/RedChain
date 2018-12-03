@@ -1,0 +1,128 @@
+﻿
+<link href="~/css/Calendar.css" rel="stylesheet" />
+<style>
+    .remarkdiv ul li {
+        list-style-type: none;
+        float: left;
+        padding: 0 20px;
+    }
+
+        .remarkdiv ul li span {
+            display: inline-block;
+            border: 1px solid black;
+            width: 20px;
+            height: 10px;
+        }
+
+    .allpay {
+        width: 33.28% !important;
+        font-size: 14px;
+    }
+
+        .allpay span {
+            color: #337ab7;
+        }
+
+    .allpay2 {
+        width: 33.28% !important;
+        font-size: 14px;
+    }
+
+        .allpay2 h3 {
+            color: #337ab7;
+        }
+</style>
+<script>
+    function getTotalInOut() {
+        $.post("GetPriceTotalOrder", "", function (data) {
+            $(".OrderPeople").text(data.OrderPeople);
+            $(".OrderTotal").text(data.OrderTotal);
+            $(".OrderPrice").text(data.OrderPrice);
+            $(".PayPeople").text(data.PayPeople);
+            $(".PayTotal").text(data.PayTotal);
+            $(".PayPrice").text(data.PayPrice);
+        }, "json")
+    }
+    $(function () {
+
+        getTotalInOut();
+    });
+</script>
+<div class="col-md-6 panel panel-primary" style="padding:0;">
+    <div class="panel-heading">
+        订单营业额
+    </div>
+    <div class="panel-body" style="padding:0;">
+        <canvas id="canvas" height="450" width="600"></canvas>
+        <div>
+            <div class="remarkdiv">
+                <ul>
+                    <li><span style="background-color:rgba(151,187,205,1)"></span>付款金额</li>
+                    <li><span style="background-color:rgba(220,220,220,1)"></span>下单金额</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-5">
+   
+    <div class="panel panel-default" style="padding:0;margin-left:2px;">
+        <div class="panel-heading form-inline" id="top"></div>
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">
+                <li class="allpay"><h3 class="OrderPeople">0</h3><span>下单人数</span></li>
+                <li class="allpay"><h3 class="OrderTotal">0</h3><span>下单笔数</span></li>
+                <li class="allpay"><h3 class="OrderPrice">0</h3><span>下单金额</span></li>
+            </ul>
+            <div id="cm"></div>
+            <div id="bm" style="height:100%;">
+                <ul id="wk" style="height:100%;">
+                    <li class="allpay2"><h3 class="PayPeople">0</h3>付款人数</li>
+                    <li class="allpay2"><h3 class="PayTotal">0</h3>付款笔数</li>
+                    <li class="allpay2"><h3 class="PayPrice">0</h3>付款金额</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="~/js/Calendar.js"></script>
+<script src="/js/Chart.js"></script>*@
+<script>
+	var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var lineChartData = {
+			labels : [@Html.Raw(ViewData["lable"])],
+			datasets : [
+				{
+				    label: "下单金额",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [@Html.Raw(ViewData["OrderPriceTotal"])]
+				},
+				{
+					label: "付款金额",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [@Html.Raw(ViewData["OrderPriceCount"])]
+				}
+			]
+
+		}
+		function create() {
+		    var ctx = document.getElementById("canvas").getContext("2d");
+		    window.myLine = new Chart(ctx).Line(lineChartData, {
+		        responsive: true
+		    });
+		}
+
+		create();
+
+</script>

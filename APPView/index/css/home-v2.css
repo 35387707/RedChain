@@ -1,0 +1,214 @@
+@font-face {
+    font-family: 'SIMLI';
+    src: url('../css/fonts/SIMLI.TTF');
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #363636;
+}
+.no-dis {
+    display: none !important
+}
+.active {
+    /*color: #45BF1A;*/
+    color: #FE5A65;
+}
+/*
+ * body
+ */
+body {
+    width: 100%;
+    height: 100%;
+    background: #EAEAEA;
+}
+#page_0 {
+    width: 100%;
+    height: 100%;
+    background: #EAEAEA;
+}
+/*header*/
+#header {
+    z-index: 990;
+    width: 100%;
+    background: #FF5265;
+}
+/*footer*/
+#footer {
+    z-index: 990;
+    font-size: 0.72em;
+    background-size: cover;
+    /*color: #EAEAEA;*/
+    background: #FFFFFF;
+    height: 4.6em;
+    width: 100%;
+    bottom: 0;
+}
+.foot-colr {
+    color: #393939;
+}
+
+#footer .footer-tab {
+    text-align: center;
+    /*width: 49.5% !important;*/
+    width: 20.0% !important;
+}
+#footer .footer-tab img {
+    width: 2.60em;
+    height: 2.60em;
+}
+
+#footer .footer-tab .tab-icon {
+    width: 100%;
+    height: 3.1em;
+    line-height: 3.1em;
+    padding-top: 0.20em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+#footer .footer-tab .tab-txt {
+    width: 100%;
+    height: 1.5em;
+    line-height: 1.5em;
+    padding-bottom: 0.15em;
+    position: absolute;
+    bottom: 0;
+}
+#footer .footer-tab .tab-txt2 {
+    width: 100%;
+    height: 1.7em;
+    line-height: 1.7em;
+    padding-bottom: 0.35em;
+    position: absolute;
+    bottom: 0;
+}
+#footer .footer-tab .nav-middle {
+    z-index: 999;
+    position: absolute;
+    margin: -2.0em 10% 0 10%;
+    width: 80%;
+    height: 4.8em;
+    line-height: 4.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+#footer .footer-tab .plus-tab {
+    margin: 0 10% 0 10%;
+    width: 80%;
+    height: 4.6em;
+    line-height: 4.6em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.tab-icon a {
+    font-size: 2.15em;
+}
+.tab-colr {
+    color: #9A9A9A;
+}
+.rnd-md {
+    background-color: white;
+    min-height: 4.8em;
+    min-width: 4.8em;
+    line-height: 4.8em;
+    --webkit-border-radius: 4.8em;
+    border-radius: 4.8em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.rnd-sub {
+    background-color: #FF5265;
+    min-height: 4.0em;
+    min-width: 4.0em;
+    line-height: 4.0em;
+    --webkit-border-radius: 4.0em;
+    border-radius: 4.0em;
+}
+.rnd-md2 {
+    background-color: white;
+    min-height: 4.5em;
+    min-width: 4.5em;
+    line-height: 4.5em;
+    --webkit-border-radius: 4.5em;
+    border-radius: 4.5em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.rnd-md2 img {
+    min-height: 3.6em;
+    min-width: 3.6em;
+    line-height: 3.6em;
+    margin-bottom: 0.1em;
+}
+.rnd-sub2 {
+    min-height: 3.6em;
+    min-width: 3.6em;
+    line-height: 3.6em;
+    --webkit-border-radius: 3.6em;
+    border-radius: 3.6em;
+    background-image: url('../img/index_send_fahongbao@2x.png');
+    background-size: cover;
+}
+.fa-spec {
+    /*margin: -0.625em 0.625em 0.5625em 0;*/
+
+    font-size: 66%;
+    color: #FFFFFF;
+}
+.foot-bdr {
+    border-top: 0.05em solid #9A9A9A;
+}
+

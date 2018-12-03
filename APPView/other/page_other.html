@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../other/css/page_other.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+            .fixed {
+                position: fixed;
+                z-index: 10000;
+            }
+            .more {
+                margin-left: 10%;
+                width: 70%;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body class="um-vp bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div id="header" class="uh bc-text-head">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two"></div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">个人主页</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="nav-txt"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content"></div>
+
+            <div id="footer" class="ub bottom-style">
+                <div id="follow" class="ub ub-ver ub-f1 ub-pc bottom-left" ontouchstart="appcan.touch('btn-act')">
+                    关注
+                </div>
+                <div id="chat" class="ub ub-ver ub-f1 ub-pc bottom-right" ontouchstart="appcan.touch('btn-act')">
+                    私聊
+                </div>
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../other/js/other.js"></script>
+        <script src="../follow/js/follow.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+                $('#header').data('userid', localStorage.getItem("userid"));
+                $('#header').data('from_page', localStorage.getItem("fromPage"));
+
+                $('#chat').data('chat_userid', localStorage.getItem("userid"));
+                $('#follow').data('follow_userid', localStorage.getItem("userid"));
+
+                var titHeight = $('#header').offset().height;
+                var footHeight = $('#footer').offset().height;
+
+                var bodyHeight = $('body').height();
+                var contHeight = bodyHeight - titHeight - footHeight;
+                $('#content').css('height', contHeight);
+
+                var titHeight = $('#header').offset().height;
+                appcan.frame.open("content", "page_other_content.html", 0, titHeight);
+                window.onorientationchange = window.onresize = function() {
+                    appcan.frame.resize("content", 0, titHeight);
+                };
+
+                appcan.window.subscribe('otherJudgCond', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        isFriendSrch();
+
+                    }
+
+                });
+
+                appcan.window.subscribe('refreshBot', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        //$('#chat').text('未领取');
+                        //$('#chat').data('chat', 19);
+                        $("div[data-chat_userid='" + msg + "']").text('未领取');
+                        $("div[data-chat_userid='" + msg + "']").data('chat', 19);
+
+                    }
+
+                });
+
+                appcan.window.subscribe('setInfo', function(msg) {
+
+                    if (msg != "" && msg != null && msg != undefined) {
+
+                        var UserInfo = JSON.parse(msg);
+                        $("div[data-userid='" + UserInfo.Info.ID + "']").data('info', msg);
+
+                    }
+
+                });
+
+            });
+
+            $('#follow').click(function() {
+
+                var cid = $(this).data('cid');
+                debug(cid);
+
+                //var temp = $(this).text().replace(/\s*/g, "");
+                var follow = $(this).data('follow');
+                debug(follow);
+                if (follow == 0 || follow == '0') {
+
+                    var uid = localStorage.getItem("uid");
+                    var user_uid = $('#header').data('userid');
+                    var fromPage = $('#header').data('from_page');
+
+                    debug(user_uid);
+                    debug(localStorage.getItem("userid"));
+
+                    followUser(uid, user_uid, fromPage);
+
+                } else {
+
+                    //openToast("您已关注当前用户", 3000, 5, 0);
+                    uexWindow.actionSheet({
+                        title : "",
+                        cancel : "取消",
+                        buttons : "取消关注"
+                    }, function(index) {
+
+                        if (index == 0) {
+
+                            openToast('正在取消关注...', 30000, 5, 1);
+                            var uid = localStorage.getItem("uid");
+                            var user_uid = $('#header').data('userid');
+                            var fromPage = $('#header').data('from_page');
+                            notFollowSql(uid, cid, user_uid, fromPage);
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+            $('#chat').click(function() {
+
+                var localPack = localStorage.getItem('localPack');
+
+                //var temp = $(this).text().replace(/\s*/g, "");
+                var chat = $(this).data('chat');
+                if (chat == 0 || chat == '0') {
+
+                    var userid = $('#header').data('userid');
+                    localStorage.setItem("userid", userid);
+                    var info = $('#header').data('info');
+                    debug(info);
+                    localStorage.setItem("OtherUser", JSON.stringify(info));
+
+                    if (localPack == '1' || localPack == 1) {
+
+                        appcan.window.open({
+                            name : 'hbprice',
+                            data : '../hb/hbprice.html',
+                            aniId : 10,
+                        });
+
+                    } else {
+
+                        uexWindow.open({
+                            name : 'hbprice',
+                            data : '../hb/hbprice.html',
+                            animID : 10,
+                            flag : 1024
+                        });
+
+                    }
+
+                } else if (chat == 1 || chat == '1') {
+
+                    /*
+                     if (localPack == '1' || localPack == 1) {
+
+                     appcan.window.open({
+                     name : 'chat_list',
+                     data : '../msg/chat_list.html',
+                     aniId : 10,
+                     });
+
+                     } else {
+
+                     uexWindow.open({
+                     name : "chat_list",
+                     data : "../msg/chat_list.html",
+                     animID : 10,
+                     flag : 1024
+                     });
+
+                     }*/
+                    openToast("对方已经是你的好友", 3000, 5, 0);
+
+                } else if (chat == 19 || chat == '19') {
+
+                    openToast("正在等待对方领取福包私聊中，请稍后", 3000, 5, 0);
+
+                }
+
+            });
+
+            $('#nav_left').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+        </script>
+    </body>
+</html>

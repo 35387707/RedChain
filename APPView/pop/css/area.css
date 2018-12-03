@@ -1,0 +1,144 @@
+#page_0 {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(1,1,1,0.5);
+}
+.empty-view {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#typ_tab {
+    border-radius: 1.0em 1.0em 0 0;
+    height: 2.0em;
+    line-height: 2.0em;
+    width: 100%;
+}
+#typ_tab .nav-tabs .ub-ver {
+    color: #2AC897;
+    font-weight: bold;
+}
+#typ_cont {
+}
+.spec-mde {
+    display: none;
+}
+.fa-fl-r {
+    font-size: 1.0em;
+    font-weight: bold;
+    float: right;
+}
+.fa-gr {
+    color: #2AC897;
+}
+
+.menu-width {
+    width: 100%;
+}
+.menu-style {
+    background-color: white;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+.menu-sub {
+    padding: 0.8em 0 0.8em 1.0em;
+    font-style: normal;
+    font-size: 0.86em !important;
+}
+.sub-bord {
+    border-bottom: 1px solid #F2F2F2;
+}
+.right-style {
+    width: 100%;
+    position: absolute;
+    top: 1.5em;
+    /*right: 0.625em;*/
+    right: 0;
+}
+/*
+ * 当页面可见宽度大于1400px小于1537px时 ipad mini2 ipad mini4
+ */
+@media all and (min-width: 1290px) and (max-width: 1537px) {
+
+    #typ_mde {
+        width: 75%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+        margin-top: 30%;
+        height: auto;
+        position: absolute;
+        z-index: 999;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1100px小于1281px时 iphone 6s
+ */
+@media all and (min-width: 1100px) and (max-width: 1281px) {
+
+    #typ_mde {
+        width: 75%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+        margin-top: 20%;
+        height: auto;
+        position: absolute;
+        z-index: 999;
+    }
+
+}
+/*
+ * 当页面可见宽度大于900px小于1081px时 1080p iphone6s
+ * 0.4293
+ */
+@media all and (min-width: 753px) and (max-width: 1081px) {
+
+    #typ_mde {
+        width: 75%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+        margin-top: 20%;
+        height: auto;
+        position: absolute;
+        z-index: 999;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ * 0.219
+ */
+@media all and (min-width: 650px) and (max-width: 751px) {
+
+    #typ_mde {
+        width: 75%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+        margin-top: 15%;
+        height: auto;
+        position: absolute;
+        z-index: 999;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 500px) and (max-width: 641px) {
+
+    #typ_mde {
+        width: 75%;
+        margin-left: 12.5%;
+        margin-right: 12.5%;
+        margin-top: 10%;
+        height: auto;
+        position: absolute;
+        z-index: 999;
+    }
+
+}

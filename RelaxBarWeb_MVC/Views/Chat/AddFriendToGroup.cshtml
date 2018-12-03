@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = null;
+}
+@model Guid
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选择联系人</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/friendInfo.css" />
+    <script>
+        var guids="@ViewData["UIDS"]".split(",");
+        function GetLocalFriend() {
+            var templist = localStorage.getItem("friendList");
+            if (templist == null) {
+                return;
+            }
+            console.log("加载本地数据");
+            var list = JSON.parse(templist);
+            var flist = [];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].Type == 1)
+                    flist.push("<li class='newfriendItem'><img class='nf-img' src='" + list[i].headimg + "' alt='' /><p class='nf-name'>" + list[i].Remark + "</p><p class='nf-greet'></p>"+addshow(list[i].ID)+"</li>");
+                 //   flist.push("<div class='contact-item'><img onclick='uheadClick(\"" + list[i].ID + "\")' class='contact-img' src='" + list[i].headimg + "' /><p onclick=\"userClick('" + list[i].ID + "')\">" + list[i].Remark + "</p></div>");
+            }
+            $("#flist").html(flist.join(""));
+        }
+        function addshow(id) {
+            
+            for (var i = 0; i < guids.length; i++) {
+                if(id==guids[i]){
+                    return '<input class="nf-disable-btn" type="button" value="已添加" disabled>';
+                }
+            }
+            return "<input class='nf-addbtn' type='button' onclick=\"add('" + id + "',this)\" value='添加' />";
+        }
+        function add(id,e) {
+            $.post("/Chat/AddFriendToGroup", "gid=@Model&uid=" + id, function (data) {
+                if (data.code == "1") {
+                    $(e).val("已添加");
+                    $(e).removeClass("nf-addbtn");
+                    $(e).addClass("nf-disable-btn");
+                    $(e).attr("disabled");
+                } else {
+                    alert(data.msg);
+                }
+
+            }, "json");
+        }
+        $(function () {
+            GetLocalFriend();
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="self.location=document.referrer"></i>
+            <font class="header-l-font halfTop" onclick="self.location=document.referrer">返回</font>
+            <span>选择联系人</span>
+            <a class="header-r-font halfTop" href="/Friend/FindFriend">添加朋友</a>
+        </div>
+        <div class="same-pt-wrap1">
+            <ul class="newfriendList" id="flist">
+            </ul>
+            @*<div class="no-newfriend-block">还没有推荐的朋友</div>*@
+        </div>
+    </div><!--wrap-->
+
+</body>
+</html>

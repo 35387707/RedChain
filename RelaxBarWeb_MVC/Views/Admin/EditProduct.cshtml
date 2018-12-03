@@ -1,0 +1,498 @@
+﻿<script src="~/Content/ueditor/ueditor.config.js"></script>
+<script src="~/Content/ueditor/ueditor.all.min.js"></script>
+
+<link href="~/Content/ueditor/themes/iframe.css" rel="stylesheet" />
+<script src="~/Content/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script type="text/javascript">
+        var editor = new baidu.editor.ui.Editor({
+            UEDITOR_HOME_URL: '/Content/ueditor/',//配置编辑器路径
+            iframeCssUrl: '/Content/ueditor/themes/iframe.css',//样式路径
+            initialContent: '',//初始化编辑器内容
+            autoHeightEnabled: true,//高度自动增长
+            minFrameHeight:600//最小高度
+        });
+        editor.render('Descrition');
+</script>
+@{
+    Layout = null;
+    //ProductList u;
+    //RelexBarDLL.BankList bank = ViewData["bank"] as RelexBarDLL.BankList;
+    // RelexBarBLL(). cate = new RelexBarDLL.Category();
+    RelexBarBLL.CategoryBLL category = new RelexBarBLL.CategoryBLL();
+    List<RelexBarDLL.Category> catelist = category.GetAllList();
+
+}
+@model RelexBarDLL.ProductList
+<div class="col-md-10 col-md-offset-2 form-group editItem">
+    <div class="form-inline">
+        <div class="col-md-3">名称：</div>@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-inline">
+        <div class="col-md-3">标题：</div>@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+    </div>
+    @*<div class="form-inline">
+        <div class="col-md-3">商品编号：</div>@Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+    </div>*@
+
+    @*<div class="form-inline">
+        <div class="col-md-3">产品类型：</div>@Html.DropDownListFor(m => m.CategoryID, new List<SelectListItem>() { new SelectListItem() { Text = "实体商品", Value = "0" }, new SelectListItem() { Text = "虚拟商品", Value = "1" } }, new { @class = "form-control" })
+    </div>*@
+    <div class="form-inline">
+        <div class="col-md-3">
+            产品类型：
+        </div>
+        <select class="form-control" data-val="true" data-val-number="字段 CategoryID 必须是一个数字。" id="CategoryID" name="CategoryID">
+            @for (int i = 0; i < catelist.Count; i++)
+            {
+                if ((int)@catelist[i].ID == Model.CategoryID)
+                {
+                    <option value='@catelist[i].ID' selected="selected"> @catelist[i].Name</option>
+                }
+                <option value='@catelist[i].ID'> @catelist[i].Name</option>
+            }
+        </select>
+    </div>
+      
+    <div class="">
+        <div class="col-md-3">图片大图：</div>@Html.HiddenFor(m => m.Img)@Html.HiddenFor(m => m.ID)
+        <input type="file" id="upload" style="display:none" onchange="HeadImgUpload(this)" />
+        <img id="headimage" onclick="$('#upload').click()" src="@(string.IsNullOrEmpty(Model.Img)?"/img/cp_img_tj.png":Model.Img)" width="86" />
+        <br />
+    </div>
+
+    <div class="col-md-12" style="padding:0">
+        <div class="col-md-3">详情图：</div>
+        <div class="col-md-9 allPic" style="padding:0">
+            @if (!string.IsNullOrEmpty(Model.ImgList))
+            {
+                string[] bbb = Model.ImgList.Split(';');
+                for (int i = 0; i < bbb.Length; i++)
+                {
+                    <div class="col-md-3 up-section" style="padding:0;margin:5px" onmouseover=bigImg(this) onmouseout=normalImg(this)>
+                        <input id='ImgList' name='ImgList' type='hidden' value="@bbb[i]"><span class="up-span"></span><img class="close-upimg" src="/img/a7.png" onclick="delImgbox(this)"><img class='addimg' src="@bbb[i]" style='width: 100px;height:100px' />
+                    </div>
+                }
+                if (bbb.Length > 8)
+                {
+                    <div class="col-md-3" style="padding:0;margin:5px">
+                        <input type="file" id="uploadimg" style="display:none" onchange="ImgDetailUpload(this)" />
+                        <img id="uploadimage" onclick="$('#uploadimg').click()" src="/img/cp_img_tj.png" style='width: 100px;display:none' />
+                        <br />
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-3" style="padding:0;margin:5px">
+                        <input type="file" id="uploadimg" style="display:none" onchange="ImgDetailUpload(this)" />
+                        <img id="uploadimage" onclick="$('#uploadimg').click()" src="/img/cp_img_tj.png" style='width: 100px;' />
+                        <br />
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-md-3" style="padding:0;margin:5px">
+                    <input type="file" id="uploadimg" style="display:none" onchange="ImgDetailUpload(this)" />
+                    <img id="uploadimage" onclick="$('#uploadimg').click()" src="@(string.IsNullOrEmpty(Model.ImgList)?"/img/cp_img_tj.png":Model.ImgList)" style='width: 100px;' />
+                    <br />
+                </div>
+            }
+
+        </div>
+    </div>
+            <div class="form-inline">
+                <div class="col-md-3">商品类型：</div>@Html.DropDownListFor(m => m.Type, new List<SelectListItem>() { new SelectListItem() { Text = "实体商品", Value = "0" }, new SelectListItem() { Text = "虚拟商品", Value = "1" } }, new { @class = "form-control" })
+            </div>
+            @*<div class="form-inline">
+                <div class="col-md-3">描述：</div>@Html.TextBoxFor(m => m.Descrition, new { @class = "form-control" })
+            </div>*@
+           
+            @*<div class="form-inline">
+               
+            </div>*@
+            <div class="form-inline">
+                <div class="col-md-3">真实价格：</div>@Html.TextBoxFor(m => m.RealPrice, new { @class = "form-control" })
+            </div>
+            <div class="form-inline">
+                <div class="col-md-3">价格类型：</div>@Html.DropDownListFor(m => m.PriceType, new List<SelectListItem>() { new SelectListItem() { Text = "任意类型", Value = "0" }, new SelectListItem() { Text = "余额/金币", Value = "1" }, new SelectListItem() { Text = "积分", Value = "2" }, new SelectListItem() { Text = "筹码", Value = "3" }, new SelectListItem() { Text = "福券", Value = "4" } }, new { @class = "form-control" })
+            </div>
+            <div class="form-inline">
+                <div class="col-md-3">现金金额：</div>@Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+            </div>
+            <div class="form-inline">
+                <div class="col-md-3">福利积分：</div>@Html.TextBoxFor(m => m.FootQuanPrice, new { @class = "form-control" })
+            </div>
+            <div class="form-inline">
+                <div class="col-md-3">库存：</div>@Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
+            </div>
+            
+            <div class="form-inline">
+                <div class="col-md-3">完成数量：</div>@Html.TextBoxFor(m => m.CompleteCount, new { @class = "form-control" })
+            </div>
+            <div class="form-inline">
+                <div class="col-md-3">点赞数：</div>@Html.TextBoxFor(m => m.GoodCount, new { @class = "form-control" })
+            </div>
+            <div class="form-inline">
+                <div class="col-md-3">访问量：</div>@Html.TextBoxFor(m => m.ViewCount, new { @class = "form-control" })
+            </div>
+            <div class="form-inline sku">
+        @if (!string.IsNullOrEmpty(Model.Specification))
+        {
+
+            RelexBarBLL.ProductsBLL Pbll = new RelexBarBLL.ProductsBLL();
+            var PSpecList = Pbll.GetAllProductSpecificationByPID(Model.ID);
+            String SpecList = Newtonsoft.Json.JsonConvert.SerializeObject(PSpecList);
+            <script>
+                        let obj= @Html.Raw(Model.Specification);
+                        var Html=' <div class="col-md-3">商品规格：</div>';
+                        Html=Html+'<div class="col-md-9" style="padding:0">'
+                        for (var j = 0; j < obj.length; j++)
+                        {
+                            Html=Html+'<div class="control-group lv1">';
+                            Html=Html+ '<div class="controls" style="padding-bottom:0">'
+                            Html=Html+  '<label class="control-label">规格名称：</label>'
+                            Html=Html+  '<input type="text" name="lv1" placeholder="规格名称" class="specname" value="'+obj[j].key+'" >'
+                            Html=Html+   '<button class="btn btn-danger remove_lv1" type="button">删除</button><br />'
+                            Html=Html+   '<button class="add_lv2 guige" type="button" onclick="addlv2(this)">添加规格值</button>'
+                            Html=Html+  '</div>'
+
+                            Html=Html+'<div class="controls lv2s" style="display:inline-block;width:100%"><span style="display: inline-block; width: 100%;">规格值：</span>'
+                            let obj2=obj[j].value
+                            for(var i=0;i<obj2.length;i++)
+                            {
+                                Html=Html+  '<div style="margin-top: 5px;float:left" class="lv3">'
+                                Html=Html+       '<input type="text" name="lv2" placeholder="规格值"  value="'+obj2[i]+'" class="specname" onkeyup=Search() >'
+                                Html=Html+       '<i class="glyphicon glyphicon-remove-sign remove_lv2" style="color:red"></i>'
+                                Html=Html+  '</div>'
+                            }
+                            Html=Html+ '</div>'
+                            Html=Html+ '</div>'
+                        }
+                        Html=Html+ '<div class="control-group" style="margin:5px 0">'
+                        Html=Html+   '<div>'
+                        Html=Html+    '<button id="add_lv1" class="btn btn-primary" type="button">添加规格项</button>'
+                        Html=Html+  '</div>'
+                        Html=Html+ '</div>'
+                        Html=Html+'</div>'
+
+                        Html=Html+'<div id="lv_table_con" class="control-group col-md-12" >'
+                        Html=Html+'<label class="control-label">规格项目表</label>'
+                        Html=Html+'<div class="controls">'
+                        Html=Html+'   <div id="lv_table">'
+                        Html=Html+'        <table class="table table-bordered"> '
+                        Html=Html+'          <thead>'
+                        Html=Html+'             <tr>'
+                        for (var K = 0; K < obj.length; K++)
+                        {
+                            Html=Html+'                <th width="50">'+obj[K].key+'</th> '
+                        }
+                        Html=Html+'               <th width="20">现价</th>'
+                        Html=Html+'               <th width="20">原价</th>'
+                        Html=Html+'               <th width="20">库存</th>'
+                        Html=Html+'               <th width="20">积分</th>'
+                        Html=Html+'               </tr>'
+                        Html=Html+'            </thead>'
+                        Html=Html+'            <tbody>'
+
+                        var numsArr = new Array();
+                        var idxArr = new Array();
+
+                        for (var i = 0; i < obj.length; i++) {
+                            numsArr.push(obj[i].value.length);
+                            idxArr[i] = 0;
+                        }
+
+                        var len = 1;
+                        var rowsArr = new Array();
+                        for (var i = 0; i < numsArr.length; i++) {
+                            len = len * numsArr[i];
+
+                            var tmpnum = 1;
+                            for (var j = numsArr.length - 1; j > i; j--) {
+                                tmpnum = tmpnum * numsArr[j];
+                            }
+                            rowsArr.push(tmpnum);
+                        }
+                        for (var i = 0; i < len; i++) {
+                            Html=Html+'                <tr data-row="' + (i + 1) + '">'
+                            var name = '';
+                            for (var j = 0; j < obj.length; j++) {
+                                var n = parseInt(i / rowsArr[j]);
+                                if (j == 0) {
+                                } else if (j == obj.length - 1) {
+                                    n = idxArr[j];
+                                    if (idxArr[j] + 1 >= numsArr[j]) {
+                                        idxArr[j] = 0;
+                                    } else {
+                                        idxArr[j]++;
+                                    }
+                                } else {
+                                    var m = parseInt(i / rowsArr[j]);
+                                    n = m % numsArr[j];
+                                }
+                                var text=obj[j].value[n];
+                                if (j != obj.length - 1) {
+                                    name += text + '_';
+                                } else {
+                                    name += text;
+                                }
+
+                                if (i % rowsArr[j] == 0) {
+                                    Html =Html+ '<td width="50" rowspan="' + rowsArr[j] + '" data-rc="' + (i + 1) + '_' + (j + 1) + '">' + text + '</td>';
+                                }
+                            }
+                            let Spec= @Html.Raw(SpecList);
+                           // console.log(Spec[0].SpecificationAttr)
+                            for(var s=0;s<Spec.length;s++)
+                            {
+                                if(Spec[s].SpecificationAttr==name)
+                                {
+                                    Html =Html+ '<td width="20"><input type="text" name="' + name + '[price]" value='+Spec[s].Price+' /></td>';
+                                    Html =Html+ '<td width="20"><input type="text" name="' + name + '[original_price]" value='+Spec[s].CostPrice+' /></td>';
+                                    Html =Html+ '<td width="20"><input type="text" name="' + name + '[stock]" value='+Spec[s].Stock+' /></td>';
+                                    Html =Html+ '<td width="20"><input type="text" name="' + name + '[footprice]" value='+Spec[s].Integral+' /></td>';
+                                }
+                            }
+
+                            Html =Html+ '</tr>';
+
+                        }
+
+                        Html=Html+'            </tbody>'
+                        Html=Html+'        </table>'
+                        Html=Html+'     </div>'
+                        Html=Html+' </div>'
+                        Html=Html+' </div>'
+                        $('.sku').append(Html);
+            </script>
+
+        }
+        else
+        {
+            <div class="col-md-3">商品规格：</div>
+            <div class="col-md-9" style="padding:0">
+                <div class="control-group" style="margin:5px 0">
+                    <div>
+                        <button id="add_lv1" class="btn btn-primary" type="button">添加规格项</button>
+                    </div>
+                </div>
+            </div>
+            <div id="lv_table_con" class="control-group col-md-12" style="display: none;">
+                <label class="control-label">规格项目表</label>
+                <div class="controls">
+                    <div id="lv_table">
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+            <div class="form-inline">
+                <div class="col-md-3">评分：</div>@Html.TextBoxFor(m => m.CPoints, new { @class = "form-control" })
+            </div>
+            <div class="form-inline">
+                <div class="col-md-3">排序：</div>@Html.TextBoxFor(m => m.OrderID, new { @class = "form-control" })
+            </div>
+            @if (Model != null && Model.BeginTime != null)
+            {
+                <div class="form-inline">
+                    <div class="col-md-3">开始时间：</div>@Html.TextBox("BeginTime", Model.BeginTime.Value.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+                </div>
+            }
+            else
+            {
+                <div class="form-inline">
+                    <div class="col-md-3">开始时间：</div>@Html.TextBox("BeginTime", Model.BeginTime, new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+                </div>
+            }
+            @if (Model != null && Model.EndTime != null)
+            {
+                <div class="form-inline">
+                    <div class="col-md-3">结束时间：</div>@Html.TextBox("EndTime", Model.EndTime.Value.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+                </div>
+            }
+            else
+            {
+                <div class="form-inline">
+                    <div class="col-md-3">结束时间：</div>@Html.TextBox("EndTime", Model.EndTime, new { @class = "form-control", onclick = "WdatePicker({el:this,dateFmt:'yyyy-MM-dd HH:mm'})" })
+                </div>
+            }
+            @if (Model != null && Model.CreateTime != null)
+            {
+                <div class="form-inline">
+                    <div class="col-md-3">创建时间：</div>@Html.TextBox("CreateTime", Model.CreateTime.Value.ToString("yyyy-MM-dd HH:mm"), new { @class = "form-control", @readonly = "true" })
+                </div>
+            }
+            
+
+            <div class="form-inline">
+                <div class="col-md-3">商品详情：</div>
+                <textarea id="Descrition" name="Descrition" style="margin-left:100px">@Model.Descrition</textarea>
+            </div>
+        
+        </div>
+<script>
+    var lv1HTML = '<div class="control-group lv1">' +
+
+                    '<div class="controls" style="padding-bottom:0">' +
+                     '<label class="control-label">规格名称：</label>' +
+                        '<input type="text" name="lv1" placeholder="规格名称" class="specname" >' +
+                         '<button class="btn btn-danger remove_lv1" type="button">删除</button><br/>' +
+                        '<button class="add_lv2 guige" type="button" onclick="addlv2(this)" >添加规格值</button>' +
+
+                    '</div>' +
+                    '<div class="controls lv2s" style="display:inline-block;width:100%" ><span style="display: inline-block; width: 100%;">规格值：</span></div>' +
+                '</div>';
+
+
+
+
+
+
+    $(document).ready(function() {
+        $('#add_lv1').on('click', function() {
+            var last = $('.control-group.lv1:last');
+            if (!last || last.length == 0) {
+                $(this).parents('.control-group').eq(0).before(lv1HTML);
+            } else {
+                if ($('.control-group.lv1:last').find($('input[name="lv1"]')).val().length == 0) {
+                    alert("请添加规格名称");
+                    return false;
+                }
+                last.after(lv1HTML);
+            }
+        });
+
+        $(document).on('click', '.remove_lv1', function() {
+            $(this).parents('.lv1').remove();
+            Search();
+            var lv1Arr = $('input[name="lv1"]');
+            if (!lv1Arr || lv1Arr.length == 0) {
+                $('#lv_table_con').hide();
+                $('#lv_table').html('');
+                return;
+            }
+        });
+
+        var id = 1;
+
+        //$(document).on('click', '.add_lv2', function () {
+        //    console.log($('[data-id="' + id + '"]').length);
+        //   // return;
+        //    if ($('[data-id="' + id + '"]').length ===0)
+        //    {
+
+        //        var lv2HTML = '<div style="margin-top: 5px;" data-id="' + id + '">' +
+        //           '<input type="text" name="lv2" placeholder="规格值" onkeyup="Search()">' +
+        //           '<button class="btn btn-danger remove_lv2" type="button">删除</button>' +
+        //       '</div>';
+        //        $(this).parents('.lv1').find('.lv2s').append(lv2HTML);
+        //        id++;
+        //    }
+
+
+        //});
+
+        $(document).on('click', '.remove_lv2', function() {
+            $(this).parent().remove();
+            Search();
+        });
+
+        $('#update_tabl').on('click', function() {
+            var lv1Arr = $('input[name="lv1"]');
+            if (!lv1Arr || lv1Arr.length == 0) {
+                $('#lv_table_con').hide();
+                $('#lv_table').html('');
+                return;
+            }
+            for (var i = 0; i < lv1Arr.length; i++) {
+                var lv2Arr = $(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]');
+                if (!lv2Arr || lv2Arr.length == 0) {
+                    alert('请先删除无参数的规格项！');
+                    return;
+                }
+            }
+
+            var tableHTML = '';
+            tableHTML += '<table class="table table-bordered">';
+            tableHTML += '    <thead>';
+            tableHTML += '        <tr>';
+            for (var i = 0; i < lv1Arr.length; i++) {
+                tableHTML += '<th width="50">' + $(lv1Arr[i]).val() + '</th>';
+            }
+            tableHTML += '            <th width="20">现价</th>';
+            tableHTML += '            <th width="20">原价</th>';
+            tableHTML += '            <th width="20">库存</th>';
+            tableHTML += '            <th width="20">积分</th>';
+            tableHTML += '        </tr>';
+            tableHTML += '    </thead>';
+            tableHTML += '    <tbody>';
+
+            var numsArr = new Array();
+            var idxArr = new Array();
+            for (var i = 0; i < lv1Arr.length; i++) {
+                numsArr.push($(lv1Arr[i]).parents('.lv1').find('input[name="lv2"]').length);
+                idxArr[i] = 0;
+            }
+
+            var len = 1;
+            var rowsArr = new Array();
+            for (var i = 0; i < numsArr.length; i++) {
+                len = len * numsArr[i];
+
+                var tmpnum = 1;
+                for (var j = numsArr.length - 1; j > i; j--) {
+                    tmpnum = tmpnum * numsArr[j];
+                }
+                rowsArr.push(tmpnum);
+            }
+
+            for (var i = 0; i < len; i++) {
+                tableHTML += '        <tr data-row="' + (i+1) + '">';
+
+                var name = '';
+                for (var j = 0; j < lv1Arr.length; j++) {
+                    var n = parseInt(i / rowsArr[j]);
+                    if (j == 0) {
+                    } else if (j == lv1Arr.length - 1) {
+                        n = idxArr[j];
+                        if (idxArr[j] + 1 >= numsArr[j]) {
+                            idxArr[j] = 0;
+                        } else {
+                            idxArr[j]++;
+                        }
+                    } else {
+                        var m = parseInt(i / rowsArr[j]);
+                        n = m % numsArr[j];
+                    }
+
+                    var text = $(lv1Arr[j]).parents('.lv1').find('input[name="lv2"]').eq(n).val();
+                    if (j != lv1Arr.length - 1) {
+                        name += text + '_';
+                    } else {
+                        name += text;
+                    }
+
+                    if (i % rowsArr[j] == 0) {
+                        tableHTML += '<td width="50" rowspan="' + rowsArr[j] + '" data-rc="' + (i+1) + '_' + (j+1) + '">' + text + '</td>';
+                    }
+                }
+
+                tableHTML += '<td width="20"><input type="text" name="' + name + '[price]" /></td>';
+                tableHTML += '<td width="20"><input type="text" name="' + name + '[original_price]" /></td>';
+                tableHTML += '<td width="20"><input type="text" name="' + name + '[stock]" /></td>';
+                tableHTML += '<td width="20"><input type="text" name="' + name + '[footprice]" /></td>';
+                tableHTML += '</tr>';
+            }
+            tableHTML += '</tbody>';
+            tableHTML += '</table>';
+
+            $('#lv_table_con').show();
+            $('#lv_table').html(tableHTML);
+        });
+    });
+</script>
+

@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.Users
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>我</title>
+    <script src="/js/jquery-2.0.0.min.js"></script>
+    <script src="/js/SystemMsg.js"></script>
+    <script src="/js/adaptation.js"></script>
+    <link rel="stylesheet" href="/css/commonmodule.css" />
+    <link rel="stylesheet" href="/css/password.css" />
+    <style>
+        .women-icon {
+            background: url(../img/common/women.png);
+        }
+
+        .men-icon {
+            background: url(../img/common/men.png);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            @*<i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+                <a class="header-l-font halfTop" onclick="window.history.back()">返回</a>*@
+            <span>我</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <div class="user-block of-hide" onclick="location.href='/Account/APP_Info'">
+                <img class="user-img halfTop" src="@Model.HeadImg1" alt="" />
+                <p class="user-name">@Model.Name<i class="user-gendericon @((Model.Sex==null||Model.Sex==0)?"menicon":"womenicon")"></i></p>
+                <p class="user-telephone">账号 @Model.Phone</p>
+            </div>
+            <ul class="enter-itemlist me-mb-1">
+                <li class="enter-item" onclick="location.href = 'Balance'">
+                    <span>余额</span>
+                    <i class="gt bgSR halfTop"></i>
+                    <font class="item-info halfTop">@Model.Balance 元</font>
+                </li>
+                <li class="enter-item" onclick="location.href = 'Bill'">
+                    <span>账单</span>
+                    <i class="gt bgSR halfTop"></i>
+                </li>
+                @*<li class="enter-item" onclick="location.href='/Bank/BankList'">
+                        <span>银行卡</span>
+                        <i class="gt bgSR halfTop"></i>
+                    </li>*@
+            </ul>
+            <ul class="enter-itemlist">
+                <li class="enter-item" onclick="location.href = '/Account/SafeSetting'">
+                    <span>安全设置</span>
+                    <i class="gt bgSR halfTop"></i>
+                </li>
+                <li class="enter-item" onclick="location.href = '/Account/Problem'">
+                    <span>问题反馈</span>
+                    <i class="gt bgSR halfTop"></i>
+                </li>
+            </ul>
+            @Html.Action("Footer", "Account", new { id = 4 })
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

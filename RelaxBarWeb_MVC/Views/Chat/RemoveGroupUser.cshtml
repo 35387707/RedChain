@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+    Guid UID =(Guid)ViewData["uid"];
+    Guid GID = (Guid)ViewData["gid"];
+}
+@model List<RelexBarBLL.Models.GroupUser>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>选择联系人</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/friendInfo.css" />
+    <script>
+        function delUser(e, uid) {
+            $.post("/Chat/DoRemoveGroupUser", "GID=@GID&UID=" + uid, function (data) {
+                if (data.code == "1") {
+                    $(e).parent().remove();
+                } else {
+                    alert(data.msg);
+                }
+
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <font class="header-l-font halfTop"></font>
+            <span>选择联系人</span>
+            <a class="header-r-font halfTop" href="/Friend/FindFriend">添加朋友</a>
+        </div>
+        <div class="same-pt-wrap1">
+            <ul class="newfriendList" id="flist">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <li class='newfriendItem'><img class='nf-img' src='@Model[i].HeadImg1' alt='' /><p class='nf-name'>@Model[i].UNick</p><p class='nf-greet'></p>
+                    @if (UID != Model[i].UID)
+                    {
+                        <input class='nf-addbtn' type='button' onclick="delUser(this,'@Model[i].UID')" value='移除' />
+                    }
+                
+                    </li>
+                }
+
+            </ul>
+            <div class="no-newfriend-block">还没有推荐的朋友</div>
+        </div>
+        <div>
+
+        </div>
+    </div><!--wrap-->
+
+</body>
+</html>
+

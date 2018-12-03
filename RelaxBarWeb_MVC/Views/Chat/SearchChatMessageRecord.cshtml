@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+@model Guid
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>聊记录</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/chat.css" />
+    <script>
+        var param = "@ViewData["param"]";
+        function searchInput() {
+
+            var text = $("#searchContent").val();
+            if (text != "") {
+                setTimeout(function () {
+                    var text2 = $("#searchContent").val();
+                    if (text == text2) {
+                        console.log(text);
+                        doSearch(text);
+                    }
+                }, 500);
+            }
+        }
+        function doSearch(text) {
+            $.post("/Chat/SearchChatMessageRecord", "content=" + text + "&@ViewData["param"]=@Model", function (data) {
+                if (data.code == "1") {
+                    var list = JSON.parse(data.msg);
+                    var temp = [];
+                    for (var i = 0; i < list.length; i++) {
+                        temp.push("<div class='chat-item' onclick=\"itemClick('"+list[i].MID+"')\"><img class='chat-headimg halfTop' src='@ViewData["showimg"]' alt='' /><p class='chat-name'>@ViewData["showname"]</p><p class='chat-lastmsg'>" + list[i].Content + "</p><font class='chat-time'>" + list[i].CreateTime + "</font></div>");
+                    }
+                    $("#mlist").html(temp.join(""));
+                }
+                console.log(data);
+            }, "json");
+        }
+        function itemClick(mid) {
+            var id = "@Model";
+            if (param == "UID") {
+                location.href = "/Chat/ToOne/"+id+"?lastMID=" +mid;
+            } else {
+                if ("@ViewData["back"]" == "1") {
+                    location.href = "/Chat/SLChatGroup/"+id+"?lastMID=" + mid;
+                } else {
+                    location.href = "/Chat/ChatGroup/" + id + "?lastMID=" + mid;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap vh100 of-hide">
+        <div class="Header">
+            <div class="Header-search-wrap halfTop">
+                <div class="Header-search">
+                    <input class="txt" type="text" id="searchContent" placeholder="搜索" oninput="searchInput()" />
+                    <i class="icon halfTop"></i>
+                </div>
+            </div>
+            <a class="header-r-font halfTop" href="javascript:void(0);" onclick="window.history.back()">取消</a>
+        </div>
+        <div class="same-pt-wrap1 same-ofauto-wrap">
+            <div class="devide"></div>
+            <div class="chatrecord" id="mlist">
+                @*<p class="chat-title">群聊</p>*@
+                
+            </div>
+            <div class="devide"></div>
+        </div>
+    </div><!--wrap-->
+</body>
+</html>

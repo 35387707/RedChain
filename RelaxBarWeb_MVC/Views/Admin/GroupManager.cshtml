@@ -1,0 +1,169 @@
+﻿<style>
+    #uppwdpanel, #addpanel {
+        margin-top: 10%;
+        padding: 0;
+    }
+</style>
+<script>
+    var hasFooter = false;
+    var GroupManager = {};
+    GroupManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage: parseInt((sum - 1) / 10 + 1),
+                // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetGroupList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+      GetGroupList(index);
+    };
+    //获取用户列表
+    function GetGroupList(index) {
+        waiting();
+        $.get("GroupList", "index=" + index + "&key=" + GroupManager.searchKey, function (data) {
+            GroupManager.index = index;
+            $("#Groupbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function USearch() {
+        GroupManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetGroupList(1);
+    }
+    //更改管理员状态
+    function CStatus(ID, e) {
+        waiting();
+        var status = 1;
+        if (e.value == "启用")
+        { status = 0; }
+        $.post("UpdateGroupStatus", "ID=" + ID + "&status=" + status, function (data) {
+            if (data.code == "1") {
+                if (status == 1) {
+                    e.value = "启用";
+                } else {
+                    e.value = "禁用";
+                }
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+        }, "json")
+    }
+    function UpPwd(id) {
+        $("#AID").val(id);
+        $("#uppwd").show();
+    }
+    function DoUpPwd() {
+        var id = $("#AID").val();
+        var pwd = $("#pwd").val();
+        var pwd2 = $("#pwd2").val();
+        if (pwd == "") {
+            alert("密码不能为空");return
+        }
+        if (pwd != pwd2) {
+            alert("两次密码不一致"); return;
+        }
+        $.post("UpdateGroupPwd", "ID="+id+"&pwd=" + pwd, function (data) {
+            alert(data.msg);
+            if (data.code == "1") {
+                GetGroupList(GroupManager.index);
+            }
+        }, "json");
+    }
+    function uppwdClose() {
+        $("#AID").val("");
+        $("#pwd").val("");
+        $("#pwd2").val("");
+        $("#uppwd").hide();
+    }
+    function addClose() {
+        $("#addpanel input:not([type='button'])").val("");
+        $("#addGroup").hide();
+    }
+    function addGroup() {
+        var name = $("#name").val();
+        $.post("AddGroup", "Name=" + name, function (data) {
+            alert(data.msg);
+            if (data.code == "1") {
+                GetGroupList(GroupManager.index);
+            }
+        }, "json");
+    }
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a href="#">管理员管理</a></li>
+</ol>
+<div class="col-lg-12 form-inline">
+
+    关键字：
+    <div class="input-group col-lg-4">
+        <input type="text" class="form-control" id="key">
+        <span class="input-group-addon" onclick="USearch()">查询</span>
+    </div>
+    <input value="新增" type="button" class="btn btn-primary" onclick="$('#addGroup').show()" />
+    <div class="col-lg-12" id="Grouplist">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>群名称</th>
+                    <th>管理员昵称</th>
+                    <th>状态</th>
+                    <th>创建时间</th>
+                    @*<th>操作</th>*@
+                </tr>
+            </thead>
+            <tbody id="Groupbody">
+                @Html.Action("GroupList")
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
+</div>
+<div class="showBack col-md-12" id="uppwd">
+    <div class="panel panel-danger col-md-4 col-md-offset-4" id="uppwdpanel">
+        <div class="panel-heading">
+            修改密码<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="uppwdClose()" />
+        </div>
+        <div class="panel-body">
+            <input type="hidden" id="AID" />
+            <div class="form-group">
+                请输入密码：<input type="password" id="pwd" class="form-control" />
+            </div>
+            <div class="form-group">
+                确认密码：<input type="password" id="pwd2" class="form-control" />
+            </div>
+        </div>
+        <div class="panel-footer" style="overflow:hidden">
+            <input type="button" value="保存" class="btn btn-primary" style="float:right" onclick="DoUpPwd()" />
+        </div>
+    </div>
+</div>
+<div class="showBack col-md-12" id="addGroup">
+    <div class="panel panel-danger col-md-4 col-md-offset-4" id="addpanel">
+        <div class="panel-heading">
+            新增扫雷群<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="addClose()" />
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                群名称：<input type="text" id="name" class="form-control" />
+            </div>
+        </div>
+        <div class="panel-footer" style="overflow:hidden">
+           <span class="text-warning">管理员为免死账户</span> <input type="button" value="保存" class="btn btn-primary" style="float:right" onclick="addGroup()" />
+        </div>
+    </div>
+</div>

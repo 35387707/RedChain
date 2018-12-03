@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../order/css/detail-v2.css">
+        <link rel="stylesheet" href="../css/style/bottom.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+            <div id="content" class="ub ub-ver content">
+
+                <div class="wait-style">
+                    <ul class="ub ub-ac wait-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 wait-txt hdr-stat">
+                            <!-- <a class="wait-pay">等待卖家付款</a><a class="wait-type"> (若您在30分内未支付, 订单将被取消)</a> -->
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="addr-padd">
+                    <div class="ub addr-style" ontouchstart="appcan.touch('btn-act')">
+                        <div class="addr-icon">
+                            <img src="../css/img/addr_mine@2x.png" />
+                        </div>
+                        <div class="ub-f1 info-padd">
+                            <div class="nick-padd ub">
+                                <div class="user-nick" id="RecName"></div>
+                            </div>
+                            <div class="user-note" id="RecAddress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="good-list">
+                    <ul class="ub ub-ac bill-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 bill-txt">
+                            <span>下单时间: </span><span class="CreateTime"></span>
+                        </li>
+                        <li class="bill-type status">
+                        </li>
+                    </ul>
+                    <div class="ub list-style">
+                        <div class="icon-style" id="Img">
+                            <!-- <img src="../order/img/proimgs1.jpg" /> -->
+                        </div>
+                        <div class="ub-f1 goods-padd">
+                            <div class="nick-padd ub">
+                                <div ontouchstart="appcan.touch('btn-act')" class="user-nick overflow" id="proName"></div>
+                            </div>
+                            <div ontouchstart="appcan.touch('btn-act')" class="user-note overflow" id="Title"></div>
+                        </div>
+                        <div class="price-padd">
+                            <div class="nick-padd ub">
+                                <div ontouchstart="appcan.touch('btn-act')" class="price-num" id="Price">
+                                    ￥0
+                                </div>
+                            </div>
+                            <div ontouchstart="appcan.touch('btn-act')" class="sgl-num" id="Count">
+                                x 1
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="ub ub-ac num-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 pay-txt">
+                            商品总额:
+                        </li>
+                        <li class="pay-detail">
+                            <a class="pay-num whole">￥0</a>
+                        </li>
+                    </ul>
+                    <ul class="ub ub-ac pay-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 pay-txt">
+                            运费:
+                        </li>
+                        <li class="pay-detail">
+                            <a class="pay-num">免运费</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="all-padd">
+                    <ul class="ub ub-ac cnt-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 all-txt">
+                            总计:
+                        </li>
+                        <li class="pay-detail">
+                            <a class="all-num whole">￥0</a>
+                        </li>
+                    </ul>
+                    <ul class="ub ub-ac num-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 pay-txt">
+                            下单编号:
+                        </li>
+                        <li class="pay-detail">
+                            <a class="pay-num" id="Number"></a>
+                        </li>
+                    </ul>
+                    <ul class="ub ub-ac pay-padd" ontouchstart="appcan.touch('btn-act')">
+                        <li class="ub-f1 pay-txt">
+                            下单时间:
+                        </li>
+                        <li class="pay-detail">
+                            <a class="pay-num CreateTime"></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../order/js/orderDetail.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                appcan.window.enableBounce();
+                
+                getOrderDetail(localStorage.getItem("uid"), localStorage.getItem("oid"), 'order_detail');
+
+            });
+        </script>
+    </body>
+</html>

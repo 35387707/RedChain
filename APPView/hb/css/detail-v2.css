@@ -1,0 +1,557 @@
+#page_0 {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.empty-view {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.pack-cont {
+    z-index: 999;
+    width: 80%;
+    margin: 10% 10% 0;
+    height: auto;
+    position: absolute;
+}
+.rtn-cont {
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+.midl-cont {
+    width: 100%;
+    height: 1.0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.disp-wht {
+    background-color: white;
+    width: 3px;
+    height: 100%;
+}
+.clos-cont {
+    width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.clos-cont .clos-icon {
+    background-color: white;
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0.1em;
+    background-size: cover;
+    background-image: url('../img/close_yuanxing@2x.png');
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em;
+}
+.logo-cont {
+    width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.logo-cont img {
+    width: 100%;
+    height: 100%;
+}
+.mask-cont {
+    margin-top: 0.5em;
+    width: 100%;
+    text-align: center;
+    color: #FFE9BB;
+    font-size: 1.4em;
+}
+.txt-cont {
+    width: 100%;
+    text-align: center;
+    color: #606060;
+    margin: 0.8em 0 1.5em;
+    font-size: 1.8em;
+}
+.btn-cont {
+    width: 80%;
+    margin: 0 10% 20%;
+}
+.btn-cont .btn2 {
+    background-color: #FF5265;
+}
+
+/*
+ * money
+ *
+ */
+.money-sty {
+    margin: 0.3em 0 0.1em;
+}
+.cash-num {
+    color: #707070;
+    font-size: 2.0em;
+}
+.cash-nope {
+    color: #707070;
+    font-size: 1.56em;
+}
+.cash-unit {
+    margin-left: 0.3em;
+    color: #707070;
+}
+.cash-total {
+    color: #707070;
+}
+.stat-sty {
+    margin-left: 0.5em;
+    background-color: white;
+    font-size: 0.78em !important;
+    color: #F65461;
+    padding: 0.1em 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+    border: 1px solid #FC5857;
+}
+.stat-sty span {
+    margin-left: 0.2em;
+}
+
+/*最近访客文本*/
+.uinn-at4 {
+    padding: 2.69em 0.5em 0em !important;
+}
+.uinn-4a {
+    padding-top: 2.69em !important;
+}
+.uinn-a4 {
+    padding: 2.69em .5em 0 !important;
+}
+.t-gra-infor {
+    color: #626262;
+}
+
+.uinn-infor1 {
+    padding: 0.375em 0.83em;
+}
+.uw-infor {
+    width: 4em;
+}
+.uwh-infor {
+    width: 2em;
+    height: 2em;
+}
+.umar-r-infor {
+    margin-right: 1em;
+}
+
+.lin-hei1 {
+    line-height: 1.3em;
+}
+.c-gra-infor {
+    background-color: #c0c0c0;
+}
+.goods-infor1 {
+    background-image: url('../img/head.jpg');
+}
+.t-gra-per {
+    color: #8b8b8b;
+}
+.mar-ar1 {
+    margin-right: 0.625em;
+}
+.uinn-a6 {
+    padding: 1em 0.65em 0 0.65em;
+}
+.umar-ar4 {
+    margin-right: 0.3125em;
+}
+.ulev-app1 {
+    font-size: 0.875em;
+}
+.uinn-a1 {
+    padding: 0.625em;
+}
+.t-red1 {
+    color: #de1010;
+}
+.c-wh {
+    background-color: #FFF;
+}
+.t-gre1 {
+    color: rgb(47, 255, 89);
+}
+
+/*
+ * hb
+ */
+.advert-sty {
+    padding: 0.625em 0 0.3125em 0;
+}
+.advert-remark-padd {
+    padding: 0.3125em 0.625em;
+}
+.advert-remark-marg-right {
+    margin-right: 1.125em;
+}
+.uh-mito1 {
+    height: 9.0625em;
+    width: 95%;
+}
+.mito-icon1 {
+    background-image: url('../img/mito-icon1.png');
+}
+.mito-icon2 {
+    background-image: url('../img/mito-icon2.png');
+}
+
+.uwh-icon1 {
+    width: auto;
+    height: 0.75em;
+}
+.uamr-ar5 {
+    margin-right: 0.25em;
+}
+.advert-txt-sty {
+    color: #9c9c9c;
+    font-size: 0.70em !important;
+}
+.ulev-app2 {
+    font-size: 0.9375em;
+}
+.umar-at1 {
+    margin-top: 0.625em;
+}
+.uinn-a7 {
+    padding: 0 0.625em;
+}
+.form-marg {
+    margin-top: 0.625em;
+}
+.form-padd {
+    margin: 0.35em 0;
+}
+.header-txt-color {
+    color: #FED579;
+}
+.red-from {
+    color: #999999;
+    font-size: 0.78em !important;
+}
+.already-save {
+    color: #688EBB;
+}
+.advert-title {
+    padding: 0 0.625em;
+}
+.img-list {
+    width: 95%;
+    margin: 0 2.5%;
+    height: auto;
+}
+.img-marg-top {
+    margin-top: 0.45em;
+}
+.disp-img-width {
+    float: left;
+    width:  50%;
+    min-height: 10.0em;
+}
+.img-width-33 {
+    float: left;
+    width:  33.33%;
+    min-height: 7.0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.img-sty-33 {
+    width: 98%;
+    height: 98%;
+}
+.img-width-50 {
+    float: left;
+    width:  50%;
+    min-height: 10.0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.img-sty-50 {
+    width: 98.5%;
+    height: 98.5%;
+}
+.img-width-100 {
+    float: left;
+    width:  100%;
+    min-height: 12.5em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.img-sty-100 {
+    width: 99%;
+    height: 99%;
+}
+.advert-actn-padd {
+    padding: 0.7em 0.625em;
+}
+.actn-color {
+    color: #999999;
+}
+.comt-padd {
+    padding: 0.625em 0.625em 0 0.625em;
+}
+.border-padd-bottom {
+    padding-bottom: 0.625em;
+}
+.user-hdr {
+    font-size: 0.875em;
+    color: #5D9EF8;
+}
+.user-comt {
+    font-size: 0.75em !important;
+    color: #5C5C5C;
+}
+.user-time {
+    font-size: 0.70em !important;
+    color: #999999;
+}
+.user-time-marg-top {
+    margin-top: 0.5em;
+}
+.user-comt-marg-top {
+    margin-top: 0.2em;
+}
+.user-list {
+    margin-top: 0.42em;
+    color: #333333;
+}
+.comt-marg-right {
+    margin-right: 1.28em;
+}
+.detail-fa {
+    font-size: 1.35em;
+}
+.judg-fa {
+    font-size: 1.25em;
+}
+.advert-right-txt {
+    margin-left: 0.5em;
+}
+.advert-actn {
+    color: #FE7585;
+}
+.zan-actn {
+    margin-left: 0.3em;
+}
+.end-nope-number {
+    margin: 1.0em 0em;
+    font-size: 0.8em;
+    text-align: center;
+    color: #B1B1B1;
+}
+.alrdy-wd {
+    width: 2.5em;
+    height: 2.5em;
+}
+.alrdy-marg-right {
+    margin-right: 0.3125em;
+}
+.alrdy-recv {
+    overflow: hidden;
+}
+.red-img {
+    background-image: url(../img/head.jpg);
+    background-size: cover;
+}
+.head-img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.red-wd {
+    height: 5.0em;
+    width: 5.0em;
+    background-color: #F2F2F2;
+    border: 0.30em solid #F2F2F2;
+}
+.uc-a2 {
+    -webkit-border-radius: 5.0em;
+    border-radius: 5.0em;
+}
+.get-color {
+    color: #B6B6B6;
+}
+
+/*
+ * 底部操作
+ */
+.tab-sub {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 0.9375em;
+    color: #6D6D6D;
+}
+.content {
+    font-size: 0.9111em;
+    color: #777777;
+}
+.link {
+    font-size: 0.9111em;
+    color: #FD614A;
+}
+
+.little-icon-width {
+    margin-right: 0.25em;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.right-li {
+}
+.uinn-a9 {
+    padding: 0.75em 0.25em 0.75em 0.5em;
+}
+.judg-marg-right {
+    margin-right: 1.0em;
+}
+.judg-icon-width {
+    width: 1.2em;
+    height: 1.2em;
+}
+.judg-txt {
+    color: #AFAFAF;
+    font-size: 0.70em !important;
+}
+.empty-height {
+    height: 0.3em;
+}
+.bg-white {
+    background-color: white;
+}
+.footer-radius {
+    -webkit-border-radius: 0.2em;
+    border-radius: 0.2em
+}
+.img-ul {
+    height: 3.0em;
+    padding: 0 0.25em;
+}
+.li-img-style {
+    width: 12.5%;
+    height: 3.0em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.li-img-style img {
+    width: 83%;
+    height: auto;
+}
+.li-img-style div {
+    height: 2.2em;
+    width: 2.2em;
+    -webkit-border-radius: 1.1em;
+    border-radius: 1.1em
+}
+.comt-icon-width {
+    height: 2.5em;
+    width: 2.5em;
+    line-height: 2.5em;
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em;
+}
+.comt-user-icon {
+    background-image: url('../img/monkey_d_luffy.jpg');
+}

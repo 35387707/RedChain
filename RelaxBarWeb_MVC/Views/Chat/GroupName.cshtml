@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+@model RelexBarDLL.ChatGroup
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>群聊名称</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/beizhu.css" />
+    <script>
+        function save() {
+            $.post("/Chat/DoGroupName", "id=@Model.GID&GName=" + $("#GName").val(), function (data) {
+                if (data.code == "1") {
+                    location.href = "@Request.UrlReferrer.ToString()";
+                } else {
+                    alert(data.msg);
+                }
+            }, "json");
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap gray-wrap min-h100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="window.history.back()"></i>
+            <span class="header-l-font halfTop" onclick="window.history.back()">返回</span>
+            <span>群聊名称</span>
+            @*<font class="header-item-font halfTop">群名片</font>*@
+        </div>
+        <div class="remark-block">
+            <font class="remark-title">群聊名称</font>
+           @Html.TextAreaFor(m => m.GName, new { @class = "announce-area borderbox of-hide", placeholder = "请在此处输入群聊名称" })
+        </div>
+        
+        <input class="bigBtn bg-b remark-btn-mt1" type="button" value="完成" onclick="save()" />
+    </div><!--wrap-->
+</body>
+</html>

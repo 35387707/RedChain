@@ -1,0 +1,513 @@
+﻿<link href="~/css/Calendar.css" rel="stylesheet" />
+<script language="javascript" type="text/javascript" src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<style>
+    .bankShow {
+    }
+
+    .showBackList {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: white;
+        width: 600px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+
+    .editUserBody {
+        margin-top: 10%;
+    }
+
+    .editItem > div {
+        margin: 10px 0;
+    }
+
+        .editItem > div > div {
+            text-align: right;
+        }
+        .close-upimg{
+            position: absolute;
+            top: 4px;
+            right: 5px;
+            display: none; 
+            z-index:10;
+        }
+        .up-span{
+            display: none;
+            width: 100%;
+            height: 100%;
+            /*visibility: hidden;*/
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 9;
+            background: rgba(0,0,0,.5);
+            border:2px solid #f92b2b;
+        }
+</style>
+
+<script>
+
+    function bigImg(x) {
+        $(x).find(".up-span").css({ "display": "block" });
+
+        $(x).find(".close-upimg").css({ "display": "block" });
+
+    }
+    function normalImg(x) {
+        $(x).find(".up-span").css({ "display": "none" });
+
+        $(x).find(".close-upimg").css({ "display": "none" });
+    }
+
+    //删除图片块
+    function delImgbox(e) {
+        var imgs = $("input[name='imglist']");
+        $(e).parent(".up-section").remove();
+        // if (imgs.length < 8) {
+        $("#headimage").show();
+        //   }
+
+    }
+</script>
+
+<script>
+    var hasFooter = false;
+    var InfomationsManager = {};
+    InfomationsManager.searchKey = "";
+    function createFooter(sum) {
+        if (!hasFooter) {
+            $(".pagination").createPage({
+
+                totalPage:parseInt((sum-1)/10+1),
+               // totalPage: 10,
+                currPage: 1,
+                backFn: function (p) {
+                    GetInfomationsList(p);
+                }
+            });
+            hasFooter = true;
+        }
+
+    }
+    function toPage(index) {
+        GetInfomationsList(index);
+    };
+    //获取广告列表
+    function GetInfomationsList(index) {
+        waiting();
+        $.get("InfomationsList", "index=" + index + "&key=" + InfomationsManager.searchKey + "&beginTime=" + InfomationsManager.beginTime + "&endTime=" + InfomationsManager.endTime, function (data) {
+            InfomationsManager.index = index;
+            $("#Adsbody").html(data);
+            waitingHide();
+        }, "html")
+    }
+    function USearch() {
+        var datareg = /((^((1[8-9]\d{2})|([2-9]\d{3}))([-\/\._])(10|12|0?[13578])([-\/\._])(3[01]|[12][0-9]|0?[1-9])$)|(^((1[8-9]\d{2})|([2-9]\d{3}))([-\/\._])(11|0?[469])([-\/\._])(30|[12][0-9]|0?[1-9])$)|(^((1[8-9]\d{2})|([2-9]\d{3}))([-\/\._])(0?2)([-\/\._])(2[0-8]|1[0-9]|0?[1-9])$)|(^([2468][048]00)([-\/\._])(0?2)([-\/\._])(29)$)|(^([3579][26]00)([-\/\._])(0?2)([-\/\._])(29)$)|(^([1][89][0][48])([-\/\._])(0?2)([-\/\._])(29)$)|(^([2-9][0-9][0][48])([-\/\._])(0?2)([-\/\._])(29)$)|(^([1][89][2468][048])([-\/\._])(0?2)([-\/\._])(29)$)|(^([2-9][0-9][2468][048])([-\/\._])(0?2)([-\/\._])(29)$)|(^([1][89][13579][26])([-\/\._])(0?2)([-\/\._])(29)$)|(^([2-9][0-9][13579][26])([-\/\._])(0?2)([-\/\._])(29)$))/;
+        var begintime = $("#beginTime").val();
+        var endtime = $("#endTime").val();
+        if (begintime != "" && !datareg.test(begintime)) {
+            alert("开始日期格式不正确！");
+            $("#beginTime").val('');
+
+            return;
+        }
+        if (endtime != "" && !datareg.test(endtime)) {
+            alert("结束日期格式不正确！");
+            $("#beginTime").val('');
+            return;
+        }
+        if (begintime > endtime) {
+            alert("开始日期不能大于结束日期");
+            $("#beginTime").val('');
+            $("#endTime").val('');
+            return;
+        }
+        InfomationsManager.beginTime = begintime;
+        InfomationsManager.endTime = endtime;
+        InfomationsManager.searchKey = $("#key").val();
+        hasFooter = false;
+        $(".pagination").html("");
+        GetInfomationsList(1);
+    }
+
+    //更改福音天地状态
+    function CAdStatus(Id, e) {
+        waiting();
+        var status = 1;
+        if (e.value == "启用")
+        { status = 0; }
+        $.post("CInfomationStatus", "Id=" + Id + "&status=" + status, function (data) {
+            if (data.code == "1") {
+                if (status == 1) {
+                    e.value = "启用";
+                } else {
+                    e.value = "禁用";
+                }
+            } else {
+                alert(data.msg);
+            }
+            waitingHide();
+        }, "json")
+    }
+    function EditInfomation(id) {
+        waiting();
+        $.get("/Admin/EditInfomations/" + id, function (data) {
+            $("#editAdsBody").html(data);
+
+            $("#editInfomations").show();
+            $('body').css('overflow', 'hidden');
+            waitingHide();
+        }, "html")
+    }
+    //修改图片
+    function HeadImgUpload(file) {
+        var imgContainer = $("#upload").parents(".allPic");
+        var imgs = $("input[name='imglist']");
+        // console.log(imgs.length);
+        if (imgs.length > 8) {
+            alert("上传图片数目不可以超过9个，请重新选择");
+        }
+        var data = new FormData();
+        data.append("file", file.files[0], file.files[0].name);
+        $.ajax({
+            url: "/File/FileUpload",
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (respdata) {
+                if (respdata.code == '1') {
+
+                    imgContainer.prepend("<div onmouseover=bigImg(this) onmouseout=normalImg(this) class='col-md-3 up-section' style='padding:0;position: relative;margin:5px'><span class='up-span'></span><input id='imglist' name='imglist' type='hidden' value=" + respdata.msg + "><img class='close-upimg' src='/img/a7.png' onclick='delImgbox(this)' ><img class='addimg' src=" + respdata.msg + " style='width: 100px;height:100px'/></div>");
+                    if (imgs.length > 7)  //上传图片数目超过9个隐藏上传
+                    {
+                        $("#headimage").hide();
+                    }
+                    //$("#Img").val(respdata.msg);
+                    //$("#headimage").attr("src", respdata.msg);
+                } else {
+                    alert(respdata.msg);
+                }
+            },
+            error: function (data) {
+                alert("错误");
+            }
+        });
+
+    }
+    //function saveInfomations() {
+    //    $.post("/Admin/DoEditInfomation", $("#editUserForm").serialize(), function (data) {
+    //        alert(data.msg);
+    //        if (data.code == "1") {
+    //            GetInfomationsList(InfomationsManager.index);
+    //        }
+    //    }, "json");
+    //}
+    function saveInfomations() {
+        var IID = $("#IID").val();
+        var title = $("#title").val();
+        var Type = $("#Type").val();
+        var LinkTo = $("#LinkTo").val();
+        var GoodCount = $("#GoodCount").val();
+        var ViewCount = $("#ViewCount").val();
+        var BeginTime = $("#BeginTime").val();
+        var EndTime = $("#EndTime").val();
+        var imglist = '';
+        var imgs = $("input[name='imglist']");
+        for (i = 0; i < imgs.length; i++) {
+
+            imglist += imgs[i].value + ';';
+        }
+        imglist = (imglist.substring(imglist.length - 1) == ';') ? imglist.substring(0, imglist.length - 1) : imglist;//去掉字符串尾部';'号;
+
+       // $("#editUserForm").serialize()
+        $.post("/Admin/DoEditInfomation", "IID=" + IID + "&imglist=" + imglist + "&title=" + title + "&Type=" + Type + "&LinkTo=" + LinkTo + "&GoodCount=" + GoodCount + "&ViewCount=" + ViewCount + "&BeginTime=" + BeginTime + "&EndTime=" + EndTime, function (data) {
+           // alert(data.msg);
+            if (data.code == "1") {
+                alert(data.msg);
+                GetInfomationsList(InfomationsManager.index);
+            }
+            else {
+                alert(data.msg);
+            }
+        }, "json");
+    }
+    function CommentShow(IID) {
+        waiting();
+        $.post("GetComment", "IID=" + IID + "&index=1", function (data) {
+            if (data.code == "1") {
+                var temp = [];
+                var list = data.list;
+                for (var i = 0; i < list.length; i++) {
+                    temp.push("<tr><td>" + list[i].Phone + "</td><td style='max-width:270px'>" + list[i].Content + "</td><td>" + ChangeDateFormat(list[i].UpdateTime) + "</td></tr>");
+                }
+                $("#bankListData").html(temp.join(""));
+                $("#bankShow").show();
+
+              //  createPinLunFooter(ViewData["DataCount"]);
+                $('body').css('overflow', 'hidden');
+                waitingHide();
+            }
+        }, "json");
+    }
+    //function CommentShow(IID, index) {
+    //    waiting();
+    //    $.get("InfomationsCommentList", "IID=" + IID + "&index=" + index, function (data) {
+    //        $("#bankListData").html(data);
+    //        $("#bankShow").show();
+    //        $('body').css('overflow', 'hidden');
+    //        waitingHide();
+    //    }, "html")
+    //}
+    //function CommentShow(IID,index) {
+    //    waiting();
+    //    $.post("InfomationsCommentList", "IID=" + IID + "&index=" + index, function (data) {
+    //        InfomationsManager.index = index;
+    //        if (data.code == "1") {
+    //            var temp = [];
+    //            var list = data.list;
+    //            for (var i = 0; i < list.length; i++) {
+    //                temp.push("<tr><td>" + list[i].Phone + "</td><td style='max-width:270px'>" + list[i].Content + "</td><td>" + ChangeDateFormat(list[i].UpdateTime) + "</td></tr>");
+    //            }
+    //            $("#bankListData").html(temp.join(""));
+    //            $("#bankShow").show();
+
+    //            createPinLunFooter(IID, InfomationsManager.index);
+    //            $('body').css('overflow', 'hidden');
+    //            waitingHide();
+    //        }
+    //    }, "json");
+    //}
+
+    //function ChangeDateFormat(jsondate) {
+    //    jsondate = jsondate.replace("/Date(", "").replace(")/", "");
+    //    if (jsondate.indexOf("+") > 0) {
+    //        jsondate = jsondate.substring(0, jsondate.indexOf("+"));
+    //    }
+    //    else if (jsondate.indexOf("-") > 0) {
+    //        jsondate = jsondate.substring(0, jsondate.indexOf("-"));
+    //    }
+    //    var date = new Date(parseInt(jsondate, 10));
+    //    var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+    //    var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+    //    var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+    //    var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+    //    var second = date.getMilliseconds() / 1000 < 10 ? "0" + parseInt(date.getMilliseconds() / 1000) : parseInt(date.getMilliseconds() / 1000);
+    //    return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes;// + ":" + second
+    //};
+    function ChangeDateFormat(jsondate) {
+        jsondate = jsondate.replace("/Date(", "").replace(")/", "");
+        var date = new Date(parseInt(jsondate, 10));
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var d = date.getDate() < 10 ? "0" + (date.getDate()) : date.getDate();
+        var h = date.getHours() < 10 ? "0" + (date.getHours()) : date.getHours();
+        var mm = date.getMinutes() < 10 ? "0" + (date.getMinutes()) : date.getMinutes();
+        var s = date.getSeconds() < 10 ? "0" + (date.getSeconds()) : date.getSeconds();
+        return y + '-' + m + '-' + d + ' ' + h + ':' + mm + ':' + s;
+    };
+    function GetDateFormat(str) {
+        return new Date(parseInt(str.substr(6, 13))).toLocaleDateString();
+    }
+
+    function InfomationsShow(ID) {
+        waiting();
+        $.post("GetInfomationsByID", "ID=" + ID, function (data) {
+            if (data.code == "1") {
+                // console.log(data);
+                var temp = [];
+                // var list = JSON.parse(data.msg);
+                //for (var i = 0; i < list.length; i++) {
+                //    temp.push("<h5 style='text-align:center'>" + list[i].title + "</h5><div><img src=" + list[i].imglist + " style='max-width: 550px;' /><div></div>" + list[i].Status + "</div></div>");
+                //}
+                var list = data.list;
+                var treeStr = '';
+                var imgs = list.imglist;
+                var result = imgs.split(";");
+                treeStr = treeStr + "<div class='col-md-12' style='margin:5px'>"
+                @*<td>@(Model[i].FID.HasValue && Model[i].FID.Value!=Guid.Empty? ubll.GetUserById(Model[i].FID.Value).Phone : "无")</td>*@
+                //treeStr = treeStr + "<div class='col-md-5'>发布者：<span>" + list.UID + "</span></div>"
+                treeStr = treeStr + "<div class='col-md-6'>发布时间：<span>" + ChangeDateFormat(list.CreateTime) + "</span></div>"
+                treeStr = treeStr + "<div class='col-md-3'>阅读数：<span>" + list.ViewCount + "</span></div>"
+                treeStr = treeStr + "<div class='col-md-3'>点赞数：<span>" + list.GoodCount + "</span></div>"
+                treeStr = treeStr + "</div>";
+                treeStr = treeStr + "<h5 style='text-align:center'>" + list.title + "</h5>"
+                for (var i = 0; i < result.length; i++) {
+                    treeStr = treeStr + "<div><img src=" + result[i] + " style='max-width: 550px;' /></div>"
+                }
+
+
+                temp.push(treeStr);
+
+                $("#InformationData").html(temp.join(""));
+                $("#InformationsShow").show();
+                $('body').css('overflow', 'hidden');
+                waitingHide();
+            }
+        }, "json");
+
+    }
+
+    $("#export-excel").click(function (e) {
+        var datareg = /((^((1[8-9]\d{2})|([2-9]\d{3}))([-\/\._])(10|12|0?[13578])([-\/\._])(3[01]|[12][0-9]|0?[1-9])$)|(^((1[8-9]\d{2})|([2-9]\d{3}))([-\/\._])(11|0?[469])([-\/\._])(30|[12][0-9]|0?[1-9])$)|(^((1[8-9]\d{2})|([2-9]\d{3}))([-\/\._])(0?2)([-\/\._])(2[0-8]|1[0-9]|0?[1-9])$)|(^([2468][048]00)([-\/\._])(0?2)([-\/\._])(29)$)|(^([3579][26]00)([-\/\._])(0?2)([-\/\._])(29)$)|(^([1][89][0][48])([-\/\._])(0?2)([-\/\._])(29)$)|(^([2-9][0-9][0][48])([-\/\._])(0?2)([-\/\._])(29)$)|(^([1][89][2468][048])([-\/\._])(0?2)([-\/\._])(29)$)|(^([2-9][0-9][2468][048])([-\/\._])(0?2)([-\/\._])(29)$)|(^([1][89][13579][26])([-\/\._])(0?2)([-\/\._])(29)$)|(^([2-9][0-9][13579][26])([-\/\._])(0?2)([-\/\._])(29)$))/;
+        var begintime = $("#beginTime").val();
+        var endtime = $("#endTime").val();
+        if (begintime != "" && !datareg.test(begintime)) {
+            alert("开始日期格式不正确！");
+            $("#beginTime").val('');
+
+            return;
+        }
+        if (endtime != "" && !datareg.test(endtime)) {
+            alert("结束日期格式不正确！");
+            $("#beginTime").val('');
+            return;
+        }
+        if (begintime > endtime) {
+            alert("开始日期不能大于结束日期");
+            $("#beginTime").val('');
+            $("#endTime").val('');
+            return;
+        }
+        InfomationsManager.beginTime = begintime;
+        InfomationsManager.endTime = endtime;
+        InfomationsManager.searchKey = $("#key").val();
+        alert("确定导出数据吗");
+        window.location.href = "/Excel/InformationsExcel?&key=" + InfomationsManager.searchKey + "&beginTime=" + InfomationsManager.beginTime + "&endTime=" + InfomationsManager.endTime;
+    });
+
+</script>
+<ol class="breadcrumb">
+    <li><a onclick="GetManager('Default')">首页</a></li>
+    <li><a onclick="GetManager('InfomationsManager')">福音天地</a></li>
+    <li><a href="#">福音管理</a></li>
+</ol>
+
+<div class="col-md-12 form-inline">
+    <div class="col-md-6">
+        登陆账号：<input type="text" class="form-control" id="key" name="key">
+    </div>
+</div>
+
+<div class="col-md-12  form-inline" style="margin-top:10px;">
+    <div class="col-md-6">
+        开始时间：<input type="text" class="form-control" id="beginTime" name="beginTime" placeholder="格式：yyyy-MM-dd" onclick="WdatePicker({el:this,dateFmt:'yyyy-MM-dd'})" />
+    </div>
+    <div class="col-md-6">
+        结束时间：<input type="text" class="form-control" id="endTime" name="endTime" placeholder="格式：yyyy-MM-dd" onclick="WdatePicker({el:this,dateFmt:'yyyy-MM-dd'})" />
+    </div>
+</div>
+
+<div class="form-inline col-md-12" style="margin-top:20px;padding:0">
+    <div class="col-md-2">
+        <input type="button" class="btn btn-primary" value="查 询" onclick="USearch()" style="margin-left:60px;" />
+    </div>
+    <div class="col-md-3">
+        @*<a href="javascript:;" onclick="show()" class="btn btn-primary">导出数据</a>*@
+        <a href="javascript:;" target='_blank' id="export-excel" class="btn btn-primary">导出数据</a>
+    </div>
+</div>
+
+<div class="col-md-8" style="float:right">
+    <div class="panel panel-default" style="padding:0;margin-left:2px;">
+        <div class="panel-body" id="cal">
+            <ul id="wk" style="height:100%;">
+                <li class="Infomationstotal"><h4>@Html.Raw(ViewData["PointPaylist"])</h4><span>福音积分总计</span></li>
+                <li class="Infomationstotal"><h4>@Html.Raw(ViewData["InfomationsCount"])</h4><span>发布广告总计</span></li>
+                <li class="Infomationstotal"><h4>@ViewData["seePointCount"]</h4><span>观看广告积分总计</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="col-lg-12 form-inline">
+    关键字：
+    <div class="input-group col-lg-4">
+        <input type="text" class="form-control" id="key">
+        <span class="input-group-addon" onclick="USearch()">查询</span>
+
+    </div>
+    <input type="button" class="btn btn-primary" value="新增" onclick="EditInfomation('')" />
+   
+</div>*@
+
+<div class="col-md-12" id="userlist">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>用户</th>
+                <th>标题</th>
+                <th>类型</th>
+                <th>访问量</th>
+                <th>点赞数</th>
+                <th>状态</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>操作</th>
+                <th>查看评论</th>
+            </tr>
+        </thead>
+        <tbody id="Adsbody">
+            @Html.Action("InfomationsList")
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination"></ul>
+    </nav>
+</div>
+
+<div class="showBack col-md-12" id="editInfomations">
+    <div class="editUserBody col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">修改福音<input type="button" class="btn btn-default" style="float:right;margin-top:-7px" value="关闭" onclick="$('#editInfomations').hide(); $('body').css('overflow', 'auto');" /></div>
+            <div class="panel-body">
+                <form id="editUserForm">
+                    <div id="editAdsBody"></div>
+                </form>
+            </div>
+            <div class="panel-footer" style="overflow:hidden">
+                <input type="button" value="保存" class="btn btn-primary" style="float:right" onclick="saveInfomations()" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="showBack" id="bankShow">
+    <div class="showBackList panel panel-default">
+        <input type="button" class="btn btn-primary" style="float:right;" value="关闭" onclick="$('#bankShow').hide(); $('body').css('overflow', 'auto');" />
+        <div class="form-inline panel-heading">
+            <h4 class="text-center">相关评论</h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>评论者</th>
+                        <th>评论</th>
+                        <th>评论时间</th>
+                    </tr>
+                </thead>
+                <tbody id="bankListData"></tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
+<div class="showBack" id="InformationsShow" style="overflow:auto">
+    <div class="showBackList panel panel-default">
+        <input type="button" class="btn btn-primary" style="float:right;" value="关闭" onclick="$('#InformationsShow').hide(); $('body').css('overflow', 'auto');" />
+        <div class="form-inline panel-heading">
+            <h4 class="text-center">福音天地</h4>
+        </div>
+        <div class="panel-body" style="overflow: auto; max-height: 450px;">
+
+            <div id="InformationData">
+
+            </div>
+        </div>
+        <div class="form-inline panel-heading">
+        </div>
+    </div>
+</div>

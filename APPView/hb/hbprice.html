@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../hb/css/price-v2.css">
+        <style>
+            #page_0 {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body class="ub-img1 bg-size bg-img" ontouchstart>
+
+        <div id="page_0" class="ub ub-ver" tabindex="0">
+
+            <div class="empty-view"></div>
+
+            <div class="empty-height close"></div>
+
+            <!--header开始-->
+
+            <!--header结束--><!--content开始-->
+            <div class="pack-cont">
+
+                <div class="fubaoduo-left close"></div>
+                <div class="fubaoduo-right close"></div>
+                <div class="fubaoduo-bot close"></div>
+
+                <div class="fubaoduo-cont">
+                    <div class="fubaoduo-bg ub-img fubaoduo-img">
+                        <div class="fu-top"></div>
+                        <div class="fu-bottom">
+                            <div id="price" ontouchstart="appcan.touch('btn-act')" class="fu-money">
+                                0.11
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fuimg-top close"></div>
+                    <div class="fuimg-bot close"></div>
+                </div>
+
+                <div class="sign-height close"></div>
+
+                <!-- <div class="sign-cont">
+                    <div class="sign-top close"></div>
+                    <div class="sign-bot close"></div>
+                    <div class="sign-disp">
+                        <img id="say_hello" src="../hb/img/qiaomen_btn_bg@2x.png" ontouchstart="appcan.touch('btn-act')" />
+                    </div>
+                </div> -->
+                
+                <div class="sign-cont">
+                    <div class="sign-left close"></div>
+                    <div class="sign-right close"></div>
+                    <div class="sign-disp">
+                        <div class="sign-wish ub-img1 wish-bg" ontouchstart="appcan.touch('btn-act')">
+                            <a id="say_hello" class="wish-color">福包敲门</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chg-height">
+                    <div class="txt-left close"></div>
+                    <div class="txt-right close"></div>
+                </div>
+
+                <div class="chg-cont">
+                    <div class="txt-left close"></div>
+                    <div class="txt-right close"></div>
+                    <!-- <span ontouchstart="appcan.touch('btn-act')"><a class="fa fa-refresh"></a> 换个金额</span> -->
+                    <div class="txt-cont">
+                        <div class="ub ub-ac chg-icon" ontouchstart="appcan.touch('btn-act')">
+                            <div class="ub ub-img little-icon-width refresh-icon refresh"></div>
+                            <div class="little-txt refresh">
+                                换个金额
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/image.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../js/chat/tool.js"></script>
+        <script src="../js/chat/init.js"></script>
+        <script src="../js/chat/conn.js"></script>
+        <script src="../js/chat/chat.js"></script>
+        <script src="../hb/js/hbsayhello.js"></script>
+        <script src="../index/js/msg.js"></script>
+        <script src="../msg/js/isrt.js"></script>
+        <script src="../msg/js/say.js"></script>
+        <script>
+            appcan.ready(function() {
+
+                setSwipeCloseEnable(1);
+
+            });
+
+            $('.empty-view').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('#say_hello2').click(function() {
+
+                openToast("功能正在开发中，敬请期待...", 3000, 5, 0);
+
+            });
+
+            $('.close').click(function() {
+
+                appcan.window.close(-1);
+
+            });
+
+            $('.refresh').unbind();
+            $('.refresh').click(function() {
+
+                var hbPrice = ["0.11", "0.68", "0.88", "1.00", "1.08", "1.68", "1.88"];
+
+                var temp = $('.fu-money').text().replace(/\s*/g, "");
+
+                var index = '';
+                for (var i in hbPrice) {
+                    if (hbPrice[i] == temp) {
+                        index = i;
+                    }
+                }
+
+                var length = hbPrice.length - 1;
+                if (index == '') {
+                    $('.fu-money').text(hbPrice[0]);
+                } else {
+
+                    if (parseInt(index) == length) {
+                        $('.fu-money').text(hbPrice[0]);
+                    } else if (parseInt(index) < length) {
+                        $('.fu-money').text(hbPrice[parseInt(index) + 1]);
+                    }
+
+                }
+
+            });
+
+        </script>
+    </body>
+</html>

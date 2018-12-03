@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="../css/ui-box.css">
+        <link rel="stylesheet" href="../css/ui-base.css">
+        <link rel="stylesheet" href="../css/ui-color.css">
+        <link rel="stylesheet" href="../css/appcan.icon.css">
+        <link rel="stylesheet" href="../css/appcan.control.css">
+        <link rel="stylesheet" href="../setup/css/bind-v1.css">
+    </head>
+    <body class="bc-bg" ontouchstart>
+
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+
+            <div id="header" class="uh bc-head ubb bc-border">
+                <div class="ub">
+                    <div class="nav-one" id="nav_left" ontouchstart="appcan.touch('btn-act')">
+                        <div class="ub-img1 nav-back"></div>
+                    </div>
+                    <div class="nav-two">
+                    </div>
+                    <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white">绑定手机号</h1>
+                    <div class="nav-btn" id="nav_right" ontouchstart="appcan.touch('btn-act')">
+                        <div class="fa fa-1g ub-img1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content" class="ub ub-ver">
+
+                <div class="ub ub-ver ub-ac ub-pc ub-fh uinn-ver">
+                    <div class="ub-img versionIcon uwh-ver2 umar-b-ver" ontouchstart="appcan.touch('btn-act')"></div>
+                    <div class="phone-text" ontouchstart="appcan.touch('btn-act')">
+                        已绑定的手机号
+                    </div>
+                    <div class="phone-num" ontouchstart="appcan.touch('btn-act')">
+                        183 1965 3666
+                    </div>
+                </div>
+
+                <!-- <div class="ubt ubb bc-border c-wh uinn-a7" id="">
+                <ul ontouchstart="appcan.touch('btn-act')" class="ubb bc-border ub t-bla ub-ac lis">
+                <li class="ub-f1 ut-s ulev-app2">
+                检测更新
+                </li>
+                <li class="t-gra-ver ulev-4">
+                已是最新版
+                </li>
+                </ul>
+                <ul ontouchstart="appcan.touch('btn-act')" class="ub ub-ac lis">
+                <li class="ub-f1 ut-s ulev-app2">
+                版本说明
+                </li>
+                <li class="fa fa-angle-right ulev2"></li>
+                </ul>
+                </div> -->
+
+                <div class="btn-btm">
+
+                    <div class="lgn-wd">
+                        <div class="bc-btn-border ub ub-ac bc-btn-color ub-pc uc-a1 log-in2" ontouchstart="appcan.touch('btn-act')">
+                            <!-- <div class="uinn3 fa fa-shield umh1 umw1"></div> -->
+                            更换手机号
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="../js/appcan.js"></script>
+        <script src="../js/appcan.control.js"></script>
+        <script src="../js/com/debug.js"></script>
+        <script src="../js/com/date.js"></script>
+        <script src="../js/com/popup.js"></script>
+        <script src="../js/com/system.js"></script>
+        <script src="../js/com/number.js"></script>
+        <script src="../js/com/json.js"></script>
+        <script src="../setup/js/acct_safe.js"></script>
+        <script>
+            appcan.ready(function() {
+                
+                setSwipeCloseEnable(1);
+                
+                var bodyHeight = $('body').height();
+                var titHeight = $('#header').offset().height;
+                var footHeight = $('#footer').height();
+                var contHeight = bodyHeight - titHeight;
+
+                $('#content').css('height', contHeight);
+
+                // 拦截返回按钮
+                uexWindow.setReportKey(0, 1);
+                // 拦截后的事件绑定
+                uexWindow.onKeyPressed = function(keyCode) {
+                    if (keyCode == 0) {
+
+                        appcan.window.close(-1);
+
+                    } else {
+
+                        alert('点击了其他键');
+
+                    }
+                }
+                
+            });
+
+            $('#nav_left').click(function() {
+                appcan.window.close(-1);
+            });
+
+        </script>
+    </body>
+</html>

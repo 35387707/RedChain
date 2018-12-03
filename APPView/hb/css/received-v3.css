@@ -1,0 +1,234 @@
+.uinn-at4 {
+    padding: 2.69em 0.5em 0em !important;
+}
+.uinn-4a {
+    padding-top: 2.69em !important;
+}
+.uinn-a4 {
+    padding: 2.69em .5em 0 !important;
+}
+
+.c-bad {
+    background-color: #bad538;
+}
+.c-faa {
+    background-color: #faa701;
+}
+.c-ffe {
+    background-color: #ffe400;
+}
+.c-00a {
+    background-color: #00adef;
+}
+.c-4e6 {
+    background-color: #4e6cbc;
+}
+.uinn-out {
+    padding: 1.7em 0.8em 1.7em 0.7em;
+}
+.t-686 {
+    color: #686868;
+}
+.umwh-m {
+    min-height: 1.875em;
+    min-width: 1.875em;
+}
+.uinn-m {
+    padding: 1em 0.78em 1em 1.25em;
+}
+.uinn-mtxt {
+    padding-left: 1.6em;
+}
+.uinn-avator {
+    padding: 0.8em 1.0em 1.0em 0.6em;
+}
+.user-name {
+    font-size: 1.2em !important;
+}
+.umar-avator {
+    margin-top: 0.7em;
+}
+.umar-lname {
+    margin-left: 0.5em;
+}
+.uc-a2 {
+    -webkit-border-radius: 2.5em;
+    border-radius: 2.5em
+}
+.ub-a2 {
+    border: 1px solid #fff;
+}
+
+.stat-sty {
+    background-color: #F65461;
+    color: white;
+    --webkit-border-radius: 4.0em;
+    padding: 0.3em 0.6em;
+    border-radius: 4.0em;
+    border: 1px solid white;
+}
+.stat-sty span {
+    margin-left: 0.2em;
+}
+.stat-1 {
+
+}
+/*
+ * head fixed
+ */
+.hdr-img {
+    background-image: url('../img/hb_detail_header@2x.png');
+}
+.up-top {
+    padding-top: 0.40em;
+}
+.up-bot {
+    padding-bottom: 0.40em;
+}
+.bc-headbg {
+    background-color: #00abeb;
+}
+.own-data {
+    height: 100%;
+    width: 100%;
+}
+
+/*
+ * 下部分
+ */
+.res-width {
+    width: 1.88em;
+    height: 1.88em;
+}
+.lis-icon-s {
+    width: 2.2em;
+    margin: 0em 0.6em 0em 0px;
+    min-height: 2em;
+}
+.umar-at3 {
+    margin-top: 1.36em;
+}
+.uinn-a8 {
+    padding: 0.7em 1.0em 0.6em 1.0em;
+}
+.res-gerenzhuye {
+    background-image: url('../img/mine/index_mine_gerenzhuye@2x.png');
+}
+.res-qianbao {
+    background-image: url('../img/mine/index_mine_qianbao@2x.png');
+}
+.res-tongji {
+    background-image: url('../img/mine/index_mine_tongji@2x.png');
+}
+.res-shoucang {
+    background-image: url('../img/mine/index_mine_shoucang@2x.png');
+}
+.res-guanzhu {
+    background-image: url('../img/mine/index_mine_guanzhu@2x.png');
+}
+.res-shezhi {
+    background-image: url('../img/mine/index_mine_shezhi@2x.png');
+}
+/*浮动层*/
+.fixed {
+    position: fixed;
+    z-index: 10000;
+}
+.umar-mar1 {
+    margin-right: 0.625em;
+}
+.mine-data {
+    font-size: 0.88em;
+    color: white;
+    padding-right: 0.5em;
+}
+.usr-cont {
+    width: 100%;
+    padding-top: 15%;
+}
+.icon-cont {
+    margin: 10% 0 0.5em;
+}
+.username-cont {
+    text-align: center;
+}
+.res-avator {
+    background-image: url(../img/avator.png);
+}
+.red-wd {
+    min-height: 4.0em;
+    min-width: 4.0em;
+}
+/*
+ * 当页面可见宽度大于1400px小于1537px时 ipad mini2 ipad mini4
+ */
+@media all and (min-width: 1290px) and (max-width: 1537px) {
+
+    #header {
+        height: 541px;
+        width: 100%;
+    }
+    .space-height {
+        height: 6%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于1100px小于1281px时 iphone 6s
+ */
+@media all and (min-width: 1100px) and (max-width: 1281px) {
+
+    #header {
+        height: 450px;
+        width: 100%;
+    }
+    .space-height {
+        height: 5.5%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于900px小于1081px时 1080p iphone6s
+ * 0.4293
+ */
+@media all and (min-width: 753px) and (max-width: 1081px) {
+
+    #header {
+        height: 380px;
+        width: 100%;
+    }
+    .space-height {
+        height: 5%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ * 0.352
+ * 0.450
+ */
+@media all and (min-width: 650px) and (max-width: 751px) {
+
+    #header {
+        height: 264px;
+        width: 100%;
+    }
+    .space-height {
+        height: 4%;
+    }
+
+}
+/*
+ * 当页面可见宽度大于650px小于751px时 1080p iphone6
+ */
+@media all and (min-width: 500px) and (max-width: 641px) {
+
+    #header {
+        height: 225px;
+        width: 100%;
+    }
+    .space-height {
+        height: 3%;
+    }
+
+}

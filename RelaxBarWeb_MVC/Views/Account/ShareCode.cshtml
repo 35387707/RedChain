@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+@model Guid
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.0.0.min.js"></script>
+    <title>OtherePay</title>
+    <style>
+        .back {
+            position: absolute;
+            margin-top: 14px;
+            z-index: 9999;
+        }
+        body{
+            background-image:url("/img/shareback.jpg");
+            background-repeat:no-repeat;
+        }
+        img{margin-top:50%;}
+    </style>
+    <script>
+        $(function () {
+
+        });
+    </script>
+</head>
+<body>
+    <div class="col-md-12">
+        <div class="form-group" style="text-align:center">
+            <img src="/QRCode/GetQRCode/@Model" />
+        </div>
+    </div>
+    @*<div class="panel panel-primary">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <input class="btn btn-primary qr form-control" type="button" value="确认" />
+                    </div>
+                </div>
+            </div>
+        </div>*@
+</body>
+</html>

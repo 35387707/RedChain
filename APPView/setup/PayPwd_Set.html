@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/ui-box.css">
+    <link rel="stylesheet" href="../css/ui-base.css">
+    <link rel="stylesheet" href="../css/ui-color.css">
+    <link rel="stylesheet" href="../css/appcan.icon.css">
+    <link rel="stylesheet" href="../css/appcan.control.css">
+    <link rel="stylesheet" href="../pay/css/pwd_set.css">
+</head>
+<body class="ub um-vp ub-ver" ontouchstart>
+
+    <div id="page_0" class="up ub ub-ver" tabindex="0">
+
+        <div id="header" class="uh bc-head ubb bc-border z-index">
+            <div class="ub">
+                <div class="nav-one" id="nav_left" onclick="javascript:history.back(-1);">
+                    <div class="ub-img1 nav-back"></div>
+                </div>
+                <div class="nav-two"></div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c font-normal sc-white" id="hdr_titl">设置支付密码</h1>
+                <div class="nav-btn" id="nav_right">
+                    <div class="nav-txt">
+                        完成
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="num-wrap z-index">
+
+            <div class="num-height"></div>
+            <div class="num-height"></div>
+
+            <div class="goods-box">
+                <div class="goods-title">
+                    请设置福BAO多支付密码，用于支付验证
+                </div>
+            </div>
+            <ul class="num-disp-box" data-pay="">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+        </div>
+
+        <!--浮动层-->
+        <div class="num-cont">
+            <div class="num-input-box">
+                <div class="num-display">
+                    <img src="../pay/img/jftc_14.jpg" height="10">
+                </div>
+                <ul class="num-key">
+                    <li>
+                        <a href="javascript:void(0);" class="num-sgl">1</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-border num-sgl">2</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-sgl">3</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-sgl">4</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-border num-sgl">5</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-sgl">6</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-sgl">7</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-border num-sgl">8</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-sgl">9</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-empty">清空</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-border num-sgl">0</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="num-del">删除</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="num-bg"></div>
+
+    </div>
+
+    <!--<script src="../js/appcan.js"></script>
+    <script src="../js/appcan.control.js"></script>-->
+    <script src="../lib/jquery-1.8.3/jquery.js"></script>
+    <script src="../js/com/debug.js"></script>
+    <script src="../js/com/date.js"></script>
+    <script src="../js/com/popup.js"></script>
+    <script src="../js/com/system.js"></script>
+    <script src="../js/com/image.js"></script>
+    <script src="../js/com/json.js"></script>
+    <script src="../js/com/pay.js"></script>
+    <script src="../pay/js/pwd_set.js"></script>
+    <script src="../js/com/pwd.js"></script>
+
+    <script src="http://www.fbddd.com/js/jquery-2.0.0.min.js"></script>
+    <script src="../js/token.js"></script>
+
+    <script>
+           
+        $().ready(function () {
+            var HasPayPwd = localStorage.getItem("HasPayPwd");
+            if (HasPayPwd == '' || HasPayPwd == null || HasPayPwd == undefined) {
+
+            } else {
+                if (HasPayPwd == '已设置') {
+                    $('#hdr_titl').text('修改支付密码');
+                } else if (HasPayPwd == '未设置') {
+                    $('#hdr_titl').text('设置支付密码');
+                }
+            }
+
+
+
+        });
+
+        $('#nav_right').click(function () {
+
+            PayNum();
+
+        });
+
+        function PayNum() {
+
+            var value = $(".num-disp-box").data("pay");
+            //console.log(value);
+            //return;
+            //alert(value);
+
+            if (value.length == 0 || value == null || value == '' || value == undefined) {
+
+                alert("请输入6位数的支付密码");
+                return false;
+
+            } else {
+
+                if (value.length != 6) {
+                    alert("请输入6位数的支付密码");
+                    return false;
+
+                } else {
+
+                    var regExps = /(\d)\1{2,}/ig;
+
+                    if (regExps.test(value)) {
+
+                        alert('不能含有连续三位重复的数字');
+                        return false;
+
+                    } else {
+
+                        //alert('输入正确');
+                        var rslt = denySimplePwd(value);
+                        if (rslt == 1) {
+
+                            alert('该支付密码过于简单, 请重新输入');
+                            return false;
+
+                        } else {
+
+                            var HasPayPwd = localStorage.getItem("HasPayPwd");
+                            if (HasPayPwd == '未设置') {
+                              //  openToast("正在设置支付密码", 300000, 5, 1);
+
+                            } else if (HasPayPwd == '已设置') {
+                             //    openToast("正在修改支付密码", 300000, 5, 1);
+                            }
+
+                            //openToast('输入正确', 5000, 5, 0);
+                            var id = 2;
+                            var oldPwd = '';
+                            var newPwd = value;
+                            var code = localStorage.getItem("payCode");
+                            doChangePwd(id, oldPwd, newPwd, code);
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        function doChangePwd(id, oldPwd, newPwd, code) {
+
+            var token = GetQueryString("token");
+
+            $.post("http://www.fbddd.com/Account/DoChangePwd", "id=" + id + "&oldPwd=" + oldPwd + "&newPwd=" + newPwd + "&code=" + code + "&token=" + token, function (data) {
+                if (data.length != 0) {
+                    if (data.code == 1 || data.code == '1') {
+                        localStorage.setItem("succ", 1);
+                        var HasPayPwd = localStorage.getItem("HasPayPwd");
+                        if (HasPayPwd == '已设置') {
+                            localStorage.setItem("succTxt", '恭喜 修改支付密码成功！');
+                            alert('修改支付密码成功');
+                            //appcan.window.publish('setSucs', 1);
+                        } else if (HasPayPwd == '未设置') {
+                            localStorage.setItem("succTxt", '恭喜 设置支付密码成功！');
+                            alert('设置支付密码成功');
+                        }
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+                else {
+                    alert("修改密码失败");
+                }
+
+            }, "json");
+
+        }
+
+        function denySimplePwd(value) {
+
+            var arr = ['012345', '123456', '234567', '345678', '456789', '567890', '678910', '109876', '098765', '987654', '876543', '765432', '654321', '543210'];
+            var rslt = 0;
+            $(arr).each(function (i, v) {
+
+                if (v == value) {
+                    rslt = 1;
+                }
+
+            });
+
+            return rslt;
+
+        }
+    </script>
+</body>
+</html>
+

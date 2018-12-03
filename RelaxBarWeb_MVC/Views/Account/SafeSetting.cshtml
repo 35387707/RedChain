@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>安全设置</title>
+    @Html.Action("CommonHead", "Static")
+    <link rel="stylesheet" href="/css/password.css" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="Header">
+            <i class="backto halfTop bgSR"></i>
+            <a class="header-l-font halfTop" onclick="window.history.back()">返回</a>
+            <span>安全设置</span>
+        </div>
+        <div class="same-pt-wrap1">
+            <ul class="enter-itemlist me-mb-1 me-mt-1">
+                <li class="enter-item" onclick="location.href = '/Account/ChangePwd/0'">
+                    <span>登录密码</span>
+                    <i class="gt bgSR halfTop"></i>
+                    <font class="item-info halfTop">修改</font>
+                </li>
+                <li class="enter-item" onclick="location.href = '/Account/ChangePwd/1'">
+                    <span>支付密码</span>
+                    <i class="gt bgSR halfTop"></i>
+                    <font class="item-info halfTop">修改</font>
+                </li>
+            </ul>
+            <ul class="enter-itemlist">
+                <li class="enter-item" onclick="location.href='/Account/LoginOut'">
+                    <span>退出</span>
+                </li>
+            </ul>
+        </div>
+        @Html.Action("footer", "Account", new { id = 4 })
+        </div><!--wrap-->
+</body>
+</html>

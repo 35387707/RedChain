@@ -1,0 +1,252 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>账单</title>
+    @Html.Action("CommonHead", "Static")
+    <script src="/js/main.js"></script>
+
+    <link rel="stylesheet" href="/css/bill.css" />
+    <script>
+        var finalyear=@DateTime.Now.Year;
+        var finalmonth=@DateTime.Now.Month;
+
+        var year=finalyear;
+        var month=finalmonth;
+        var bllid=1;
+        var lastid="billlist"+year+"-"+month;
+        var pageindex=1;
+        var createBillBlockFlag=1;
+        var getBillFlag=1;
+        var trycount=0;
+        var type=null;
+        var init=1;
+
+        function createBillBlock(){
+            if(createBillBlockFlag==0)return;
+            $.post("/Account/APPSZ","token=@ViewData["token"]&year="+year+"&month="+month+"&type="+type,function(data){
+
+                if(data.code=="1"){
+                    var val=data.msg.split("|");
+                    var thtml="<div class='bill-block'><div class='bill-top'><p class='bill-date'>"+year+"年"+month+"月</p><p class='bill-detail'><span class='expend'>支出&yen;"+val[1]+"</span>"
+                +"<span class='income'>收入&yen;"+val[0]+"</span></p>";
+                    if(trycount==0){
+                        thtml+="<a class='calendar-icon' href='javascript:void(0);'></a>";
+                    }
+                    thtml+="</div><div class='bill-botlist' id=billlist"+year+"-"+month+"></div></div>";
+                    $("#billBlocklist").append(thtml);
+                    if(trycount==0){
+                        $(".calendar-icon").on("click", function () {
+                            $(".blackmask").fadeIn(200).find(".date-plugIn-wrap").show();
+                        });
+                    }
+                    GetBill("billlist"+year+"-"+month);
+                }
+                createBillBlockFlag=1;
+            },"json");
+
+
+        }
+        function reloadByType(type2){
+            type=type2;
+            year=finalyear;
+            month=finalmonth;
+            pageindex=1;
+            createBillBlockFlag=1;
+            getBillFlag=1;
+            trycount=0;
+            $("#billBlocklist").html("");
+            createBillBlock();
+            $(".blackmask").fadeOut(200);
+            $(".deal-block").removeClass("deal-block-up").addClass("deal-block-down");
+        }
+        function searchByTime(){
+            type=null;
+            year=$("#year").val();
+            month=$("#month").val();
+            pageindex=1;
+            createBillBlockFlag=1;
+            getBillFlag=1;
+            trycount=0;
+            $("#billBlocklist").html("");
+            createBillBlock();
+            $(".date-plugIn-wrap").hide().parents(".blackmask").hide();
+        }
+        function GetBill(id){
+            if(getBillFlag=0)return;
+            lastid=id;
+            $.post("/Account/APPBill","token=@ViewData["token"]&year="+year+"&month="+month+"&index="+pageindex+"&type="+type,function(data){
+                if(data.code=="1"){
+                    var list=JSON.parse(data.msg);
+                    console.log(list);
+                    getBillFlag=1;
+                    if(list.length==0){
+
+                        //var o=$("#billBlocklist")[0].getBoundingClientRect().bottom;
+                        //var a=$("body").height();
+                        //if(o<a){
+                            if(month==1){
+                                year--;
+                                month=12;
+                            }else{
+                                month--;
+                            }
+                            pageindex=1;
+
+                            if(trycount==10){
+                                return;
+                            }else{
+                                trycount++;
+                            }
+                            createBillBlock();
+                            return;
+                       // };
+                    }else{
+                        for (var i = 0; i < list.length; i++) {
+                            var row=list[i];
+
+                            var temp="<div class='bill-item'><img class='bill-img' src='"+getimg(row.FromTo)+"' /><p class='bill-towho'>"+GetRemark(row)+"</p><p class='bill-time'>"+row.Createtime+"</p>"+showPrice(row)+"</div>";
+                            $("#"+id).append(temp);
+                        }
+                        ++pageindex;
+                        var o=$("#billBlocklist")[0].getBoundingClientRect().bottom;
+                        var a=$("body").height();
+                        if(o<a){
+
+                            GetBill(id);
+                        };
+                    }
+
+
+
+
+                }
+
+
+            },"json");
+        }
+        function GetRemark(row){
+            var remark=row.Remark;
+            switch (row.FromTo) {
+                case 1:
+                    if(row.InOut==0){
+                        remark+="-转给"+row.PayName;
+                    }else{
+                        remark+="-收到"+row.PayName+"转账";
+                    }
+                    break;
+                case 8:
+                    if(row.InOut==0){
+                        if(row.PayName!=null){
+                            remark+="收款人："+row.PayName;
+                        }
+
+                    }
+                    break;
+
+            }
+            return remark;
+        }
+
+        function getimg(FromTo){
+            switch (FromTo) {
+                case 0:return "/img/common/cz.png";
+                case 1:return "/img/common/zz.png";
+                case 2:return "/img/common/jl.png";
+                case 3:return "/img/common/hb.png";
+                case 4:return "/img/common/tx.png";
+                case 8:return "/img/common/sl.png";
+            }
+        }
+        function showPrice(row){
+            if(row.InOut==1){
+                return "<font class='bill-money bill-color-r' style='color:black'>+"+row.Val+"</font>";
+            }
+            return "<font class='bill-money bill-color-r'>-"+row.Val+"</font>";
+        }
+        $(function(){
+            createBillBlock();
+            var yearelement=[];
+            for (var i = 0; i <3; i++) {
+                var tempyear=year-i;
+                yearelement.push("<option value='"+tempyear+"'>"+tempyear+"</option>");
+            }
+            $("#year").html(yearelement.join(""));
+        });
+        $(document).scroll(
+            function () {
+                if ($(document).scrollTop() + window.innerHeight == $(document).height()) {
+                    //if(init==1){
+                    //    createBillBlock();
+                    //    init=0;
+                    //}else{
+                    //    GetBill(lastid);
+                    //}
+                    GetBill(lastid);
+                }
+            });
+    </script>
+</head>
+<body>
+    <div class="wrap vh100">
+        <div class="Header">
+            <i class="backto halfTop bgSR" onclick="android.prePage()"></i>
+            <span class="header-l-font halfTop" onclick="android.prePage()">返回</span>
+            <span>账单</span>
+            <a class="header-r-font halfTop" id="filtrate" href="javascript:void(0);">筛选</a>
+        </div>
+        <div class="same-pt-wrap1" id="billBlocklist">
+
+        </div>
+        <div class="blackmask">
+            <div class="date-plugIn-wrap">
+                <div class="date-plugIn">
+                    <p class="plugIn-title">请选择年月</p>
+                    <div class="pI-select-wrap">
+                        <select class="plugIn-select" name="year" id="year"></select>年
+                        <select class="plugIn-select" name="month" id="month">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>月
+                    </div>
+                    <div class="pI-confirm-wrap clearf">
+                        <a class="pI-cancel" href="javascript:void(0);">取消</a>
+                        <a class="pI-ensure" onclick="searchByTime()" href="javascript:void(0);">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--选择交易类型-->
+        <div class="deal-block deal-block-down">
+            <p class="deal-title">选择交易类型</p>
+            <ul class="deal-type clearf">
+                <li class="deal-item active" onclick="reloadByType(null)">全部</li>
+                <li class="deal-item" onclick="reloadByType(3)">红包</li>
+                <li class="deal-item" onclick="reloadByType(1)">转账</li>
+                <li class="deal-item" onclick="reloadByType(8)">扫雷游戏</li>
+                <li class="deal-item" onclick="reloadByType(0)">充值</li>
+                <li class="deal-item" onclick="reloadByType(4)">提现</li>
+            </ul>
+            <input class="deal-cancelbtn" type="button" value="取消" />
+        </div>
+        @*@Html.Action("Footer", "Account", new { id = 4 })*@
+    </div><!--wrap-->
+</body>
+</html>
